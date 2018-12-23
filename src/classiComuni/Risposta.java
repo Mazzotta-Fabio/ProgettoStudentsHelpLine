@@ -104,11 +104,20 @@ public class Risposta {
 		this.valutazione = valutazione;
 	}
 
-  public int getId() {
-    return id;
-  }
+	/**
+	 * Il metodo  restituisce l'id di una risposta
+	 * @return id di una risposta
+	 */
+	public int getId() {
+		return id;
+	}
 
-  public void setId(int id) {
-    this.id = id;
-  }
+
+	/**
+	 * Il metodo consente di inserire l'id alla risposta
+	 * @param id: id da inserire per la risposta
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
 }

@@ -8,6 +8,12 @@ import com.mysql.jdbc.ResultSet;
 import com.mysql.jdbc.Statement;
 import classiComuni.Tutor;
 
+/**
+ * La classe TutorDAOImp implementa i metodi dell'interfaccia ObjectDAO.
+ * Questa classe permette di aggiungere, reperire e eliminare informazioni per i Tutor su DataBase.
+ * @author Antonio Cimino
+ * @version 1.0
+ */
 public class TutorDAOImp implements ObjectDAO {
 
   private Connection con;
@@ -17,6 +23,10 @@ public class TutorDAOImp implements ObjectDAO {
     con = db.getConnessione();
   }
   
+  /**
+   * Il metodo serve per inserire le informazioni di un Tutor nel DataBase.
+   * @param o: l'oggetto contenente le informazione del Tutor.
+   */
   @Override
   public void inserisciDati(Object o) {
       Tutor t = (Tutor) o;
@@ -39,6 +49,10 @@ public class TutorDAOImp implements ObjectDAO {
       catch (SQLException e) {}
   }
 
+  /**
+   * Il metodo serve per cancellare le informazioni di un Tutor nel DataBase.
+   * @param o: l'oggetto contenente le informazione dell Tutor.
+   */
   @Override
   public void cancellaDati(Object o) {
       Tutor t = (Tutor) o;
@@ -51,6 +65,11 @@ public class TutorDAOImp implements ObjectDAO {
       catch (SQLException e) {}
   }  
 
+  /**
+   * Il metodo serve per recuperare le informazioni di un Tutor nel DataBase.
+   * @param o: l'oggetto contenente le informazione del Tutor.
+   * @return true se il Tutor è presente sul DataBase, e la password corrisponde, altrimenti false.
+   */
   @Override
   public boolean recuperaDati(Object o) {
     Tutor t = (Tutor) o;
@@ -78,6 +97,10 @@ public class TutorDAOImp implements ObjectDAO {
     return false;
   }
 
+  /**
+   * Il metodo serve per recuperare le informazioni di tutte dei Tutor nel DataBase.
+   * @return una lista di oggetti di tipo Tutor con tutte le informazioni reperite su DataBase per ognuna di essi.
+   */
   @Override
   public ArrayList<Object> recuperaTutto() {
     ArrayList<Object> listaT = new ArrayList<>(); 

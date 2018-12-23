@@ -8,6 +8,12 @@ import com.mysql.jdbc.ResultSet;
 import com.mysql.jdbc.Statement;
 import classiComuni.Studente;
 
+/**
+ * La classe StudenteDAOImp implementa i metodi dell'interfaccia ObjectDAO.
+ * Questa classe permette di aggiungere, reperire e eliminare informazioni per gli Studenti su DataBase.
+ * @author Antonio Cimino
+ * @version 1.0
+ */
 public class StudenteDAOImp implements ObjectDAO {
 
   private Connection con;
@@ -17,6 +23,10 @@ public class StudenteDAOImp implements ObjectDAO {
     con = db.getConnessione();
   }
   
+  /**
+   * Il metodo serve per inserire le informazioni di uno Studente nel DataBase.
+   * @param o: l'oggetto contenente le informazione dello Studente.
+   */
   @Override
   public void inserisciDati(Object o) {
       Studente s = (Studente) o;
@@ -35,6 +45,10 @@ public class StudenteDAOImp implements ObjectDAO {
       catch (SQLException e) {}
   }
 
+  /**
+   * Il metodo serve per cancellare le informazioni di uno Studente nel DataBase.
+   * @param o: l'oggetto contenente le informazione dello Studente.
+   */
   @Override
   public void cancellaDati(Object o) {
       Studente s = (Studente) o;
@@ -47,6 +61,11 @@ public class StudenteDAOImp implements ObjectDAO {
       catch (SQLException e) {}
   }  
 
+  /**
+   * Il metodo serve per recuperare le informazioni di uno Studente nel DataBase.
+   * @param o: l'oggetto contenente le informazione dello Studente.
+   * @return true se lo Studente è presente sul DataBase, e la password corrisponde, altrimenti false.
+   */
   @Override
   public boolean recuperaDati(Object o) {
     Studente s = (Studente) o;
@@ -72,6 +91,10 @@ public class StudenteDAOImp implements ObjectDAO {
     return false;
   }
 
+  /**
+   * Il metodo serve per recuperare le informazioni di tutti gli Studenti nel DataBase.
+   * @return una lista di oggetti di tipo Studente con tutte le informazioni reperite su DataBase per ognuna di essi.
+   */
   @Override
   public ArrayList<Object> recuperaTutto() {
     ArrayList<Object> listaS = new ArrayList<>(); 

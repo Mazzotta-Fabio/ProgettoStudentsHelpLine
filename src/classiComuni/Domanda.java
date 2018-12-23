@@ -22,15 +22,22 @@ public class Domanda {
 		this.studente = studente;
 	}
 	
-	
+	/**
+	 * Il metodo  restituisce l'id di una domanda
+	 * @return id di una domanda
+	 */
 	public int getId() {
     return id;
-  }
+	}
 	
-	
+	/**
+	 * Il metodo consente di inserire l'id della domanda.
+	 * @param id: l'id nuovo da inserire per la domanda.
+	 */
 	public void setId(int id) {
 	  this.id = id;
-  }
+	}
+	
 	/**
 	 * Il metodo  restituisce il testo di una domanda
 	 * @return testo di una domanda
