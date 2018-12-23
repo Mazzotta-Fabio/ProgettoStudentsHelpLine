@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import classiComuni.Domanda;
 import classiComuni.Studente;
 import storage.DomandaDAOImp;
+import storage.FactoryDAO;
 import storage.ObjectDAO;
 import storage.StudenteDAOImp;
 
@@ -14,7 +15,8 @@ public class ProvaDomanda {
   public static void main(String[] args) {
 
     String a = "a";
-    ObjectDAO oggetto = new DomandaDAOImp ();
+    FactoryDAO f = new FactoryDAO();
+    ObjectDAO oggetto = f.getObject("Domanda");
     ObjectDAO oggetto2 = new StudenteDAOImp();
     
     Studente s = new Studente(null, null, null, null, null, null, null);
