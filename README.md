@@ -1,4 +1,4 @@
-# ProgettoStudentsHelpLine
+# Student's Help Line
 La repository contiene un progetto sviluppato da un team di 5 studenti della Laurea d'informatica del il corso 
 di ingegneria del software e di Gestione dei progetti software.Il progetto vuole gestire le attività di tutorato del dipartimento.
 Ogni studente può chiedere delle domande sulle varie materie didattiche ad un tutor specifico per quella materia. 
