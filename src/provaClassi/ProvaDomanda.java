@@ -3,7 +3,6 @@ package provaClassi;
 import java.util.ArrayList;
 import classiComuni.Domanda;
 import classiComuni.Studente;
-import storage.DomandaDAOImp;
 import storage.FactoryDAO;
 import storage.ObjectDAO;
 import storage.StudenteDAOImp;
