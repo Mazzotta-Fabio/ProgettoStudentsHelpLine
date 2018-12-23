@@ -77,13 +77,13 @@ public class RispostaDAOImp implements ObjectDAO {
     ArrayList<Object> listaR = new ArrayList<>(); 
     try {
         Statement query = (Statement) con.createStatement();
-        ResultSet result = (ResultSet) query.executeQuery("select * from domanda;");
+        ResultSet result = (ResultSet) query.executeQuery("select * from risposta;");
         while (result.next())
         {
           Risposta r = new Risposta(0, null, null, null, null);
           Domanda d = new Domanda(0, null, null, null, null);
           Tutor t = new Tutor(null, null, null, null, null, null, null, null, null);
-          r.setId(result.getInt("IdDomanda"));
+          r.setId(result.getInt("IdRisposta"));
           r.setTesto(result.getString("Contenuto"));
           r.setAllegato(result.getString("Allegato"));
           d.setId(result.getInt("Domanda"));
