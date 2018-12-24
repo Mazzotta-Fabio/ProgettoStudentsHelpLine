@@ -1,0 +1,93 @@
+@charset "ISO-8859-1";
+#header{
+	width:auto;
+	height:228px;
+	heagt
+	margin:0;
+	padding:0;
+	position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+	background-color: white;
+	z-index:999;
+}
+.header-content{
+	display: inline;
+}
+.image-logo{
+	display: inline;
+    background-size:cover;
+    background-position:left;
+    width:30%;
+}
+img.position{/*grandezza immagine*/
+	width:10%;
+}
+.Name-Sito{/*tutte le proprieta per la scritta del sito*/
+	display: inline;
+	margin-left:35%;
+	font-family:sans-serif;
+	font-size: 250%;
+}
+.Name-barra{/*tutte le proprieta per la scritta del sito*/
+	display: inline;
+	margin-left:35%;
+	font-family:sans-serif;
+	font-size: 200%;
+}
+img.log{
+	width:35%;
+	margin-left:50%;
+}
+.position-logout{
+	background-position:right;
+}
+.navbar-custom {
+    background-color: #2b78e4;
+ 	border-style: solid;
+ 	border-color: black;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.8);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+.info{
+	margin-top:30%;
+	
+	}
+
+
+table.table-bordered{
+    border:1px solid black;
+    margin-top:20px;
+  }
+table.table-bordered > thead > tr > th{
+    border:1px solid black;
+}
+
+table.table-bordered > tbody > tr > td{
+    border:1px solid black;
+}
+.position-bottom{
+	margin-left: 10%;
+}
+.col-4{
+	margin-top:10%;
+}
+.col-5{
+	right:5%;
+}
+.lista-bottone{
+	right:70%;
+	top:20%;
+}
