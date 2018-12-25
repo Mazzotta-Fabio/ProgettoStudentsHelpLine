@@ -6,34 +6,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Registrazione
+ * La classe Logout è una Servlet.
+ * Questa classe permette all'utente di effettuare il logout dal sito.
+ * @author Antonio Cimino
+ * @version 1.0
  */
-@WebServlet("/Registrazione")
-public class Registrazione extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+@WebServlet("/Logout.html")
+public class Logout extends HttpServlet {
+
+    public Logout() {}
 
     /**
-     * Default constructor. 
-     */
-    public Registrazione() {
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
+	 * Il metodo serve per permettere all'utente di effettuare il logout dal sito.
+	 * @param request: contiene tutti i parametri passati nella richiesta tramite GET
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.print("ciao");
+	    request.getSession().invalidate();
+	    response.sendRedirect("Home.html");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
