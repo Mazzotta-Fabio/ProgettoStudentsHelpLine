@@ -42,17 +42,30 @@ public class ServletLogin extends HttpServlet {
 				FactoryDAO fDAO = new FactoryDAO();
 			    ObjectDAO o = fDAO.getObject("Tutor");
 				accesso = o.recuperaDati(t);
+				request.setAttribute("Nome",t.getNome());
+				request.setAttribute("Cognome",t.getCognome());
+				request.setAttribute("Immagine",t.getLinkImmagine());
+				request.setAttribute("Materia",t.getMateriaDiCompetenza());
+				request.setAttribute("Cellulare",t.getNumeroDiCellulare());
+				request.setAttribute("Titolo",t.getTitoloDiStudio());
+				request.setAttribute("Voto",t.getVotoDiLaurea());
 			} else {
 				Studente s = new Studente(null, null,email,password, null, null, null);
 				FactoryDAO fDAO = new FactoryDAO();
 			    ObjectDAO o = fDAO.getObject("Studente");
 				accesso = o.recuperaDati(s);
-		}
+				request.setAttribute("Nome",s.getNome());
+				request.setAttribute("Cognome",s.getCognome());
+				request.setAttribute("Immagine",s.getLinkImmagine());
+				request.setAttribute("Matricola",s.getMatricola());
+				request.setAttribute("Anno",s.getAnnoCorso());
+			}
 
 		if(accesso == true) {
 			HttpSession sessione = request.getSession();
 			sessione.setAttribute("email", email);  
 			sessione.setAttribute("tipo", tipo);
+
 			RequestDispatcher view = request.getRequestDispatcher("PaginaPrincipale.html");
 			view.forward(request, response);
 		} else {

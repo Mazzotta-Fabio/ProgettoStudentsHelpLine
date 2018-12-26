@@ -67,14 +67,15 @@ public class RispostaDAOImp implements ObjectDAO {
   @Override
   public boolean recuperaDati(Object o) {
     Risposta r = (Risposta) o;
+    Domanda d = r.getDomanda();
     try 
     {
-      PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from risposta where IdRisposta = ?;");
-      prepared.setInt(1,r.getId());
+      PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from risposta where Domanda = ?;");
+      prepared.setInt(1,d.getId());
       ResultSet result = (ResultSet) prepared.executeQuery();
       while (result.next())
       {
-        Domanda d = new Domanda(0, null, null, null, null);
+        d = new Domanda(0, null, null, null, null);
         Tutor t = new Tutor(null, null, null, null, null, null, null, null, null);
         r.setId(result.getInt("IdDomanda"));
         r.setTesto(result.getString("Contenuto"));
