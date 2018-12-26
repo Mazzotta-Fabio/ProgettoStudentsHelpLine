@@ -1,4 +1,4 @@
-package gestioneUtente;
+package servletGestioneUtente;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -15,9 +15,9 @@ import javax.servlet.http.HttpSession;
  * @version 1.0
  */
 @WebServlet("/Logout.html")
-public class Logout extends HttpServlet {
+public class ServletLogout extends HttpServlet {
 
-    public Logout() {}
+    public ServletLogout() {}
 
     /**
 	 * Il metodo serve per permettere all'utente di effettuare il logout dal sito.

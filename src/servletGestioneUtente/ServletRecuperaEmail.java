@@ -1,23 +1,16 @@
-package gestioneUtente;
+package servletGestioneUtente;
 
 import java.io.IOException;
-import java.util.Properties;
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import classiComuni.Studente;
 import classiComuni.Tutor;
-import classiComuni.Utente;
+import gestioneUtente.GestioneUtente;
+import gestioneUtente.ImpGestioneUtente;
 import storage.FactoryDAO;
 import storage.ObjectDAO;
 
@@ -29,9 +22,9 @@ import storage.ObjectDAO;
  * @version 1.0
  */
 @WebServlet("/RecuperaEmail.html")
-public class RecuperaEmail extends HttpServlet {
+public class ServletRecuperaEmail extends HttpServlet {
 	     
-    public RecuperaEmail() {}
+    public ServletRecuperaEmail() {}
 	
 	/**
 	 * Il metodo serve per inviare la mail per recuperare la password.
@@ -58,37 +51,11 @@ public class RecuperaEmail extends HttpServlet {
 			password = s.getPassword();
 		}
 		
-		String testo = null;
-		String mittente = "StudentsHelpLine@gmail.com";                             
-	    String oggetto = "RECUPERO PASSWORD";    
-	    if(password!=null) {
-	    	testo = "La password del tuo account di student's help line è: " + password;
-	    } else {
-	    	testo = "Account non presente sul sito";
-	    }
-	    String host ="mail.tin.it"; 
-	    	    
-	    Properties p = new Properties();                    
-	    p.put("mail.smtp.host",host);                   
-	    p.put("port",25);
-	        
-	    Session sessione = Session.getDefaultInstance(p);   
-	    MimeMessage mail= new MimeMessage(sessione);  	        
-	        
-	   try{
-	       mail.setFrom(new InternetAddress(mittente));   
-	       mail.addRecipients(Message.RecipientType.TO, destinatario); 
-	       mail.setSubject(oggetto);      
-	       mail.setText(testo);           
-	       Transport.send(mail);       	       
-	       System.out.println("Il messaggio si è inviato correttamente");   	       
-	   }   catch (Exception e){  
-	       System.out.println("Si è verificato un errore");  
-	       e.printStackTrace();                           
-	   }  
+		GestioneUtente g = new ImpGestioneUtente();
+		g.recuperaPassword(password, destinatario);
 	   
-	   RequestDispatcher view = request.getRequestDispatcher("Home.html");
-	   view.forward(request, response);
+		RequestDispatcher view = request.getRequestDispatcher("Home.html");
+		view.forward(request, response);
 	}
 
 	/**

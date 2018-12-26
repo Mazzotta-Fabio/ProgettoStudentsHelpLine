@@ -1,4 +1,4 @@
-package gestioneUtente;
+package servletGestioneUtente;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -21,9 +21,9 @@ import storage.ObjectDAO;
  * @version 1.0
  */
 @WebServlet("/Login.html")
-public class Login extends HttpServlet {
+public class ServletLogin extends HttpServlet {
 	     
-    public Login() {}
+    public ServletLogin() {}
 	
 	/**
 	 * Il metodo serve per permettere all'utente di loggare alla sua pagina principale.

@@ -1,4 +1,4 @@
-package gestioneUtente;
+package servletGestioneUtente;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -18,9 +18,9 @@ import storage.ObjectDAO;
  * @version 1.0
  */
 @WebServlet("/ModificaStudente.html")
-public class ModificaStudente extends HttpServlet {
+public class ServletModificaStudente extends HttpServlet {
     
-    public ModificaStudente() {}
+    public ServletModificaStudente() {}
 
    	/**
 	 * Il metodo serve per recuperare i dati dello Studente e passarli alla classi DAO per modificarli sul DataBase.
@@ -36,15 +36,13 @@ public class ModificaStudente extends HttpServlet {
 		String linkImmagine = request.getParameter("immagine");
 		String matricola = request.getParameter("matricola");
 		String annoCorso = request.getParameter("annocorso");
-		
+			    
+	    Studente s = new Studente(nome,cognome,email,password,linkImmagine,matricola,annoCorso);
+	    
 		FactoryDAO fDAO = new FactoryDAO();
 	    ObjectDAO o = fDAO.getObject("Studente");
-	    
-	    Studente s = new Studente(null,null,email,null,null,null,null);
-		o.cancellaDati(s);
-		
-		s = new Studente(nome,cognome,email,password,linkImmagine,matricola,annoCorso);	
 		o.inserisciDati(s);
+		o.cancellaDati(s);
 		
 		RequestDispatcher view = request.getRequestDispatcher("PaginaPrincipale.html");
 		view.forward(request, response);

@@ -1,4 +1,4 @@
-package gestioneUtente;
+package servletGestioneUtente;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -8,24 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import classiComuni.Studente;
-import classiComuni.Tutor;
 import storage.FactoryDAO;
 import storage.ObjectDAO;
 
 /**
- * La classe RegistrazioneTutor è una Servlet.
- * Questa classe permette di recuperare i dati del Tutor dalla pagina Registrazione.html e passarli al DAO
+ * La classe RegistrazioneStudente è una Servlet.
+ * Questa classe permette di recuperare i dati dello Studente dalla pagina Registrazione.html e passarli al DAO
  * per farli inserire nel DataBase.
  * @author Antonio Cimino
  * @version 1.0
  */
-@WebServlet("/RegistrazioneTutor.html")
-public class RegistrazioneTutor extends HttpServlet {
+@WebServlet("/RegistrazioneStudente.html")
+public class ServeltRegistrazioneStudente extends HttpServlet {
     
-    public RegistrazioneTutor() {}
+    public ServeltRegistrazioneStudente() {}
 
    	/**
-	 * Il metodo serve per recuperare i dati del Tutor e passarli alla classi DAO per inserirli nel DataBase.
+	 * Il metodo serve per recuperare i dati dello Studente e passarli alla classi DAO per inserirli nel DataBase.
 	 * @param request: contiene tutti i parametri passati nella richiesta tramite GET
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -36,16 +35,14 @@ public class RegistrazioneTutor extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String linkImmagine = request.getParameter("immagine");
-		String numero = request.getParameter("numero");
-		String materia = request.getParameter("materia");
-		String voto = request.getParameter("voto");
-		String titolo = request.getParameter("titolo");
+		String matricola = request.getParameter("matricola");
+		String annoCorso = request.getParameter("annocorso");
 		
-		Tutor t = new Tutor(nome,cognome,email,password,linkImmagine,numero,materia,voto,titolo);
+		Studente s = new Studente(nome,cognome,email,password,linkImmagine,matricola,annoCorso);
 		
 		FactoryDAO fDAO = new FactoryDAO();
-	    ObjectDAO o = fDAO.getObject("Tutor");
-		o.inserisciDati(t);
+	    ObjectDAO o = fDAO.getObject("Studente");
+		o.inserisciDati(s);
 		
 		RequestDispatcher view = request.getRequestDispatcher("Home.html");
 		view.forward(request, response);

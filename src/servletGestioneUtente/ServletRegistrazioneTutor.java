@@ -1,4 +1,4 @@
-package gestioneUtente;
+package servletGestioneUtente;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -13,18 +13,19 @@ import storage.FactoryDAO;
 import storage.ObjectDAO;
 
 /**
- * La classe ModificaTutor è una Servlet.
- * Questa classe permette di modificare i dati del Tutor tramite DAO su DataBase.
+ * La classe RegistrazioneTutor è una Servlet.
+ * Questa classe permette di recuperare i dati del Tutor dalla pagina Registrazione.html e passarli al DAO
+ * per farli inserire nel DataBase.
  * @author Antonio Cimino
  * @version 1.0
  */
-@WebServlet("/ModificaTutor.html")
-public class ModificaTutor extends HttpServlet {
+@WebServlet("/RegistrazioneTutor.html")
+public class ServletRegistrazioneTutor extends HttpServlet {
     
-    public ModificaTutor() {}
+    public ServletRegistrazioneTutor() {}
 
    	/**
-	 * Il metodo serve per recuperare i dati del Tutor e passarli alla classi DAO per modificarli sul DataBase.
+	 * Il metodo serve per recuperare i dati del Tutor e passarli alla classi DAO per inserirli nel DataBase.
 	 * @param request: contiene tutti i parametri passati nella richiesta tramite GET
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -40,16 +41,13 @@ public class ModificaTutor extends HttpServlet {
 		String voto = request.getParameter("voto");
 		String titolo = request.getParameter("titolo");
 		
+		Tutor t = new Tutor(nome,cognome,email,password,linkImmagine,numero,materia,voto,titolo);
+		
 		FactoryDAO fDAO = new FactoryDAO();
 	    ObjectDAO o = fDAO.getObject("Tutor");
-	    
-	    Tutor t = new Tutor(null,null,email,null,null,null,null,null,null);
-		o.cancellaDati(t);
-		
-		t = new Tutor(nome,cognome,email,password,linkImmagine,numero,materia,voto,titolo);
 		o.inserisciDati(t);
 		
-		RequestDispatcher view = request.getRequestDispatcher("PaginaPrincipale.html");
+		RequestDispatcher view = request.getRequestDispatcher("Home.html");
 		view.forward(request, response);
 	}
 

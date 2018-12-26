@@ -1,4 +1,4 @@
-package gestioneUtente;
+package servletGestioneUtente;
 
 import java.io.IOException;
 
@@ -22,9 +22,9 @@ import storage.ObjectDAO;
  * @version 1.0
  */
 @WebServlet("/EliminaAccount.html")
-public class EliminaAccount extends HttpServlet {
+public class ServletEliminaAccount extends HttpServlet {
 
-    public EliminaAccount() {}
+    public ServletEliminaAccount() {}
 
     /**
 	 * Il metodo serve per eliminare le informazioni del proprio account dal database.
