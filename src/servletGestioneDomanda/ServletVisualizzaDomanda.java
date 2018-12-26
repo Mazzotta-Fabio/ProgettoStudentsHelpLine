@@ -17,14 +17,20 @@ import storage.FactoryDAO;
 import storage.ObjectDAO;
 
 /**
- * Servlet implementation class ServletVisualizzaDomanda
+ * La classe ServletVisualizzaDomanda è una Servlet.
+ * Questa classe permette di visualizzare la domanda,e relativa risposta, 
+ * in una pagina con tutte le sue relative informazioni.
+ * @author Antonio Cimino
+ * @version 1.0
  */
 @WebServlet("/ServletVisualizzaDomanda")
 public class ServletVisualizzaDomanda extends HttpServlet {
 
     public ServletVisualizzaDomanda() {}
 
-	/**
+  	/**
+	 * Il metodo serve per recuperare i dati della Domanda e passarli alla pagina VisualizzaDomanda.html.
+	 * @param request: contiene tutti i parametri passati nella richiesta tramite GET
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

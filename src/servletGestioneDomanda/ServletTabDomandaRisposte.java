@@ -18,16 +18,22 @@ import storage.FactoryDAO;
 import storage.ObjectDAO;
 
 /**
- * Servlet implementation class ServletTabDomandaRisposte
+ * La classe ServletTabDomandaRisposta è una Servlet.
+ * Questa classe permette di visualizzare tutte le domande con risposta in una tabella.
+ * @author Antonio Cimino
+ * @version 1.0
  */
 @WebServlet("/ServletTabDomandaRisposte")
 public class ServletTabDomandaRisposte extends HttpServlet {
 
     public ServletTabDomandaRisposte() {}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    /**
+  	 * Il metodo serve per recuperare tutte le domande con risposta e inserire alcune informazioni in una tabella 
+  	 * da cui poterle selezionare.
+  	 * @param request: contiene tutti i parametri passati nella richiesta tramite GET
+  	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+  	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 		FactoryDAO fd = new FactoryDAO();

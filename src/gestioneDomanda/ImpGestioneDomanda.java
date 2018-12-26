@@ -7,10 +7,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * Questa classe implementa l'interfaccia GestioneDomanda.
+ * @author Antonio Cimino
+ * @version 1.0
+ */
 public class ImpGestioneDomanda implements GestioneDomanda{
 	
 	public ImpGestioneDomanda() {}
 	
+	/**
+	 * Il metodo serve per scaricare l'allegato nella cartella downloads.
+	 * @param password,destinatario: sono uno la password da inviare e l'altro l'email dove inviare l'email
+	 */
 	public void scaricaAllegato(String fileName) throws IOException {
 		
 		File sourceLocation = new File(fileName);

@@ -13,16 +13,21 @@ import gestioneDomanda.GestioneDomanda;
 import gestioneDomanda.ImpGestioneDomanda;
 
 /**
- * Servlet implementation class ScaricaAllegato
+ * La classe ServletScaricaAllegato è una Servlet.
+ * Questa classe permette di scaricare un allegato nella cartella dowloads.
+ * @author Antonio Cimino
+ * @version 1.0
  */
 @WebServlet("/ScaricaAllegato")
-public class ScaricaAllegato extends HttpServlet {
+public class ServletScaricaAllegato extends HttpServlet {
 
-    public ScaricaAllegato() {}
+    public ServletScaricaAllegato() {}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    /**
+  	 * Il metodo serve per scaricare l'allegato corrispondente all'url.
+  	 * @param request: contiene tutti i parametri passati nella richiesta tramite GET
+  	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+  	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getParameter("url");
 		GestioneDomanda g = new ImpGestioneDomanda();

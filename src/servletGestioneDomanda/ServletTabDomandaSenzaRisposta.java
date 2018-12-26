@@ -18,14 +18,20 @@ import storage.FactoryDAO;
 import storage.ObjectDAO;
 
 /**
- * Servlet implementation class ServletTabDomandaSenzaRisposta
+ * La classe ServletTabDomandaSenzaRisposta è una Servlet.
+ * Questa classe permette di visualizzare tutte le domande senza risposta in una tabella.
+ * @author Antonio Cimino
+ * @version 1.0
  */
 @WebServlet("/ServletTabDomandaSenzaRisposta")
 public class ServletTabDomandaSenzaRisposta extends HttpServlet {
 
     public ServletTabDomandaSenzaRisposta() {}
 
-	/**
+    /**
+	 * Il metodo serve per recuperare tutte le domande senza risposta e inserire alcune informazioni in una tabella 
+	 * da cui poterle selezionare.
+	 * @param request: contiene tutti i parametri passati nella richiesta tramite GET
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -14,16 +14,21 @@ import storage.FactoryDAO;
 import storage.ObjectDAO;
 
 /**
- * Servlet implementation class ServletEliminaDomanda
+ * La classe ServletEliminaDomanda è una Servlet.
+ * Questa classe permette di eliminare la domanda che corrisponde all'ID.
+ * @author Antonio Cimino
+ * @version 1.0
  */
 @WebServlet("/ServletEliminaDomanda")
 public class ServletEliminaDomanda extends HttpServlet {
 	
     public ServletEliminaDomanda() {}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    /**
+  	 * Il metodo serve per eliminare una domanda sul DataBase.
+  	 * @param request: contiene tutti i parametri passati nella richiesta tramite GET
+  	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+  	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int ID = Integer.parseInt(request.getParameter("id"));

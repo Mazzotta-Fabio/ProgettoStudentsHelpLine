@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Questa classe permette di inviare una mail ad un utente permettendogli di recuperare la propria password.
+ * Questa classe implementa l'interfaccia GestioneUtente.
  * @author Antonio Cimino
  * @version 1.0
  */
