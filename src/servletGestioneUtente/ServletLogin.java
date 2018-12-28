@@ -1,6 +1,7 @@
 package servletGestioneUtente;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +21,7 @@ import storage.ObjectDAO;
  * @author Antonio Cimino
  * @version 1.0
  */
-@WebServlet("/Login.html")
+@WebServlet("/Login")
 public class ServletLogin extends HttpServlet {
 	     
     public ServletLogin() {}
@@ -66,7 +67,7 @@ public class ServletLogin extends HttpServlet {
 			sessione.setAttribute("email", email);  
 			sessione.setAttribute("tipo", tipo);
 
-			RequestDispatcher view = request.getRequestDispatcher("PaginaPrincipale.html");
+			RequestDispatcher view = request.getRequestDispatcher("../view/HomePage.jsp");
 			view.forward(request, response);
 		} else {
 			RequestDispatcher view = request.getRequestDispatcher("Home.html");
