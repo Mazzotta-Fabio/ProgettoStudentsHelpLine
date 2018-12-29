@@ -2,10 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<<<<<<< HEAD
 <link rel="icon" type="image" href="../img/ICONA.ico">
-=======
->>>>>>> branch 'master' of https://github.com/Mazzotta-Fabio/ProgettoStudentsHelpLine.git
 <img class="left" src="../img/1.PNG">
 <div STYLE="position:absolute; top:50px; left:750px">
 <div align="center"><img src="../img/2.PNG" vspace="1"></div>
@@ -16,14 +13,14 @@ StudentsHelpLine
 </head>
 <body>
 <div align="center"><img class="left" src="../img/3.png" width="200" height="150" ></div>
-<form method="get" action="../servletGestioneUtente/Login">
+<form method="get" action="../Login">
 <p align="center">
 <font face="sans-serif">
-<input type="checkbox" id="myCheck"> TUTOR  <input type="checkbox" id="myCheck2"> STUDENTE <br><br>
+<input type="radio" name="tipoUtente"id="myCheck" value="tutor"> TUTOR  <input type="radio" name="tipoUtente"id="myCheck" value="studente"> STUDENTE <br><br>
  <font color="black"><strong>Username:</strong></font><br><br>
- <input type="text" name="user"id="u"><br><br>
+ <input type="text" name="email"id="u"><br><br>
   <font color="black"><strong>Password:</strong></font><br><br>
-  <input type="password" name="pass"id="p"><br><br>
+  <input type="password" name="password"id="p"><br><br>
  <center><input type="submit" value="Login" id="log"name="button"></center><br><br>
  </form>
 <a href="Login.html"><font color="black"><strong><center>Password o username dimenticata?</center></strong></font><br></a><br>

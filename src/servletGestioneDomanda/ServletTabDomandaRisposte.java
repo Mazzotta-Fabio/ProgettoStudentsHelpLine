@@ -59,7 +59,7 @@ public class ServletTabDomandaRisposte extends HttpServlet {
 		}
 		
 		request.setAttribute("listaDomande", listaDomande);
-		RequestDispatcher view = request.getRequestDispatcher("Home.html");
+		RequestDispatcher view = request.getRequestDispatcher("../view/DomandaRisposte.jsp");
 		view.forward(request, response);
 	}
 

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.Enumeration;"%>
+    pageEncoding="ISO-8859-1" import ="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +7,11 @@
 <meta name="author" content="Alfonso Golino">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image" href="../img/ICONA.ico">
+<link rel="stylesheet" href="../css/domande_Risposte-non_Risposte.css">
 <link rel="stylesheet" href="../css/Account.css">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/bootstrap.css">
-<title>Account</title>
+<title>Domande Risposte</title>
 </head>
 <body>
 <div id="page">
@@ -25,11 +26,7 @@ Student's Help Line
 </div>
 <nav class="navbar navbar-custom">
 <div class="Name-barra">
-<%if(session.getAttribute("tipo") == "Studente"){%>
-Account Studente
-<%}else{%>
-Account Tutor
-<%} %>
+Domande Risposte
 </div>
 <a  href="../Logout" title="Logout">
 <img class="log" src="../img/logout.svg"></img>
@@ -39,15 +36,14 @@ Account Tutor
 <section id="main">
 <div class="container">
   <div class="row">
-  <div class="col">
+    <div class="col-3">
 <div class="btn-group-vertical lista-bottone">
-<!-- li devi far visualizzare dinamicamente 
-<button type="button" class="btn btn-light border border-dark">Cerca Tutor</button>
-<button type="button" class="btn btn-light border border-dark">Fai Domanda al Tutor</button>-->
+
   <a  href="/" title="Mio Account">
   <button type="button" class="btn btn-light border border-dark">Mio Account</button>
   </a>
-  <%if(session.getAttribute("username") == "Studente"){%>
+  <!--COMMENTO DA TOGLIERE  
+  <%//if(session.getAttribute("username") == "Studente"){%>
   	<a  href="/" title="Fai Domanda al Tutor">
   <button type="button" class="btn btn-light border border-dark">Fai Domanda al Tutor</button>
   </a>
@@ -60,7 +56,7 @@ Account Tutor
   <button type="button" class="btn btn-light border border-dark">Domande senza Risposta</button>
   </a>
   
-  <%}else{%>
+  <%//}else{%>
   	<a  href="/" title="Fai Domanda al Tutor">
   <button type="button" class="btn btn-light border border-dark">Domande Risposte</button>
   </a>
@@ -73,47 +69,45 @@ Account Tutor
   <button type="button" class="btn btn-light border border-dark">Visualizza Valutazioni</button>
   </a>
   
-  <%}%>
-  <!-- gli altri bottoni li devi fare dinamucamente -->
+  <%//}%>-->
+  </div>
 </div>
-</div>
-<div class="col-4">
-<div class="image-profilo">
-<img src="../img/AccountsenzaFoto.png" alt="Immagine" class="img-thumbnail image-profilo">
-</div>
-</div>
-<div class="col-5">
-<div class="info">
+  <div class="col-8">
+  <div class="domande_Risposte-non">
 <table class="table table-bordered">
   <thead>
   <tr>
-      <th scope="col">info</th>
+      <th scope="col" class ="tabella_nome">Nome Studente</th>
+      <th scope="col">Oggetto Domanda</th>
     </tr>
    </thead>
    <tbody>
-   <tr>
-      <th scope="row"class="border border-dark">email</th>
-      <td><%=session.getAttribute("email")%></td>
+  <%/* 
+  List<String> listaDomande = (List<String>) request.getAttribute("listaDomande");
+  int i = 0;
+  while(!listaDomande.isEmpty()){
+	 i++;
+	 String oggetto = listaDomande.get(i);
+	 i += 2;
+	 String nome = listaDomande.get(i);
+	 i++;
+	 String cognome = listaDomande.get(i);*/%>
+<!--COMMENTO DA TOGLIERE     <tr class="selezionare">
+      <td class="border border-dark"><%//nome %> <%//cognome %></td>
+      <td><%//oggetto%></td>
+     </tr>-->
+   <%
+   //}%>
+   <tr class="selezionare">
+   <td class="border border-dark"><a href="/" title="Domanda" class="testo-domanda">Sono stronzo</a></td>
+      <td><a href="/" title="Domanda" class="testo-domanda">cazzo vuoi</a></td>
      </tr>
-  <% 
-  Enumeration<String> nomiAttributi = request.getAttributeNames();
-  while(nomiAttributi.hasMoreElements()){
-	  String nome = nomiAttributi.nextElement();%>
-    <tr>
-      <th scope="row"class="border border-dark"><%=nome %></th>
-      <td><%=request.getAttribute(nome)%></td>
+     <tr class="selezionare">
+   <td class="border border-dark"><a href="/" title="Domanda" class="testo-domanda">Sono stronzo</a></td>
+      <td><a href="/" title="Domanda" class="testo-domanda">cazzo vuoi</a></td>
      </tr>
-   <%} %>
-  </tbody>
+    </tbody>
 </table>
-<a  href="/" title="Modifica Account">
-<button type="button" class="btn btn-light border border-dark">Modifica Account</button>
-</a>
-<span class="position-bottom">
-<a  href="/" title="Elimina Account">
-<button type="button" class="btn btn-light border border-dark">Elimina Account</button>
-</a>
-</span>
 </div>
 </div>
 </div>

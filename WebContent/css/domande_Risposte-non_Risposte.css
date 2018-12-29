@@ -1,0 +1,17 @@
+
+.lista-bottone{
+	margin-left:30%;
+}
+.tabella_nome{
+	width:35%;
+}
+tr.selezionare:hover{
+	background-color: #cccccc;
+}
+.domande_Risposte-non{
+	margin-top:6%;
+}
+a.testo-domanda{text-decoration: none; color: black;}
+    
+a.testo-domanda:hover{color:black;
+border-bottom:black;}
