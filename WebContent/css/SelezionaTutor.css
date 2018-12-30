@@ -2,9 +2,10 @@
 #header{
 	width:auto;
 	height:228px;
+	heagt
 	margin:0;
 	padding:0;
-	position: -webkit-sticky; /* Safari */
+	position: -webkit-sticky; 
     position: sticky;
     top: 0;
 	background-color: white;
@@ -30,7 +31,7 @@ img.position{/*grandezza immagine*/
 }
 .Name-barra{/*tutte le proprieta per la scritta del sito*/
 	display: inline;
-	margin-left:45%;
+	margin-left:85%;
 	font-family:sans-serif;
 	font-size: 200%;
 }
@@ -40,7 +41,6 @@ img.log{
 }
 .position-logout{
 	background-position:right;
-	
 }
 .navbar-custom {
     background-color: #2b78e4;
