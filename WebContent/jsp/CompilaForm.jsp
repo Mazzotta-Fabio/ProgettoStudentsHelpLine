@@ -43,7 +43,9 @@ Student's Help Line
 <input name="mioTesto" type="text" value="Inserisci qui il testo" size="80" maxlength="200" /></center><br>
 <p>
 <center><font color="black"><strong>Allega file</strong></font><br><br>
-<input type="file" name="allegato"> </center>
+<input type="file" name="allegato"> <br><br>
+<input type="submit" value="INVIA" id="log"name="button"><br><br></center>
+
 
 </body>
 </html>
