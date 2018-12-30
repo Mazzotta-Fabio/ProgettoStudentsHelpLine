@@ -13,17 +13,11 @@ public class FactoryDAO {
 	  * @return restituisce un oggetto DAO.
 	  */
 	public ObjectDAO getObject(String tipo){
-		if(tipo == null){
-			return null;
-	    } else if(tipo.equalsIgnoreCase("Studente")){
-	    	return new StudenteDAOImp();
-	    } else if(tipo.equalsIgnoreCase("Tutor")){
-	        return new TutorDAOImp();
-	    } else if(tipo.equalsIgnoreCase("Domanda")){
-	        return new DomandaDAOImp();
-	    } else if(tipo.equalsIgnoreCase("Risposta")){
-		    return new RispostaDAOImp();
-		} 
-	    return null;
+		switch (tipo) {
+		case "Studente" : return new StudenteDAOImp();
+		case "Tutor" : return new TutorDAOImp();
+		case "Domanda" : return new DomandaDAOImp();
+		case "Risposta" : return new RispostaDAOImp();
+		default : return null;
 	}
-}
+
