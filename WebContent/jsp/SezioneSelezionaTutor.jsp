@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import ="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,20 @@
 <link rel="icon" type="image" href="../img/ICONA.ico">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/bootstrap.css">
-<title>Insert title here</title>
+
+
+<style>
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  text-align: center;
+  background: #2b78e4;
+  color: white;
+  font-size: 20px;
+}
+</style>
+<title>STUDENT'S HELP LINE</title>
 </head>
 <body>
 <div id="page">
@@ -23,7 +36,7 @@ Student's Help Line
 </div>
 <nav class="navbar navbar-custom">
 <div class="Name-barra">
-<center>Domanda</center>
+<center>SELEZIONA TUTOR</center>
 </div>
 <a  href="/" title="Logout">
 <img class="log" src="../img/logout.svg"></img>
@@ -31,21 +44,27 @@ Student's Help Line
 </nav>
 </div>
 </header>
-<p>
-<center>Invia a:<% //nome %> <%//cognome %> </center>
-</p>
-<p>
-
-<center><font color="black"><strong>Oggetto della domanda:</strong></font>&nbsp;&nbsp;
-<input type="text" name="user"id="u"><br><br></center>
-</p>
-<center><font color="black"><strong>Che vuoi chiedere?</strong></font><br><br>
-<input name="mioTesto" type="text" value="Inserisci qui il testo" size="80" maxlength="200" /></center><br>
-<p>
-<center><font color="black"><strong>Allega file</strong></font><br><br>
-<input type="file" name="allegato"> <br><br>
-<input type="submit" value="INVIA" id="log"name="button"><br><br></center>
-
-
+<div class="footer">
+<h1>STUDENT'S HELP LINE. SEE MORE. DO MORE.</h1>
+</div>
+		
+		<div class="row">
+		
+			
+		  <div class="col-xs-12 col-sm-6 col-md-3">
+		  <div class="container img-thumbnail">
+		  <a style="text-decoration:none"">
+		  <img class="img-responsive" src="../img/1.PNG">
+		 <center><input type="submit" value="FAI DOMANDA" id="log"name="button"><br><br></center>
+			
+			
+		 </a>
+		  </div>
+		  </div>
+		  
+		  
+	
+	</div>
+</div>
 </body>
 </html>
