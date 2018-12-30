@@ -9,18 +9,14 @@ package classiComuni;
  */
 
 public class Risposta {
+	private int id;
 	private String testo;
 	private String allegato;
 	private String valutazione;
-	private Tutor tutor;
-	private Domanda domanda;
-	private int id;
 	
-	public Risposta(int id,String testo, String allegato,Tutor tutor, Domanda domanda) {
+	public Risposta(int id,String testo, String allegato) {
 		this.testo = testo;
 		this.allegato = allegato;
-		this.tutor = tutor;
-		this.domanda = domanda;
 	  this.id = id;
 	}
 	
@@ -54,38 +50,6 @@ public class Risposta {
 	 */
 	public void setAllegato(String allegato) {
 		this.allegato = allegato;
-	}
-	
-	/**
-	 * Il metodo  restituisce il tutor che ha fatto la risposta
-	 * @return tutor mittente della risposta
-	 */
-	public Tutor getTutor() {
-		return tutor;
-	}
-	
-	/** 
-	 * Il metodo consente di inserire un mittente alla risposta 
-	 * @param tutor: il tutor che ha fatto la risposta
-	 */
-	public void setTutor(Tutor tutor) {
-		this.tutor = tutor;
-	}
-	
-	/**
-	 * Il metodo  restituisce la domanda per cui si è dato risposta
-	 * @return domanda risposta
-	 */
-	public Domanda getDomanda() {
-		return domanda;
-	}
-	
-	/**
-	 * Il metodo consente di associare alla risposta un domanda
-	 * @param domanda: domanda per cui si risponde
-	 */
-	public void setDomanda(Domanda domanda) {
-		this.domanda = domanda;
 	}
 	
 	/**

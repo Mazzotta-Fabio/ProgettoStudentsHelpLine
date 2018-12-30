@@ -8,18 +8,23 @@ package classiComuni;
  * @version 1.0
  */
 public class Domanda {
+	private int id;
 	private String testo;
 	private String oggetto;
 	private String allegato;
-	private int id;
 	private Studente studente;
+	private Tutor tutor;
+	private Risposta risposta;
 	
-	public Domanda(int id,String testo, String oggetto, String allegato, Studente studente) {
+	public Domanda(int id,String testo, String oggetto, String allegato, Studente studente,
+			Tutor tutor,Risposta risposta) {
 		this.testo = testo;
 		this.id = id;
 		this.oggetto = oggetto;
 		this.allegato = allegato;
 		this.studente = studente;
+		this.tutor = tutor;
+		this.risposta = risposta;
 	}
 	
 	/**
@@ -100,5 +105,37 @@ public class Domanda {
 	 */
 	public void setStudente(Studente studente) {
 		this.studente = studente;
+	}
+	
+	/**
+	 * Il metodo  restituisce il destinatario della domanda.
+	 * @return il destinatario della domanda.
+	 */
+	public Tutor getTutor() {
+		return tutor;
+	}
+	
+	/**
+	 * Il metodo consente di inserire un destinatario della domanda
+	 * @param tutor: il destinatario della domanda
+	 */
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
+	}
+
+	/**
+	 * Il metodo  restituisce la risposta alla domanda.
+	 * @return la risposta alla domanda.
+	 */
+	public Risposta getRisposta() {
+		return risposta;
+	}
+	
+	/**
+	 * Il metodo consente di inserire una risposta alla domanda
+	 * @param risposta: la risposta alla domanda
+	 */
+	public void setRisposta(Risposta risposta) {
+		this.risposta = risposta;
 	}
 }
