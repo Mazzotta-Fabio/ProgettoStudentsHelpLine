@@ -31,7 +31,7 @@ public class TutorDAOImp implements ObjectDAO {
   public void inserisciDati(Object o) {
       Tutor t = (Tutor) o;
       try {
-        PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into tutor (Email,Password,"
+        PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into tutor (Email,Pass,"
             + "Immagine,TitoloDiStudio,MateriaDiCompetenza,Nome,Cognome,VotoDiLaurea,NumeroDiCellulare) "
             + "values (?,?,?,?,?,?,?,?,?);"); 
             
@@ -87,7 +87,7 @@ public class TutorDAOImp implements ObjectDAO {
         t.setLinkImmagine(result.getString("Immagine"));
         t.setMateriaDiCompetenza(result.getString("MateriaDiCompetenza"));
         t.setNumeroDiCellulare(result.getString("NumeroDiCellulare"));
-        t.setPassword(result.getString("Password"));
+        t.setPassword(result.getString("Pass"));
         t.setTitoloDiStudio(result.getString("TitoloDiStudio"));
         t.setVotoDiLaurea(result.getString("VotoDiLaurea"));
         if (t.getPassword().equals(pass)) {return true;}
@@ -117,7 +117,7 @@ public class TutorDAOImp implements ObjectDAO {
           t.setLinkImmagine(result.getString("Immagine"));
           t.setMateriaDiCompetenza(result.getString("MateriaDiCompetenza"));
           t.setNumeroDiCellulare(result.getString("NumeroDiCellulare"));
-          t.setPassword(result.getString("Password"));
+          t.setPassword(result.getString("Pass"));
           t.setTitoloDiStudio(result.getString("TitoloDiStudio"));
           t.setVotoDiLaurea(result.getString("VotoDiLaurea"));
           listaT.add(t);

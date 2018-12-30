@@ -32,7 +32,7 @@ public class StudenteDAOImp implements ObjectDAO {
       Studente s = (Studente) o;
       try {
         PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into studente(Nome,Cognome,Email,"
-            + "Matricola,Password,AnnoCorso,Immagine) values (?,?,?,?,?,?,?);");
+            + "Matricola,Pass,AnnoCorso,Immagine) values (?,?,?,?,?,?,?);");
         prepared.setString(1, s.getNome());
         prepared.setString(2, s.getCognome());
         prepared.setString(3, s.getEmail());
@@ -83,7 +83,7 @@ public class StudenteDAOImp implements ObjectDAO {
         s.setLinkImmagine(result.getString("Immagine"));
         s.setAnnoCorso(result.getString("AnnoCorso"));
         s.setMatricola(result.getString("Matricola"));
-        s.setPassword(result.getString("Password"));
+        s.setPassword(result.getString("Pass"));
         if(s.getPassword().equals(pass)) {return true;}
       }
     } 
@@ -110,7 +110,7 @@ public class StudenteDAOImp implements ObjectDAO {
           s.setLinkImmagine(result.getString("Immagine"));
           s.setAnnoCorso(result.getString("AnnoCorso"));
           s.setMatricola(result.getString("Matricola"));
-          s.setPassword(result.getString("Password"));
+          s.setPassword(result.getString("Pass"));
           listaS.add(s);
         }
     } 

@@ -8,7 +8,9 @@ import com.mysql.jdbc.ResultSet;
 import com.mysql.jdbc.Statement;
 
 import classiComuni.Domanda;
+import classiComuni.Risposta;
 import classiComuni.Studente;
+import classiComuni.Tutor;
 
 
 /**
@@ -35,11 +37,13 @@ public class DomandaDAOImp implements ObjectDAO {
       Domanda d = (Domanda) o;
       try {
         PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into domanda (Contenuto,"
-            + "Allegato,Oggetto,Studente) values (?,?,?,?);");
+            + "Allegato,Oggetto,Studente,Tutor,Risposta) values (?,?,?,?,?,?);");
         prepared.setString(1, d.getTesto());
         prepared.setString(2, d.getAllegato());
         prepared.setString(3, d.getOggetto());
         prepared.setString(4, d.getStudente().getEmail());
+        prepared.setString(4, d.getTutor().getEmail());
+        prepared.setInt(4, d.getRisposta().getId());
         prepared.executeUpdate();
       } 
       catch (SQLException e) {}
@@ -73,13 +77,12 @@ public class DomandaDAOImp implements ObjectDAO {
       ResultSet result = (ResultSet) prepared.executeQuery();
       while (result.next())
       {
-        Studente s = new Studente(null, null, null, null, null, null, null);
-        d.setId(result.getInt("IdDomanda"));
         d.setTesto(result.getString("Contenuto"));
         d.setAllegato(result.getString("Allegato"));
         d.setOggetto(result.getString("Oggetto"));
-        s.setEmail(result.getString("Studente"));
-        d.setStudente(s);
+        d.getStudente().setEmail(result.getString("Studente"));
+        d.getTutor().setEmail(result.getString("Tutor"));
+        d.getRisposta().setId(Integer.parseInt(result.getString("Risposta")));
       }
     } 
     catch (SQLException e) {}
@@ -97,15 +100,14 @@ public class DomandaDAOImp implements ObjectDAO {
         ResultSet result = (ResultSet) query.executeQuery("select * from domanda;");
         while (result.next())
         {
-          Domanda d = new Domanda(0, null, null, null, null);
-          Studente s = new Studente(null, null, null, null, null, null, null);
-          d.setId(result.getInt("IdDomanda"));
-          d.setTesto(result.getString("Contenuto"));
-          d.setAllegato(result.getString("Allegato"));
-          d.setOggetto(result.getString("Oggetto"));
-          s.setEmail(result.getString("Studente"));
-          d.setStudente(s);
-          listaD.add(d);
+        	Domanda d = new Domanda (0, null, null, null, null, null, null);
+        	d.setTesto(result.getString("Contenuto"));
+            d.setAllegato(result.getString("Allegato"));
+            d.setOggetto(result.getString("Oggetto"));
+            d.getStudente().setEmail(result.getString("Studente"));
+            d.getTutor().setEmail(result.getString("Tutor"));
+            d.getRisposta().setId(Integer.parseInt(result.getString("Risposta")));
+            listaD.add(d);
         }
     } 
     catch (SQLException e) {} 
