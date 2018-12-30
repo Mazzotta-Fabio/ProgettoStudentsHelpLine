@@ -3,15 +3,34 @@
 	margin-left:30%;
 }
 .tabella_nome{
-	width:35%;
+	width:30%;
 }
-tr.selezionare:hover{
-	background-color: #cccccc;
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
-.domande_Risposte-non{
-	margin-top:6%;
+
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
-a.testo-domanda{text-decoration: none; color: black;}
-    
-a.testo-domanda:hover{color:black;
-border-bottom:black;}
+
+td{
+  border: 1px  #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: lightblue;
+}
+.tabella{
+	margin-top:8%;
+}
+.bottone-Tabella{
+	backgrond-color:rgba(0,0,0,0); 
+
+}

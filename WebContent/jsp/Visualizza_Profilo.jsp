@@ -19,18 +19,22 @@
 <div class="image-logo">
 	<img class="position" src="../img/logo.jpg" alt="StudentHelpline">
 </div>
+</div>
 <div class="Name-Sito">
 Student's Help Line
 </div>
 </div>
 <nav class="navbar navbar-custom">
-<div class="Name-barra">
-<%if(session.getAttribute("tipo") == "Studente"){%>
+<a href="\"  title="Indietro">
+<img src="../img/back.svg" width="60"></img>
+</a>
+<span class="Name-barra" style="margin-right:35%;">
+<%//if(session.getAttribute("tipo") == "Studente"){%>
 Account Studente
-<%}else{%>
-Account Tutor
-<%} %>
-</div>
+<%//}else{%>
+<!-- Account Tutor -->
+<%//} %>
+</span>
 <a  href="../Logout" title="Logout">
 <img class="log" src="../img/logout.svg"></img>
 </a>
@@ -39,48 +43,12 @@ Account Tutor
 <section id="main">
 <div class="container">
   <div class="row">
-  <div class="col">
-<div class="btn-group-vertical lista-bottone">
-  <a  href="/" title="Mio Account">
-  <button type="button" class="btn btn-light border border-dark">Mio Account</button>
-  </a>
-  <%if(session.getAttribute("username") == "Studente"){%>
-  	<a  href="/" title="Fai Domanda al Tutor">
-  <button type="button" class="btn btn-light border border-dark">Fai Domanda al Tutor</button>
-  </a>
-  
-  <a  href="/" title="Domande Risposte">
-  <button type="button" class="btn btn-light border border-dark">Domande Risposte</button>
-  </a>
-  
-  <a  href="/" title="Domande senza Risposta">
-  <button type="button" class="btn btn-light border border-dark">Domande senza Risposta</button>
-  </a>
-  
-  <%}else{%>
-  	<a  href="/" title="Fai Domanda al Tutor">
-  <button type="button" class="btn btn-light border border-dark">Domande Risposte</button>
-  </a>
-  
-  <a  href="/" title="Domande Risposte">
-  <button type="button" class="btn btn-light border border-dark">Domande non Risposte</button>
-  </a>
-  
-  <a  href="/" title="Domande senza Risposta">
-  <button type="button" class="btn btn-light border border-dark">Visualizza Valutazioni</button>
-  </a>
-  
-  <%}%>
-  <!-- gli altri bottoni li devi fare dinamucamente -->
-</div>
-</div>
 <div class="col-4">
 <div class="image-profilo">
 <img src="../img/AccountsenzaFoto.png" alt="Immagine" class="img-thumbnail image-profilo">
 </div>
 </div>
-<div class="col-5">
-<div class="info">
+<div class="col-8" style="margin-top:8%;">
 <table class="table table-bordered">
   <thead>
   <tr>
@@ -96,22 +64,14 @@ Account Tutor
   Enumeration<String> nomiAttributi = request.getAttributeNames();
   while(nomiAttributi.hasMoreElements()){
 	  String nome = nomiAttributi.nextElement();%>
-    <tr>
+   <tr>
       <th scope="row"class="border border-dark"><%=nome %></th>
       <td><%=request.getAttribute(nome)%></td>
      </tr>
    <%} %>
   </tbody>
 </table>
-<a  href="/" title="Modifica Account">
-<button type="button" class="btn btn-light border border-dark">Modifica Account</button>
-</a>
-<span class="position-bottom">
-<a  href="/" title="Elimina Account">
-<button type="button" class="btn btn-light border border-dark">Elimina Account</button>
-</a>
 </span>
-</div>
 </div>
 </div>
 </div>

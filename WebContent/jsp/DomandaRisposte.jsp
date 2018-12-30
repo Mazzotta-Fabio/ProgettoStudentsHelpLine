@@ -42,8 +42,7 @@ Domande Risposte
   <a  href="/" title="Mio Account">
   <button type="button" class="btn btn-light border border-dark">Mio Account</button>
   </a>
-  <!--COMMENTO DA TOGLIERE  
-  <%//if(session.getAttribute("username") == "Studente"){%>
+  <%if(session.getAttribute("username") == "Studente"){%>
   	<a  href="/" title="Fai Domanda al Tutor">
   <button type="button" class="btn btn-light border border-dark">Fai Domanda al Tutor</button>
   </a>
@@ -69,46 +68,35 @@ Domande Risposte
   <button type="button" class="btn btn-light border border-dark">Visualizza Valutazioni</button>
   </a>
   
-  <%//}%>-->
+  <%}%>
   </div>
 </div>
   <div class="col-8">
-  <div class="domande_Risposte-non">
-<table class="table table-bordered">
-  <thead>
+  <div class="tabella">
+  <table>
   <tr>
-      <th scope="col" class ="tabella_nome">Nome Studente</th>
-      <th scope="col">Oggetto Domanda</th>
-    </tr>
-   </thead>
-   <tbody>
-  <%/* 
+    <th>Email</th>
+    <th>Oggetto Domanda</th>
+  </tr>
+  <%
   List<String> listaDomande = (List<String>) request.getAttribute("listaDomande");
   int i = 0;
   while(!listaDomande.isEmpty()){
+	  String id = listaDomande.get(i);
 	 i++;
 	 String oggetto = listaDomande.get(i);
 	 i += 2;
 	 String nome = listaDomande.get(i);
 	 i++;
-	 String cognome = listaDomande.get(i);*/%>
-<!--COMMENTO DA TOGLIERE     <tr class="selezionare">
-      <td class="border border-dark"><%//nome %> <%//cognome %></td>
-      <td><%//oggetto%></td>
-     </tr>-->
+	 String cognome = listaDomande.get(i);%>
+    <tr>
+      <td><%=nome %> <%=cognome %></td>
+      <td><%=oggetto%></td>
+     <td><a href="ServletVisualizzaDomanda?id="<%=id %>><button type="button" class="btn bottone-Tabella">></button></a></td>
+     </tr>
    <%
-   //}%>
-   <tr class="selezionare">
-   <td class="border border-dark"><a href="/" title="Domanda" class="testo-domanda">Sono stronzo</a></td>
-      <td><a href="/" title="Domanda" class="testo-domanda">cazzo vuoi</a></td>
-     </tr>
-     <tr class="selezionare">
-   <td class="border border-dark"><a href="/" title="Domanda" class="testo-domanda">Sono stronzo</a></td>
-      <td><a href="/" title="Domanda" class="testo-domanda">cazzo vuoi</a></td>
-     </tr>
-    </tbody>
+   }%>
 </table>
-</div>
 </div>
 </div>
 </div>
