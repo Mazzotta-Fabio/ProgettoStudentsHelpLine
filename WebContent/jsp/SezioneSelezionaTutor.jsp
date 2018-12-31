@@ -53,8 +53,9 @@ Student's Help Line
   		Tutor t = (Tutor) listaT.get(i);
   		while(!listaT.isEmpty()){
   		if (t.getMateriaDiCompetenza() == materia){
+  		t.getLinkImmagine()
 		t.getNome();
-		t.getCognome();%>
+		t.getCognome(); }}%>
 			
 		  <div class="col-xs-12 col-sm-6 col-md-3">
 		  <div class="container img-thumbnail">
