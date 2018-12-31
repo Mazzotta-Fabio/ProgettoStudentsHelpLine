@@ -7,12 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import classiComuni.Studente;
-import classiComuni.Tutor;
 import gestioneUtente.GestioneUtente;
 import gestioneUtente.ImpGestioneUtente;
-import storage.FactoryDAO;
-import storage.ObjectDAO;
 
 
 /**
@@ -23,8 +19,9 @@ import storage.ObjectDAO;
  */
 @WebServlet("/RecuperaEmail.html")
 public class ServletRecuperaEmail extends HttpServlet {
-	     
-    public ServletRecuperaEmail() {}
+	private static final long serialVersionUID = 1L;
+
+	public ServletRecuperaEmail() {}
 	
 	/**
 	 * Il metodo serve per inviare la mail per recuperare la password.
@@ -37,22 +34,8 @@ public class ServletRecuperaEmail extends HttpServlet {
 		String tipo = request.getParameter("tipoUtente");
 		String password = null;
 		
-		if(tipo.equals("tutor")) {
-			Tutor t = new Tutor(null, null,destinatario, null, null, null, null, null, null);
-			FactoryDAO fDAO = new FactoryDAO();
-		    ObjectDAO o = fDAO.getObject("Tutor");
-			o.recuperaDati(t);
-			password = t.getPassword();
-		} else {
-			Studente s = new Studente(null, null,destinatario,null, null, null, null);
-			FactoryDAO fDAO = new FactoryDAO();
-		    ObjectDAO o = fDAO.getObject("Studente");
-			o.recuperaDati(s);
-			password = s.getPassword();
-		}
-		
 		GestioneUtente g = new ImpGestioneUtente();
-		g.recuperaPassword(password, destinatario);
+		g.recuperaPassword(tipo,password, destinatario);
 	   
 		RequestDispatcher view = request.getRequestDispatcher("Home.html");
 		view.forward(request, response);

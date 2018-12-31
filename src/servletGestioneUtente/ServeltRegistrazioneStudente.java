@@ -1,15 +1,15 @@
 package servletGestioneUtente;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import classiComuni.Studente;
-import storage.FactoryDAO;
-import storage.ObjectDAO;
+import javax.servlet.http.Part;
+import gestioneUtente.GestioneUtente;
+import gestioneUtente.ImpGestioneUtente;
 
 /**
  * La classe RegistrazioneStudente è una Servlet.
@@ -19,9 +19,13 @@ import storage.ObjectDAO;
  * @version 1.0
  */
 @WebServlet("/RegistrazioneStudente.html")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
+maxFileSize = 1024 * 1024 * 10,
+maxRequestSize = 1024 * 1024 * 50) 
 public class ServeltRegistrazioneStudente extends HttpServlet {
-    
-    public ServeltRegistrazioneStudente() {}
+	private static final long serialVersionUID = 1L;
+
+	public ServeltRegistrazioneStudente() {}
 
    	/**
 	 * Il metodo serve per recuperare i dati dello Studente e passarli alla classi DAO per inserirli nel DataBase.
@@ -30,22 +34,21 @@ public class ServeltRegistrazioneStudente extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String tipo = request.getParameter("tipo");
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String linkImmagine = request.getParameter("immagine");
+		Part linkImmagine = request.getPart("immagine");
 		String matricola = request.getParameter("matricola");
-		String annoCorso = request.getParameter("annocorso");
+		String annoCorso = request.getParameter("annoCorso");
 		
-		Studente s = new Studente(nome,cognome,email,password,linkImmagine,matricola,annoCorso);
+		GestioneUtente u = new ImpGestioneUtente();
+		u.registraAccount(tipo,nome, cognome, email, password, linkImmagine, matricola, annoCorso,null,null);
 		
-		FactoryDAO fDAO = new FactoryDAO();
-	    ObjectDAO o = fDAO.getObject("Studente");
-		o.inserisciDati(s);
-		
-		RequestDispatcher view = request.getRequestDispatcher("Home.html");
-		view.forward(request, response);
+	     
+		/*RequestDispatcher view = request.getRequestDispatcher("Home.html");
+		view.forward(request, response);*/
 	}
 
 	/**

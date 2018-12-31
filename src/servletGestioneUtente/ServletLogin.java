@@ -1,7 +1,6 @@
 package servletGestioneUtente;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import classiComuni.Studente;
 import classiComuni.Tutor;
-import storage.FactoryDAO;
-import storage.ObjectDAO;
+import gestioneUtente.GestioneUtente;
+import gestioneUtente.ImpGestioneUtente;
 
 
 /**
@@ -23,8 +22,9 @@ import storage.ObjectDAO;
  */
 @WebServlet("/Login")
 public class ServletLogin extends HttpServlet {
-	     
-    public ServletLogin() {}
+	private static final long serialVersionUID = 1L;
+
+	public ServletLogin() {}
 	
 	/**
 	 * Il metodo serve per permettere all'utente di loggare alla sua pagina principale.
@@ -33,16 +33,19 @@ public class ServletLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		GestioneUtente u = new ImpGestioneUtente();
 		String email = request.getParameter("email");
+		System.out.println(email);
 		String password = request.getParameter("password");
+		System.out.println(password);
 		String tipo = request.getParameter("tipoUtente");
-		boolean accesso = false;
+		System.out.println(tipo);
+		HttpSession sessione = request.getSession();
+		sessione.setAttribute("email", email);  
+		sessione.setAttribute("tipo", tipo);
 		
-		if(tipo.equals("tutor")) {
-				Tutor t = new Tutor(null, null,email, password, null, null, null, null, null);
-				FactoryDAO fDAO = new FactoryDAO();
-			    ObjectDAO o = fDAO.getObject("Tutor");
-				accesso = o.recuperaDati(t);
+		if(tipo.equals("Tutor")) {
+				Tutor t = (Tutor) u.loginAccount(email, password, tipo);
 				request.setAttribute("Nome",t.getNome());
 				request.setAttribute("Cognome",t.getCognome());
 				request.setAttribute("Immagine",t.getLinkImmagine());
@@ -50,29 +53,25 @@ public class ServletLogin extends HttpServlet {
 				request.setAttribute("Cellulare",t.getNumeroDiCellulare());
 				request.setAttribute("Titolo",t.getTitoloDiStudio());
 				request.setAttribute("Voto",t.getVotoDiLaurea());
+				if(t.getEmail() != null) {	
+					RequestDispatcher view = request.getRequestDispatcher("Account.jsp");
+					view.forward(request, response);
+				}
 			} else {
-				Studente s = new Studente(null, null,email,password, null, null, null);
-				FactoryDAO fDAO = new FactoryDAO();
-			    ObjectDAO o = fDAO.getObject("Studente");
-				accesso = o.recuperaDati(s);
+				Studente s = (Studente) u.loginAccount(email, password, tipo);
 				request.setAttribute("Nome",s.getNome());
 				request.setAttribute("Cognome",s.getCognome());
 				request.setAttribute("Immagine",s.getLinkImmagine());
 				request.setAttribute("Matricola",s.getMatricola());
 				request.setAttribute("Anno",s.getAnnoCorso());
+				if(s.getEmail() != null) {	
+					RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
+					view.forward(request, response);
 			}
-
-		if(accesso == true) {
-			HttpSession sessione = request.getSession();
-			sessione.setAttribute("email", email);  
-			sessione.setAttribute("tipo", tipo);
-
-			RequestDispatcher view = request.getRequestDispatcher("../view/HomePage.jsp");
-			view.forward(request, response);
-		} else {
-			RequestDispatcher view = request.getRequestDispatcher("Home.html");
-			view.forward(request, response);
 		}
+		
+		/*RequestDispatcher view = request.getRequestDispatcher("Home.html");
+		view.forward(request, response);*/
 	}
 
 	/**

@@ -49,21 +49,13 @@ Student's Help Line
 </div>
 		
 		<div class="row">
-		<%List<String> listaT= (List<String>) request.getAttribute("listaTutor");
-  		Tutor t = (Tutor) listaT.get(i);
-  		while(!listaT.isEmpty()){
-  		if (t.getMateriaDiCompetenza() == materia){
-  		t.getLinkImmagine()
-		t.getNome();
-		t.getCognome(); }}%>
+		
 			
 		  <div class="col-xs-12 col-sm-6 col-md-3">
 		  <div class="container img-thumbnail">
 		  <a style="text-decoration:none"">
-		  <img class="img-responsive"  src="<%=t.getLinkImmagine()%>">
-		  <span class="text"><font color="black"><%=t.getNome()%></font></span><br>
-		  <span class="text"><font color="black"><%=t.getCognome%></font></span><br>
-		  <center><input type="submit" value="FAI DOMANDA" id="log"name="button"><br><br></center>
+		  <img class="img-responsive" src="../img/1.PNG">
+		 <center><input type="submit" value="FAI DOMANDA" id="log"name="button"><br><br></center>
 			
 			
 		 </a>

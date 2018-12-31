@@ -3,14 +3,14 @@ package servletGestioneUtente;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import classiComuni.Studente;
-import classiComuni.Tutor;
-import storage.FactoryDAO;
-import storage.ObjectDAO;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import gestioneUtente.GestioneUtente;
+import gestioneUtente.ImpGestioneUtente;
 
 /**
  * La classe ModificaTutor è una Servlet.
@@ -18,10 +18,13 @@ import storage.ObjectDAO;
  * @author Antonio Cimino
  * @version 1.0
  */
-@WebServlet("/ModificaTutor.html")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
+maxFileSize = 1024 * 1024 * 10,
+maxRequestSize = 1024 * 1024 * 50)
 public class ServletModificaTutor extends HttpServlet {
-    
-    public ServletModificaTutor() {}
+	private static final long serialVersionUID = 1L;
+
+	public ServletModificaTutor() {}
 
    	/**
 	 * Il metodo serve per recuperare i dati del Tutor e passarli alla classi DAO per modificarli sul DataBase.
@@ -30,22 +33,20 @@ public class ServletModificaTutor extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		String tipo = (String) session.getAttribute("TipoUtente");
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String linkImmagine = request.getParameter("immagine");
+		Part linkImmagine = request.getPart("immagine");
 		String numero = request.getParameter("numero");
 		String materia = request.getParameter("materia");
 		String voto = request.getParameter("voto");
 		String titolo = request.getParameter("titolo");
 		
-		Tutor t = new Tutor(nome,cognome,email,password,linkImmagine,numero,materia,voto,titolo);
-		
-		FactoryDAO fDAO = new FactoryDAO();
-	    ObjectDAO o = fDAO.getObject("Tutor");
-	    o.cancellaDati(t);
-		o.inserisciDati(t);
+		GestioneUtente u = new ImpGestioneUtente();
+		u.modificaAccount(tipo, nome, cognome, email, password, linkImmagine, voto, titolo, numero, materia);
 		
 		RequestDispatcher view = request.getRequestDispatcher("PaginaPrincipale.html");
 		view.forward(request, response);

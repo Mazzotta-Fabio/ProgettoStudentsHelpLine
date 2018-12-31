@@ -1,14 +1,24 @@
 package gestioneUtente;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+import classiComuni.Studente;
+import classiComuni.Tutor;
+import storage.FactoryDAO;
+import storage.ObjectDAO;
+
 
 /**
  * Questa classe implementa l'interfaccia GestioneUtente.
@@ -17,11 +27,32 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ImpGestioneUtente implements GestioneUtente {
 
+	private String destLocation;
+	
+	public ImpGestioneUtente() {
+		destLocation = new String("C:\\Users\\Antonio\\git\\ProgettoStudentsHelpLine\\file");
+	}
+	
 	/**
 	 * Il metodo serve per inviare la mail per recuperare la password.
 	 * @param password,destinatario: sono uno la password da inviare e l'altro l'email dove inviare l'email
 	 */
-	public void recuperaPassword(String password,String destinatario) {
+	public void recuperaPassword(String tipo,String password,String destinatario) {
+		
+		if(tipo.equals("tutor")) {
+			Tutor t = new Tutor(null, null,destinatario, null, null, null, null, null, null);
+			FactoryDAO fDAO = new FactoryDAO();
+		    ObjectDAO o = fDAO.getObject("Tutor");
+			o.recuperaDati(t);
+			password = t.getPassword();
+		} else {
+			Studente s = new Studente(null, null,destinatario,null, null, null, null);
+			FactoryDAO fDAO = new FactoryDAO();
+		    ObjectDAO o = fDAO.getObject("Studente");
+			o.recuperaDati(s);
+			password = s.getPassword();
+		}
+		
 		String testo = null;
 		String mittente = "StudentsHelpLine@gmail.com";                             
 	    String oggetto = "RECUPERO PASSWORD";    
@@ -48,7 +79,123 @@ public class ImpGestioneUtente implements GestioneUtente {
 	       System.out.println("Il messaggio si è inviato correttamente");   	       
 	   }   catch (Exception e){  
 	       System.out.println("Si è verificato un errore");  
-	       e.printStackTrace();                           
-	   }  
+	       e.printStackTrace(); 
+	   }
+	}  
+
+ 
+	@Override
+	public void registraAccount(String tipo, String nome, String cognome, String email, String password, 
+			Part linkImmagine,String voto, String titolo, String numero, String materia) throws IOException {
+		
+		String fileName = extractFileName(linkImmagine);
+		File sourceLocation = new File(fileName);
+    	File targetFolder = new File(destLocation);
+        InputStream in = new FileInputStream(sourceLocation);
+        OutputStream out = new FileOutputStream(targetFolder + "\\"+ sourceLocation.getName(), true);            
+        byte[] buf = new byte[1024];
+        int len;
+        while ((len = in.read(buf)) > 0) {
+            out.write(buf, 0, len);
+        }
+        in.close();
+        out.close();
+        
+        String path =(targetFolder + "\\"+ sourceLocation.getName());
+  
+        if(tipo.equals("Studente")) {
+        	Tutor t = new Tutor (nome, cognome,email,password,path,numero, materia, voto, titolo);
+        	FactoryDAO fDAO = new FactoryDAO();
+        	ObjectDAO o = fDAO.getObject("Tutor");
+        	o.inserisciDati(t);
+        } else {
+        	Studente s = new Studente (nome, cognome,email,password,path,voto,titolo);
+        	FactoryDAO fDAO = new FactoryDAO();
+        	ObjectDAO o = fDAO.getObject("Studente");
+        	o.inserisciDati(s);
+        }
 	}
+	
+	private String extractFileName(Part part) {
+		String contentDisp = part.getHeader("content-disposition");
+		String [] items = contentDisp.split(";");
+		for(String s : items) {
+			if(s.trim().startsWith("filename")) {
+				return s.substring(s.lastIndexOf("=")+2,s.length()-1);
+			}
+		}
+		return "";
+	}
+
+	@Override
+	public void eliminaAccount(String destinatario,String tipo) {
+		if(tipo.equals("tutor")) {
+			Tutor t = new Tutor(null, null,destinatario, null, null, null, null, null, null);
+			FactoryDAO fDAO = new FactoryDAO();
+		    ObjectDAO o = fDAO.getObject("Tutor");
+			o.cancellaDati(t);
+		} else {
+			Studente s = new Studente(null, null,destinatario,null, null, null, null);
+			FactoryDAO fDAO = new FactoryDAO();
+		    ObjectDAO o = fDAO.getObject("Tutor");
+			o.cancellaDati(s);
+		}
+	}
+
+	@Override
+	public void modificaAccount(String tipo, String nome, String cognome, String email, String password,
+			Part linkImmagine, String voto, String titolo, String numero, String materia) throws IOException {
+	
+		String fileName = extractFileName(linkImmagine);
+		File sourceLocation = new File(fileName);
+    	File targetFolder = new File(destLocation);
+        InputStream in = new FileInputStream(sourceLocation);
+        OutputStream out = new FileOutputStream(targetFolder + "\\"+ sourceLocation.getName(), true);            
+        byte[] buf = new byte[1024];
+        int len;
+        while ((len = in.read(buf)) > 0) {
+            out.write(buf, 0, len);
+        }
+        in.close();
+        out.close();
+        
+        String path =(targetFolder + "\\"+ sourceLocation.getName());
+  
+        if(tipo.equals("Studente")) {
+        	Tutor t = new Tutor (nome, cognome,email,password,path,numero, materia, voto, titolo);
+        	FactoryDAO fDAO = new FactoryDAO();
+        	ObjectDAO o = fDAO.getObject("Tutor");
+        	o.cancellaDati(t);
+        	o.inserisciDati(t);
+        } else {
+        	Studente s = new Studente (nome, cognome,email,password,path,voto,titolo);
+        	FactoryDAO fDAO = new FactoryDAO();
+        	ObjectDAO o = fDAO.getObject("Studente");
+        	o.cancellaDati(s);
+        	o.inserisciDati(s);	
+        }
+		
+	}
+
+	@Override
+	public Object loginAccount(String email, String password, String tipo) {
+		boolean accesso = false;
+		if(tipo.equals("Tutor")) {
+			Tutor t = new Tutor(null, null,email, password, null, null, null, null, null);
+			FactoryDAO fDAO = new FactoryDAO();
+		    ObjectDAO o = fDAO.getObject("Tutor");
+			accesso = o.recuperaDati(t);
+			if (accesso == true) {return t;} else {t.setEmail(null); return t;}
+		} else {
+			Studente s = new Studente(null, null,email,password, null, null, null);
+			FactoryDAO fDAO = new FactoryDAO();
+		    ObjectDAO o = fDAO.getObject("Studente");
+			accesso = o.recuperaDati(s);
+			if (accesso == true) {return s;} else {s.setEmail(null); return s;}
+		}
+		
+
+		
+	}
+
 }

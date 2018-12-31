@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * La classe Logout è una Servlet.
@@ -16,8 +15,9 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet("/Logout.html")
 public class ServletLogout extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
-    public ServletLogout() {}
+	public ServletLogout() {}
 
     /**
 	 * Il metodo serve per permettere all'utente di effettuare il logout dal sito.

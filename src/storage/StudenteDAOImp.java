@@ -31,15 +31,15 @@ public class StudenteDAOImp implements ObjectDAO {
   public void inserisciDati(Object o) {
       Studente s = (Studente) o;
       try {
-        PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into studente(Nome,Cognome,Email,"
-            + "Matricola,Pass,AnnoCorso,Immagine) values (?,?,?,?,?,?,?);");
-        prepared.setString(1, s.getNome());
-        prepared.setString(2, s.getCognome());
-        prepared.setString(3, s.getEmail());
-        prepared.setString(4, s.getMatricola());
-        prepared.setString(5, s.getPassword());
-        prepared.setString(6, s.getAnnoCorso());
-        prepared.setString(7, s.getLinkImmagine());
+        PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into studente(Email,Pass,"
+        		+ "Matricola,Immagine,AnnoCorso,Nome,Cognome) values (?,?,?,?,?,?,?);");
+        prepared.setString(6, s.getNome());
+        prepared.setString(7, s.getCognome());
+        prepared.setString(1, s.getEmail());
+        prepared.setString(3, s.getMatricola());
+        prepared.setString(2, s.getPassword());
+        prepared.setString(5, s.getAnnoCorso());
+        prepared.setString(4, s.getLinkImmagine());
         prepared.executeUpdate();
       } 
       catch (SQLException e) {}

@@ -41,10 +41,13 @@ Account Tutor
   <div class="row">
   <div class="col">
 <div class="btn-group-vertical lista-bottone">
+<!-- li devi far visualizzare dinamicamente 
+<button type="button" class="btn btn-light border border-dark">Cerca Tutor</button>
+<button type="button" class="btn btn-light border border-dark">Fai Domanda al Tutor</button>-->
   <a  href="/" title="Mio Account">
   <button type="button" class="btn btn-light border border-dark">Mio Account</button>
   </a>
-  <%if(session.getAttribute("username") == "Studente"){%>
+  <%if(session.getAttribute("tipo") == "Studente"){%>
   	<a  href="/" title="Fai Domanda al Tutor">
   <button type="button" class="btn btn-light border border-dark">Fai Domanda al Tutor</button>
   </a>

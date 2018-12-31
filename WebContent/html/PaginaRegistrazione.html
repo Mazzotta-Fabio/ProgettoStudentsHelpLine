@@ -66,7 +66,7 @@
   <option value="17">RO</option>
 </select><br><br>
 <font color="black"><strong>Aggiungi immagine:</strong></font><br><br>
-<input type="submit" value="Inserisci" id="log"name="button"><br><br>
+<input type="file"  name="file"><br><br>
 <input type="submit" value="REGISTRATI" id="log"name="button"><br><br>
 </font>
 </p>
@@ -83,29 +83,29 @@ function myFunction() {
 }
 </script>
 
-
+<form enctype="multipart/form-data" action="../RegistrazioneStudente.html" method="post">
 <p align="center" id="text2" style="display:none">
 <font face="sans-serif">
 <font color="black"><strong>Nome:</strong></font><br><br>
-<input type="text" name="user"id="u"><br><br>
+<input type="text" name="nome"id="u"><br><br>
  <font color="black"><strong>Cognome:</strong></font><br><br>
-<input type="text" name="cogn"id="p"><br><br>
+<input type="text" name="cognome"id="p"><br><br>
 <font color="black"><strong>Email:</strong></font><br><br>
-<input type="text" name="ema"id="u"><br><br>
+<input type="text" name="email"id="u"><br><br>
 <font color="black"><strong>Password:</strong></font><br><br>
-<input type="text" name="pass"id="u"><br><br>
+<input type="text" name="password"id="u"><br><br>
 <font color="black"><strong>Matricola:</strong></font><br><br>
-<input type="text" name="pass2"id="u"><br><br>
+<input type="text" name="matricola"id="u"><br><br>
 <font color="black"><strong>Anno di corso:</strong></font><br><br>
- <select><br><br>
-  <option value="volvo">Triennale</option>
-  <option value="saab">Magistrale</option>
+ <select name="annoCorso"><br><br>
+  <option value="terzo">Triennale</option>
 </select><br><br>
 <font color="black"><strong>Aggiungi immagine:</strong></font><br><br>
-<input type="submit" value="Inserisci" id="log"name="button"><br><br>
+<input type="file"  name="file"><br><br>
 <input type="submit" value="REGISTRATI" id="log"name="button"><br><br>
 </font>
 </p>
+</form>
 
 <script>
 function myFunction2() {
