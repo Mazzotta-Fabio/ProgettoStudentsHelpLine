@@ -51,7 +51,7 @@ Student's Help Line
 		<div class="row">
 		<%List<String> listaT= (List<String>) request.getAttribute("listaTutor");
   		Tutor t = (Tutor) listaT.get(i);
-  		while(!listaTutor.isEmpty()){
+  		while(!listaT.isEmpty()){
   		if (t.getMateriaDiCompetenza() == materia){
 		t.getNome();
 		t.getCognome();%>
