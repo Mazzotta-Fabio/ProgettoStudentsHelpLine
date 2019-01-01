@@ -35,11 +35,8 @@ public class ServletLogin extends HttpServlet {
 		
 		GestioneUtente u = new ImpGestioneUtente();
 		String email = request.getParameter("email");
-		System.out.println(email);
 		String password = request.getParameter("password");
-		System.out.println(password);
 		String tipo = request.getParameter("tipoUtente");
-		System.out.println(tipo);
 		HttpSession sessione = request.getSession();
 		sessione.setAttribute("email", email);  
 		sessione.setAttribute("tipo", tipo);

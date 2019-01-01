@@ -14,10 +14,11 @@ public class Risposta {
 	private String allegato;
 	private String valutazione;
 	
-	public Risposta(int id,String testo, String allegato) {
+	public Risposta(int id,String testo, String allegato,String valutazione) {
 		this.testo = testo;
 		this.allegato = allegato;
-	  this.id = id;
+		this.id = id;
+		this.valutazione = valutazione;
 	}
 	
 	/**

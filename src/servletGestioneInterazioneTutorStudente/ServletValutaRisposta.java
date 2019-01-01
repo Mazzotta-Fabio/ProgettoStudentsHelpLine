@@ -6,18 +6,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import gestioneInterazioneTutorStudente.GestioneInterazioneTutorStudente;
+import gestioneInterazioneTutorStudente.ImpGestioneInterazioneTutorStudente;
 
-import classiComuni.Domanda;
-import classiComuni.Risposta;
-import storage.FactoryDAO;
-import storage.ObjectDAO;
 
 /**
  * Servlet implementation class ServletValutaRisposta
  */
 @WebServlet("/ServletValutaRisposta")
 public class ServletValutaRisposta extends HttpServlet {
-    public ServletValutaRisposta() {}
+	private static final long serialVersionUID = 1L;
+
+	public ServletValutaRisposta() {}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -26,15 +26,8 @@ public class ServletValutaRisposta extends HttpServlet {
 		int ID = Integer.parseInt(request.getParameter("ID"));
 		String valutazione = request.getParameter("valutazione");
 		
-		Domanda d = new Domanda (ID, null, null, null, null);
-		Risposta r = new Risposta(0,null,null, null, d);
-		
-		FactoryDAO fd = new FactoryDAO();
-		ObjectDAO o = fd.getObject("Risposta");
-		o.recuperaDati(r);
-		o.cancellaDati(r);
-		r.setValutazione(valutazione);
-		o.inserisciDati(r);
+		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
+		i.valutaRisposta(ID, valutazione);
 		
 	}
 

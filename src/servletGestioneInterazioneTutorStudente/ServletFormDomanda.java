@@ -14,8 +14,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/ServletFormDomanda")
 public class ServletFormDomanda extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
-    public ServletFormDomanda() {}
+	public ServletFormDomanda() {}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

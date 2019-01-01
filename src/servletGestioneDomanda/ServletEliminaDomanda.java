@@ -8,10 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import classiComuni.Domanda;
-import storage.FactoryDAO;
-import storage.ObjectDAO;
+import gestioneDomanda.GestioneDomanda;
+import gestioneDomanda.ImpGestioneDomanda;
 
 /**
  * La classe ServletEliminaDomanda è una Servlet.
@@ -21,8 +19,9 @@ import storage.ObjectDAO;
  */
 @WebServlet("/ServletEliminaDomanda")
 public class ServletEliminaDomanda extends HttpServlet {
-	
-    public ServletEliminaDomanda() {}
+	private static final long serialVersionUID = 1L;
+
+	public ServletEliminaDomanda() {}
 
     /**
   	 * Il metodo serve per eliminare una domanda sul DataBase.
@@ -32,12 +31,8 @@ public class ServletEliminaDomanda extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int ID = Integer.parseInt(request.getParameter("id"));
-		Domanda d = new Domanda (ID, null, null, null, null);
-		
-		FactoryDAO fd = new FactoryDAO();
-		ObjectDAO o = fd.getObject("Domanda");
-		o.cancellaDati(d);
-		
+		GestioneDomanda d = new ImpGestioneDomanda();
+		d.eliminaDomanda(ID);
 		RequestDispatcher view = request.getRequestDispatcher("PaginaPrincipale.html");
 		view.forward(request, response);
 	}
