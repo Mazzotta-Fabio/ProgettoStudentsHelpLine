@@ -192,10 +192,23 @@ public class ImpGestioneUtente implements GestioneUtente {
 		    ObjectDAO o = fDAO.getObject("Studente");
 			accesso = o.recuperaDati(s);
 			if (accesso == true) {return s;} else {s.setEmail(null); return s;}
-		}
-		
-
-		
+		}	
+	}
+	
+	public Object infoAccount(String email, String tipo) {
+		if(tipo.equals("Tutor")) {
+			Tutor t = new Tutor(null, null,email, null, null, null, null, null, null);
+			FactoryDAO fDAO = new FactoryDAO();
+		    ObjectDAO o = fDAO.getObject("Tutor");
+			o.recuperaDati(t);
+			return t;
+		} else {
+			Studente s = new Studente(null, null,email,null, null, null, null);
+			FactoryDAO fDAO = new FactoryDAO();
+		    ObjectDAO o = fDAO.getObject("Studente");
+			o.recuperaDati(s);
+			return s;
+		}	
 	}
 
 }
