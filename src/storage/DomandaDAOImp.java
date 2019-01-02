@@ -6,11 +6,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
 import com.mysql.jdbc.Statement;
-
 import classiComuni.Domanda;
-import classiComuni.Risposta;
-import classiComuni.Studente;
-import classiComuni.Tutor;
 
 
 /**
@@ -32,46 +28,42 @@ public class DomandaDAOImp implements ObjectDAO {
   /**
    * Il metodo serve per inserire le informazioni di una Domanda nel DataBase.
    * @param o: l'oggetto contenente le informazione della Domanda.
+   * @throws SQLException 
    */
-  public void inserisciDati(Object o) {
+  public void inserisciDati(Object o) throws SQLException {
       Domanda d = (Domanda) o;
-      try {
-        PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into domanda (Contenuto,"
-            + "Allegato,Oggetto,Studente,Tutor,Risposta) values (?,?,?,?,?,?);");
-        prepared.setString(1, d.getTesto());
-        prepared.setString(2, d.getAllegato());
-        prepared.setString(3, d.getOggetto());
-        prepared.setString(4, d.getStudente().getEmail());
-        prepared.setString(4, d.getTutor().getEmail());
-        prepared.setInt(4, d.getRisposta().getId());
-        prepared.executeUpdate();
-      } 
-      catch (SQLException e) {}
+      PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into domanda (Contenuto,"
+           + "Allegato,Oggetto,Studente,Tutor,Risposta) values (?,?,?,?,?,?);");
+      prepared.setString(1, d.getTesto());
+      prepared.setString(2, d.getAllegato());
+      prepared.setString(3, d.getOggetto());
+      prepared.setString(4, d.getStudente().getEmail());
+      prepared.setString(4, d.getTutor().getEmail());
+      prepared.setInt(4, d.getRisposta().getId());
+      prepared.executeUpdate();
   }
 
   /**
    * Il metodo serve per cancellare le informazioni di una Domanda nel DataBase.
    * @param o: l'oggetto contenente le informazione della Domanda.
+   * @throws SQLException 
    */
-  public void cancellaDati(Object o) {
-      Domanda d = (Domanda) o;
-      try {
-        PreparedStatement prepared = (PreparedStatement) con.prepareStatement("delete from domanda"
-            + " where IdDomanda = ?;");
-        prepared.setInt(1,d.getId());
-        prepared.execute();
-      } 
-      catch (SQLException e) {}
+  public void cancellaDati(Object o) throws SQLException {
+  	Domanda d = (Domanda) o;
+    PreparedStatement prepared = (PreparedStatement) con.prepareStatement("delete from domanda"
+         + " where IdDomanda = ?;");
+    prepared.setInt(1,d.getId());
+    prepared.execute();
   }  
 
   /**
    * Il metodo serve per recuperare le informazioni di una Domanda nel DataBase.
    * @param o: l'oggetto contenente le informazione della Domanda.
+   * @throws SQLException 
    */
-  public boolean recuperaDati(Object o) {
+  public boolean recuperaDati(Object o) throws SQLException {
     Domanda d = (Domanda) o;
-    try 
-    {
+
       PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from domanda where IdDomanda = ?;");
       prepared.setInt(1,d.getId());
       ResultSet result = (ResultSet) prepared.executeQuery();
@@ -84,34 +76,32 @@ public class DomandaDAOImp implements ObjectDAO {
         d.getTutor().setEmail(result.getString("Tutor"));
         d.getRisposta().setId(Integer.parseInt(result.getString("Risposta")));
       }
-    } 
-    catch (SQLException e) {}
-    return false;
-  }
+      return false;
+  	}
 
   /**
    * Il metodo serve per recuperare le informazioni di tutte le Domande nel DataBase.
    * @return una lista di oggetti di tipo Domanda con tutte le informazioni reperite su DataBase per ognuna di esse.
+   * @throws SQLException 
+   * @throws NumberFormatException 
    */
-  public ArrayList<Object> recuperaTutto() {
-    ArrayList<Object> listaD = new ArrayList<>(); 
-    try {
-        Statement query = (Statement) con.createStatement();
-        ResultSet result = (ResultSet) query.executeQuery("select * from domanda;");
-        while (result.next())
-        {
-        	Domanda d = new Domanda (0, null, null, null, null, null, null);
-        	d.setTesto(result.getString("Contenuto"));
-            d.setAllegato(result.getString("Allegato"));
-            d.setOggetto(result.getString("Oggetto"));
-            d.getStudente().setEmail(result.getString("Studente"));
-            d.getTutor().setEmail(result.getString("Tutor"));
-            d.getRisposta().setId(Integer.parseInt(result.getString("Risposta")));
-            listaD.add(d);
-        }
-    } 
-    catch (SQLException e) {} 
+  public ArrayList<Object> recuperaTutto() throws NumberFormatException, SQLException {
+  	ArrayList<Object> listaD = new ArrayList<>(); 
+
+    Statement query = (Statement) con.createStatement();
+    ResultSet result = (ResultSet) query.executeQuery("select * from domanda;");
+    while (result.next())
+    {
+       	Domanda d = new Domanda (0, null, null, null, null, null, null);
+       	d.setTesto(result.getString("Contenuto"));
+        d.setAllegato(result.getString("Allegato"));
+        d.setOggetto(result.getString("Oggetto"));
+        d.getStudente().setEmail(result.getString("Studente"));
+        d.getTutor().setEmail(result.getString("Tutor"));
+        d.getRisposta().setId(Integer.parseInt(result.getString("Risposta")));
+        listaD.add(d);
+    }
     return listaD;
   }
-
+  
 }

@@ -6,9 +6,8 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
 import com.mysql.jdbc.Statement;
-import classiComuni.Domanda;
 import classiComuni.Risposta;
-import classiComuni.Tutor;
+
 
 /**
  * La classe RispostaDAOImp implementa i metodi dell'interfaccia ObjectDAO.
@@ -29,77 +28,74 @@ public class RispostaDAOImp implements ObjectDAO {
   /**
    * Il metodo serve per inserire le informazioni di una Risposta nel DataBase.
    * @param o: l'oggetto contenente le informazione della Risposta.
+   * @throws SQLException 
    */
-  public void inserisciDati(Object o) {
+  public void inserisciDati(Object o) throws SQLException {
       Risposta r = (Risposta) o;
-      try {
-        PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into risposta (Contenuto,"
-            + "Allegato,Valutazione) values (?,?,?);");
-        prepared.setString(1, r.getTesto());
-        prepared.setString(2, r.getAllegato());
-        prepared.setString(3, r.getValutazione());
-        prepared.executeUpdate();
-      } 
-      catch (SQLException e) {}
+ 
+      PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into risposta (Contenuto,"
+          + "Allegato,Valutazione) values (?,?,?);");
+      prepared.setString(1, r.getTesto());
+      prepared.setString(2, r.getAllegato());
+      prepared.setString(3, r.getValutazione());
+      prepared.executeUpdate();
   }
 
   /**
    * Il metodo serve per cancellare le informazioni di una Risposta nel DataBase.
    * @param o: l'oggetto contenente le informazione della Risposta.
+   * @throws SQLException 
    */
-  public void cancellaDati(Object o) {
+  public void cancellaDati(Object o) throws SQLException {
       Risposta r = (Risposta) o;
-      try {
-        PreparedStatement prepared = (PreparedStatement) con.prepareStatement("delete from risposta"
-            + " where IdRisposta = ?;");
-        prepared.setInt(1,r.getId());
-        prepared.execute();
-      } 
-      catch (SQLException e) {}
+      
+       PreparedStatement prepared = (PreparedStatement) con.prepareStatement("delete from risposta"
+          + " where IdRisposta = ?;");
+       prepared.setInt(1,r.getId());
+       prepared.execute();
   }  
 
   /**
    * Il metodo serve per recuperare le informazioni di una Risposta nel DataBase.
    * @param o: l'oggetto contenente le informazione della Risposta.
+   * @throws SQLException 
    */
   @Override
-  public boolean recuperaDati(Object o) {
+  public boolean recuperaDati(Object o) throws SQLException {
     Risposta r = (Risposta) o;
-    try 
+
+    PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from risposta where "
+   		+ "IdRisposta = ?;");
+    prepared.setInt(1,r.getId());
+    ResultSet result = (ResultSet) prepared.executeQuery();
+    while (result.next())
     {
-      PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from risposta where "
-      		+ "IdRisposta = ?;");
-      prepared.setInt(1,r.getId());
-      ResultSet result = (ResultSet) prepared.executeQuery();
-      while (result.next())
-      {
-        r.setTesto(result.getString("Contenuto"));
-        r.setAllegato(result.getString("Allegato"));
-      }
-    } 
-    catch (SQLException e) {}
+      r.setTesto(result.getString("Contenuto"));
+      r.setAllegato(result.getString("Allegato"));
+      r.setValutazione(result.getString("Valutazione"));
+    }
     return false;
   }
   
   /**
    * Il metodo serve per recuperare le informazioni di tutte le Risposte nel DataBase.
    * @return una lista di oggetti di tipo Risposta con tutte le informazioni reperite su DataBase per ognuna di esse.
+   * @throws SQLException 
    */
-  public ArrayList<Object> recuperaTutto() {
+  public ArrayList<Object> recuperaTutto() throws SQLException {
     ArrayList<Object> listaR = new ArrayList<>(); 
-    try {
-        Statement query = (Statement) con.createStatement();
-        ResultSet result = (ResultSet) query.executeQuery("select * from risposta;");
-        while (result.next())
-        {
-          Risposta r = new Risposta(0, null, null);
-          r.setId(result.getInt("IdRisposta"));
-          r.setTesto(result.getString("Contenuto"));
-          r.setAllegato(result.getString("Allegato"));
-          listaR.add(r);
-        }
-    } 
-    catch (SQLException e) {} 
+    
+    Statement query = (Statement) con.createStatement();
+    ResultSet result = (ResultSet) query.executeQuery("select * from risposta;");
+    while (result.next())
+    {
+        Risposta r = new Risposta(0, null, null, null);
+        r.setId(result.getInt("IdRisposta"));
+        r.setTesto(result.getString("Contenuto"));
+        r.setAllegato(result.getString("Allegato"));
+        r.setValutazione(result.getString("Valutazione"));
+        listaR.add(r);
+    }
     return listaR;
   }
 

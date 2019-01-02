@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -64,8 +65,15 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 	public List<String> listaTutor(String materia) {
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Tutor");
-		List<Object> listaT = o.recuperaTutto();
-		
+		List<Object> listaT = null;
+		try {
+			listaT = o.recuperaTutto();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			
 		List<String> listaTutor = new ArrayList<String>();
 		for(int i = 0;i<listaT.size();i++) {
 		      Tutor t = (Tutor) listaT.get(i);
@@ -85,18 +93,34 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		Domanda d = new Domanda(0, testo, oggetto, url, s, t, r);
 	    FactoryDAO fd = new FactoryDAO();
 	    ObjectDAO o = fd.getObject("Domanda");
-	    o.inserisciDati(d);
-	}
+	    try {
+			o.inserisciDati(d);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+	 }
 
 	@Override
 	public void valutaRisposta(int id, String valutazione) {
 		Risposta r = new Risposta(id,null,null, null);
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Risposta");
-		o.recuperaDati(r);
+		try {
+			o.recuperaDati(r);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		r.setValutazione(valutazione);
-		o.cancellaDati(r);
-		o.inserisciDati(r);
+		try {
+			o.cancellaDati(r);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			o.inserisciDati(r);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -105,12 +129,20 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		Studente s = new Studente(null, null, email, null, null, null, null);
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Studente");
-		o.recuperaDati(s);
+		try {
+			o.recuperaDati(s);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		if (s.getNome() != null) {return s;}
 		else {
 			Tutor t = new Tutor(null, null, email, null, null, null, null,null,null);
 			o = fd.getObject("Tutor");
-			o.recuperaDati(t);
+			try {
+				o.recuperaDati(t);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			if(t.getNome() != null) {return t;}		
 			else {return null;}
 		}
@@ -124,7 +156,14 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Risposta");
-		List<Object> listR = o.recuperaTutto();
+		List<Object> listR = null;
+		try {
+			listR = o.recuperaTutto();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		for(int i = 0;i<listR.size();i++) {
 		      Risposta r = (Risposta) listR.get(i);

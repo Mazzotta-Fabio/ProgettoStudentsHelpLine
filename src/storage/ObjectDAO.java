@@ -1,10 +1,11 @@
 package storage;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface ObjectDAO {
-  public void inserisciDati(Object o);
-  public void cancellaDati(Object o);
-  public boolean recuperaDati(Object o);
-  public ArrayList<Object> recuperaTutto();
+  public void inserisciDati(Object o) throws SQLException;
+  public void cancellaDati(Object o) throws SQLException;
+  public boolean recuperaDati(Object o) throws SQLException;
+  public ArrayList<Object> recuperaTutto() throws NumberFormatException, SQLException;
 }

@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import classiComuni.Domanda;
@@ -52,14 +53,25 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		Domanda d = new Domanda (id, null, null, null, null, null, null);
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Domanda");
-		o.cancellaDati(d);
+		try {
+			o.cancellaDati(d);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public List<String> recuperaDomandeSenzaRisposta(String email) {
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Domanda");
-		ArrayList<Object> listaD = o.recuperaTutto();		
+		ArrayList<Object> listaD = null;
+		try {
+			listaD = o.recuperaTutto();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
 		List<String> listaDomande = new ArrayList<String>();
 		for(int i = 0;i<listaD.size();i++) {
 		      Domanda d = (Domanda) listaD.get(i);
@@ -79,7 +91,14 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 	public List<String> recuperaDomandeConRisposta(String email) {
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Domanda");
-		ArrayList<Object> listaD = o.recuperaTutto();		
+		ArrayList<Object> listaD = null;
+		try {
+			listaD = o.recuperaTutto();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
 		List<String> listaDomande = new ArrayList<String>();
 		for(int i = 0;i<listaD.size();i++) {
 		      Domanda d = (Domanda) listaD.get(i);
@@ -103,24 +122,40 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		FactoryDAO fd = new FactoryDAO();
 		Domanda d = new Domanda (id, null, null, null, null, null, null);	
 		ObjectDAO o = fd.getObject("Domanda");
-		o.recuperaDati(d);
+		try {
+			o.recuperaDati(d);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		listaInfo.add(d.getAllegato());
 		listaInfo.add(d.getOggetto());
 		listaInfo.add(d.getTesto());
 		
 		Studente s = d.getStudente(); 
 		o = fd.getObject("Studente");
-		o.recuperaDati(s);
+		try {
+			o.recuperaDati(s);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		listaInfo.add(d.getStudente().getEmail());
  
 		Tutor t = d.getTutor(); 
 		o = fd.getObject("Tutor");
-		o.recuperaDati(t);
+		try {
+			o.recuperaDati(t);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		listaInfo.add(t.getEmail());
 		
 		Risposta r = d.getRisposta();
 		o = fd.getObject("Risposta");
-		o.recuperaDati(r);
+		try {
+			o.recuperaDati(r);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		listaInfo.add(r.getTesto());
 		listaInfo.add(r.getAllegato());
 		listaInfo.add(r.getValutazione());
