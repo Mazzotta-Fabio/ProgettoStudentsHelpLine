@@ -11,6 +11,15 @@
 	background-color: white;
 	z-index:999;
 }
+.MioAccount{
+	width:174%;
+}
+.Domande_Risposte{
+	width:128%;
+}
+.Fai_Domanda_al_Tutor{
+	width:114%;
+}
 .header-content{
 	display: inline;
 }
