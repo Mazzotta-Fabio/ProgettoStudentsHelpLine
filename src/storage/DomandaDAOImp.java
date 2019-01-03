@@ -7,6 +7,9 @@ import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
 import com.mysql.jdbc.Statement;
 import classiComuni.Domanda;
+import classiComuni.Risposta;
+import classiComuni.Studente;
+import classiComuni.Tutor;
 
 
 /**
@@ -32,14 +35,15 @@ public class DomandaDAOImp implements ObjectDAO {
    */
   public void inserisciDati(Object o) throws SQLException {
       Domanda d = (Domanda) o;
-      PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into domanda (Contenuto,"
-           + "Allegato,Oggetto,Studente,Tutor,Risposta) values (?,?,?,?,?,?);");
+      PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into Domanda (Contenuto,Allegato,"
+      		+ "Oggetto,Visualizzata,Studente,Tutor,Risposta) values (?,?,?,?,?,?,?);");
       prepared.setString(1, d.getTesto());
       prepared.setString(2, d.getAllegato());
       prepared.setString(3, d.getOggetto());
-      prepared.setString(4, d.getStudente().getEmail());
-      prepared.setString(4, d.getTutor().getEmail());
-      prepared.setInt(4, d.getRisposta().getId());
+      prepared.setString(4, "no");
+      prepared.setString(5, d.getStudente().getEmail());
+      prepared.setString(6, d.getTutor().getEmail());
+      prepared.setInt(7, d.getRisposta().getId());
       prepared.executeUpdate();
   }
 
@@ -72,9 +76,12 @@ public class DomandaDAOImp implements ObjectDAO {
         d.setTesto(result.getString("Contenuto"));
         d.setAllegato(result.getString("Allegato"));
         d.setOggetto(result.getString("Oggetto"));
-        d.getStudente().setEmail(result.getString("Studente"));
-        d.getTutor().setEmail(result.getString("Tutor"));
-        d.getRisposta().setId(Integer.parseInt(result.getString("Risposta")));
+        Studente s = new Studente(null, null, result.getString("Studente"), null, null, null, null);
+		d.setStudente(s);
+        Tutor t = new Tutor(null, null, result.getString("Tutor"), null, null, null, null, null, null);
+		d.setTutor(t);
+        Risposta r = new Risposta (Integer.parseInt(result.getString("Risposta")), null,null,null);
+		d.setRisposta(r);
       }
       return false;
   	}
@@ -93,12 +100,16 @@ public class DomandaDAOImp implements ObjectDAO {
     while (result.next())
     {
        	Domanda d = new Domanda (0, null, null, null, null, null, null);
+       	d.setId(Integer.parseInt(result.getString("IdDomanda")));
        	d.setTesto(result.getString("Contenuto"));
         d.setAllegato(result.getString("Allegato"));
         d.setOggetto(result.getString("Oggetto"));
-        d.getStudente().setEmail(result.getString("Studente"));
-        d.getTutor().setEmail(result.getString("Tutor"));
-        d.getRisposta().setId(Integer.parseInt(result.getString("Risposta")));
+        Studente s = new Studente(null, null, result.getString("Studente"), null, null, null, null);
+		d.setStudente(s);
+        Tutor t = new Tutor(null, null, result.getString("Tutor"), null, null, null, null, null, null);
+		d.setTutor(t);
+        Risposta r = new Risposta (Integer.parseInt(result.getString("Risposta")), null,null,null);
+		d.setRisposta(r);
         listaD.add(d);
     }
     return listaD;
