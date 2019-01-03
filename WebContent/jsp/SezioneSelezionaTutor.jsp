@@ -24,6 +24,7 @@
 <title>STUDENT'S HELP LINE</title>
 </head>
 <body>
+
 <div id="page">
 <header id=header">
 <div class="header-content">
@@ -52,7 +53,7 @@ Student's Help Line
 		<div class="col-xs-12 col-sm-6 col-md-3">
 		  <div class="container img-thumbnail">
 		  <a style="text-decoration:none">
-		<% 
+		<% //prova 
 		List <String> listaTutor= (List <String>) request.getAttribute("listaTutor");
 		Iterator it= listaTutor.iterator();
 		for(int i=0; i< listaTutor.size();i++){
@@ -64,7 +65,7 @@ Student's Help Line
 			<span class="text"> 
 			<font color="black"> <%it.next();%> </font></span><br>  
 			<center><input type="submit" value="FAI DOMANDA" id="log"name="button"><br><br></center>")
-			<% }%>}
+			<% }%>
 			</a>
 		  </div>
 		  </div>
