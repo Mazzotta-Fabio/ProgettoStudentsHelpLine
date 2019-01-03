@@ -59,7 +59,7 @@ Student's Help Line
 			out.println("<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-3">
 			  <div class="container img-thumbnail">
-			  <a style="text-decoration:none""><span class="text"><font color="black"><%it.next();%></font></span><br>  <center><input type="submit" value="FAI DOMANDA" id="log"name="button"><br><br></center>")
+			  <a style="text-decoration:none""> <span class="text"> <font color="black"> <% it.next(); %> </font></span><br>  <center><input type="submit" value="FAI DOMANDA" id="log"name="button"><br><br></center>")
 			} %>
 			
 			</a>
