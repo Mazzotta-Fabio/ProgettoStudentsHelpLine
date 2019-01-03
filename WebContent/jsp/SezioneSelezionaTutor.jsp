@@ -49,16 +49,20 @@ Student's Help Line
 </div>
 		
 		<div class="row">
-		
-			
-		  <div class="col-xs-12 col-sm-6 col-md-3">
+		<div class="col-xs-12 col-sm-6 col-md-3">
 		  <div class="container img-thumbnail">
 		  <a style="text-decoration:none"">
-		  <img class="img-responsive" src="../img/1.PNG">
-		 <center><input type="submit" value="FAI DOMANDA" id="log"name="button"><br><br></center>
+		<% 
+		List <String> listaTutor= (List) request.getAttribute("listaTutor");
+		iterator it= listaTutor.iterator();
+		for(int i=0; i< listaTutor.lenght;i++){
+			out.println("<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-3">
+			  <div class="container img-thumbnail">
+			  <a style="text-decoration:none""><span class="text"><font color="black"><%it.next();%></font></span><br>  <center><input type="submit" value="FAI DOMANDA" id="log"name="button"><br><br></center>")
+			} %>
 			
-			
-		 </a>
+			</a>
 		  </div>
 		  </div>
 		  
