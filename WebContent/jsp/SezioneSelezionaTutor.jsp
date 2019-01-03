@@ -63,7 +63,7 @@ Student's Help Line
 			<div class="container img-thumbnail"> 
 			<a style="text-decoration:none""> 
 			<span class="text"> 
-			<font color="black"> <%it.next();%> </font></span><br>  
+			<font color="black"> <%out.println(it.next()); out.println(it.next()); %> </font></span><br>
 			<center><input type="submit" value="FAI DOMANDA" id="lg"name="button"><br><br></center>")
 			<% }%>
 			</a>
