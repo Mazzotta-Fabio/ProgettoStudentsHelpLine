@@ -6,11 +6,11 @@
 <meta charset="ISO-8859-1">
 <meta name="author" content="Alfonso Golino">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image" href="../img/ICONA.ico">
-<link rel="stylesheet" href="../css/domande_Risposte-non_Risposte.css">
-<link rel="stylesheet" href="../css/Account.css">
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="icon" type="image" href="img/ICONA.ico">
+<link rel="stylesheet" href="css/domande_Risposte-non_Risposte.css">
+<link rel="stylesheet" href="css/Account.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.css">
 <title>Domande Risposte</title>
 </head>
 <body>
@@ -18,18 +18,18 @@
 <header id=header">
 <div class="header-content">
 <div class="image-logo">
-	<img class="position" src="../img/logo.jpg" alt="StudentHelpline">
+	<img class="position" src="img/logo.jpg" alt="StudentHelpline">
 </div>
 <div class="Name-Sito">
 Student's Help Line
 </div>
 </div>
 <nav class="navbar navbar-custom">
-<div class="Name-barra">
+<div class="Name-barra" style="margin-left:40%;">
 Domande Risposte
 </div>
-<a  href="../Logout" title="Logout">
-<img class="log" src="../img/logout.svg"></img>
+<a  href="Logout" title="Logout">
+<img class="log" src="img/logout.svg"></img>
 </a>
 </nav>
 </header>
@@ -38,77 +38,68 @@ Domande Risposte
   <div class="row">
     <div class="col-3">
 <div class="btn-group-vertical lista-bottone">
-
-  <a  href="/" title="Mio Account">
-  <button type="button" class="btn btn-light border border-dark">Mio Account</button>
-  </a>
-  <!--COMMENTO DA TOGLIERE  
-  <%//if(session.getAttribute("username") == "Studente"){%>
-  	<a  href="/" title="Fai Domanda al Tutor">
-  <button type="button" class="btn btn-light border border-dark">Fai Domanda al Tutor</button>
+ 
+<%if(session.getAttribute("tipo").equals("Studente")){%>
+<a  href="Login" title="Mio Account">
+  <button type="button" class="MioAccount btn btn-light border border-dark">Mio Account</button>
+  </a> 
+  
+  	<a  href="html/PaginaSelezionaMateria.html" title="Fai Domanda al Tutor">
+  <button type="button" class="Fai_Domanda_al_Tutor btn btn-light border border-dark">Fai Domanda al Tutor</button>
   </a>
   
-  <a  href="/" title="Domande Risposte">
-  <button type="button" class="btn btn-light border border-dark">Domande Risposte</button>
+  <button type="button" class="Domande_Risposte btn btn-light border border-dark"style="background-color:#cccccc; width:114%;">Domande Risposte</button>
+  
+  <a  href="ServletTabDomandaSenzaRisposta" title="Domande senza Risposta">
+  <button type="button" class="btn btn-light border border-dark" style="width:114%;">Domande senza Risposta</button>
   </a>
   
-  <a  href="/" title="Domande senza Risposta">
-  <button type="button" class="btn btn-light border border-dark">Domande senza Risposta</button>
+  <%}else{%>
+  <a  href="Login" title="Mio Account">
+  <button type="button" class="MioAccount btn btn-light border border-dark" style="width:166%;">Mio Account</button>
+  </a> 
+  <button type="button" class="Domande_Risposte btn btn-light border border-dark" style="background-color:#cccccc; width:108%;">Domande Risposte</button>
+  
+  <a  href="ServletTabDomandaSenzaRisposta" title="Domande non Risposte">
+  <button type="button" class="btn btn-light border border-dark" style="width:108%;">Domande non Risposte</button>
   </a>
   
-  <%//}else{%>
-  	<a  href="/" title="Fai Domanda al Tutor">
-  <button type="button" class="btn btn-light border border-dark">Domande Risposte</button>
+  <a  href="ServletVisualizzaValutazioniTot" title="Visualizza Valutazioni">
+  <button type="button" class="btn btn-light border border-dark" style="width:109%;">Visualizza Valutazioni</button>
   </a>
   
-  <a  href="/" title="Domande Risposte">
-  <button type="button" class="btn btn-light border border-dark">Domande non Risposte</button>
-  </a>
-  
-  <a  href="/" title="Domande senza Risposta">
-  <button type="button" class="btn btn-light border border-dark">Visualizza Valutazioni</button>
-  </a>
-  
-  <%//}%>-->
+  <%}%>
   </div>
 </div>
-  <div class="col-8">
-  <div class="domande_Risposte-non">
-<table class="table table-bordered">
+  <div class="col-8" style="margin-top:6%;">
+<table class="table">
   <thead>
   <tr>
-      <th scope="col" class ="tabella_nome">Nome Studente</th>
-      <th scope="col">Oggetto Domanda</th>
+      <th>Nome Studente</th>
+      <th style="width:60%;">Oggetto-Testo Domanda</th>
     </tr>
    </thead>
    <tbody>
-  <%/* 
+  <%
   List<String> listaDomande = (List<String>) request.getAttribute("listaDomande");
   int i = 0;
-  while(!listaDomande.isEmpty()){
+  while(listaDomande.size()> i){
+	 String id=listaDomande.get(i);
 	 i++;
 	 String oggetto = listaDomande.get(i);
-	 i += 2;
-	 String nome = listaDomande.get(i);
 	 i++;
-	 String cognome = listaDomande.get(i);*/%>
-<!--COMMENTO DA TOGLIERE     <tr class="selezionare">
-      <td class="border border-dark"><%//nome %> <%//cognome %></td>
-      <td><%//oggetto%></td>
-     </tr>-->
-   <%
-   //}%>
-   <tr class="selezionare">
-   <td class="border border-dark"><a href="/" title="Domanda" class="testo-domanda">Sono stronzo</a></td>
-      <td><a href="/" title="Domanda" class="testo-domanda">cazzo vuoi</a></td>
+	 String testo = listaDomande.get(i);
+	 i++;
+	 String email = listaDomande.get(i);
+	 i++;%>
+      <tr>
+      <td><%=email%></td>
+      <td><%=oggetto%>-<%=testo %></td>
+      <td><a href="ServletVisualizzaDomanda?id=<%=id%>" title="Viaulizza Domanda"><button type="button" class="btn"><</button></a></td>
      </tr>
-     <tr class="selezionare">
-   <td class="border border-dark"><a href="/" title="Domanda" class="testo-domanda">Sono stronzo</a></td>
-      <td><a href="/" title="Domanda" class="testo-domanda">cazzo vuoi</a></td>
-     </tr>
+   <%}%>
     </tbody>
 </table>
-</div>
 </div>
 </div>
 </div>

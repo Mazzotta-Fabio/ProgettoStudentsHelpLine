@@ -51,7 +51,7 @@ public class ServletLogin extends HttpServlet {
 				request.setAttribute("Titolo",t.getTitoloDiStudio());
 				request.setAttribute("Voto",t.getVotoDiLaurea());
 				if(t.getEmail() != null) {	
-					RequestDispatcher view = request.getRequestDispatcher("Account.jsp");
+					RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
 					view.forward(request, response);
 				}
 			} else {

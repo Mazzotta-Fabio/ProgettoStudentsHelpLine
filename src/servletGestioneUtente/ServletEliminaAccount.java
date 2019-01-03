@@ -17,7 +17,7 @@ import gestioneUtente.ImpGestioneUtente;
  * @author Antonio Cimino
  * @version 1.0
  */
-@WebServlet("/EliminaAccount.html")
+@WebServlet("/EliminaAccount")
 public class ServletEliminaAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

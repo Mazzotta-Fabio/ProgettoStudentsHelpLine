@@ -59,7 +59,7 @@ Account Tutor
   
   <%}else{%>
   	<a  href="ServletTabDomandaRisposte" title="Fai Domanda al Tutor">
-  <button type="button" class="btn btn-light border border-dark">Domande Risposte</button>
+  <button type="button" class="btn btn-light border border-dark" style="width:120%;">Domande Risposte</button>
   </a>
   
   <a  href="ServletTabDomandaSenzaRisposta" title="Domande Risposte">
@@ -67,7 +67,7 @@ Account Tutor
   </a>
   
   <a  href="ServletVisualizzaValutazioniTot" title="Visualizza Valutazioni">
-  <button type="button" class="btn btn-light border border-dark">Visualizza Valutazioni</button>
+  <button type="button" class="btn btn-light border border-dark" style="width:109%;">Visualizza Valutazioni</button>
   </a>
   
   <%}%>
@@ -83,8 +83,7 @@ if(img != null){ %>
 <%} %>
 </div>
 </div>
-<div class="col-5">
-<div class="info">
+<div class="col-5" style="margin-top:6%;">
 <table class="table table-bordered">
   <thead>
   <tr>

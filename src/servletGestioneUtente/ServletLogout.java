@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Antonio Cimino
  * @version 1.0
  */
-@WebServlet("/Logout.html")
+@WebServlet("/Logout")
 public class ServletLogout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -26,7 +26,7 @@ public class ServletLogout extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    request.getSession().invalidate();
-	    response.sendRedirect("Home.html");
+	    response.sendRedirect("html/HomePage.html");
 	}
 
 	/**

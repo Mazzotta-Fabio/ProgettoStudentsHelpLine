@@ -103,12 +103,12 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		for(int i = 0;i<listaD.size();i++) {
 		      Domanda d = (Domanda) listaD.get(i);
 		      if (d.getRisposta().getId() != 0) {
-		    	  if(email.equals(d.getStudente().getEmail())) {
+		    	  //if(email.equals(d.getStudente().getEmail())) {
 		    		  listaDomande.add(String.valueOf(d.getId()));
 		    		  listaDomande.add(d.getOggetto());
 		    		  listaDomande.add(d.getTesto());
 		    		  listaDomande.add(d.getTutor().getEmail());
-		    	  }
+		    	 // }
 		      }	  
 		}
 		return listaDomande;
