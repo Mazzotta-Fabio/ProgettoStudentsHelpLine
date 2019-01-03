@@ -63,6 +63,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 
 	@Override
 	public List<String> listaTutor(String materia) {
+		System.out.println("la materia selezionata è: " + materia);
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Tutor");
 		List<Object> listaT = null;
@@ -77,7 +78,8 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		List<String> listaTutor = new ArrayList<String>();
 		for(int i = 0;i<listaT.size();i++) {
 		      Tutor t = (Tutor) listaT.get(i);
-		      if (t.getMateriaDiCompetenza() == materia) {
+		      System.out.println("materia di competenza: " + t.getMateriaDiCompetenza());
+		      if (t.getMateriaDiCompetenza().equals(materia)) {
 		    	  listaTutor.add(t.getNome());
 		    	  listaTutor.add(t.getCognome());
 		      }

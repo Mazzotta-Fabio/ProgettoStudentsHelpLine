@@ -27,12 +27,13 @@ public class ServletFormDomandaTutor extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String materia = request.getParameter("materia");
-		
+
 		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
 		List<String> listaTutor = i.listaTutor(materia); 
 		
+		
 		request.setAttribute("listaTutor", listaTutor);
-		RequestDispatcher view = request.getRequestDispatcher("PaginaTutor.html");
+		RequestDispatcher view = request.getRequestDispatcher("jsp/SezioneSelezionaTutor.jsp");
 		view.forward(request, response);
 	}
 
