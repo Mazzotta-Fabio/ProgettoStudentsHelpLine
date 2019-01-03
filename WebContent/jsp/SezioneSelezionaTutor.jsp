@@ -64,7 +64,7 @@ Student's Help Line
 			<a style="text-decoration:none""> 
 			<span class="text"> 
 			<font color="black"> <%it.next();%> </font></span><br>  
-			<center><input type="submit" value="FAI DOMANDA" id="log"name="button"><br><br></center>")
+			<center><input type="submit" value="FAI DOMANDA" id="lg"name="button"><br><br></center>")
 			<% }%>
 			</a>
 		  </div>
