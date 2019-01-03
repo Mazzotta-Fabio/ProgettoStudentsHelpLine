@@ -51,17 +51,20 @@ Student's Help Line
 		<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-3">
 		  <div class="container img-thumbnail">
-		  <a style="text-decoration:none"">
+		  <a style="text-decoration:none">
 		<% 
-		List <String> listaTutor= (List) request.getAttribute("listaTutor");
+		List <String> listaTutor= (List <String>) request.getAttribute("listaTutor");
 		iterator it= listaTutor.iterator();
 		for(int i=0; i< listaTutor.lenght;i++){
-			out.println("<div class=\"row\">
-					<div class="col-xs-12 col-sm-6 col-md-3">
-			  <div class="container img-thumbnail">
-			  <a style="text-decoration:none""> <span class="text"> <font color="black"> <% it.next(); %> </font></span><br>  <center><input type="submit" value="FAI DOMANDA" id="log"name="button"><br><br></center>")
-			} %>
-			
+			%>
+			<div class="row"> 
+			<div class="col-xs-12 col-sm-6 col-md-3"> 
+			<div class="container img-thumbnail"> 
+			<a style="text-decoration:none""> 
+			<span class="text"> 
+			<font color="black"> <%it.next();%> </font></span><br>  
+			<center><input type="submit" value="FAI DOMANDA" id="log"name="button"><br><br></center>")
+			<% }%>}
 			</a>
 		  </div>
 		  </div>
