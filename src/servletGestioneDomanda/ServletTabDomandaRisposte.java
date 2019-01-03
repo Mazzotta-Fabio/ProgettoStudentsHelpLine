@@ -38,7 +38,7 @@ public class ServletTabDomandaRisposte extends HttpServlet {
 		List<String> listaDomande = d.recuperaDomandeConRisposta(email);
 
 		request.setAttribute("listaDomande", listaDomande);
-		RequestDispatcher view = request.getRequestDispatcher("../view/DomandaRisposte.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("../jsp/DomandaRisposte.jsp");
 		view.forward(request, response);
 	}
 

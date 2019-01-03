@@ -41,9 +41,6 @@ Account Tutor
   <div class="row">
   <div class="col">
 <div class="btn-group-vertical lista-bottone">
-<!-- li devi far visualizzare dinamicamente 
-<button type="button" class="btn btn-light border border-dark">Cerca Tutor</button>
-<button type="button" class="btn btn-light border border-dark">Fai Domanda al Tutor</button>-->
  
   <button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style="background-color:#cccccc;">Mio Account</button>
  
@@ -74,7 +71,6 @@ Account Tutor
   </a>
   
   <%}%>
-  <!-- gli altri bottoni li devi fare dinamucamente -->
 </div>
 </div>
 <div class="col-4">
@@ -149,8 +145,8 @@ if(img != null){ %>
 <button type="button" class="btn btn-light border border-dark">Modifica Account</button>
 </a>
 <span class="position-bottom">
-<a  href="EliminaAccount" title="Elimina Account">
-<button type="button" class="btn btn-light border border-dark">Elimina Account</button>
+<a href="" title="Elimina Account">
+<button type="button" id="delete" class="btn btn-light border border-dark">Elimina Account</button>
 </a>
 </span>
 </div>
@@ -159,5 +155,18 @@ if(img != null){ %>
 </div>
 </section>
 </div>
+<script type="text/javascript" src="jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#delete").click(function(){
+	  var x = confirm("Vuoi davvero eliminare l'account?");  
+		if(x == true){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET","EliminaAccount" , true);
+			xmlhttp.send();
+		}
+	});
+});
+</script>
 </body>
 </html>
