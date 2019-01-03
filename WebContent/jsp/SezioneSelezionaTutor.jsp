@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import ="java.util.List" %>
+    pageEncoding="ISO-8859-1" import ="java.util.List" import="java.util.Iterator" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,8 +54,8 @@ Student's Help Line
 		  <a style="text-decoration:none">
 		<% 
 		List <String> listaTutor= (List <String>) request.getAttribute("listaTutor");
-		iterator it= listaTutor.iterator();
-		for(int i=0; i< listaTutor.lenght;i++){
+		Iterator it= listaTutor.iterator();
+		for(int i=0; i< listaTutor.size();i++){
 			%>
 			<div class="row"> 
 			<div class="col-xs-12 col-sm-6 col-md-3"> 
