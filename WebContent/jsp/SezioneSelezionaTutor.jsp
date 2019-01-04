@@ -5,12 +5,27 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="../css/SelezionaMateria.css">
-<link rel="icon" type="image" href="../img/ICONA.ico">
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
 
 <style>
+.header {
+  padding: 0.05px;
+  text-align: center;
+  background: #2b78e4;
+  color: white;
+  font-size: 30px;
+}
+
+.rectangle {
+padding-top: 22px;
+background: #CCCCCC;
+border-style: solid;
+ text-align: center;
+}
 .footer {
   position: fixed;
   width: 100%;
@@ -20,59 +35,54 @@
   color: white;
   font-size: 20px;
 }
+
+
+.imgs {
+  max-width: 25%;
+  height: auto;
+
+}
 </style>
+<div class="header">
+  <img class="left" src="img/2.PNG"><br><br>
+ </div>
 <title>STUDENT'S HELP LINE</title>
+
+
 </head>
 <body>
 
-<div id="page">
-<header id=header">
-<div class="header-content">
-<div class="image-logo">
-	<img class="position" src="../img/logo.jpg" alt="StudentHelpline">
-</div>
-<div class="Name-Sito">
-Student's Help Line
+
 </div>
 </div>
-<nav class="navbar navbar-custom">
-<div class="Name-barra">
-<center>SELEZIONA TUTOR</center>
+
+<div class="rectangle">
+<center><strong><h2>SELEZIONA TUTOR</h2></strong></center><br><br>
 </div>
-<a  href="/" title="Logout">
-<img class="log" src="../img/logout.svg"></img>
 </a>
 </nav>
+</div><br><br>
+<div id ="card" class="card-deck" style="width: 30%;padding-left:5%;">
+
+<%  
+			List <String> listaTutor= (List <String>) request.getAttribute("listaTutor");
+			Iterator it=listaTutor.iterator();
+			for(int i=0; i< listaTutor.size();i++){
+				String nome=(String) it.next();
+				//String cognome=(String) it.next();
+				//String email=(String) it.next();
+				//String valutazioneP =(String) it.next();
+				//String valutazioneN =(String) it.next();
+				
+				out.println("<div class='card' style='margin-top:10px; width:350px; margin-left:20px; margin-bottom:20px;'><img  src='img/AccountsenzaFoto.png'><div class='card-body'><h5 class='card-title'>Tutor</h5><p class='card-text'>"+nome  +"<br><img  src='img/+.png' width='30' height='30'>&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;<img  src='img/-.png' width='30' height='30'>&nbsp;&nbsp;&nbsp;20<center><input type='submit' value='FAI DOMANDA'></center></p></div></div>");
+				
+			}			
+%>
+
 </div>
-</header>
+<div>
 <div class="footer">
 <h1>STUDENT'S HELP LINE. SEE MORE. DO MORE.</h1>
-</div>
-		
-		<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-3">
-		  <div class="container img-thumbnail">
-		  <a style="text-decoration:none">
-		<% //prova 
-		List <String> listaTutor= (List <String>) request.getAttribute("listaTutor");
-		Iterator it= listaTutor.iterator();
-		for(int i=0; i< listaTutor.size();i++){
-			%>
-			<div class="row"> 
-			<div class="col-xs-12 col-sm-6 col-md-3"> 
-			<div class="container img-thumbnail"> 
-			<a style="text-decoration:none""> 
-			<span class="text"> 
-			<font color="black"> <%out.println(it.next()); out.println(it.next()); %> </font></span><br>
-			<center><input type="submit" value="FAI DOMANDA" id="lg"name="button"><br><br></center>")
-			<% }%>
-			</a>
-		  </div>
-		  </div>
-		  
-		  
-	
-	</div>
 </div>
 </body>
 </html>
