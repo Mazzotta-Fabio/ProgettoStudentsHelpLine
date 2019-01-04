@@ -91,8 +91,9 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 	public void inserisciDomanda(String oggetto, String testo,String url,String emailT,String emailS) {
 		Tutor t = new Tutor(null, null, emailT, null, null, null, null, null, null);
 		Studente s = new Studente(null, null, emailS, null, null, null, null);
-		Risposta r = new Risposta(0, null, null,null);
-		Domanda d = new Domanda(0, testo, oggetto, url, s, t, r);
+		Risposta r = new Risposta(1, null, null,null, null); 	//1 perchè su database la risposta 1 sarà sempre vuota, esiste 
+														//solo per creare il collegamento visto che c'è chiave esterna;
+		Domanda d = new Domanda(0, testo, oggetto, url, s, t, r, "no");
 	    FactoryDAO fd = new FactoryDAO();
 	    ObjectDAO o = fd.getObject("Domanda");
 	    try {
@@ -104,7 +105,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 
 	@Override
 	public void valutaRisposta(int id, String valutazione) {
-		Risposta r = new Risposta(id,null,null, null);
+		Risposta r = new Risposta(id,null,null, null, null);
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Risposta");
 		try {

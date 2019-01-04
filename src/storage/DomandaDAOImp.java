@@ -40,7 +40,7 @@ public class DomandaDAOImp implements ObjectDAO {
       prepared.setString(1, d.getTesto());
       prepared.setString(2, d.getAllegato());
       prepared.setString(3, d.getOggetto());
-      prepared.setString(4, "no");
+      prepared.setString(4, d.getVis());
       prepared.setString(5, d.getStudente().getEmail());
       prepared.setString(6, d.getTutor().getEmail());
       prepared.setInt(7, d.getRisposta().getId());
@@ -80,7 +80,7 @@ public class DomandaDAOImp implements ObjectDAO {
 		d.setStudente(s);
         Tutor t = new Tutor(null, null, result.getString("Tutor"), null, null, null, null, null, null);
 		d.setTutor(t);
-        Risposta r = new Risposta (Integer.parseInt(result.getString("Risposta")), null,null,null);
+        Risposta r = new Risposta (Integer.parseInt(result.getString("Risposta")), null,null,null, null);
 		d.setRisposta(r);
       }
       return false;
@@ -99,7 +99,7 @@ public class DomandaDAOImp implements ObjectDAO {
     ResultSet result = (ResultSet) query.executeQuery("select * from domanda;");
     while (result.next())
     {
-       	Domanda d = new Domanda (0, null, null, null, null, null, null);
+       	Domanda d = new Domanda (0, null, null, null, null, null, null, null);
        	d.setId(Integer.parseInt(result.getString("IdDomanda")));
        	d.setTesto(result.getString("Contenuto"));
         d.setAllegato(result.getString("Allegato"));
@@ -108,8 +108,9 @@ public class DomandaDAOImp implements ObjectDAO {
 		d.setStudente(s);
         Tutor t = new Tutor(null, null, result.getString("Tutor"), null, null, null, null, null, null);
 		d.setTutor(t);
-        Risposta r = new Risposta (Integer.parseInt(result.getString("Risposta")), null,null,null);
+        Risposta r = new Risposta (Integer.parseInt(result.getString("Risposta")), null,null,null, null);
 		d.setRisposta(r);
+		d.setVis(result.getString("Visualizzata"));
         listaD.add(d);
     }
     return listaD;

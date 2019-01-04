@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import classiComuni.Studente;
 import classiComuni.Tutor;
+import gestioneDomanda.GestioneDomanda;
+import gestioneDomanda.ImpGestioneDomanda;
 import gestioneUtente.GestioneUtente;
 import gestioneUtente.ImpGestioneUtente;
 
@@ -44,6 +46,10 @@ public class ServletFormModifica extends HttpServlet {
 				request.setAttribute("Cellulare",t.getNumeroDiCellulare());
 				request.setAttribute("Titolo",t.getTitoloDiStudio());
 				request.setAttribute("Voto",t.getVotoDiLaurea());
+				GestioneDomanda d = new ImpGestioneDomanda();
+				boolean vis = d.risposteDaVisualizzare(email);
+				if (vis == true) {session.setAttribute("vis", "si");}
+				else {session.setAttribute("vis", "no");}
 				RequestDispatcher view = request.getRequestDispatcher("Account.jsp");
 				view.forward(request, response);
 			} else {
@@ -54,6 +60,10 @@ public class ServletFormModifica extends HttpServlet {
 				request.setAttribute("Immagine",s.getLinkImmagine());
 				request.setAttribute("Matricola",s.getMatricola());
 				request.setAttribute("Anno",s.getAnnoCorso());	
+				GestioneDomanda d = new ImpGestioneDomanda();
+				boolean vis = d.domandeDaVisualizzare(email);
+				if (vis == true) {session.setAttribute("vis", "si");}
+				else {session.setAttribute("vis", "no");}
 				RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
 				view.forward(request, response);
 		}

@@ -34,10 +34,11 @@ public class RispostaDAOImp implements ObjectDAO {
       Risposta r = (Risposta) o;
  
       PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into risposta (Contenuto,"
-          + "Allegato,Valutazione) values (?,?,?);");
+          + "Allegato,Visualizzata,Valutazione) values (?,?,?);");
       prepared.setString(1, r.getTesto());
       prepared.setString(2, r.getAllegato());
-      prepared.setString(3, r.getValutazione());
+      prepared.setString(3, r.getVis());
+      prepared.setString(4, r.getValutazione());
       prepared.executeUpdate();
   }
 
@@ -89,11 +90,12 @@ public class RispostaDAOImp implements ObjectDAO {
     ResultSet result = (ResultSet) query.executeQuery("select * from risposta;");
     while (result.next())
     {
-        Risposta r = new Risposta(0, null, null, null);
+        Risposta r = new Risposta(0, null, null, null, null);
         r.setId(result.getInt("IdRisposta"));
         r.setTesto(result.getString("Contenuto"));
         r.setAllegato(result.getString("Allegato"));
         r.setValutazione(result.getString("Valutazione"));
+        r.setVis(result.getString("Visualizzata"));
         listaR.add(r);
     }
     return listaR;

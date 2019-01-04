@@ -34,12 +34,13 @@ public class ServletTabDomandaSenzaRisposta extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		String email = (String) session.getAttribute("EmailUtente");
+		String email = (String) session.getAttribute("email");
 		GestioneDomanda d = new ImpGestioneDomanda();
 		List<String> listaDomande = d.recuperaDomandeSenzaRisposta(email);
+		if (session.getAttribute("tipo").equals("Tutor")) {d.settaViste(email, "Tutor");}
 
 		request.setAttribute("listaDomande", listaDomande);
-		RequestDispatcher view = request.getRequestDispatcher("../view/DomandaRisposte.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("../jsp/DomandaRisposte.jsp");
 		view.forward(request, response);
 	}
 
