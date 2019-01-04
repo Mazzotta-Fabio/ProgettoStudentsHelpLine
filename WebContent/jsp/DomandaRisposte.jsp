@@ -40,7 +40,7 @@ Domande Risposte
 <div class="btn-group-vertical lista-bottone">
  
 <%if(session.getAttribute("tipo").equals("Studente")){%>
-<a  href="Login" title="Mio Account">
+<a  href="ServletFormModifica" title="Mio Account">
   <button type="button" class="MioAccount btn btn-light border border-dark">Mio Account</button>
   </a> 
   
@@ -55,7 +55,7 @@ Domande Risposte
   </a>
   
   <%}else{%>
-  <a  href="Login" title="Mio Account">
+  <a  href="ServletFormModifica" title="Mio Account">
   <button type="button" class="MioAccount btn btn-light border border-dark" style="width:166%;">Mio Account</button>
   </a> 
   <button type="button" class="Domande_Risposte btn btn-light border border-dark" style="background-color:#cccccc; width:108%;">Domande Risposte</button>

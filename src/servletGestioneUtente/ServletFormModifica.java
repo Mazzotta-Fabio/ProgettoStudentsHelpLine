@@ -31,8 +31,8 @@ public class ServletFormModifica extends HttpServlet {
 
 		GestioneUtente u = new ImpGestioneUtente();
 		HttpSession session = request.getSession();
-		String email = (String) session.getAttribute("EmailUtente");
-		String tipo = request.getParameter("tipoUtente");
+		String email = (String) session.getAttribute("email");
+		String tipo = (String) session.getAttribute("tipo");
 		
 		if(tipo.equals("Tutor")) {
 				Tutor t = (Tutor) u.infoAccount(email, tipo);
