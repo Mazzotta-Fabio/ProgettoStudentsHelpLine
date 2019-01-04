@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.Enumeration"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,22 +49,34 @@ Account Tutor
   <button type="button" class="Fai_Domanda_al_Tutor btn btn-light border border-dark">Fai Domanda al Tutor</button>
   </a>
   
+  <%if(session.getAttribute("vis").equals("si")){ %>
+  	<a  href="ServletTabDomandaRisposte" title="Domande Risposte">
+  <button type="button" class="Domande_Risposte btn btn-light border border-dark">Domande Risposte <img src="img/CerchioBlu.png" style="width:5%;"></img></button>
+  </a>
+  <%}else{ %>
   <a  href="ServletTabDomandaRisposte" title="Domande Risposte">
   <button type="button" class="Domande_Risposte btn btn-light border border-dark">Domande Risposte</button>
   </a>
+  <%} %>
   
   <a  href="ServletTabDomandaSenzaRisposta" title="Domande senza Risposta">
   <button type="button" class="btn btn-light border border-dark">Domande senza Risposta</button>
   </a>
   
   <%}else{%>
-  	<a  href="ServletTabDomandaRisposte" title="Fai Domanda al Tutor">
+  	<a  href="ServletTabDomandaRisposte" title="Domande Risposte">
   <button type="button" class="btn btn-light border border-dark" style="width:120%;">Domande Risposte</button>
   </a>
   
+  <%if(session.getAttribute("vis").equals("si")){ %>
+  <a  href="ServletTabDomandaSenzaRisposta" title="Domande Risposte">
+  <button type="button" class="btn btn-light border border-dark">Domande non Risposte <img src="img/CerchioBlu.png" style="width:5%;"></img></button>
+  </a>
+  <%}else{ %>
   <a  href="ServletTabDomandaSenzaRisposta" title="Domande Risposte">
   <button type="button" class="btn btn-light border border-dark">Domande non Risposte</button>
   </a>
+  <%} %>
   
   <a  href="ServletVisualizzaValutazioniTot" title="Visualizza Valutazioni">
   <button type="button" class="btn btn-light border border-dark" style="width:109%;">Visualizza Valutazioni</button>
