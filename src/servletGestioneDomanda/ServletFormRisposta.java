@@ -28,8 +28,9 @@ public class ServletFormRisposta extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("idDomanda", request.getAttribute("IdDomanda"));
-		RequestDispatcher view = request.getRequestDispatcher("Risposta.jsp");
+		String id = (String) request.getParameter("IdDomanda");
+		request.setAttribute("id", id);
+		RequestDispatcher view = request.getRequestDispatcher("jsp/SezioneRisposta.jsp");
 		view.forward(request, response);
 	}
 

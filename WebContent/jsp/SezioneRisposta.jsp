@@ -31,19 +31,10 @@ Student's Help Line
 </nav>
 </div>
 </header>
-<p>
-<form>
-</form>
-<center>Invia a:<% //studente %></center>
-</p>
-<p>
-
-
-<center><font color="black"><strong>Cosa vuoi rispondere?</strong></font><br><br>
-<input name="testo" type="text" value="Inserisci qui il testo" size="80" maxlength="200" /></center><br>
-<p>
-<center><font color="black"><strong>Allega file</strong></font><br><br>
-<input type="file" name="allegato"> <br><br>
+<form enctype="multipart/form-data" action="../ServletInserisciRisposta.html" method="post">
+<input type="hidden" name="id" value="<%=request.getAttribute("id")%>">
+<p><center><font color="black"><strong>Cosa vuoi rispondere?</strong></font></p><textarea name="testo"></textarea><br><br>
+<p><center><font color="black"><strong>Allega file</strong></font></center></p><input type="file" name="file"> <br><br>
 <input type="submit" value="INVIA"><br><br></center>
 </form>
 
