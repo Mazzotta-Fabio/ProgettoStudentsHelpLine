@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.Session;
@@ -15,8 +17,11 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Part;
 
+import classiComuni.Domanda;
 import classiComuni.Studente;
 import classiComuni.Tutor;
+import gestioneDomanda.GestioneDomanda;
+import gestioneDomanda.ImpGestioneDomanda;
 import storage.FactoryDAO;
 import storage.ObjectDAO;
 
@@ -158,20 +163,59 @@ public class ImpGestioneUtente implements GestioneUtente {
 	}
 
 	@Override
-	public void eliminaAccount(String destinatario,String tipo) {
+	public void eliminaAccount(String email,String tipo) {
+		int i;
 		if(tipo.equals("tutor")) {
-			Tutor t = new Tutor(null, null,destinatario, null, null, null, null, null, null);
+			Tutor t = new Tutor(null, null,email, null, null, null, null, null, null);
 			FactoryDAO fDAO = new FactoryDAO();
-		    ObjectDAO o = fDAO.getObject("Tutor");
+			ObjectDAO o = fDAO.getObject("Domanda");
+			List<Object> listaD = null;
+			try {
+				listaD = o.recuperaTutto();
+			} catch (NumberFormatException e1) {
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			for(i=0;i<listaD.size();i++) {
+				 Domanda dom = (Domanda) listaD.get(i);
+				 if(dom.getTutor().getEmail().equals(email)) {
+					 try {
+						 o.cancellaDati(dom);
+					 } catch (SQLException e) {
+						 e.printStackTrace();
+					 }
+				 }
+			}
+		    o = fDAO.getObject("Tutor");
 			try {
 				o.cancellaDati(t);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		} else {
-			Studente s = new Studente(null, null,destinatario,null, null, null, null);
+			Studente s = new Studente(null, null,email,null, null, null, null);
 			FactoryDAO fDAO = new FactoryDAO();
-		    ObjectDAO o = fDAO.getObject("Tutor");
+			ObjectDAO o = fDAO.getObject("Domanda");
+			List<Object> listaD = null;
+			try {
+				listaD = o.recuperaTutto();
+			} catch (NumberFormatException e1) {
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			for(i=0;i<listaD.size();i++) {
+				 Domanda dom = (Domanda) listaD.get(i);
+				 if(email.equals(dom.getStudente().getEmail())) {
+					 try {
+						 o.cancellaDati(dom);
+					 } catch (SQLException e) {
+						 e.printStackTrace();
+					 }
+				 }
+			}
+		    o = fDAO.getObject("Studente");
 			try {
 				o.cancellaDati(s);
 			} catch (SQLException e) {
