@@ -67,6 +67,7 @@ public class DomandaDAOImp implements ObjectDAO {
    */
   public boolean recuperaDati(Object o) throws SQLException {
     Domanda d = (Domanda) o;
+    String testo=d.getTesto();
 
       PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from domanda where IdDomanda = ?;");
       prepared.setInt(1,d.getId());
@@ -82,9 +83,9 @@ public class DomandaDAOImp implements ObjectDAO {
 		d.setTutor(t);
         Risposta r = new Risposta (Integer.parseInt(result.getString("Risposta")), null,null,null, null);
 		d.setRisposta(r);
+		 if(d.getTesto().equals(testo)) {return true;} 
       }
-      if(d.getTesto() != null) {return true;} 
-      else {return false;}
+      return false;
   	}
 
   /**

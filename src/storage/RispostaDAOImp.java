@@ -64,6 +64,7 @@ public class RispostaDAOImp implements ObjectDAO {
   @Override
   public boolean recuperaDati(Object o) throws SQLException {
     Risposta r = (Risposta) o;
+    String testo=r.getTesto();
 
     PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from risposta where "
    		+ "IdRisposta = ?;");
@@ -75,9 +76,9 @@ public class RispostaDAOImp implements ObjectDAO {
       r.setAllegato(result.getString("Allegato"));
       r.setVis(result.getString("Visualizzata"));
       r.setValutazione(result.getString("Valutazione"));
+      if(r.getTesto().equals(testo)) {return true;} 
     }
-    if(r.getTesto() != null) {return true;} 
-    else {return false;}
+    return false;
   }
   
   /**
