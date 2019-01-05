@@ -31,21 +31,13 @@ Student's Help Line
 </nav>
 </div>
 </header>
-<p>
-<center>Invia a:<% //nome %> <%//cognome %> </center>
-</p>
-<p>
-
-<center><font color="black"><strong>Oggetto della domanda:</strong></font>&nbsp;&nbsp;
-<input type="text" name="user"id="u"><br><br></center>
-</p>
-<center><font color="black"><strong>Che vuoi chiedere?</strong></font><br><br>
-<input name="mioTesto" type="text" value="Inserisci qui il testo" size="80" maxlength="200" /></center><br>
-<p>
-<center><font color="black"><strong>Allega file</strong></font><br><br>
-<input type="file" name="allegato"> <br><br>
+<body>
+<form enctype="multipart/form-data" action="ServletInserisciDomanda.html" method="post">
+<p>Invia a:</p><input type="text" name="tutor" value="<%=request.getAttribute("Tutor")%>"><br><br>
+<p><font color="black"><strong>Oggetto della domanda:</strong></font></p><input type="text" name="oggetto"><br><br>
+<p><font color="black"><strong>Che vuoi chiedere?</strong></font></p><textarea name="testo"></textarea><br><br>
+<p><font color="black"><strong>Allega file</strong></font></p><input type="file" name="file"><br><br>
 <input type="submit" value="INVIA" id="log"name="button"><br><br></center>
-
-
+</form>
 </body>
 </html>

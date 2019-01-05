@@ -67,14 +67,15 @@ border-style: solid;
 <%  
 			List <String> listaTutor= (List <String>) request.getAttribute("listaTutor");
 			Iterator it=listaTutor.iterator();
-			for(int i=0; i< listaTutor.size();i++){
+			for(int i=0; i< listaTutor.size()/6;i++){
 				String nome=(String) it.next();
-				//String cognome=(String) it.next();
-				//String email=(String) it.next();
-				//String valutazioneP =(String) it.next();
-				//String valutazioneN =(String) it.next();
+				String cognome=(String) it.next();
+				String url =(String) it.next();
+				String valutazioneP =(String) it.next();
+				String valutazioneN =(String) it.next();
+				String email=(String) it.next();
 				
-				out.println("<div class='card' style='margin-top:10px; width:350px; margin-left:20px; margin-bottom:20px;'><img  src='img/AccountsenzaFoto.png'><div class='card-body'><h5 class='card-title'>Tutor</h5><p class='card-text'>"+nome  +"<br><img  src='img/+.png' width='30' height='30'>&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;<img  src='img/-.png' width='30' height='30'>&nbsp;&nbsp;&nbsp;20<center><input type='submit' value='FAI DOMANDA'></center></p></div></div>");
+				out.println("<div class='card'><img  src='img/AccountsenzaFoto.png'><div class='card-body'><h5 class='card-title'>Tutor</h5><p class='card-text'>"+nome +" "+cognome+"<br><img  src='img/+.png' width='30' height='30'>&nbsp;&nbsp;&nbsp;"+valutazioneP+"&nbsp;&nbsp;&nbsp;<img  src='img/-.png' width='30' height='30'>&nbsp;&nbsp;&nbsp;"+valutazioneN+"<center><a href='ServletFormDomanda?tutor="+email+"'> FAI DOMANDA ></center></p></div></div>");
 				
 			}			
 %>
