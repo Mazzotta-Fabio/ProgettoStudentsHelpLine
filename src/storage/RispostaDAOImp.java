@@ -73,9 +73,11 @@ public class RispostaDAOImp implements ObjectDAO {
     {
       r.setTesto(result.getString("Contenuto"));
       r.setAllegato(result.getString("Allegato"));
+      r.setVis(result.getString("Visualizzata"));
       r.setValutazione(result.getString("Valutazione"));
     }
-    return false;
+    if(r.getTesto() != null) {return true;} 
+    else {return false;}
   }
   
   /**

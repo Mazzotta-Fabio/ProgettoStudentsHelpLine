@@ -83,7 +83,8 @@ public class DomandaDAOImp implements ObjectDAO {
         Risposta r = new Risposta (Integer.parseInt(result.getString("Risposta")), null,null,null, null);
 		d.setRisposta(r);
       }
-      return false;
+      if(d.getTesto() != null) {return true;} 
+      else {return false;}
   	}
 
   /**
