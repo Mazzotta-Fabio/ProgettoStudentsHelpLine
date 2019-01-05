@@ -17,7 +17,7 @@ import gestioneInterazioneTutorStudente.ImpGestioneInterazioneTutorStudente;
 /**
  * Servlet implementation class ServletInserisciDomanda
  */
-@WebServlet("/ServletInserisciDomanda")
+@WebServlet("/ServletInserisciDomanda.html")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
 maxFileSize = 1024 * 1024 * 10,
 maxRequestSize = 1024 * 1024 * 50) 
@@ -30,6 +30,7 @@ public class ServletInserisciDomanda extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		Part part = request.getPart("file");
 		
 		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
@@ -43,8 +44,8 @@ public class ServletInserisciDomanda extends HttpServlet {
 		
 		i.inserisciDomanda(oggetto,testo,url,emailT,emailS);
 	    
-	    RequestDispatcher view = request.getRequestDispatcher("Home.html");
-		view.forward(request, response);
+	    /*RequestDispatcher view = request.getRequestDispatcher("Home.html");
+		view.forward(request, response);*/
 	    
 	}
 

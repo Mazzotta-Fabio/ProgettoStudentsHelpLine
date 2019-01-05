@@ -23,7 +23,7 @@ public class ServletFormDomanda extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("Tutor", request.getParameter("tutor"));
-		RequestDispatcher view = request.getRequestDispatcher("PaginaFormDomanda.html");
+		RequestDispatcher view = request.getRequestDispatcher("jsp/SezioneCompilaForm.jsp");
 		view.forward(request, response);
 	}
 
