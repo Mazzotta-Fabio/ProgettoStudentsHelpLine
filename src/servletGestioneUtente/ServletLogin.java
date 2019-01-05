@@ -43,6 +43,7 @@ public class ServletLogin extends HttpServlet {
 		HttpSession sessione = request.getSession();
 		sessione.setAttribute("email", email);  
 		sessione.setAttribute("tipo", tipo);		
+
 		
 		if(tipo.equals("Tutor")) {
 				Tutor t = (Tutor) u.loginAccount(email, password, tipo);
@@ -60,7 +61,8 @@ public class ServletLogin extends HttpServlet {
 					else {sessione.setAttribute("vis", "no");}
 					RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
 					view.forward(request, response);
-				} else {
+				}
+			} else {
 				Studente s = (Studente) u.loginAccount(email, password, tipo);
 				request.setAttribute("Nome",s.getNome());
 				request.setAttribute("Cognome",s.getCognome());
@@ -77,10 +79,7 @@ public class ServletLogin extends HttpServlet {
 				}
 			}
 		}			
-		
-		/*RequestDispatcher view = request.getRequestDispatcher("Home.html");
-		view.forward(request, response);*/
-	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
