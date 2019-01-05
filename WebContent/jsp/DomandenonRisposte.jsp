@@ -26,7 +26,11 @@ Student's Help Line
 </div>
 <nav class="navbar navbar-custom">
 <div class="Name-barra" style="margin-left:40%;">
-Domande Risposte
+<%if(session.getAttribute("tipo").equals("Studente")){%>
+Domande senza Risposta
+<%}else{ %>
+Domande non Risposte
+<%} %>
 </div>
 <a  href="Logout" title="Logout">
 <img class="log" src="img/logout.svg"></img>
@@ -47,27 +51,29 @@ Domande Risposte
   	<a  href="html/PaginaSelezionaMateria.html" title="Fai Domanda al Tutor">
   <button type="button" class="Fai_Domanda_al_Tutor btn btn-light border border-dark">Fai Domanda al Tutor</button>
   </a>
-  
-  <button type="button" class="Domande_Risposte btn btn-light border border-dark"style="background-color:#cccccc; width:114%;">Domande Risposte</button>
-  
-  <a  href="ServletTabDomandaSenzaRisposta" title="Domande senza Risposta">
-  <button type="button" class="btn btn-light border border-dark" style="width:114%;">Domande senza Risposta</button>
+  <%if(session.getAttribute("vis").equals("si")){ %>
+  <a  href="ServletTabDomandaRisposte" title="Domande Risposte">
+  <button type="button" class="Domande_Risposte btn btn-light border border-dark"style="width:127%;">Domande Risposte<img src="img/CerchioBlu.png" style="width:5%;"></img></button>
   </a>
+  <%}else{ %>
+  <a  href="ServletTabDomandaRisposte" title="Domande Risposte">
+  <button type="button" class="Domande_Risposte btn btn-light border border-dark"style="width:127%;">Domande Risposte</button>
+  </a>
+  <%} %>
+  
+  <button type="button" class="btn btn-light border border-dark" style="background-color:#cccccc; width:114%;">Domande senza Risposta</button>
+ 
   
   <%}else{%>
   <a  href="ServletFormModifica" title="Mio Account">
   <button type="button" class="MioAccount btn btn-light border border-dark" style="width:166%;">Mio Account</button>
-  </a> 
-  <button type="button" class="Domande_Risposte btn btn-light border border-dark" style="background-color:#cccccc; width:108%;">Domande Risposte</button>
-  <%if(session.getAttribute("vis").equals("si")){%>
-  <a  href="ServletTabDomandaSenzaRisposta" title="Domande non Risposte">
-  <button type="button" class="btn btn-light border border-dark" style="width:108%;">Domande non Risposte<img src="img/CerchioBlu.png" style="width:5%;"></img></button>
   </a>
-  <%}else{ %>
-  <a  href="ServletTabDomandaSenzaRisposta" title="Domande non Risposte">
-  <button type="button" class="btn btn-light border border-dark" style="width:108%;">Domande non Risposte</button>
+  
+   <a  href="ServletTabDomandaRisposte" title="Domande Risposte"> 
+  <button type="button" class="Domande_Risposte btn btn-light border border-dark" style="width:121%;">Domande Risposte</button>
   </a>
-  <%} %>
+  
+  <button type="button" class="btn btn-light border border-dark" style="background-color:#cccccc; width:108%;">Domande non Risposte</button>
   
   <a  href="ServletVisualizzaValutazioniTot" title="Visualizza Valutazioni">
   <button type="button" class="btn btn-light border border-dark" style="width:109%;">Visualizza Valutazioni</button>

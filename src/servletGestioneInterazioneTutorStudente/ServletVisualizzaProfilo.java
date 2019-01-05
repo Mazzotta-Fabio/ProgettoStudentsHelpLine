@@ -1,6 +1,8 @@
 package servletGestioneInterazioneTutorStudente;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,24 +34,28 @@ public class ServletVisualizzaProfilo extends HttpServlet {
 		if (o == null) {request.setAttribute("tipo", "nessuno");}
 		else if (o instanceof Studente) {
 			Studente s = (Studente) o;
-			request.setAttribute("tipo", "studente");
-			request.setAttribute("nome", s.getNome());
-			request.setAttribute("cognome", s.getCognome());
+			request.setAttribute("tipo", "Studente");
+			request.setAttribute("Nome", s.getNome());
+			request.setAttribute("Cognome", s.getCognome());
 			request.setAttribute("email", s.getEmail());
-			request.setAttribute("immagine", s.getLinkImmagine());
-			request.setAttribute("matricola", s.getMatricola());
-			request.setAttribute("anno", s.getAnnoCorso());
+			request.setAttribute("Immagine", s.getLinkImmagine());
+			request.setAttribute("Matricola", s.getMatricola());
+			request.setAttribute("Anno", s.getAnnoCorso());
+			RequestDispatcher view = request.getRequestDispatcher("jsp/VisualizzaAccount.jsp");
+			view.forward(request, response);
 		} else {
 			Tutor t = (Tutor) o;
-			request.setAttribute("tipo", "tutor");
-			request.setAttribute("nome", t.getNome());
-			request.setAttribute("cognome", t.getCognome());
+			request.setAttribute("tipo", "Tutor");
+			request.setAttribute("Nome", t.getNome());
+			request.setAttribute("Cognome", t.getCognome());
 			request.setAttribute("email", t.getEmail());
-			request.setAttribute("immagine", t.getLinkImmagine());
-			request.setAttribute("materia", t.getMateriaDiCompetenza());
-			request.setAttribute("numero", t.getNumeroDiCellulare());
-			request.setAttribute("titolo", t.getTitoloDiStudio());
-			request.setAttribute("voto", t.getVotoDiLaurea());
+			request.setAttribute("Immagine", t.getLinkImmagine());
+			request.setAttribute("Materia", t.getMateriaDiCompetenza());
+			request.setAttribute("Cellulare", t.getNumeroDiCellulare());
+			request.setAttribute("Titolo", t.getTitoloDiStudio());
+			request.setAttribute("Voto", t.getVotoDiLaurea());
+			RequestDispatcher view = request.getRequestDispatcher("jsp/VisualizzaAccount.jsp");
+			view.forward(request, response);
 		}
 	}
 
