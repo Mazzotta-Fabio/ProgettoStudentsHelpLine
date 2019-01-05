@@ -36,7 +36,7 @@ public class ServletVisualizzaDomanda extends HttpServlet {
 		GestioneDomanda d = new ImpGestioneDomanda();
 		ArrayList<String> listaInfo = d.visualizzaDomanda(ID);
 		request.setAttribute("listaInfo", listaInfo);
-		RequestDispatcher view = request.getRequestDispatcher("Home.html");
+		RequestDispatcher view = request.getRequestDispatcher("");
 		view.forward(request, response);
 	}
 
