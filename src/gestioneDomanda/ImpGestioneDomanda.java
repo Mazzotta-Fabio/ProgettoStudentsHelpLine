@@ -127,9 +127,6 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		listaInfo.add(d.getAllegato());
-		listaInfo.add(d.getOggetto());
-		listaInfo.add(d.getTesto());
 		
 		Studente s = d.getStudente(); 
 		o = fd.getObject("Studente");
@@ -139,6 +136,10 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 			e.printStackTrace();
 		}
 		listaInfo.add(d.getStudente().getEmail());
+		listaInfo.add(d.getOggetto());
+		listaInfo.add(d.getAllegato());
+		listaInfo.add(d.getTesto());
+		listaInfo.add(String.valueOf(d.getId()));
  
 		Tutor t = d.getTutor(); 
 		o = fd.getObject("Tutor");
@@ -159,6 +160,8 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		listaInfo.add(r.getTesto());
 		listaInfo.add(r.getAllegato());
 		listaInfo.add(r.getValutazione());
+		listaInfo.add(String.valueOf(r.getId()));
+		listaInfo.add(String.valueOf(r.getId()));
 		
 		return listaInfo;
 	}
