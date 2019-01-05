@@ -33,7 +33,7 @@ public class ServletVisualizzaValutazioniTot extends HttpServlet {
 		
 		request.setAttribute("like", voti[0]);
 		request.setAttribute("dislike", voti[1]);
-		RequestDispatcher view = request.getRequestDispatcher("Valutazioni.html");
+		RequestDispatcher view = request.getRequestDispatcher("jsp/VisualizzaValutazioni.jsp");
 		view.forward(request, response);
 	}
 
