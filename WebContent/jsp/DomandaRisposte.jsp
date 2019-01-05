@@ -55,23 +55,33 @@ Domande Risposte
   </a>
   
   <%}else{%>
+  
+  
+  <%if(session.getAttribute("vis").equals("si")){%>
+  <a  href="ServletFormModifica" title="Mio Account">
+  <button type="button" class="MioAccount btn btn-light border border-dark" style="width:186%;">Mio Account</button>
+  </a> 
+  <button type="button" class="Domande_Risposte btn btn-light border border-dark" style="background-color:#cccccc; width:121%;">Domande Risposte</button>
+  
+  <a  href="ServletTabDomandaSenzaRisposta" title="Domande non Risposte">
+  <button type="button" class="btn btn-light border border-dark" style="width:121%;">Domande non Risposte         <img src="img/CerchioBlu.png" style="width:10%;"></img></button>
+  </a>
+<a  href="ServletVisualizzaValutazioniTot" title="Visualizza Valutazioni">
+  <button type="button" class="btn btn-light border border-dark" style="width:123%;">Visualizza Valutazioni</button>
+  </a>
+  <%}else{ %>
   <a  href="ServletFormModifica" title="Mio Account">
   <button type="button" class="MioAccount btn btn-light border border-dark" style="width:166%;">Mio Account</button>
   </a> 
   <button type="button" class="Domande_Risposte btn btn-light border border-dark" style="background-color:#cccccc; width:108%;">Domande Risposte</button>
-  <%if(session.getAttribute("vis").equals("si")){%>
-  <a  href="ServletTabDomandaSenzaRisposta" title="Domande non Risposte">
-  <button type="button" class="btn btn-light border border-dark" style="width:108%;">Domande non Risposte<img src="img/CerchioBlu.png" style="width:5%;"></img></button>
-  </a>
-  <%}else{ %>
   <a  href="ServletTabDomandaSenzaRisposta" title="Domande non Risposte">
   <button type="button" class="btn btn-light border border-dark" style="width:108%;">Domande non Risposte</button>
   </a>
-  <%} %>
-  
   <a  href="ServletVisualizzaValutazioniTot" title="Visualizza Valutazioni">
   <button type="button" class="btn btn-light border border-dark" style="width:109%;">Visualizza Valutazioni</button>
   </a>
+  <%} %>
+  
   
   <%}%>
   </div>

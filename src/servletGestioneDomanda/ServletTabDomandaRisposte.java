@@ -18,7 +18,7 @@ import gestioneDomanda.ImpGestioneDomanda;
  * @author Antonio Cimino
  * @version 1.0
  */
-@WebServlet("/ServletTabDomandaRisposte.html")
+@WebServlet("/ServletTabDomandaRisposte")
 public class ServletTabDomandaRisposte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
