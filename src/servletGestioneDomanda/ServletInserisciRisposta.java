@@ -17,7 +17,7 @@ import gestioneInterazioneTutorStudente.ImpGestioneInterazioneTutorStudente;
 /**
  * Servlet implementation class ServletInserisciRisposta
  */
-@WebServlet("/ServletInserisciRisposta")
+@WebServlet("/ServletInserisciRisposta.html")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
 maxFileSize = 1024 * 1024 * 10,
 maxRequestSize = 1024 * 1024 * 50) 
@@ -41,8 +41,8 @@ public class ServletInserisciRisposta extends HttpServlet {
 		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
 	    String url = i.upload(part);
 		
-		int idDomanda = Integer.parseInt(request.getParameter("IdDomanda"));
-		String testo = request.getParameter("IdDomanda");
+		int idDomanda = Integer.parseInt(request.getParameter("id"));
+		String testo = request.getParameter("testo");
 		
 		GestioneDomanda d = new ImpGestioneDomanda();
 		d.inserisciRisposta(testo, idDomanda, url);
