@@ -17,19 +17,19 @@ public class ProvaDomanda {
 		String a = "a";
 		FactoryDAO f = new FactoryDAO();
 		ObjectDAO oggetto = f.getObject("Domanda");
-		ObjectDAO oggetto2 = null;
+		//ObjectDAO oggetto2 = null;
 		  
 		Studente s = new Studente(null, null, a, null, null, null, null);
 		Tutor t = new Tutor(null, null, a, null, null, null, null, null, null);
-		Risposta r = new Risposta (1, null,null,null);
-		Domanda o = new Domanda(0, a, a, "Ciao sono l'allegato", s, t, r);
+		Risposta r = new Risposta (1, null,null,null, null);
+		Domanda o = new Domanda(0, a, a, "Ciao sono l'allegato", s, t, r, a);
 		try {
 			oggetto.inserisciDati(o);
 		} catch (SQLException e3) {
 			e3.printStackTrace();
 		}
-		            
-		Domanda d = new Domanda(13, null, null, null, null, null, null);
+	}		/*            
+		Domanda d = new Domanda(13, null, null, null, null, null, null, null);
 		try {
 			oggetto.recuperaDati(d);
 		} catch (SQLException e2) {
@@ -83,5 +83,5 @@ public class ProvaDomanda {
 		   	  System.out.println("Nessuna risposta\n\n");
 		    }
 		}
-	 }
+	 }*/
 }
