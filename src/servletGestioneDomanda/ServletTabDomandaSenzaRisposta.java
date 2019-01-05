@@ -40,7 +40,7 @@ public class ServletTabDomandaSenzaRisposta extends HttpServlet {
 		if (session.getAttribute("tipo").equals("Tutor")) {d.settaViste(email, "Tutor");}
 
 		request.setAttribute("listaDomande", listaDomande);
-		RequestDispatcher view = request.getRequestDispatcher("../jsp/DomandenonRisposte.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("jsp/DomandenonRisposte.jsp");
 		view.forward(request, response);
 	}
 
