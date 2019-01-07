@@ -64,8 +64,8 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 	}
 
 	/**
-	 * Il metodo serve per recuperare tutte le domande senza risposta dal DataBase apparten.
-	 * @param id: sono uno la password da inviare e l'altro l'email dove inviare l'email
+	 * Il metodo serve per recuperare tutte le domande senza risposta dal DataBase di un utente.
+	 * @param email: chiave primaria di un utente.
 	 */
 	public List<String> recuperaDomandeSenzaRisposta(String email) {
 		FactoryDAO fd = new FactoryDAO();
