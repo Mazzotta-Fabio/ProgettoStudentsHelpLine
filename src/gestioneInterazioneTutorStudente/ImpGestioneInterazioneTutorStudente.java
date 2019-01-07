@@ -68,7 +68,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
     /**
 	 * Il metodo serve per capire se ci sono domande da visualizzare.
 	 * @param email: chiave primaria di una utente.
-	 * @param tipo: tipo di utente.
+	 * @param tipo: tipo di utent.
 	 */
 	public List<String> listaTutor(String materia) {
 		System.out.println("la materia selezionata è: " + materia);
