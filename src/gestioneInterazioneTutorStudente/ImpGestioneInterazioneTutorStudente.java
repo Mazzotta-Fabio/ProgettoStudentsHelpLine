@@ -28,6 +28,10 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		destLocation = new String("C:\\Users\\Antonio\\Desktop\\Documenti\\web\\File\\WebContent\\Immagine");
 	}
 	
+	/**
+	 * Il metodo serve per caricare un file per una domanda o risposta.
+	 * @param part: file da caricare.
+	 */
     public String upload(Part part)throws IOException {
         
     	String fileName = extractFileName(part);
@@ -61,7 +65,11 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
  			return "";
  	}
 
-	@Override
+    /**
+	 * Il metodo serve per capire se ci sono domande da visualizzare.
+	 * @param email: chiave primaria di una utente.
+	 * @param tipo: tipo di utente.
+	 */
 	public List<String> listaTutor(String materia) {
 		System.out.println("la materia selezionata è: " + materia);
 		FactoryDAO fd = new FactoryDAO();

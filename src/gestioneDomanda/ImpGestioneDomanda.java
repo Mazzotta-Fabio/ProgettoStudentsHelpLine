@@ -93,7 +93,10 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		return listaDomande;
 	}
 
-	@Override
+	/**
+	 * Il metodo serve per recuperare tutte le domande con risposta dal DataBase di un utente.
+	 * @param email: chiave primaria di un utente.
+	 */
 	public List<String> recuperaDomandeConRisposta(String email) {
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Domanda");
@@ -127,7 +130,10 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		return listaDomande;
 	}
 
-	@Override
+	/**
+	 * Il metodo serve per recuperare tutte le informazioni di una domanda da DataBase.
+	 * @param id: chiave primaria di una domanda.
+	 */
 	public ArrayList<String> visualizzaDomanda(int id,String tipo) {
 		
 		ArrayList<String> listaInfo = new ArrayList<String>();
@@ -196,7 +202,12 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		return listaInfo;
 	}
 
-	@Override
+	/**
+	 * Il metodo serve per inserire tutte le informazioni di una domanda sul DataBase.
+	 * @param idDomanda: chiave primaria di una domanda.
+	 * @param testo: contenuto di una risposta.
+	 * @param url: url di un allegato inserito per la risposta.
+	 */
 	public void inserisciRisposta(String testo, int idDomanda, String url) {
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Risposta");
@@ -239,7 +250,11 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		}   
 	}
 	
-	
+	/**
+	 * Il metodo serve per capire se ci sono domande da visualizzare.
+	 * @param email: chiave primaria di una utente.
+	 * @param tipo: tipo di utente.
+	 */
 	public boolean domandeDaVisualizzare(String email,String tipo){
 		FactoryDAO fd = new FactoryDAO();
 		if(tipo.equals("Tutor")) {
