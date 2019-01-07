@@ -49,11 +49,11 @@ Domande non Risposte
   </a> 
   
   	<a  href="html/PaginaSelezionaMateria.html" title="Fai Domanda al Tutor">
-  <button type="button" class="Fai_Domanda_al_Tutor btn btn-light border border-dark" style="width:114%;">Fai Domanda al Tutor</button>
+  <button type="button" class="Fai_Domanda_al_Tutor btn btn-light border border-dark">Fai Domanda al Tutor</button>
   </a>
   <%if(session.getAttribute("vis").equals("si")){ %>
   <a  href="ServletTabDomandaRisposte" title="Domande Risposte">
-  <button type="button" class="Domande_Risposte btn btn-light border border-dark"style="width:114%;">Domande Risposte                             <img src="img/CerchioBlu.png" style="width:10%;"></img></button>
+  <button type="button" class="Domande_Risposte btn btn-light border border-dark"style="width:127%;">Domande Risposte<img src="img/CerchioBlu.png" style="width:5%;"></img></button>
   </a>
   <%}else{ %>
   <a  href="ServletTabDomandaRisposte" title="Domande Risposte">
@@ -105,8 +105,9 @@ Domande non Risposte
 	 i++;%>
       <tr>
       <td><%=email%></td>
-      <td><%=oggetto%>-<%=testo %></td>
-      <td><a href="ServletVisualizzaDomanda?id=<%=id%>" title="Viaulizza Domanda"><button type="button" class="btn"><</button></a></td>
+      <td><%=oggetto%>
+      <%if(session.getAttribute("tipo").equals("Tutor") && testo.equals("no")){%> - Domanda da visualizzare<%}%></td>
+      <td><a href="ServletVisualizzaDomanda?id=<%=id%>" title="Viaulizza Domanda"><button type="button" class="btn">></button></a></td>
      </tr>
    <%}%>
     </tbody>

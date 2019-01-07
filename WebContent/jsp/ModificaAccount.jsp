@@ -19,44 +19,36 @@
 </div>
 <title>StudentsHelpLine</title>
 </head>
-<img class="left" src="../img/1.PNG">
+<img class="left" src="img/1.PNG">
 <div STYLE="position:absolute; top:190px; left:745px">
-<div align="center"><img src="../img/2.PNG" vspace="1"></div>
+<div align="center"><img src="img/2.PNG" vspace="1"></div>
 </div>
 <table width="600" align="center" bgcolor="black" border="2"><tbody> 
 <tr>
 <td width="600" bgcolor="#E2E2E2">
-<%
-	List ris = (List) request.getAttribute("listaInfo");
-	List risControllo = (List) request.getAttribute("listaInfo");
-	Iterator it = ris.iterator();
-	Iterator itC = risControllo.iterator();
-%>
 <%if(session.getAttribute("tipo").equals("Tutor")){%>
 <p align="center" id="text">
 <font face="sans-serif">
 <font color="black"><strong>Nome:</strong></font><br><br>
-<input type="text" name="user"id="u" value="<%=session.getAttribute("nome")%>"><br><br>
+<input type="text" name="nome" value="<%=request.getAttribute("Nome") %>"><br><br>
 <font color="black"><strong>Cognome:</strong></font><br><br>
-<input type="text" name="cogn"id="p" value="<%=session.getAttribute("cognome")%>"><br><br>
-<font color="black"><strong>Email:</strong></font><br><br>
-<input type="text" name="ema"id="u" value="<%=session.getAttribute("email")%>"><br><br>
+<input type="text" name="cognome" value="<%=request.getAttribute("Cognome") %>"><br><br>
 <font color="black"><strong>Password:</strong></font><br><br>
-<input type="text" name="pass"id="u" value="<%=session.getAttribute("password")%>"><br><br>
+<input type="text" name="password" value="<%=request.getAttribute("Password") %>"><br><br>
 <font color="black"><strong>Conferma Password:</strong></font><br><br>
-<input type="text" name="pass2"id="u" value="<%=session.getAttribute("password")%>"><br><br>
+<input type="text" name="pass2"id="u"><br><br>
 <font color="black"><strong>Numero di cellulare:</strong></font><br><br>
-<input type="text" name="cell"id="u" value="<%=session.getAttribute("numero")%>"><br><br>
+<input type="text" name="numero" value="<%=request.getAttribute("Cellulare") %>"><br><br>
 <font color="black"><strong>Voto laurea:</strong></font><br><br>
-<input type="text" name="voto"id="u" value="<%=session.getAttribute("voto")%>"><br><br>
+<input type="text" name="voto" value="<%=request.getAttribute("Voto") %>"><br><br>
 <font color="black"><strong>Titolo di studio:</strong></font><br><br>
- <select value="<%=session.getAttribute("titolo")%>"><br><br>
+ <select name="titolo" value="<%=request.getAttribute("Titolo") %>"><br><br>
   <option value="volvo">Triennale</option>
   <option value="saab">Magistrale</option>
   <option value="mercedes">Specialistica</option>
 </select><br><br>
 <font color="black"><strong>Materia di competenza:</strong></font><br><br>
- <select value="<%=session.getAttribute("materia")%>"><br><br>
+ <select name="materia" value="<%=request.getAttribute("Materia") %>"><br><br>
   <option value="1">Programmazione 1</option>
   <option value="2">Analisi 1</option>
   <option value="3">Archiettura degli elaboratori</option>
@@ -76,31 +68,29 @@
   <option value="17">RO</option>
 </select><br><br>
 <font color="black"><strong>Aggiungi immagine:</strong></font><br><br>
-<input type="file"  name="file" value="<%=session.getAttribute("immagine")%>"><br><br>
+<input type="file" name="immagine" value="<%=request.getAttribute("Immagine") %>"><br><br>
 <input type="submit" value="REGISTRATI" id="log"name="button"><br><br>
 </font>
 </p>
 <%}else{%>
-<form enctype="multipart/form-data" action="../RegistrazioneStudente.html" method="post">
-<p align="center" id="text2" style="display:none">
+<form enctype="multipart/form-data" action="ModificaStudente" method="post">
+<p align="center" id="text2" >
 <font face="sans-serif">
 <font color="black"><strong>Nome:</strong></font><br><br>
-<input type="text" name="nome"id="u" value="<%=session.getAttribute("nome")%>"><br><br>
+<input type="text" name="nome" value="<%=request.getAttribute("Nome") %>"><br><br>
  <font color="black"><strong>Cognome:</strong></font><br><br>
-<input type="text" name="cognome"id="p" value="<%=session.getAttribute("cognome")%>"><br><br>
-<font color="black"><strong>Email:</strong></font><br><br>
-<input type="text" name="email"id="u" value="<%=session.getAttribute("email")%>"><br><br>
+<input type="text" name="cognome" value="<%=request.getAttribute("Cognome") %>"><br><br>
 <font color="black"><strong>Password:</strong></font><br><br>
-<input type="text" name="password"id="u" value="<%=session.getAttribute("password")%>"><br><br>
+<input type="text" name="password" value="<%=request.getAttribute("Password") %>"><br><br>
 <font color="black"><strong>Matricola:</strong></font><br><br>
-<input type="text" name="matricola"id="u" value="<%=session.getAttribute("matricola")%>"><br><br>
+<input type="text" name="matricola" value="<%=request.getAttribute("Matricola") %>"><br><br>
 <font color="black"><strong>Anno di corso:</strong></font><br><br>
- <select name="annoCorso" value="<%=session.getAttribute("anno")%>"><br><br>
+ <select name="anno" value="<%=request.getAttribute("Anno") %>"><br><br>
   <option value="terzo">Triennale</option>
 </select><br><br>
 <font color="black"><strong>Aggiungi immagine:</strong></font><br><br>
-<input type="file"  name="file" value="<%=session.getAttribute("immagine")%>"><br><br>
-<input type="submit" value="MODIFICA" id="log"name="button"><br><br>
+<input type="file" name="immagine" value="<%=request.getAttribute("Immagine") %>"><br><br>
+<input type="submit" value="REGISTRATI" id="log"name="button"><br><br>
 </tr> 
 </tbody></table>
 </font>

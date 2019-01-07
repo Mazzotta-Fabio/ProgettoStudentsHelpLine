@@ -113,4 +113,22 @@ public class StudenteDAOImp implements ObjectDAO {
     return listaS;
   }
 
+  @Override
+  public void modificaDati(Object o) throws SQLException {
+	  Studente s = (Studente) o;
+
+	  PreparedStatement prepared = (PreparedStatement) con.prepareStatement("update studente set Pass = ?, Matricola = ?,"
+	  		+ " Immagine = ?, AnnoCorso = ?, Nome = ?, Cognome = ? where Email = ?;");
+	  prepared.setString(5, s.getNome());
+	  prepared.setString(6, s.getCognome());
+	  prepared.setString(2, s.getMatricola());
+	  prepared.setString(1, s.getPassword());
+	  prepared.setString(4, s.getAnnoCorso());
+	  prepared.setString(3, s.getLinkImmagine());
+	  prepared.setString(7, s.getEmail());
+	  prepared.executeUpdate();
+  }
+
+
+
 }

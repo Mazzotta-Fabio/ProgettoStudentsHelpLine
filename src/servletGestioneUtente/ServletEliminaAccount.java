@@ -2,6 +2,7 @@ package servletGestioneUtente;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,8 +38,8 @@ public class ServletEliminaAccount extends HttpServlet {
 		GestioneUtente u = new ImpGestioneUtente();
 		u.eliminaAccount(email, tipo);
 		
-		/*RequestDispatcher view = request.getRequestDispatcher("Home.html");
-		view.forward(request, response);*/
+		RequestDispatcher view = request.getRequestDispatcher("html/HomePage.html");
+		view.forward(request, response);
 	}
 
 	/**

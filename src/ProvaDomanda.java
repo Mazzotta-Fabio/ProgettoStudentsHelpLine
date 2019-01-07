@@ -22,14 +22,14 @@ public class ProvaDomanda {
 		Studente s = new Studente(null, null, a, null, null, null, null);
 		Tutor t = new Tutor(null, null, a, null, null, null, null, null, null);
 		Risposta r = new Risposta (1, null,null,null, null);
-		Domanda o = new Domanda(0, a, a, "Ciao sono l'allegato", s, t, r, a);
+		Domanda o = new Domanda(0, a, a, "Ciao sono l'allegato", s, t, r, null);
 		try {
 			oggetto.inserisciDati(o);
 		} catch (SQLException e3) {
 			e3.printStackTrace();
 		}
-	}		/*            
-		Domanda d = new Domanda(13, null, null, null, null, null, null, null);
+		            
+		/*Domanda d = new Domanda(13, null, null, null, null, null, null);
 		try {
 			oggetto.recuperaDati(d);
 		} catch (SQLException e2) {
@@ -82,6 +82,6 @@ public class ProvaDomanda {
 		    } else {
 		   	  System.out.println("Nessuna risposta\n\n");
 		    }
-		}
-	 }*/
+		}*/
+	 }
 }

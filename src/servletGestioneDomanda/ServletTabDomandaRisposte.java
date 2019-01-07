@@ -18,7 +18,7 @@ import gestioneDomanda.ImpGestioneDomanda;
  * @author Antonio Cimino
  * @version 1.0
  */
-@WebServlet("/ServletTabDomandaRisposte")
+@WebServlet("/ServletTabDomandaRisposte.html")
 public class ServletTabDomandaRisposte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,7 +36,6 @@ public class ServletTabDomandaRisposte extends HttpServlet {
 		String email = (String) session.getAttribute("email");
 		GestioneDomanda d = new ImpGestioneDomanda();
 		List<String> listaDomande = d.recuperaDomandeConRisposta(email);
-		if (session.getAttribute("tipo").equals("Studente")) {d.settaViste(email, "Studente");}
 
 		request.setAttribute("listaDomande", listaDomande);
 		RequestDispatcher view = request.getRequestDispatcher("jsp/DomandaRisposte.jsp");

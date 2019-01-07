@@ -13,27 +13,22 @@
 <body>
 <%
 	List ris = (List) request.getAttribute("listaInfo");
-	List risControllo = (List) request.getAttribute("listaInfo");
-	Iterator it = ris.iterator();
-	Iterator itC = risControllo.iterator();
 %>
 <br>
 <div style="margin-left:40%;width:700px;border-style: solid;padding-left:20px;padding-right:20px;padding-top:20px;">
   <div class="jumbotron">
-    <h5>Inviata da: <%=it.next()%> </h5>     
-    <h5>Oggetto: <%=it.next()%></h5>  
-    <p><%=it.next()%></p>
+    <h5>Inviata da: <a href='ServletVisualizzaProfilo?email=<%=ris.get(0)%>'><%=ris.get(0)%></a></h5>     
+    <h5>Oggetto: <%=ris.get(1)%></h5>  
+    <h6>Testo: <%=ris.get(2)%></h6>
     <% 
-    	itC.next();
-   		itC.next();
-    	itC.next();
-    	if(itC.next() != null){
-    		out.print("<a href='ScaricaAllegato?url="+it.next()+"'><img src='../img/download.png' style='width:50px;height:50px;'/></a>");
-		} else {
-			it.next();
+		String url = (String) ris.get(3);
+    	if(url.equals("")){}
+    	else{
+    		out.print("<form enctype='multipart/form-data' action='ScaricaAllegato' method='post'><input  type = 'hidden' name = 'url' value='"+ris.get(3)+"'><input  type = 'hidden' name = 'idD' value='"+ris.get(4)+"'><img src='img/download.png' style='width:30px;height:30px;'/><input type='submit' value='Scarica Allegato'></form>");
 		}
-    	out.print("<a href='ServletEliminaDomanda?id="+it.next()+"'><img src='../img/elimina.png' style='width:50px;height:50px;'/></a>");
-    	out.print("<a href='ServletFormRisposta?IdDomanda="+itC.next()+"'>Invia Risposta ></a>");
+    	out.print("<a href='ServletFormRisposta?IdDomanda="+ris.get(4)+"'>Invia Risposta ></a>");
+    	out.print("<a href='ServletEliminaDomanda?id="+ris.get(4)+"'><img src='img/elimina.png' style='width:50px;height:50px;margin-left:400px;'/></a>");
+    	
 	%>
      </div>
 </div>  

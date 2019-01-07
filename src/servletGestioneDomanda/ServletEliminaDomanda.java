@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import gestioneDomanda.GestioneDomanda;
 import gestioneDomanda.ImpGestioneDomanda;
 
@@ -33,8 +35,12 @@ public class ServletEliminaDomanda extends HttpServlet {
 		int ID = Integer.parseInt(request.getParameter("id"));
 		GestioneDomanda d = new ImpGestioneDomanda();
 		d.eliminaDomanda(ID);
-		RequestDispatcher view = request.getRequestDispatcher("PaginaPrincipale.html");
-		view.forward(request, response);
+		HttpSession session = request.getSession();
+		String email = (String) session.getAttribute("email");
+		String pass = (String) session.getAttribute("pass");
+		String tipo = (String) session.getAttribute("tipo");
+		RequestDispatcher forward = request.getServletContext().getRequestDispatcher("/Login?email="+email+"&password="+pass+"&tipoUtente="+tipo);
+		forward.forward(request, response);
 	}
 
 	/**

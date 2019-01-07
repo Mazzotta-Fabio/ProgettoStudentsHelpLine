@@ -34,7 +34,7 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		File sourceLocation = new File(fileName);
 		String destLocation = new String("C:\\Users\\Antonio\\Downloads");
 		File targetFolder = new File(destLocation);
-		  
+	    
         InputStream in = new FileInputStream(sourceLocation);
         OutputStream out = new FileOutputStream(targetFolder + "\\"+ sourceLocation.getName(), true);
         System.out.println("Destination Path ::"+targetFolder + "\\"+ sourceLocation.getName());            
@@ -76,10 +76,10 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		for(int i = 0;i<listaD.size();i++) {
 		      Domanda d = (Domanda) listaD.get(i);
 		      if (d.getRisposta().getId() == 1) {
-		    	  if(email.equals(d.getStudente().getEmail())) {
+		    	  if(email.equals(d.getStudente().getEmail()) || email.equals(d.getTutor().getEmail())) {
 		    		  listaDomande.add(String.valueOf(d.getId()));
 		    		  listaDomande.add(d.getOggetto());
-		    		  listaDomande.add(d.getTesto());
+		    		  listaDomande.add(d.getVis());
 		    		  listaDomande.add(d.getTutor().getEmail());
 		    	  }
 		      }	  
@@ -98,16 +98,23 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}		
+		}	
+		o = fd.getObject("Risposta");
 		List<String> listaDomande = new ArrayList<String>();
 		for(int i = 0;i<listaD.size();i++) {
 		      Domanda d = (Domanda) listaD.get(i);
 		      if (d.getRisposta().getId() != 1) {
-		    	  if(email.equals(d.getStudente().getEmail())) {
-		    		  listaDomande.add(String.valueOf(d.getId()));
-		    		  listaDomande.add(d.getOggetto());
-		    		  listaDomande.add(d.getTesto());
-		    		  listaDomande.add(d.getTutor().getEmail());
+		    	  if(email.equals(d.getStudente().getEmail())  || email.equals(d.getTutor().getEmail())) {
+		    		listaDomande.add(String.valueOf(d.getId()));
+		    		listaDomande.add(d.getOggetto());
+		    		Risposta r = new Risposta(d.getRisposta().getId(), null, null, null, null);
+					try {
+						o.recuperaDati(r);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+		    		listaDomande.add(r.getVis());
+		    		listaDomande.add(d.getTutor().getEmail());
 		    	  }
 		      }	  
 		}
@@ -115,7 +122,7 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 	}
 
 	@Override
-	public ArrayList<String> visualizzaDomanda(int id) {
+	public ArrayList<String> visualizzaDomanda(int id,String tipo) {
 		
 		ArrayList<String> listaInfo = new ArrayList<String>();
 		
@@ -127,6 +134,14 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		if(tipo.equals("Tutor")) {
+			d.setVis("si");
+			try {
+				o.modificaDati(d);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 		Studente s = d.getStudente(); 
 		o = fd.getObject("Studente");
@@ -137,8 +152,8 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		}
 		listaInfo.add(d.getStudente().getEmail());
 		listaInfo.add(d.getOggetto());
-		listaInfo.add(d.getAllegato());
 		listaInfo.add(d.getTesto());
+		listaInfo.add(d.getAllegato());
 		listaInfo.add(String.valueOf(d.getId()));
  
 		Tutor t = d.getTutor(); 
@@ -162,6 +177,15 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		listaInfo.add(r.getValutazione());
 		listaInfo.add(String.valueOf(r.getId()));
 		listaInfo.add(String.valueOf(r.getId()));
+		if(tipo.equals("Studente")) {
+			r.setVis("si");
+			try {
+				o.modificaDati(r);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		
 		return listaInfo;
 	}
@@ -177,7 +201,15 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		ArrayList<Object> listaR = null;
+		try {
+			listaR = o.recuperaTutto();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+		r.setId(listaR.size());
 		o = fd.getObject("Domanda");
 		Domanda d = new Domanda(idDomanda, null, null,null, null, null, null, null);
 		try {
@@ -201,104 +233,51 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		}   
 	}
 	
-	public boolean risposteDaVisualizzare(String email){
-		FactoryDAO fd = new FactoryDAO();
-		ObjectDAO o = fd.getObject("Domanda");
-		ArrayList<Object> listaD = null;
-		try {
-			listaD = o.recuperaTutto();
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}		
-		for(int i = 0;i<listaD.size();i++) {
-			Domanda d = (Domanda) listaD.get(i);
-		    if (d.getStudente().equals(email)) {
-		    	if (d.getRisposta().getVis() != "no") return true;
-		    }
-		}
-		return false;
-	}
 	
-	public boolean domandeDaVisualizzare(String email){
+	public boolean domandeDaVisualizzare(String email,String tipo){
 		FactoryDAO fd = new FactoryDAO();
-		ObjectDAO o = fd.getObject("Domanda");
-		ArrayList<Object> listaD = null;
-		try {
-			listaD = o.recuperaTutto();
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}		
-		for(int i = 0;i<listaD.size();i++) {
-			Domanda d = (Domanda) listaD.get(i);
-		    if (d.getTutor().equals(email)) {
-		    	if (d.getVis() != "no") return true;
-		    }
+		if(tipo.equals("Tutor")) {
+			ObjectDAO o = fd.getObject("Domanda");
+			ArrayList<Object> listaD = null;
+			try {
+				listaD = o.recuperaTutto();
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}		
+			for(int i = 0;i<listaD.size();i++) {
+				Domanda d = (Domanda) listaD.get(i);
+				if (d.getTutor().getEmail().equals(email)) {
+					if (d.getVis().equals("no")) return true;
+				}
+			}
+		} else {
+			ObjectDAO o = fd.getObject("Domanda");
+			ArrayList<Object> listaD = null;
+			try {
+				listaD = o.recuperaTutto();
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}	
+			o = fd.getObject("Risposta");
+			for(int i = 0;i<listaD.size();i++) {
+				Domanda d = (Domanda) listaD.get(i);
+				if (d.getStudente().getEmail().equals(email)) {
+					Risposta r = new Risposta(d.getRisposta().getId(), null, null, null, null);
+					try {
+						o.recuperaDati(r);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					if (r.getVis().equals("no")) return true;
+				}
+			}
 		}
 		return false;
 	}
 
-	@Override
-	public void settaViste(String email, String tipo) {
-		FactoryDAO fd = new FactoryDAO();
-		ObjectDAO o = fd.getObject("Domanda");
-		if(tipo.equals("Tutor")) {
-			ArrayList<Object> listaD = null;
-			try {
-				listaD = o.recuperaTutto();
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}		
-			for(int i = 0;i<listaD.size();i++) {
-				Domanda d = (Domanda) listaD.get(i);
-				if (d.getTutor().equals(email)) {
-					if (d.getVis() == "no") {
-						d.setVis("si");
-						try {
-							o.cancellaDati(d);
-						} catch (SQLException e) {
-							e.printStackTrace();
-						}
-						try {
-							o.inserisciDati(d);
-						} catch (SQLException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-		}else {
-			ArrayList<Object> listaD = null;
-			try {
-				listaD = o.recuperaTutto();
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}		
-			for(int i = 0;i<listaD.size();i++) {
-				Domanda d = (Domanda) listaD.get(i);
-				if (d.getStudente().equals(email)) {
-					if (d.getRisposta().getVis() == "no") {
-						d.setVis("si");
-						try {
-							o.cancellaDati(d);
-						} catch (SQLException e) {
-							e.printStackTrace();
-						}
-						try {
-							o.inserisciDati(d);
-						} catch (SQLException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-		}
-	}
+	
 }

@@ -243,17 +243,12 @@ public class ImpGestioneUtente implements GestioneUtente {
         
         String path =(targetFolder + "\\"+ sourceLocation.getName());
   
-        if(tipo.equals("Studente")) {
+        if(tipo.equals("Tutor")) {
         	Tutor t = new Tutor (nome, cognome,email,password,path,numero, materia, voto, titolo);
         	FactoryDAO fDAO = new FactoryDAO();
         	ObjectDAO o = fDAO.getObject("Tutor");
         	try {
-				o.cancellaDati(t);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-        	try {
-				o.inserisciDati(t);
+				o.modificaDati(t);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -262,15 +257,11 @@ public class ImpGestioneUtente implements GestioneUtente {
         	FactoryDAO fDAO = new FactoryDAO();
         	ObjectDAO o = fDAO.getObject("Studente");
         	try {
-				o.cancellaDati(s);
+				o.modificaDati(s);
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-        	try {
-				o.inserisciDati(s);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}	
         }
 		
 	}

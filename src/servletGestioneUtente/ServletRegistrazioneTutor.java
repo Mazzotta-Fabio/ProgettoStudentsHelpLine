@@ -1,6 +1,8 @@
 package servletGestioneUtente;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -49,8 +51,8 @@ public class ServletRegistrazioneTutor extends HttpServlet {
 		GestioneUtente u = new ImpGestioneUtente();
 		u.registraAccount(tipo,nome, cognome, email, password, linkImmagine, voto, titolo,numero,materia);
 		
-		/*RequestDispatcher view = request.getRequestDispatcher("Home.html");
-		view.forward(request, response);*/
+		RequestDispatcher view = request.getRequestDispatcher("html/HomePage.html");
+		view.forward(request, response);
 	}
 
 	/**

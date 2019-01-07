@@ -121,5 +121,25 @@ public class TutorDAOImp implements ObjectDAO {
     return listaT;
   }
 
+  @Override
+  public void modificaDati(Object o) throws SQLException {
+	  Tutor t = (Tutor) o;
+
+      PreparedStatement prepared = (PreparedStatement) con.prepareStatement("update tutor set Pass=? ,"
+          + "Immagine=?, TitoloDiStudio=?, MateriaDiCompetenza=?, Nome=? and Cognome=?, VotoDiLaurea=?,"
+          + " NumeroDiCellulare=? where Email =  ?;"); 
+            
+      prepared.setString(1, t.getPassword());
+      prepared.setString(2, t.getLinkImmagine());
+      prepared.setString(3, t.getTitoloDiStudio());
+      prepared.setString(4, t.getMateriaDiCompetenza());
+      prepared.setString(5, t.getNome());
+      prepared.setString(6, t.getCognome());
+      prepared.setString(7, t.getVotoDiLaurea());
+      prepared.setString(8, t.getNumeroDiCellulare());
+      prepared.setString(9, t.getEmail());
+      prepared.executeUpdate();
+  }
+
 }
 

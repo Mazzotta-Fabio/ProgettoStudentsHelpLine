@@ -37,7 +37,6 @@ public class ServletTabDomandaSenzaRisposta extends HttpServlet {
 		String email = (String) session.getAttribute("email");
 		GestioneDomanda d = new ImpGestioneDomanda();
 		List<String> listaDomande = d.recuperaDomandeSenzaRisposta(email);
-		if (session.getAttribute("tipo").equals("Tutor")) {d.settaViste(email, "Tutor");}
 
 		request.setAttribute("listaDomande", listaDomande);
 		RequestDispatcher view = request.getRequestDispatcher("jsp/DomandenonRisposte.jsp");
