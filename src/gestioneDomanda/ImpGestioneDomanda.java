@@ -27,7 +27,7 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 	
 	/**
 	 * Il metodo serve per scaricare l'allegato nella cartella downloads.
-	 * @param password,destinatario: sono uno la password da inviare e l'altro l'email dove inviare l'email
+	 * @param fileName: è l'url del file da scaricare.
 	 */
 	public void scaricaAllegato(String fileName) throws IOException {
 		
@@ -50,7 +50,7 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 
 	/**
 	 * Il metodo serve per eliminare una domanda dal DataBase.
-	 * @param password,destinatario: sono uno la password da inviare e l'altro l'email dove inviare l'email
+	 * @param id: sono uno la password da inviare e l'altro l'email dove inviare l'email
 	 */
 	public void eliminaDomanda(int id) {
 		Domanda d = new Domanda (id, null, null, null, null, null, null, null);
@@ -63,7 +63,10 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		}
 	}
 
-	@Override
+	/**
+	 * Il metodo serve per recuperare tutte le domande senza risposta dal DataBase apparten.
+	 * @param id: sono uno la password da inviare e l'altro l'email dove inviare l'email
+	 */
 	public List<String> recuperaDomandeSenzaRisposta(String email) {
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Domanda");
