@@ -66,9 +66,8 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
  	}
 
     /**
-	 * Il metodo serve per capire se ci sono domande da visualizzare.
-	 * @param email: chiave primaria di una utente.
-	 * @param tipo: tipo di utent.
+	 * Il metodo serve per recuperare le informazioni dei tutor che sono competenti in una materia.
+	 * @param materia: la materia in cui deve essere competente il tutor.
 	 */
 	public List<String> listaTutor(String materia) {
 		System.out.println("la materia selezionata è: " + materia);
@@ -100,7 +99,14 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		return listaTutor;
 	}
 
-	@Override
+	/**
+	 * Il metodo serve per inserire una domanda.
+	 * @param oggetto: oggetto della domanda.
+	 * @param testo: testo della domanda.
+	 * @param url: url del file allegato alla domanda.
+	 * @param emailT: chiave esterna del tutor.
+	 * @param emailS: chiave esterna dello studente.
+	 */
 	public void inserisciDomanda(String oggetto, String testo,String url,String emailT,String emailS) {
 		Tutor t = new Tutor(null, null, emailT, null, null, null, null, null, null);
 		Studente s = new Studente(null, null, emailS, null, null, null, null);
@@ -116,7 +122,11 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		} 
 	 }
 
-	@Override
+	/**
+	 * Il metodo serve per inserire una valutazione alla risposta.
+	 * @param id: chiave primanria della risposta.
+	 * @param valutazione: valutazione della risposta.
+	 */
 	public void valutaRisposta(int id, String valutazione) {
 		System.out.println(id + " " + valutazione );
 		Risposta r = new Risposta(id,null,null, null, null);
@@ -135,7 +145,10 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		}
 	}
 
-	@Override
+	/**
+	 * Il metodo serve per recuperare i dati di un account che deve essere visualizzato.
+	 * @param email: chiave primaria di un utente.
+	 */
 	public Object visualizzaAccount(String email) {
 		Studente s = new Studente(null, null, email, null, null, null, null);
 		FactoryDAO fd = new FactoryDAO();
@@ -159,7 +172,10 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		}
 	}
 
-	@Override
+	/**
+	 * Il metodo serve per recuperare le valutazioni totali di un Tutor.
+	 * @param email: chiave primaria del tutor.
+	 */
 	public int[] valutazioniTot(String email) {
 		
 		int [] voti = new int[2];
