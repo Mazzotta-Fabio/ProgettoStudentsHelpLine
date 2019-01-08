@@ -31,11 +31,11 @@ public class ServletEliminaAccount extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		String destinatario = (String) session.getAttribute("EmailUtente");
-		String tipo = (String) session.getAttribute("TipoUtente");
+		String email = (String) session.getAttribute("email");
+		String tipo = (String) session.getAttribute("tipo");
 		
 		GestioneUtente u = new ImpGestioneUtente();
-		u.eliminaAccount(destinatario, tipo);
+		u.eliminaAccount(email, tipo);
 		
 		/*RequestDispatcher view = request.getRequestDispatcher("Home.html");
 		view.forward(request, response);*/
