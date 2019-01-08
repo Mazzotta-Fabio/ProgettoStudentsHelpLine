@@ -112,7 +112,11 @@ public class StudenteDAOImp implements ObjectDAO {
     }
     return listaS;
   }
-
+  
+  /**
+   * Il metodo serve per modificare le informazioni di tutti gli Studenti nel DataBase.
+   * @throws SQLException 
+   */
   @Override
   public void modificaDati(Object o) throws SQLException {
 	  Studente s = (Studente) o;
@@ -128,7 +132,4 @@ public class StudenteDAOImp implements ObjectDAO {
 	  prepared.setString(7, s.getEmail());
 	  prepared.executeUpdate();
   }
-
-
-
 }

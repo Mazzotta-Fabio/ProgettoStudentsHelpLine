@@ -126,7 +126,7 @@ public class TutorDAOImp implements ObjectDAO {
 	  Tutor t = (Tutor) o;
 
       PreparedStatement prepared = (PreparedStatement) con.prepareStatement("update tutor set Pass=? ,"
-          + "Immagine=?, TitoloDiStudio=?, MateriaDiCompetenza=?, Nome=? and Cognome=?, VotoDiLaurea=?,"
+          + "Immagine=?, TitoloDiStudio=?, MateriaDiCompetenza=?, Nome=?,Cognome=?, VotoDiLaurea=?,"
           + " NumeroDiCellulare=? where Email =  ?;"); 
             
       prepared.setString(1, t.getPassword());
