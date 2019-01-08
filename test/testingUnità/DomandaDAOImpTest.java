@@ -17,7 +17,7 @@ import storage.DomandaDAOImp;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DomandaDAOImpTest extends TestCase {
-	/**/
+
 	private DomandaDAOImp domandaDao;
 	private Risposta risposta;
 	private Risposta risposta1;

@@ -4,7 +4,7 @@ import java.io.IOException;
 import javax.servlet.http.Part;
 
 public interface GestioneUtente {
-	public void recuperaPassword (String tipo,String password,String destinatario);
+	public String recuperaPassword (String tipo,String destinatario);
 	public void eliminaAccount(String destinatario,String tipo);
 	public Object loginAccount(String email,String password,String tipo);
 	public Object infoAccount(String email, String tipo);

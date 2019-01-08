@@ -42,9 +42,11 @@ public class ImpGestioneUtente implements GestioneUtente {
 	/**
 	 * Il metodo serve per inviare la mail per recuperare la password.
 	 * @param password,destinatario: sono uno la password da inviare e l'altro l'email dove inviare l'email
+	 * @return 
 	 */
-	public void recuperaPassword(String tipo,String password,String destinatario) {
+	public String recuperaPassword(String tipo,String destinatario) {
 		
+		String password;
 		if(tipo.equals("tutor")) {
 			Tutor t = new Tutor(null, null,destinatario, null, null, null, null, null, null);
 			FactoryDAO fDAO = new FactoryDAO();
@@ -107,6 +109,7 @@ public class ImpGestioneUtente implements GestioneUtente {
 	       System.out.println("Si è verificato un errore");   // se cè un errore esce questa scrita con..
 	       e.printStackTrace();                             //.. il nome dell'errore
 	   }  
+	   return password;
 	}
 		 
 
