@@ -3,12 +3,16 @@ package testingUnità;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
+
 import classiComuni.Studente;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import storage.StudenteDAOImp;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StudenteDAOImpTest extends TestCase {
 	private Studente studente;
 	private Studente studente2;
@@ -25,7 +29,7 @@ public class StudenteDAOImpTest extends TestCase {
 		studenteDAO=null;
 	}
 	
-	public void testInserisciDati() {
+	public void test2InserisciDati() {
 		try {
 			/*
 			Studente studente=new Studente("Rosa","Marini","rm@gmail.com","12345678","/home/xyz","0522500518","2");
@@ -41,7 +45,7 @@ public class StudenteDAOImpTest extends TestCase {
 		}
 	}
 	
-	public void testRecuperaDati() {
+	public void test1RecuperaDati() {
 		try {
 			/*
 			Studente studente=new Studente("Rosa","Marini","rm@gmail.com","12345678","/home/xyz","0522500518","2");
@@ -55,7 +59,7 @@ public class StudenteDAOImpTest extends TestCase {
 		}
 	}
 	
-	public void testRecuperaTutto() {
+	public void test3RecuperaTutto() {
 		try {
 			/*
 			Studente studente=new Studente("Rosa","Marini","rm@gmail.com","12345678","/home/xyz","0522500518","2");
@@ -63,7 +67,7 @@ public class StudenteDAOImpTest extends TestCase {
 			*/
 			ArrayList<Object>studentiObject=studenteDAO.recuperaTutto();
 			//System.out.println(studentiObject.size());
-			assertEquals(studentiObject.size(),4);
+			assertEquals(studentiObject.size(),6);
 			/*
 			for(Object o:studentiObject) {
 				Studente t=(Studente)o;
@@ -77,7 +81,33 @@ public class StudenteDAOImpTest extends TestCase {
 		}
 	}
 	
-	public void testCancellaDati() {
+	
+	public void test4ModificaDati() {
+		try {
+			studente.setNome("Gianluca");
+			studente2.setMatricola("0512100001");
+			studenteDAO.modificaDati(studente);
+			studenteDAO.modificaDati(studente2);
+			ArrayList<Object>studenti=studenteDAO.recuperaTutto();
+			for(Object ogg:studenti) {
+				Studente studenteOgg=(Studente)ogg;
+				if(studenteOgg.getEmail().equals(studente.getEmail())){
+					assertEquals(studenteOgg.getNome(),"Gianluca");
+					//System.out.println("Ho fatto assert 1");
+				}
+				if(studenteOgg.getEmail().equals(studente2.getEmail())){
+					assertEquals(studenteOgg.getMatricola(),"0512100001");
+					//System.out.println("HO Fatto assert 2");
+				}
+			}
+			
+		}
+		catch(SQLException e) {
+			fail("Errore di connessione");
+		}
+	}
+	
+	public void test5CancellaDati() {
 		try {
 			/*
 			Studente studente=new Studente("Rosa","Marini","rm@gmail.com","12345678","/home/xyz","0522500518","2");
