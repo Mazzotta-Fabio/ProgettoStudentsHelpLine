@@ -111,7 +111,19 @@ public class ImpGestioneUtente implements GestioneUtente {
 		 
 
  
-	@Override
+	/**
+	 * Il metodo serve per registrare un utente.
+	 * @param tipo: tipo di utente da registrare.
+	 * @param nome: nome dell'utente.
+	 * @param cognome: cognome dell'utente.
+	 * @param email: email dell'utente(chiave primaria).
+	 * @param password: la password dell'utente.
+	 * @param linkImmagine: url all'immagine dell'account dello studente.
+	 * @param voto: voto del tutor, per lo studente invece rappresenta la matricola.
+	 * @param titolo: titolo di studi del tutor, per lo studente rappresenta anno corso.
+	 * @param numero: numero di telefono del tutor.
+	 * @param materia: materia di competenza del tutor.
+	 */
 	public void registraAccount(String tipo, String nome, String cognome, String email, String password, 
 			Part linkImmagine,String voto, String titolo, String numero, String materia) throws IOException {
 		
@@ -162,7 +174,11 @@ public class ImpGestioneUtente implements GestioneUtente {
 		return "";
 	}
 
-	@Override
+	/**
+	 * Il metodo serve per eliminare un account.
+	 * @param email: chiave primanria di un utente.
+	 * @param tipo: tipo dell'utente.
+	 */
 	public void eliminaAccount(String email,String tipo) {
 		int i;
 		if(tipo.equals("tutor")) {
@@ -224,7 +240,19 @@ public class ImpGestioneUtente implements GestioneUtente {
 		}
 	}
 
-	@Override
+	/**
+	 * Il metodo serve per apportare modifiche ad un account.
+	 * @param tipo: tipo di utente da registrare.
+	 * @param nome: nome dell'utente.
+	 * @param cognome: cognome dell'utente.
+	 * @param email: email dell'utente(chiave primaria).
+	 * @param password: la password dell'utente.
+	 * @param linkImmagine: url all'immagine dell'account dello studente.
+	 * @param voto: voto del tutor, per lo studente invece rappresenta la matricola.
+	 * @param titolo: titolo di studi del tutor, per lo studente rappresenta anno corso.
+	 * @param numero: numero di telefono del tutor.
+	 * @param materia: materia di competenza del tutor.
+	 */
 	public void modificaAccount(String tipo, String nome, String cognome, String email, String password,
 			Part linkImmagine, String voto, String titolo, String numero, String materia) throws IOException {
 	
@@ -266,7 +294,12 @@ public class ImpGestioneUtente implements GestioneUtente {
 		
 	}
 
-	@Override
+	/**
+	 * Il metodo serve per effettuare il login con un account.
+	 * @param email: chiave primanria di un utente.
+	 * @param tipo: tipo dell'utente.
+	 * @param password: la password di un account.
+	 */
 	public Object loginAccount(String email, String password, String tipo) {
 		boolean accesso = false;
 		if(tipo.equals("Tutor")) {
@@ -292,6 +325,11 @@ public class ImpGestioneUtente implements GestioneUtente {
 		}	
 	}
 	
+	/**
+	 * Il metodo serve per recuperare le informazioni di un account.
+	 * @param email: chiave primanria di un utente.
+	 * @param tipo: tipo dell'utente.
+	 */
 	public Object infoAccount(String email, String tipo) {
 		if(tipo.equals("Tutor")) {
 			Tutor t = new Tutor(null, null,email, null, null, null, null, null, null);
