@@ -9,9 +9,7 @@ public interface GestioneDomanda {
 	public void eliminaDomanda(int id);
 	public List<String> recuperaDomandeSenzaRisposta(String email);
 	public List<String> recuperaDomandeConRisposta(String email);
-	public ArrayList<String> visualizzaDomanda (int id);
+	public ArrayList<String> visualizzaDomanda (int id,String tipo);
 	public void inserisciRisposta(String testo, int idDomanda,String url);
-	public boolean domandeDaVisualizzare(String email);
-	public boolean risposteDaVisualizzare(String email);
-	public void settaViste(String email,String tipo);
+	public boolean domandeDaVisualizzare(String email,String tipo);
 }

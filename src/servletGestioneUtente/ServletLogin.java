@@ -42,7 +42,8 @@ public class ServletLogin extends HttpServlet {
 		String tipo = request.getParameter("tipoUtente");
 		HttpSession sessione = request.getSession();
 		sessione.setAttribute("email", email);  
-		sessione.setAttribute("tipo", tipo);		
+		sessione.setAttribute("tipo", tipo);	
+		sessione.setAttribute("pass", password);
 
 		
 		if(tipo.equals("Tutor")) {
@@ -55,10 +56,12 @@ public class ServletLogin extends HttpServlet {
 				request.setAttribute("Titolo",t.getTitoloDiStudio());
 				request.setAttribute("Voto",t.getVotoDiLaurea());
 				if(t.getEmail() != null) {	
+					
 					GestioneDomanda d = new ImpGestioneDomanda();
-					boolean vis = d.risposteDaVisualizzare(email);
+					boolean vis = d.domandeDaVisualizzare(email,tipo);
 					if (vis == true) {sessione.setAttribute("vis", "si");}
 					else {sessione.setAttribute("vis", "no");}
+					
 					RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
 					view.forward(request, response);
 				}
@@ -70,10 +73,13 @@ public class ServletLogin extends HttpServlet {
 				request.setAttribute("Matricola",s.getMatricola());
 				request.setAttribute("Anno",s.getAnnoCorso());
 				if(s.getEmail() != null) {	
+					
 					GestioneDomanda d = new ImpGestioneDomanda();
-					boolean vis = d.domandeDaVisualizzare(email);
+					boolean vis = d.domandeDaVisualizzare(email,tipo);
+					System.out.print(vis);
 					if (vis == true) {sessione.setAttribute("vis", "si");}
 					else {sessione.setAttribute("vis", "no");}
+					
 					RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
 					view.forward(request, response);
 				}

@@ -12,14 +12,14 @@ public class ProvaRisposta {
 		FactoryDAO f = new FactoryDAO();
 		ObjectDAO oggetto = f.getObject("Risposta");
 	    
-	    Risposta o = new Risposta(0, a, a, a);
+	    Risposta o = new Risposta(0, a, a, a, a);
 	    try {
 			oggetto.inserisciDati(o);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	         
-	    Risposta r = new Risposta(4, null, null,null);
+	   /* Risposta r = new Risposta(4, null, null,null);
 	    try {
 			oggetto.recuperaDati(r);
 		} catch (SQLException e) {
@@ -40,6 +40,6 @@ public class ProvaRisposta {
 	      System.out.println("Id risposta:" + all.getId());
 	      System.out.println("Testo risposta:" +all.getTesto());
 	      System.out.println("");
-	    }
+	    }*/
 	}
 }

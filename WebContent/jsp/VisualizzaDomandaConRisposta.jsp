@@ -13,48 +13,40 @@
 <body>
 <%
 	List ris = (List) request.getAttribute("listaInfo");
-	List risControllo = (List) request.getAttribute("listaInfo");
-	Iterator it = ris.iterator();
-	Iterator itC = risControllo.iterator();
 %>
 <br>
 <div style="margin-left:40%;width:700px;border-style: solid;padding-left:20px;padding-right:20px;padding-top:20px;">
   <div class="jumbotron">
-    <h5>Inviata da: <%=it.next()%> </h5>     
-    <h5>Oggetto: <%=it.next()%></h5>  
-    <p><%=it.next()%></p>
+    <h5>Inviata da: <a href='ServletVisualizzaProfilo?email=<%=ris.get(0)%>'><%=ris.get(0)%></a></h5>     
+    <h5>Oggetto: <%=ris.get(1)%></h5>  
+    <p><%=ris.get(2)%></p>
     <% 
-    	itC.next();
-   		itC.next();
-    	itC.next();
-    	if(itC.next() != null){
-    		out.print("<a href='ScaricaAllegato?url="+it.next()+"'><img src='../img/download.png' style='width:50px;height:50px;'/></a>");
-		} else {
-			it.next();
+		String url = (String) ris.get(3);
+		if(url.equals("")){}
+		else{
+			out.print("<form enctype='multipart/form-data' action='ScaricaAllegato' method='post'><input  type = 'hidden' name = 'url' value='"+ris.get(3)+"'><input  type = 'hidden' name = 'idD' value='"+ris.get(4)+"'><img src='img/download.png' style='width:30px;height:30px;'/><input type='submit' value='Scarica Allegato'></form>");
 		}
-		out.print("<a href='ServletEliminaDomanda?id="+it.next()+"'><img src='../img/elimina.png' style='width:50px;height:50px;'/>/></a>");
-    %>
-    
+		out.print("<a href='ServletFormRisposta?IdDomanda="+ris.get(4)+"'>Invia Risposta ></a>");
+		out.print("<a href='ServletEliminaDomanda?id="+ris.get(4)+"'><img src='img/elimina.png' style='width:50px;height:50px;margin-left:400px;'/></a>");   %> 
   </div>
   <div class="jumbotron">
-    <h5>Inviata da: <%it.next();%></h5>       
-    <p><%it.next();%></p>
+    <h5>Inviata da: <a href='ServletVisualizzaProfilo?email=<%=ris.get(5)%>'><%=ris.get(5)%></a></h5>       
+    <p><%=ris.get(6)%></p>
 	 <% 
-   		itC.next();
-    	itC.next();
-    	if(itC.next() != null){
-    		out.print("<a href='ScaricaAllegato?url="+it.next()+"'><img src='../img/download.png' style='width:50px;height:50px;'/></a>");
-		} else {
-			it.next();
+		url = (String) ris.get(7);
+ 		if(url.equals("")){}
+ 		else{
+ 			out.print("<form enctype='multipart/form-data' action='ScaricaAllegato' method='post'><input  type = 'hidden' name = 'url' value='"+ris.get(3)+"'><input  type = 'hidden' name = 'idD' value='"+ris.get(4)+"'><img src='img/download.png' style='width:30px;height:30px;'/><input type='submit' value='Scarica Allegato'></form>");
 		}
+ 		out.print("<a href='ServletFormRisposta?IdDomanda="+ris.get(4)+"'>Invia Risposta ></a>");
     	
-    	String v = (String) itC.next();
+    	String v = (String) ris.get(8);
     	if(v.equals("like")){
-    		out.print("<img src='../img/index.png' style='width:50px;height:50px;margin-left:400px'/>");
+    		out.print("<img src='img/index.png' style='width:50px;height:50px;margin-left:400px'/>");
 		} else if(v.equals("dislike")) {
-			out.print("<img src='../img/index2.png' style='width:50px;height:50px;margin-left:400px'/>");
+			out.print("<img src='img/index2.png' style='width:50px;height:50px;margin-left:400px'/>");
 		} else {
-			out.print("<a href='ServletValutaRisposta?ID="+it.next()+"valutazione=like'><img src='../img/index.png' style='width:50px;height:50px;margin-left:400px'/></a><a href='ServletValutaRisposta?ID="+it.next()+"valutazione=dislike'><img src='../img/index2.png' style='width:50px;height:50px;'/></a>");
+			out.print("<a href='ServletValutaRisposta?idR="+ris.get(9)+"&valutazione=like&idD="+ris.get(4)+"'><img src='img/index.png' style='width:50px;height:50px;margin-left:350px'/></a><a href='ServletValutaRisposta?idR="+ris.get(9)+"&valutazione=dislike&idD="+ris.get(4)+"'><img src='img/index2.png' style='width:50px;height:50px;'/></a>");
 		}
     %>
      </div>

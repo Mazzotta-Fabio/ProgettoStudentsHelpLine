@@ -31,7 +31,7 @@ Student's Help Line
 </nav>
 </div>
 </header>
-<form enctype="multipart/form-data" action="../ServletInserisciRisposta.html" method="post">
+<form enctype="multipart/form-data" action="ServletInserisciRisposta.html" method="post">
 <input type="hidden" name="id" value="<%=request.getAttribute("id")%>">
 <p><center><font color="black"><strong>Cosa vuoi rispondere?</strong></font></p><textarea name="testo"></textarea><br><br>
 <p><center><font color="black"><strong>Allega file</strong></font></center></p><input type="file" name="file"> <br><br>

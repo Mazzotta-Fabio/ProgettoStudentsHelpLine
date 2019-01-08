@@ -34,10 +34,10 @@ public class ServletModificaTutor extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		String tipo = (String) session.getAttribute("TipoUtente");
+		String tipo = (String) session.getAttribute("tipo");
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
-		String email = request.getParameter("email");
+		String email = (String) session.getAttribute("email");
 		String password = request.getParameter("password");
 		Part linkImmagine = request.getPart("immagine");
 		String numero = request.getParameter("numero");
@@ -48,8 +48,8 @@ public class ServletModificaTutor extends HttpServlet {
 		GestioneUtente u = new ImpGestioneUtente();
 		u.modificaAccount(tipo, nome, cognome, email, password, linkImmagine, voto, titolo, numero, materia);
 		
-		RequestDispatcher view = request.getRequestDispatcher("PaginaPrincipale.html");
-		view.forward(request, response);
+		RequestDispatcher forward = request.getServletContext().getRequestDispatcher("/Login?email="+email+"&password="+password+"&tipoUtente="+tipo);
+		forward.forward(request, response);
 	}
 
 	/**

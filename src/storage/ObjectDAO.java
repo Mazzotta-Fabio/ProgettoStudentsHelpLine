@@ -8,4 +8,5 @@ public interface ObjectDAO {
   public void cancellaDati(Object o) throws SQLException;
   public boolean recuperaDati(Object o) throws SQLException;
   public ArrayList<Object> recuperaTutto() throws NumberFormatException, SQLException;
+  public void modificaDati(Object o) throws SQLException;
 }

@@ -1,12 +1,15 @@
 package servletGestioneDomanda;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import gestioneDomanda.GestioneDomanda;
@@ -46,6 +49,13 @@ public class ServletInserisciRisposta extends HttpServlet {
 		
 		GestioneDomanda d = new ImpGestioneDomanda();
 		d.inserisciRisposta(testo, idDomanda, url);
+		
+		HttpSession session = request.getSession();
+		String email = (String) session.getAttribute("email");
+		String pass = (String) session.getAttribute("pass");
+		String tipo = (String) session.getAttribute("tipo");
+		RequestDispatcher forward = request.getServletContext().getRequestDispatcher("/Login?email="+email+"&password="+pass+"&tipoUtente="+tipo);
+		forward.forward(request, response);
 	}
 
 	/**

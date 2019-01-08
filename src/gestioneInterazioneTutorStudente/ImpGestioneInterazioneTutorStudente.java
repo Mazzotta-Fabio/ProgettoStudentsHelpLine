@@ -25,9 +25,13 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 	private String destLocation;
 	
 	public ImpGestioneInterazioneTutorStudente() {
-		destLocation = new String("C:\\Users\\Antonio\\Desktop\\Documenti\\web\\File\\file");
+		destLocation = new String("C:\\Users\\Antonio\\Desktop\\Documenti\\web\\File\\WebContent\\Immagine");
 	}
 	
+	/**
+	 * Il metodo serve per caricare un file per una domanda o risposta.
+	 * @param part: file da caricare.
+	 */
     public String upload(Part part)throws IOException {
         
     	String fileName = extractFileName(part);
@@ -61,7 +65,11 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
  			return "";
  	}
 
-	@Override
+    /**
+	 * Il metodo serve per capire se ci sono domande da visualizzare.
+	 * @param email: chiave primaria di una utente.
+	 * @param tipo: tipo di utent.
+	 */
 	public List<String> listaTutor(String materia) {
 		System.out.println("la materia selezionata è: " + materia);
 		FactoryDAO fd = new FactoryDAO();
@@ -82,6 +90,11 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		      if (t.getMateriaDiCompetenza().equals(materia)) {
 		    	  listaTutor.add(t.getNome());
 		    	  listaTutor.add(t.getCognome());
+		    	  listaTutor.add(t.getLinkImmagine());
+		    	  int num[] = this.valutazioniTot(t.getEmail());
+		    	  listaTutor.add(String.valueOf(num[0]));
+		    	  listaTutor.add(String.valueOf(num[1]));
+		    	  listaTutor.add(t.getEmail());
 		      }
 		}
 		return listaTutor;
@@ -105,26 +118,21 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 
 	@Override
 	public void valutaRisposta(int id, String valutazione) {
+		System.out.println(id + " " + valutazione );
 		Risposta r = new Risposta(id,null,null, null, null);
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Risposta");
 		try {
 			o.recuperaDati(r);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
 		}
 		r.setValutazione(valutazione);
 		try {
-			o.cancellaDati(r);
+			o.modificaDati(r);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		try {
-			o.inserisciDati(r);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package servletGestioneInterazioneTutorStudente;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,11 +25,15 @@ public class ServletValutaRisposta extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ID = Integer.parseInt(request.getParameter("ID"));
+		int idD = Integer.parseInt(request.getParameter("idD"));
+		int idR = Integer.parseInt(request.getParameter("idR"));
 		String valutazione = request.getParameter("valutazione");
 		
 		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
-		i.valutaRisposta(ID, valutazione);
+		i.valutaRisposta(idR, valutazione);
+		
+		RequestDispatcher forward = request.getServletContext().getRequestDispatcher("/ServletVisualizzaDomanda?id="+idD);
+		forward.forward(request, response);
 		
 	}
 

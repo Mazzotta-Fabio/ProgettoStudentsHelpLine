@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import gestioneDomanda.GestioneDomanda;
 import gestioneDomanda.ImpGestioneDomanda;
 
@@ -32,12 +34,19 @@ public class ServletVisualizzaDomanda extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession sessione = request.getSession();
+		String tipo = (String) sessione.getAttribute("tipo");
 		int ID = Integer.parseInt(request.getParameter("id"));
 		GestioneDomanda d = new ImpGestioneDomanda();
-		ArrayList<String> listaInfo = d.visualizzaDomanda(ID);
+		ArrayList<String> listaInfo = d.visualizzaDomanda(ID,tipo);
 		request.setAttribute("listaInfo", listaInfo);
-		RequestDispatcher view = request.getRequestDispatcher("");
-		view.forward(request, response);
+		if(listaInfo.get(9).equals("1")) {
+			RequestDispatcher view = request.getRequestDispatcher("jsp/VisualizzaDomandaSenzaRisposta.jsp");
+			view.forward(request, response);
+		} else {
+			RequestDispatcher view = request.getRequestDispatcher("jsp/VisualizzaDomandaConRisposta.jsp");
+			view.forward(request, response);
+		}
 	}
 
 	/**

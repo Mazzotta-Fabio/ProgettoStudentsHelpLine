@@ -37,7 +37,7 @@ public class ServletRecuperaEmail extends HttpServlet {
 		GestioneUtente g = new ImpGestioneUtente();
 		g.recuperaPassword(tipo,password, destinatario);
 	   
-		RequestDispatcher view = request.getRequestDispatcher("Home.html");
+		RequestDispatcher view = request.getRequestDispatcher("html/HomePage.html");
 		view.forward(request, response);
 	}
 

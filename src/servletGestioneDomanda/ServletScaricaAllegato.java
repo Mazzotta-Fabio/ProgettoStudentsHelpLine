@@ -1,7 +1,10 @@
 package servletGestioneDomanda;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +21,9 @@ import gestioneDomanda.ImpGestioneDomanda;
  * @version 1.0
  */
 @WebServlet("/ScaricaAllegato")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
+maxFileSize = 1024 * 1024 * 10,
+maxRequestSize = 1024 * 1024 * 50) 
 public class ServletScaricaAllegato extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,6 +38,9 @@ public class ServletScaricaAllegato extends HttpServlet {
 		String path = request.getParameter("url");
 		GestioneDomanda g = new ImpGestioneDomanda();
 	    g.scaricaAllegato(path);
+	    int idD = Integer.parseInt(request.getParameter("idD"));
+	    RequestDispatcher forward = request.getServletContext().getRequestDispatcher("/ServletVisualizzaDomanda?id="+idD);
+		forward.forward(request, response);
 	}
 
 	/**

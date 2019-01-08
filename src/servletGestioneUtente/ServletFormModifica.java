@@ -39,7 +39,7 @@ public class ServletFormModifica extends HttpServlet {
 		if(tipo.equals("Tutor")) {
 				Tutor t = (Tutor) u.infoAccount(email, tipo);
 				request.setAttribute("Nome",t.getNome());
-				request.setAttribute("password",t.getPassword());
+				request.setAttribute("Password",t.getPassword());
 				request.setAttribute("Cognome",t.getCognome());
 				request.setAttribute("Immagine",t.getLinkImmagine());
 				request.setAttribute("Materia",t.getMateriaDiCompetenza());
@@ -50,21 +50,21 @@ public class ServletFormModifica extends HttpServlet {
 				boolean vis = d.risposteDaVisualizzare(email);
 				if (vis == true) {session.setAttribute("vis", "si");}
 				else {session.setAttribute("vis", "no");}
-				RequestDispatcher view = request.getRequestDispatcher("Account.jsp");
+				RequestDispatcher view = request.getRequestDispatcher("jsp/ModificaAccount.jsp");
 				view.forward(request, response);
 			} else {
 				Studente s = (Studente) u.infoAccount(email,tipo);
 				request.setAttribute("Nome",s.getNome());
-				request.setAttribute("password",s.getPassword());
+				request.setAttribute("Password",s.getPassword());
 				request.setAttribute("Cognome",s.getCognome());
 				request.setAttribute("Immagine",s.getLinkImmagine());
 				request.setAttribute("Matricola",s.getMatricola());
-				request.setAttribute("Anno",s.getAnnoCorso());	
+				request.setAttribute("Anno",s.getAnnoCorso());
 				GestioneDomanda d = new ImpGestioneDomanda();
 				boolean vis = d.domandeDaVisualizzare(email);
 				if (vis == true) {session.setAttribute("vis", "si");}
 				else {session.setAttribute("vis", "no");}
-				RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
+				RequestDispatcher view = request.getRequestDispatcher("jsp/ModificaAccount.jsp");
 				view.forward(request, response);
 		}
 	}

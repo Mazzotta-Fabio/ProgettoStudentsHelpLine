@@ -40,12 +40,14 @@ public class ServletInserisciDomanda extends HttpServlet {
 	    String oggetto = request.getParameter("oggetto");
 	    String testo = request.getParameter("testo");
 	    HttpSession session = request.getSession();
-		String emailS = (String) session.getAttribute("EmailUtente");
+		String emailS = (String) session.getAttribute("email");
+		String pass = (String) session.getAttribute("pass");
+		String tipo = (String) session.getAttribute("tipo");
 		
 		i.inserisciDomanda(oggetto,testo,url,emailT,emailS);
 	    
-	    /*RequestDispatcher view = request.getRequestDispatcher("Home.html");
-		view.forward(request, response);*/
+		RequestDispatcher forward = request.getServletContext().getRequestDispatcher("/Login?email="+emailS+"&password="+pass+"&tipoUtente="+tipo);
+		forward.forward(request, response);
 	    
 	}
 
