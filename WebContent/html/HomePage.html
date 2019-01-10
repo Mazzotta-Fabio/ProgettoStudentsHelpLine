@@ -17,26 +17,97 @@
   color: white;
   font-size: 20px;
 }
+
+#bg {
+    /* The image used */
+    background-image: url("../img/ragazzi.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.center-block {
+	border: 3px solid #fffff0;
+	background: rgba(100,100,100,0.4);
+	border-radius: 8px;
+	width: 450px;
+}
+@media screen and (max-width:1300px) {
+  /* For mobile phones: */
+   .center-block {
+    margin-left:30%;
+    margin-top:5%;
+  }
+}
+
+@media screen and (max-width:1000px) {
+  /* For mobile phones: */
+   .center-block {
+    margin-left:20%;
+    margin-top:5%;
+  }
+}
+@media screen and (max-width:700px) {
+   .center-block {
+    margin-left:10%;
+    margin-top:5%;
+  }
+}
+@media screen and (max-width:500px) {
+   .center-block {
+    margin-left:0%;
+    margin-top:5%;
+  }
+}
+
+@media screen and (max-height:500px) {
+   .center-block {
+	margin-top:0%;
+  }
+}
+
+@media screen and (max-height:450px) {
+   .center-block {
+	width: 350px;
+  }
+}
+
+@media screen and (max-height:400px) {
+   .center-block {
+	font-size:8px;
+  }
+}
+
+hr { 
+  margin-top:-5px;
+  border-style: solid;
+  border-width: 5px;
+  color:white;
+}
 </style>
 </head>
-<body>
-<header id=header">
-<div class="header-content">
+<body id="bg">
 
-</div>
-<nav class="navbar navbar-custom">
-<img class="position" src="../img/logo.png" alt="StudentHelpline" style="widht:100px;height:150px;margin-left:40%;">
+<div class="navbar navbar-custom">
+<img class="position" src="../img/logo.png" alt="StudentHelpline" style="widht:30px;height:40px;margin-left:40%;">
 <div style="width:40%"></div>
- <a href="PaginaLogin.html"><img src="../img/User-Interface-Login-icon.png"  style="hight:50px;height:50px;"></a>
- <a href="PaginaRegistrazione.html"><img src="../img/agg_Account.png" style="hight:50px;height:50px;"></a>
-</nav>
-</header>
+ <a href="PaginaLogin.html"><img src="../img/User-Interface-Login-icon.png"  style="widht:20px;height:20px;"></a>
+ <a href="PaginaRegistrazione.html"><img src="../img/agg_Account.png" style="widht:20px;height:20px;"></a>
+</div>
+<hr>
+
 <div>
-<img src="../img/ragazzi.jpg" alt="StudentHelpline" style="widht:1200px;height:1400px;">
-<p style="margin-left:60%;margin-top:-25%;font-size:60px;margin-right:1%";>Gli studenti, del corso di laurea Triennale dell'Università degli studi di Salerno, possono porre domande a dei tutor specializzati in determinate materie didattiche per avere un supporto efficiente ai loro studi.</p>
+<div class="center-block">
+<p style="font-size:25px;"align="center"><b><font color="red">Che cos'è StudentsHelpLine?</b></font><br><font color="white">Gli studenti, del corso di laurea triennale dell'Università degli studi di Salerno, possono porre domande a dei tutor specializzati in determinate materie didattiche per avere un supporto efficiente ai loro studi.</font></p>		
+</div>
 </div>
 <div class="footer">
-<h1>STUDENT'S HELP LINE. SEE MORE. DO MORE.</h1>
+<h6>STUDENT'S HELP LINE. SEE MORE. DO MORE.</h6>
 </div>
 </body>
 </html>

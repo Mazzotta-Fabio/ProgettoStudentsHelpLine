@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,13 +27,14 @@
 </head>
 
 
-<div align="center"><a href = "HomePage.html"><img src="../img/logo.png" style="widht:150px;height:150px;"></a></div><br><br>
+<div align="center"><a href = "HomePage.html"><img src="img/logo.png" style="widht:150px;height:150px;"></a></div><br><br>
 <p>
 <center><strong> HAI SMARRITO LA PASSWORD? INSERISCI LA TUA EMAIL ISTITUZIONALE E TE LA INVIEREMO!</strong></center><br><br>
 </p>
-<form method="get" action="../RecuperaEmail.html">
+<form method="get" action="RecuperaEmail.html">
 <p align="center">
 <input type="radio" name="tipoUtente" id="myCheck1"> TUTOR  <input type="radio" name="tipoUtente" id="myCheck2" required> STUDENTE <br><br>
+ <font color="red">Email errata, non presente sul database</font><br><br>
  <font color="#2b78e4"> Email: </font> &nbsp; &nbsp; 
  <input type="text" name="email" id="email" onKeyUp="myFunction()" onKeyDown="myFunction2()" required>
  <p id="par1" style="color:red" align="center"></p></font>
@@ -53,7 +56,7 @@ function myFunction() {
 		if(!document.getElementById("email").value.match(test)){
 			document.getElementById("par1").innerHTML = "L'email non è del formato corretto (@unisa.it)";
 		}
-		if (n>60) {
+		if (n<60) {
 			document.getElementById("par1").innerHTML = "L'email deve avere al massimo 60 carratteri";
 		}
 	} else if (checkBox2.checked == true){
@@ -62,7 +65,7 @@ function myFunction() {
 		if(!document.getElementById("email").value.match(test)){
 			document.getElementById("par1").innerHTML = "L'email non è del formato corretto (@studenti.unisa.it)";
 		} 
-		if (n>60) {
+		if (n<60) {
 			document.getElementById("par1").innerHTML = "L'email deve avere al massimo 60 carratteri";
 		}
 	}	

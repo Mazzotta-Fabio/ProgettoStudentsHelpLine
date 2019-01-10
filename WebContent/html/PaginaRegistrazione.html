@@ -2,112 +2,96 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="icon" type="image" href="../img/ICONA.ico">
 <style>
-.header {
+span{
+	color: red;
+	padding-left:50px;
+}
+
+#header {
   padding: 0.05px;
   text-align: center;
   background: #2b78e4;
   color: white;
-  font-size: 30px;
+}
+
+#regT {
+ background: #0095cd;
+ color:white;
+}
+#regS {
+ background: #0095cd;
+ color:white;
 }
 </style>
-<div class="header">
-  <h1>REGISTRAZIONE</h1>
- </div>
 <title>StudentsHelpLine</title>
 </head>
-<img class="left" src="../img/1.PNG">
-<div STYLE="position:absolute; top:190px; left:745px">
-<div align="center"><img src="../img/2.PNG" vspace="1"></div>
-</div>
-<table width="600" align="center" bgcolor="black" border="2"><tbody> 
+<div id="header"><h4><font color="white">REGISTRAZIONE</font></h4></div>
+<div style="margin-top:70px;"><a href = "HomePage.html"><img src="../img/logo.png" style="widht:300px;height:280px;"></a></div><br><br>
+
+<form enctype="multipart/form-data" action="../Registrazione.html" method="post">
+<table width="800" height="500" align="right" bgcolor="black" border="2" style="margin-top:-400px;"><tbody> 
 <tr>
-<td width="600" bgcolor="#E2E2E2">
-<p><center>SELEZIONA IL TIPO DI UTENTE </center> </p>
-<center><input type="checkbox" id="myCheck"  onclick="myFunction()"> TUTOR  <input type="checkbox" id="myCheck2"  onclick="myFunction2()"> STUDENTE</center>
-<p align="center" id="text" style="display:none ">
-<font face="sans-serif">
-<font color="black"><strong>Nome:</strong></font><br><br>
-<input type="text" name="user"id="u"><br><br>
- <font color="black"><strong>Cognome:</strong></font><br><br>
-<input type="text" name="cogn"id="p"><br><br>
-<font color="black"><strong>Email:</strong></font><br><br>
-<input type="text" name="ema"id="u"><br><br>
-<font color="black"><strong>Password:</strong></font><br><br>
-<input type="text" name="pass"id="u"><br><br>
-<font color="black"><strong>Conferma Password:</strong></font><br><br>
-<input type="text" name="pass2"id="u"><br><br>
-<font color="black"><strong>Numero di cellulare:</strong></font><br><br>
-<input type="text" name="cell"id="u"><br><br>
-<font color="black"><strong>Voto laurea:</strong></font><br><br>
-<input type="text" name="voto"id="u"><br><br>
-<font color="black"><strong>Titolo di studio:</strong></font><br><br>
- <select><br><br>
-  <option value="volvo">Triennale</option>
-  <option value="saab">Magistrale</option>
-  <option value="mercedes">Specialistica</option>
+<td bgcolor="#E2E2E2">
+<p><center>Seleziona tipo utente <input type="radio" name="tipoUtente"id="myCheck" value="Tutor" onclick="myFunction1()"> TUTOR  <input type="radio" name="tipoUtente"id="myCheck2" value="Studente" onclick="myFunction2()"> STUDENTE </center></p>
+</td>
+</tr>
+<tr>
+<td width="800" height="450" bgcolor="#E2E2E2">
+<p id="text" style="display:none;"><font face="sans-serif">
+<font color="black"><strong>Nome:   </strong></font><input type="text" name="nome"id="nomeT" onKeyUp="myFunction3()" onKeyDown="myFunctionT()" required><span id="par3"></span><br><br>
+<font color="black"><strong>Cognome:   </strong></font><input type="text" name="cognome"id="cognomeT"  onKeyUp="myFunction4()" onKeyDown="myFunctionT()" required><span id="par4"></span><br><br>
+<font color="black"><strong>Email:   </strong></font><input type="text" name="email"id="emailT"  onKeyUp="myFunction5()" onKeyDown="myFunctionT()" required><span id="par5" ></span><br><br>
+<font color="black"><strong>Password:   </strong></font><input type="text" name="password"id="passwordT"  onKeyUp="myFunction6()" onKeyDown="myFunctionT()" required><span id="par6"></span><br><br>
+<font color="black"><strong>Conferma Password:   </strong></font><input type="text" name="password2"id="password2T"  onKeyUp="myFunction7()" onKeyDown="myFunctionT()" required><span id="par7"></span><br><br>
+<font color="black"><strong>Numero di cellulare:   </strong></font><input type="text" name="numero" id="numeroT"  onKeyUp="myFunction8()" onKeyDown="myFunctionT()" required><span id="par8"></span><br><br>
+<font color="black"><strong>Voto laurea:   </strong></font><input type="text" name="voto"id="votoT"  onKeyUp="myFunction9()" onKeyDown="myFunction()T" required><span id="par9"></span><br><br>
+<font color="black"><strong>Titolo di studio:   </strong></font><select name="titolo" id="titolo">
+  <option value="Triennale">Triennale</option>
+  <option value="Magistrale">Magistrale</option>
+  <option value="Specialistica">Specialistica</option>
 </select><br><br>
-<font color="black"><strong>Materia di competenza:</strong></font><br><br>
- <select><br><br>
-  <option value="1">Programmazione 1</option>
-  <option value="2">Analisi 1</option>
-  <option value="3">Archiettura degli elaboratori</option>
-  <option value="4">Matematica discreta</option>
-  <option value="5">Strutture dati</option>
-  <option value="6">MMI</option>
-  <option value="7">Web</option>
-  <option value="8">Reti</option>
-  <option value="9">Algoritmi</option>
-  <option value="10">CPSM</option>
-  <option value="11">Sistemi operativi</option>
-  <option value="12">Base dati</option>
-  <option value="13">Web</option>
-  <option value="14">IS</option>
-  <option value="15">PD</option>
-  <option value="16">ETC</option>
-  <option value="17">RO</option>
+<font color="black"><strong>Materia di competenza:   </strong></font><select name="materia" id="materia">
+  <option value="Programmazione1">Programmazione 1</option>
+  <option value="Analisi1">Analisi 1</option>
+  <option value="Architettura">Archiettura degli elaboratori</option>
+  <option value="MatematicaD">Matematica discreta</option>
+  <option value="StruttureD">Strutture dati</option>
+  <option value="MMI">Metodi matematici per l'informatica</option>
+  <option value="Web">Programmazione Web</option>
+  <option value="Reti">Reti di calcolatori</option>
+  <option value="Algoritmi">Algoritmi</option>
+  <option value="CPSM">Calcolo delle probabilità e statica matematica</option>
+  <option value="Sistemi">Sistemi operativi</option>
+  <option value="BaseDati">Base di dati</option>
+  <option value="Java">Progammazione ad oggetti</option>
+  <option value="IS">Ingegnieria del Software</option>
+  <option value="PD">Programmazione distribuita</option>
+  <option value="ETC">Elementi di teoria della computazione</option>
+  <option value="RO">Ricerca operativa</option>
 </select><br><br>
-<font color="black"><strong>Aggiungi immagine:</strong></font><br><br>
-<input type="file"  name="file"><br><br>
-<input type="submit" value="REGISTRATI" id="log"name="button"><br><br>
-
+<font color="black"><strong>Aggiungi immagine:   </strong></font><input type="file"  name="file" id="immagineT" onchange="myFunction10()"><span id="par10"></span><br><br>
+<input type="submit" value="REGISTRATI" id="regT"name="button" >
+<a href="HomePage.html">TORNA A HOME ></a>
 </font>
-
 </p>
 
-<script>
-function myFunction() {
-  var checkBox = document.getElementById("myCheck");
-  var text = document.getElementById("text");
-  if (checkBox.checked == true){
-    text.style.display = "block";
-  } else {
-     text.style.display = "none";
-  }
-}
-</script>
-
-<form enctype="multipart/form-data" action="../RegistrazioneStudente.html" method="post">
-<p align="center" id="text2" style="display:none">
+<p id="text2" style="display:none">
 <font face="sans-serif">
-<font color="black"><strong>Nome:</strong></font><br><br>
-<input type="text" name="nome"id="u"><br><br>
- <font color="black"><strong>Cognome:</strong></font><br><br>
-<input type="text" name="cognome"id="p"><br><br>
-<font color="black"><strong>Email:</strong></font><br><br>
-<input type="text" name="email"id="u"><br><br>
-<font color="black"><strong>Password:</strong></font><br><br>
-<input type="text" name="password"id="u"><br><br>
-<font color="black"><strong>Matricola:</strong></font><br><br>
-<input type="text" name="matricola"id="u"><br><br>
-<font color="black"><strong>Anno di corso:</strong></font><br><br>
- <select name="annoCorso"><br><br>
-  <option value="terzo">Triennale</option>
+<font color="black"><strong>Nome:   </strong></font><input type="text" name="nome"id="nomeS"  onKeyUp="myFunction11()" onKeyDown="myFunctionS()" required><span id="par11"></span><br><br>
+ <font color="black"><strong>Cognome:   </strong></font><input type="text" name="cognome"id="cognomeS"  onKeyUp="myFunction12()" onKeyDown="myFunctionS()" required><span id="par12"></span><br><br>
+<font color="black"><strong>Email:   </strong></font><input type="text" name="email"id="emailS"  onKeyUp="myFunction13()" onKeyDown="myFunctionS()" required><span id="par13"></span><br><br>
+<font color="black"><strong>Password:   </strong></font><input type="text" name="password"id="passwordS"  onKeyUp="myFunction14()" onKeyDown="myFunctionS()" required><span id="par14"></span><br><br>
+<font color="black"><strong>Conferma Password:   </strong></font><input type="text" name="password2"id="password2S"  onKeyUp="myFunction15()" onKeyDown="myFunctionS()" required><span id="par15"></span><br><br>
+<font color="black"><strong>Matricola:   </strong></font><input type="text" name="matricola"id="matricolaS"  onKeyUp="myFunction16()" onKeyDown="myFunctionS()" required><span id="par16"></span><br><br>
+<font color="black"><strong>Anno di corso:   </strong></font><select name="annoCorso"><br><br>
+  <option value="primo">Primo</option>
+  <option value="secondo">Secondo</option>
+  <option value="terzo">Terzo</option>
 </select><br><br>
-<font color="black"><strong>Aggiungi immagine:</strong></font><br><br>
-<input type="file"  name="file"><br><br>
-<input type="submit" value="REGISTRATI" id="log"name="button"><br><br>
+<font color="black"><strong>Aggiungi immagine:   </strong></font><input type="file"  name="file" id="immagineS" onchange="myFunction17()"><span id="par17"></span><br><br>
+<input type="submit" value="REGISTRATI" id="regS" name="button">
+<a href="HomePage.html">TORNA A HOME ></a>
 </tr> 
 </tbody></table>
 </font>
@@ -115,15 +99,209 @@ function myFunction() {
 </form>
 
 <script>
-function myFunction2() {
-  var checkBox = document.getElementById("myCheck2");
-  var text = document.getElementById("text2");
+
+function myFunction1() {
+  var checkBox = document.getElementById("myCheck");
+  var text = document.getElementById("text");
+  var text2 = document.getElementById("text2");
   if (checkBox.checked == true){
     text.style.display = "block";
-  } else {
-     text.style.display = "none";
+    text2.style.display = "none";
   }
 }
+
+function myFunction2() {
+  var checkBox = document.getElementById("myCheck2");
+  var text = document.getElementById("text");
+  var text2 = document.getElementById("text2");
+  if (checkBox.checked == true){
+    text2.style.display = "block";
+    text.style.display = "none";
+  } 
+}
+
+function myFunction3() {
+	var test = /^[a-zA-Z]+$/;
+	document.getElementById("par3").innerHTML = "";
+	if(!document.getElementById("nomeT").value.match(test)){
+		document.getElementById("par3").innerHTML = "Il nome deve contenere solo caratteri";
+	}
+	var n = document.getElementById("nomeT").value.length;
+	if(n<31){
+		document.getElementById("par3").innerHTML = "Il nome deve contenere al massimo 30 caratteri";
+	}
+}
+
+function myFunction4() {
+	var test = /^[a-zA-Z]+$/;
+	document.getElementById("par4").innerHTML = "";
+	if(!document.getElementById("cognomeT").value.match(test)){
+		document.getElementById("par4").innerHTML = "Il cognome deve contenere solo caratteri";
+	}
+	var n = document.getElementById("cognomeT").value.length;
+	if(n<31){
+		document.getElementById("par4").innerHTML = "Il cognome deve contenere al massimo 30 caratteri";
+	}
+}
+
+function myFunction5() {
+	var test = "@unisa.it";
+	document.getElementById("par5").innerHTML = "";
+	if(!document.getElementById("emailT").value.match(test)){
+		document.getElementById("par5").innerHTML = "L'email non è del formato corretto (@unisa.it)";
+	}
+	var n = document.getElementById("emailT").value.length;
+	if(n<11 || n>60){
+		document.getElementById("par5").innerHTML = "L'email deve contenere tra gli 11 e 60 caratteri";
+	}
+}
+
+function myFunction6() {
+	var i;
+	document.getElementById("par6").innerHTML = "";
+	var n = document.getElementById("passwordT").value.lenght;
+	if(n < 8||n>20){
+		document.getElementById("par6").innerHTML = "La password deve avere tra gli 8 e 20 caratteri";
+	}
+}
+
+function myFunction8() {
+	var i;
+	var test = /^[0-9]+\S?$/;
+	document.getElementById("par8").innerHTML = "";
+	if(!document.getElementById("numeroT").value.match(test)){
+		document.getElementById("par8").innerHTML = "Il numero deve contenere solo numeri";
+	}
+	var n = document.getElementById("cognomeT").value.length;
+	if(n!=10){
+		document.getElementById("par4").innerHTML = "Il numero deve essere di 10 caratteri";
+	}
+}
+
+function myFunction9() {
+	var i;
+	var test = /^[0-9]+\S?$/;
+	document.getElementById("par9").innerHTML = "";
+	if(document.getElementById("votoT").value > 110){
+		document.getElementById("par9").innerHTML = "Il voto deve essere compreso tra 66 e 110";
+	} else if(document.getElementById("votoT").value < 66){
+		document.getElementById("par9").innerHTML = "Il voto deve essere compreso tra 66 e 110";
+	} else if(!document.getElementById("votoT").value.match(test)){
+		document.getElementById("par9").innerHTML = "Il voto deve contenere solo numeri";
+	}
+}
+
+
+function myFunction10(){
+	document.getElementById("par10").innerHTML = "";
+	var frm = document.getElementsByTagName('form')[0];
+	if(!frm.elements[11].value.match("png") && !frm.elements[11].value.match("jpg") && !frm.elements[11].value.match("jpeg")){
+		document.getElementById("par10").innerHTML = " I file accettati sono jpg/png/jpeg";
+	}
+}
+
+function myFunction11() {
+	var test = /^[a-zA-Z]+$/;
+	document.getElementById("par11").innerHTML = "";
+	if(!document.getElementById("nomeS").value.match(test)){
+		document.getElementById("par11").innerHTML = "Il nome deve contenere solo caratteri";
+	}
+	var n = document.getElementById("nomeS").value.length;
+	if(n<31){
+		document.getElementById("par11").innerHTML = "Il nome deve contenere al massimo 30 caratteri";
+	}
+}
+
+function myFunction12() {
+	var test = /^[a-zA-Z]+$/;
+	document.getElementById("par12").innerHTML = "";
+	if(!document.getElementById("cognomeS").value.match(test)){
+		document.getElementById("par12").innerHTML = "Il cognome deve contenere solo caratteri";
+	}
+	var n = document.getElementById("cognomeS").value.length;
+	if(n<31){
+		document.getElementById("par12").innerHTML = "Il cognome deve contenere al massimo 30 caratteri";
+	}
+}
+
+function myFunction13() {
+	var test = "@studenti.unisa.it";
+	document.getElementById("par13").innerHTML = "";
+	if(!document.getElementById("emailS").value.match(test)){
+		document.getElementById("par13").innerHTML = "L'email non è del formato corretto (@studenti.unisa.it)";
+	}
+	var n = document.getElementById("emailS").value.length;
+	if(n<11 || n>60){
+		document.getElementById("par13").innerHTML = "L'email deve contenere tra gli 11 e 60 caratteri";
+	}
+}
+
+function myFunction14() {
+	var i;
+	document.getElementById("par14").innerHTML = "";
+	var n = document.getElementById("passwordS").value.lenght;
+	if(n < 8||n>20){
+		document.getElementById("par14").innerHTML = "La password deve avere tra gli 8 e 20 caratteri";
+	}
+}
+
+function myFunction16() {
+	var i;
+	var test = /^[0-9]+\S?$/;
+	document.getElementById("par16").innerHTML = "";
+	if(!document.getElementById("matricolaS").value.match(test)){
+		document.getElementById("par16").innerHTML = "La matricola deve contenere solo numeri";
+	}
+	var n = document.getElementById("matricolaS").value.length;
+	if(n!=10){
+		document.getElementById("par16").innerHTML = "Il numero deve essere di 10 caratteri";
+	}
+}
+
+function myFunction17(){
+	document.getElementById("par17").innerHTML = "";
+	var frm = document.getElementsByTagName('form')[0];
+	if(!frm.elements[11].value.match("png") && !frm.elements[11].value.match("jpg") && !frm.elements[11].value.match("jpeg")){
+		document.getElementById("par17").innerHTML = " I file accettati sono jpg/png/jpeg";
+	}
+}
+
+function myFunctionT() {
+	var f3 = document.getElementById("par3").innerHTML;
+	var f4 = document.getElementById("par4").innerHTML;
+	var f5 = document.getElementById("par5").innerHTML;
+	var f6 = document.getElementById("par6").innerHTML;
+	var f7 = document.getElementById("par7").innerHTML;
+	var f8 = document.getElementById("par8").innerHTML;
+	var f9 = document.getElementById("par9").innerHTML;
+	var f10 = document.getElementById("par10").innerHTML;
+	document.getElementById("par7").innerHTML = "";
+	if(document.getElementById("passwordT").value == document.getElementById("password2T").value){document.getElementById("par7").innerHTML = "Conferma password diversa da password";}
+	if(f3 == "" || f4=="" || f5 =="" || f6 =="" || f7 =="" || f8=="" || f9=="" || f10==""){
+		document.getElementById("regT").disabled = false;
+	} else {
+		document.getElementById("regT").disabled = true;
+	}
+}
+
+
+function myFunctionS() {
+	var f3 = document.getElementById("par11").innerHTML;
+	var f4 = document.getElementById("par12").innerHTML;
+	var f5 = document.getElementById("par13").innerHTML;
+	var f6 = document.getElementById("par14").innerHTML;
+	var f7 = document.getElementById("par15").innerHTML;
+	var f8 = document.getElementById("par16").innerHTML;
+	var f9 = document.getElementById("par17").innerHTML;
+	if(document.getElementById("passwordS").value != document.getElementById("password2S").value){document.getElementById("par15").innerHTML = "Conferma password diversa da password";}
+	if(f3 == "" || f4=="" || f5 =="" || f6 =="" || f7 =="" || f8=="" || f9==""){
+		document.getElementById("regS").disabled = true;
+	} else {
+		document.getElementById("regS").disabled = false;
+	}
+}
+
+
 
 
 </script>
