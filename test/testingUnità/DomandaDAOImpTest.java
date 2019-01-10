@@ -17,15 +17,6 @@ import storage.DomandaDAOImp;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DomandaDAOImpTest extends TestCase {
-	/*
-	
-	private Risposta risposta;
-	private Risposta risposta1;
-	private Tutor tutor;
-	private Tutor tutor2;
-	private Studente studente;
-	private Studente studente2;
-	*/
 	private Domanda domanda;
 	private Domanda domanda2;
 	private DomandaDAOImp domandaDao;
@@ -42,14 +33,6 @@ public class DomandaDAOImpTest extends TestCase {
 	}
 
 	protected void tearDown() throws Exception {
-		/*
-		risposta=null;
-		risposta1=null;
-		tutor=null;
-		tutor2=null;
-		studente=null;
-		studente2=null;
-		*/
 		domanda=null;
 		domanda2=null;
 		domandaDao=null;
@@ -57,16 +40,6 @@ public class DomandaDAOImpTest extends TestCase {
 	
 	public void test2InserisciDati() {
 		try {
-			/*
-			Risposta risposta=new Risposta(5000,"CIAOIOIO","allegato","ON");
-			Risposta risposta1=new Risposta(5001,"CIAOIOIO","allegato","ON");
-			Tutor tutor=new Tutor("Mario","Rossi","mario@gmail.com","12345678","/home/xyz","1234567891","matematica","86","Laurea Triennale");
-			Tutor tutor2=new Tutor("Ezechiele","Nuvola","nuvolina@gmail.com","1234567845","/home/xyz/o","1234567891","progrmmazione 2","108","Dottorato di ricerca");
-			Studente studente=new Studente("Rosa","Marini","rm@gmail.com","12345678","/home/xyz","0522500518","2");
-			Studente studente2=new Studente("Chiara","Giani","giani@gmail.com","123456err","/home/xyz/o","0512102515","1");
-			Domanda domanda=new Domanda(1001,"CIAO","OGGETTO","ALLEGATO",studente,tutor,risposta);
-			Domanda domanda2=new Domanda(1002,"Giani","giani@gmail.com","ALLEGATO",studente2,tutor2,risposta1);
-			*/
 			domandaDao.inserisciDati(domanda);
 			domandaDao.inserisciDati(domanda2);
 			ArrayList<Object>domande=domandaDao.recuperaTutto();
@@ -84,16 +57,6 @@ public class DomandaDAOImpTest extends TestCase {
 	
 	public void test1RecuperaDati() {
 		try {
-			/*
-			Risposta risposta=new Risposta(5000,"CIAOIOIO","allegato","ON");
-			Risposta risposta1=new Risposta(5001,"CIAOIOIO","allegato","ON");
-			Tutor tutor=new Tutor("Mario","Rossi","mario@gmail.com","12345678","/home/xyz","1234567891","matematica","86","Laurea Triennale");
-			Tutor tutor2=new Tutor("Ezechiele","Nuvola","nuvolina@gmail.com","1234567845","/home/xyz/o","1234567891","progrmmazione 2","108","Dottorato di ricerca");
-			Studente studente=new Studente("Rosa","Marini","rm@gmail.com","12345678","/home/xyz","0522500518","2");
-			Studente studente2=new Studente("Chiara","Giani","giani@gmail.com","123456err","/home/xyz/o","0512102515","1");
-			Domanda domanda=new Domanda(1001,"CIAO","OGGETTO","ALLEGATO",studente,tutor,risposta);
-			Domanda domanda2=new Domanda(1002,"Giani","giani@gmail.com","ALLEGATO",studente2,tutor2,risposta1);
-			*/
 			assertEquals(false,domandaDao.recuperaDati(domanda));
 			assertEquals(false,domandaDao.recuperaDati(domanda2));
 		}
@@ -104,25 +67,8 @@ public class DomandaDAOImpTest extends TestCase {
 	
 	public void test3RecuperaTutto() {
 		try {
-			/*
-			Risposta risposta=new Risposta(5000,"CIAOIOIO","allegato","ON");
-			Risposta risposta1=new Risposta(5001,"CIAOIOIO","allegato","ON");
-			Tutor tutor=new Tutor("Mario","Rossi","mario@gmail.com","12345678","/home/xyz","1234567891","matematica","86","Laurea Triennale");
-			Tutor tutor2=new Tutor("Ezechiele","Nuvola","nuvolina@gmail.com","1234567845","/home/xyz/o","1234567891","progrmmazione 2","108","Dottorato di ricerca");
-			Studente studente=new Studente("Rosa","Marini","rm@gmail.com","12345678","/home/xyz","0522500518","2");
-			Studente studente2=new Studente("Chiara","Giani","giani@gmail.com","123456err","/home/xyz/o","0512102515","1");
-			Domanda domanda=new Domanda(1001,"CIAO","OGGETTO","ALLEGATO",studente,tutor,risposta);
-			Domanda domanda2=new Domanda(1002,"Giani","giani@gmail.com","ALLEGATO",studente2,tutor2,risposta1);
-			*/
 			ArrayList<Object>domandeObject=domandaDao.recuperaTutto();
 			assertEquals(7,domandeObject.size());
-			/*
-			for(Object o:domandeObject) {
-				Domanda t=(Domanda)o;
-				assertEquals(domanda,t);
-				assertEquals(domanda2,t);
-			}
-			*/
 		}
 		catch(SQLException e) {
 			fail("Errore di connessione");
@@ -161,16 +107,6 @@ public class DomandaDAOImpTest extends TestCase {
 	
 	public void test5CancellaDati() {
 		try {
-			/*
-			Risposta risposta=new Risposta(5000,"CIAOIOIO","allegato","ON");
-			Risposta risposta1=new Risposta(5001,"CIAOIOIO","allegato","ON");
-			Tutor tutor=new Tutor("Mario","Rossi","mario@gmail.com","12345678","/home/xyz","1234567891","matematica","86","Laurea Triennale");
-			Tutor tutor2=new Tutor("Ezechiele","Nuvola","nuvolina@gmail.com","1234567845","/home/xyz/o","1234567891","progrmmazione 2","108","Dottorato di ricerca");
-			Studente studente=new Studente("Rosa","Marini","rm@gmail.com","12345678","/home/xyz","0522500518","2");
-			Studente studente2=new Studente("Chiara","Giani","giani@gmail.com","123456err","/home/xyz/o","0512102515","1");
-			Domanda domanda=new Domanda(1001,"CIAO","OGGETTO","ALLEGATO",studente,tutor,risposta);
-			Domanda domanda2=new Domanda(1002,"Giani","giani@gmail.com","ALLEGATO",studente2,tutor2,risposta1);
-			*/
 			ArrayList<Object>domande=domandaDao.recuperaTutto();
 			Domanda aiuto=(Domanda) domande.get(domande.size()-1);
 			domanda2.setId(aiuto.getId());

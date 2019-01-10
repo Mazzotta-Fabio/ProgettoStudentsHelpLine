@@ -8,11 +8,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import javax.servlet.http.Part;
-
 import classiComuni.Domanda;
 import classiComuni.Risposta;
 import classiComuni.Studente;
@@ -28,33 +25,30 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		destLocation = new String("C:\\Users\\Antonio\\Desktop\\Documenti\\web\\File\\WebContent\\Immagine");
 	}
 	
-	/**
-	 * Il metodo serve per caricare un file per una domanda o risposta.
-	 * @param part: file da caricare.
-	 */
-    public String upload(Part part)throws IOException {
-        
-    	String fileName = extractFileName(part);
-		File sourceLocation = new File(fileName);
-    	File targetFolder = new File(destLocation);
+    public String upload(String fileName)throws IOException {
+       
+    	String d = "";
+    	if(!fileName.equals("")) {
+    		File sourceLocation = new File(fileName);
+    		File targetFolder = new File(destLocation);
    
-
-        InputStream in = new FileInputStream(sourceLocation);
-        OutputStream out = new FileOutputStream(targetFolder + "\\"+ sourceLocation.getName(), true);
-        System.out.println("Destination Path ::"+targetFolder + "\\"+ sourceLocation.getName());            
-        byte[] buf = new byte[1024];
-        int len;
-        while ((len = in.read(buf)) > 0) {
-            out.write(buf, 0, len);
-        }
-        in.close();
-        out.close();
+    		InputStream in = new FileInputStream(sourceLocation);
+    		OutputStream out = new FileOutputStream(targetFolder + "\\"+ sourceLocation.getName(), true);
+    		System.out.println("Destination Path ::"+targetFolder + "\\"+ sourceLocation.getName());            
+    		byte[] buf = new byte[1024];
+    		int len;
+    		while ((len = in.read(buf)) > 0) {
+    			out.write(buf, 0, len);
+    		}
+    		in.close();
+    		out.close();
         
-        String d =(targetFolder + "\\"+ sourceLocation.getName());
-        return d;
+    		d =(targetFolder + "\\"+ sourceLocation.getName());
+    	}
+    	return d;
     }    
 
-    private String extractFileName(Part part) {
+    public String extractFileName(Part part) {
  			String contentDisp = part.getHeader("content-disposition");
  			String [] items = contentDisp.split(";");
  			for(String s : items) {
@@ -65,12 +59,8 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
  			return "";
  	}
 
-    /**
-	 * Il metodo serve per recuperare le informazioni dei tutor che sono competenti in una materia.
-	 * @param materia: la materia in cui deve essere competente il tutor.
-	 */
+	@Override
 	public List<String> listaTutor(String materia) {
-		System.out.println("la materia selezionata è: " + materia);
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Tutor");
 		List<Object> listaT = null;
@@ -87,10 +77,11 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		      Tutor t = (Tutor) listaT.get(i);
 		      System.out.println("materia di competenza: " + t.getMateriaDiCompetenza());
 		      if (t.getMateriaDiCompetenza().equals(materia)) {
+		    	  System.out.println(t.getEmail());
 		    	  listaTutor.add(t.getNome());
 		    	  listaTutor.add(t.getCognome());
 		    	  listaTutor.add(t.getLinkImmagine());
-		    	  int num[] = this.valutazioniTot(t.getEmail());
+		    	  int num[] = valutazioniTot(t.getEmail());
 		    	  listaTutor.add(String.valueOf(num[0]));
 		    	  listaTutor.add(String.valueOf(num[1]));
 		    	  listaTutor.add(t.getEmail());
@@ -99,14 +90,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		return listaTutor;
 	}
 
-	/**
-	 * Il metodo serve per inserire una domanda.
-	 * @param oggetto: oggetto della domanda.
-	 * @param testo: testo della domanda.
-	 * @param url: url del file allegato alla domanda.
-	 * @param emailT: chiave esterna del tutor.
-	 * @param emailS: chiave esterna dello studente.
-	 */
+	@Override
 	public void inserisciDomanda(String oggetto, String testo,String url,String emailT,String emailS) {
 		Tutor t = new Tutor(null, null, emailT, null, null, null, null, null, null);
 		Studente s = new Studente(null, null, emailS, null, null, null, null);
@@ -122,11 +106,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		} 
 	 }
 
-	/**
-	 * Il metodo serve per inserire una valutazione alla risposta.
-	 * @param id: chiave primanria della risposta.
-	 * @param valutazione: valutazione della risposta.
-	 */
+	@Override
 	public void valutaRisposta(int id, String valutazione) {
 		System.out.println(id + " " + valutazione );
 		Risposta r = new Risposta(id,null,null, null, null);
@@ -145,10 +125,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		}
 	}
 
-	/**
-	 * Il metodo serve per recuperare i dati di un account che deve essere visualizzato.
-	 * @param email: chiave primaria di un utente.
-	 */
+	@Override
 	public Object visualizzaAccount(String email) {
 		Studente s = new Studente(null, null, email, null, null, null, null);
 		FactoryDAO fd = new FactoryDAO();
@@ -172,32 +149,129 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		}
 	}
 
-	/**
-	 * Il metodo serve per recuperare le valutazioni totali di un Tutor.
-	 * @param email: chiave primaria del tutor.
-	 */
+	@Override
 	public int[] valutazioniTot(String email) {
 		
 		int [] voti = new int[2];
-		Arrays.fill(voti, 0);
+		voti[0] = 0;
+		voti[1] = 0;
 		
 		FactoryDAO fd = new FactoryDAO();
-		ObjectDAO o = fd.getObject("Risposta");
-		List<Object> listR = null;
+		ObjectDAO o = fd.getObject("Domanda");
+		List<Object> listD = null;
 		try {
-			listR = o.recuperaTutto();
+			listD = o.recuperaTutto();
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		for(int i = 0;i<listR.size();i++) {
-		      Risposta r = (Risposta) listR.get(i);
-		      if (r.getValutazione().equals("like")) {voti[0]++;}
-		      else if (r.getValutazione().equals("dislike")) {voti[1]++;}
+		o = fd.getObject("Risposta");
+		for(int i = 0;i<listD.size();i++) {
+		      Domanda d = (Domanda) listD.get(i);
+		      if(email.equals(d.getTutor().getEmail())) {
+		    	  Risposta r = new Risposta(d.getRisposta().getId(), null, null, null, null);
+		    	  try {
+					o.recuperaDati(r);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		    	if (r.getValutazione().equals("like")) {voti[0]++;}
+		    	else if (r.getValutazione().equals("dislike")) {voti[1]++;}
+		      }
 		}
 		
 		return voti;
+	}
+	
+	@Override
+	public void inserisciRisposta(String testo, int idDomanda, String url) {
+		FactoryDAO fd = new FactoryDAO();
+		ObjectDAO o = fd.getObject("Risposta");
+		Risposta r = new Risposta(0, testo, url,null, "no");
+		try {
+			o.inserisciDati(r);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		List<Object> risposte = null;
+		try {
+			risposte = o.recuperaTutto();
+		} catch (NumberFormatException e1) {
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		int idR = risposte.size();
+		
+		o = fd.getObject("Domanda");
+		Domanda d = new Domanda(idDomanda, null, null, null, null, null, null, null);
+		try {
+			o.recuperaDati(d);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		r.setId(idR);
+		d.setRisposta(r);
+		try {
+			o.modificaDati(d);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
+	 * Il metodo serve per capire se ci sono domande da visualizzare.
+	 * @param email: chiave primaria di una utente.
+	 * @param tipo: tipo di utente.
+	 */
+	public boolean domandeDaVisualizzare(String email,String tipo){
+		FactoryDAO fd = new FactoryDAO();
+		if(tipo.equals("Tutor")) {
+			ObjectDAO o = fd.getObject("Domanda");
+			ArrayList<Object> listaD = null;
+			try {
+				listaD = o.recuperaTutto();
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}		
+			for(int i = 0;i<listaD.size();i++) {
+				Domanda d = (Domanda) listaD.get(i);
+				if (d.getTutor().getEmail().equals(email)) {
+					if (d.getVis().equals("no")) return true;
+				}
+			}
+		} else {
+			ObjectDAO o = fd.getObject("Domanda");
+			ArrayList<Object> listaD = null;
+			try {
+				listaD = o.recuperaTutto();
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}	
+			o = fd.getObject("Risposta");
+			for(int i = 0;i<listaD.size();i++) {
+				Domanda d = (Domanda) listaD.get(i);
+				if (d.getStudente().getEmail().equals(email)) {
+					Risposta r = new Risposta(d.getRisposta().getId(), null, null, null, null);
+					try {
+						o.recuperaDati(r);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					System.out.println(r.getId());
+					if (r.getVis().equals("no")) return true;
+				}
+			}
+		}
+		return false;
 	}
 }

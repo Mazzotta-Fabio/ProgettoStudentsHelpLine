@@ -121,9 +121,10 @@ public class DomandaDAOImp implements ObjectDAO {
   	@Override
 	public void modificaDati(Object o) throws SQLException {
 		Domanda d = (Domanda) o;
-		PreparedStatement prepared = (PreparedStatement) con.prepareStatement("update domanda set Visualizzata = ? where IdDomanda =  ?");
-		prepared.setInt(2, d.getId());
+		PreparedStatement prepared = (PreparedStatement) con.prepareStatement("update domanda set Visualizzata = ?,Risposta=? where IdDomanda =  ?");
+		prepared.setInt(3, d.getId());
 		prepared.setString(1, d.getVis());
+		prepared.setInt(2, d.getRisposta().getId());
 		prepared.executeUpdate();
 	}
 

@@ -27,7 +27,7 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 	
 	/**
 	 * Il metodo serve per scaricare l'allegato nella cartella downloads.
-	 * @param fileName: è l'url del file da scaricare.
+	 * @param password,destinatario: sono uno la password da inviare e l'altro l'email dove inviare l'email
 	 */
 	public void scaricaAllegato(String fileName) throws IOException {
 		
@@ -48,10 +48,7 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		
 	}
 
-	/**
-	 * Il metodo serve per eliminare una domanda dal DataBase.
-	 * @param id: sono uno la password da inviare e l'altro l'email dove inviare l'email
-	 */
+	@Override
 	public void eliminaDomanda(int id) {
 		Domanda d = new Domanda (id, null, null, null, null, null, null, null);
 		FactoryDAO fd = new FactoryDAO();
@@ -63,10 +60,7 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		}
 	}
 
-	/**
-	 * Il metodo serve per recuperare tutte le domande senza risposta dal DataBase di un utente.
-	 * @param email: chiave primaria di un utente.
-	 */
+	@Override
 	public List<String> recuperaDomandeSenzaRisposta(String email) {
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Domanda");
@@ -93,10 +87,7 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		return listaDomande;
 	}
 
-	/**
-	 * Il metodo serve per recuperare tutte le domande con risposta dal DataBase di un utente.
-	 * @param email: chiave primaria di un utente.
-	 */
+	@Override
 	public List<String> recuperaDomandeConRisposta(String email) {
 		FactoryDAO fd = new FactoryDAO();
 		ObjectDAO o = fd.getObject("Domanda");
@@ -130,10 +121,7 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		return listaDomande;
 	}
 
-	/**
-	 * Il metodo serve per recuperare tutte le informazioni di una domanda da DataBase.
-	 * @param id: chiave primaria di una domanda.
-	 */
+	@Override
 	public ArrayList<String> visualizzaDomanda(int id,String tipo) {
 		
 		ArrayList<String> listaInfo = new ArrayList<String>();
@@ -200,105 +188,5 @@ public class ImpGestioneDomanda implements GestioneDomanda{
 		
 		
 		return listaInfo;
-	}
-
-	/**
-	 * Il metodo serve per inserire tutte le informazioni di una domanda sul DataBase.
-	 * @param idDomanda: chiave primaria di una domanda.
-	 * @param testo: contenuto di una risposta.
-	 * @param url: url di un allegato inserito per la risposta.
-	 */
-	public void inserisciRisposta(String testo, int idDomanda, String url) {
-		FactoryDAO fd = new FactoryDAO();
-		ObjectDAO o = fd.getObject("Risposta");
-		Risposta r = new Risposta(0, testo, url,null, "no");
-		try {
-			o.inserisciDati(r);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		ArrayList<Object> listaR = null;
-		try {
-			listaR = o.recuperaTutto();
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}		
-		r.setId(listaR.size());
-		o = fd.getObject("Domanda");
-		Domanda d = new Domanda(idDomanda, null, null,null, null, null, null, null);
-		try {
-			o.recuperaDati(d);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			o.cancellaDati(d);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		d.setRisposta(r);
-		try {
-			o.inserisciDati(d);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}   
-	}
-	
-	/**
-	 * Il metodo serve per capire se ci sono domande da visualizzare.
-	 * @param email: chiave primaria di una utente.
-	 * @param tipo: tipo di utente.
-	 */
-	public boolean domandeDaVisualizzare(String email,String tipo){
-		FactoryDAO fd = new FactoryDAO();
-		if(tipo.equals("Tutor")) {
-			ObjectDAO o = fd.getObject("Domanda");
-			ArrayList<Object> listaD = null;
-			try {
-				listaD = o.recuperaTutto();
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}		
-			for(int i = 0;i<listaD.size();i++) {
-				Domanda d = (Domanda) listaD.get(i);
-				if (d.getTutor().getEmail().equals(email)) {
-					if (d.getVis().equals("no")) return true;
-				}
-			}
-		} else {
-			ObjectDAO o = fd.getObject("Domanda");
-			ArrayList<Object> listaD = null;
-			try {
-				listaD = o.recuperaTutto();
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}	
-			o = fd.getObject("Risposta");
-			for(int i = 0;i<listaD.size();i++) {
-				Domanda d = (Domanda) listaD.get(i);
-				if (d.getStudente().getEmail().equals(email)) {
-					Risposta r = new Risposta(d.getRisposta().getId(), null, null, null, null);
-					try {
-						o.recuperaDati(r);
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-					if (r.getVis().equals("no")) return true;
-				}
-			}
-		}
-		return false;
-	}
-
-	
+	}	
 }

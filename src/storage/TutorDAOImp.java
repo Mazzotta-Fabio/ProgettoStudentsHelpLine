@@ -107,7 +107,6 @@ public class TutorDAOImp implements ObjectDAO {
     {
         Tutor t = new Tutor(null, null, null, null, null, null, null, null, null);
         t.setNome(result.getString("Nome"));
-        System.out.print(result.getString("Nome"));
         t.setCognome(result.getString("Cognome"));
         t.setEmail(result.getString("Email"));
         t.setLinkImmagine(result.getString("Immagine"));

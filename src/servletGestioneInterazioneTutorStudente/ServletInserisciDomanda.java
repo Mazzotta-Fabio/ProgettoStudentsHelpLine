@@ -34,7 +34,8 @@ public class ServletInserisciDomanda extends HttpServlet {
 		Part part = request.getPart("file");
 		
 		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
-	    String url = i.upload(part);
+	    String url = i.extractFileName(part);
+	    i.upload(url);
 	    
 	    String emailT = request.getParameter("tutor");
 	    String oggetto = request.getParameter("oggetto");

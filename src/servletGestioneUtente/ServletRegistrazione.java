@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
+import gestioneInterazioneTutorStudente.GestioneInterazioneTutorStudente;
+import gestioneInterazioneTutorStudente.ImpGestioneInterazioneTutorStudente;
 import gestioneUtente.GestioneUtente;
 import gestioneUtente.ImpGestioneUtente;
 
@@ -44,17 +47,21 @@ public class ServletRegistrazione extends HttpServlet {
 		String password = request.getParameter("password");
 		Part linkImmagine = request.getPart("file");
 		
+		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
+	    String url = i.extractFileName(linkImmagine);
+	    i.upload(url);
+		
 		GestioneUtente u = new ImpGestioneUtente();
 		if(tipo.equals("Tutor")) {
 			String numero = request.getParameter("numero");
 			String materia = request.getParameter("materia");
 			String voto = request.getParameter("voto");
 			String titolo = request.getParameter("titolo");
-			u.registraAccount(tipo,nome, cognome, email, password, linkImmagine, voto, titolo,numero,materia);
+			u.registraAccount(tipo,nome, cognome, email, password,url, voto, titolo,numero,materia);
 		} else {
 			String matricola = request.getParameter("matricola");
 			String annoCorso = request.getParameter("annoCorso");
-			u.registraAccount(tipo,nome, cognome, email, password, linkImmagine, matricola, annoCorso,null,null);
+			u.registraAccount(tipo,nome, cognome, email, password, url, matricola, annoCorso,null,null);
 		}
 		
 		

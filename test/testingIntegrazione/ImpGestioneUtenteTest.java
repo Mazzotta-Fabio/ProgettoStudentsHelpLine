@@ -1,44 +1,32 @@
 package testingIntegrazione;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-
-import classiComuni.Domanda;
-import classiComuni.Risposta;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 import classiComuni.Studente;
 import classiComuni.Tutor;
+import gestioneInterazioneTutorStudente.GestioneInterazioneTutorStudente;
+import gestioneInterazioneTutorStudente.ImpGestioneInterazioneTutorStudente;
 import gestioneUtente.ImpGestioneUtente;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import storage.DomandaDAOImp;
-import storage.StudenteDAOImp;
-import storage.TutorDAOImp;
 
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ImpGestioneUtenteTest extends TestCase   {
-	
-	private DomandaDAOImp domandaDao;
 	private Tutor tutor1;
 	private Tutor tutor2;
 	private Studente studente1;
 	private Studente studente2;
-	private StudenteDAOImp studenteDao;
-	private TutorDAOImp tutorDao;
-	private ImpGestioneUtente GestioneUtente;
-	private Part p;
+	private ImpGestioneUtente gestioneUtente;
 	
 	protected void setUp() throws Exception {
-		p = null;
-		
 		tutor1 = new Tutor("Mario","Rossi","mario.rossi@gmail.com","12345678","/home/xyz","1234567891","matematica","86","Laurea Triennale");
 		tutor2 = new Tutor("Ezechiele","Nuvola","ezechiele.nuvola@gmail.com","1234567845","/home/xyz/o","1234567891","progrmmazione 2","108","Dottorato di ricerca");
 		studente1 = new Studente("Rosa","Marini","rosa.marini@gmail.com","12345678","/home/xyz","0522500518","2");
 		studente2 = new Studente("Chiara","Giani","chiara.giani@gmail.com","123456err","/home/xyz/o","0512102515","1");
 		
-		GestioneUtente = new ImpGestioneUtente();
-		studenteDao = new StudenteDAOImp();
-		tutorDao = new TutorDAOImp();
+		gestioneUtente = new ImpGestioneUtente();
 	}
 
 	protected void tearDown() throws Exception {
@@ -46,143 +34,109 @@ public class ImpGestioneUtenteTest extends TestCase   {
 		tutor2 = null;
 		studente1 = null;
 		studente2 = null;
-		studenteDao = null;
-		tutorDao = null;
-		GestioneUtente = null;
+		gestioneUtente = null;
 	}
-	
-	public void testRegistrazioneAccount() {
+	public void test1RegistrazioneAccount() {
 		try {
-			
-			GestioneUtente.registraAccount("Tutor",tutor1.getNome(),tutor1.getCognome(),tutor1.getEmail(),tutor1.getPassword(),p,tutor1.getVotoDiLaurea(),tutor1.getMateriaDiCompetenza(),tutor1.getNumeroDiCellulare(),tutor1.getTitoloDiStudio());
-			GestioneUtente.registraAccount("Tutor",tutor2.getNome(),tutor2.getCognome(),tutor2.getEmail(),tutor2.getPassword(),p,tutor2.getVotoDiLaurea(),tutor2.getMateriaDiCompetenza(),tutor2.getNumeroDiCellulare(),tutor2.getTitoloDiStudio());
-			GestioneUtente.registraAccount("Studente",studente1.getNome(),studente1.getCognome(),studente1.getEmail(),studente1.getPassword(),p,studente1.getMatricola(),studente1.getAnnoCorso(),null,null);
-			GestioneUtente.registraAccount("Studente",studente2.getNome(),studente2.getCognome(),studente2.getEmail(),studente2.getPassword(),p,studente2.getMatricola(),studente2.getAnnoCorso(),null,null);
-			
-			ArrayList<Object> tutor = null;
-			try {
-				tutor = tutorDao.recuperaTutto();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			for(Object ogg:tutor) {
-				Tutor tutorOgg = (Tutor) ogg;
-				if(tutorOgg.getEmail().equals(tutor1.getEmail())){
-					assertEquals("Mario",tutorOgg.getNome());
-					assertEquals("Rossi",tutorOgg.getCognome());
-				}
-				if(tutorOgg.getEmail().equals(tutor2.getCognome())){
-					assertEquals("Ezechiele",tutorOgg.getNome());
-					assertEquals("Nuvola",tutorOgg.getCognome());
-				}
-			}
-			
-			ArrayList<Object> studente = null;
-			try {
-				studente = studenteDao.recuperaTutto();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			for(Object ogg:studente) {
-				Studente studenteOgg = (Studente) ogg;
-				if(studenteOgg.getEmail().equals(studente1.getEmail())){
-					assertEquals("Rosa",studenteOgg.getNome());
-					assertEquals("Marini",studenteOgg.getCognome());
-				}
-				if(studenteOgg.getEmail().equals(studente2.getEmail())){
-					assertEquals("Chiara",studenteOgg.getNome());
-					assertEquals("Giani",studenteOgg.getCognome());
-				}
-			}
+			GestioneInterazioneTutorStudente gestioneInterazione = new ImpGestioneInterazioneTutorStudente();
+			gestioneUtente.registraAccount("Tutor",tutor1.getNome(),tutor1.getCognome(),tutor1.getEmail(),tutor1.getPassword(),tutor1.getLinkImmagine(),tutor1.getVotoDiLaurea(),tutor1.getMateriaDiCompetenza(),tutor1.getNumeroDiCellulare(),tutor1.getTitoloDiStudio());
+			gestioneUtente.registraAccount("Tutor",tutor2.getNome(),tutor2.getCognome(),tutor2.getEmail(),tutor2.getPassword(),tutor2.getLinkImmagine(),tutor2.getVotoDiLaurea(),tutor2.getMateriaDiCompetenza(),tutor2.getNumeroDiCellulare(),tutor2.getTitoloDiStudio());
+			gestioneUtente.registraAccount("Studente",studente1.getNome(),studente1.getCognome(),studente1.getEmail(),studente1.getPassword(),studente1.getLinkImmagine(),studente1.getMatricola(),studente1.getAnnoCorso(),null,null);
+			gestioneUtente.registraAccount("Studente",studente2.getNome(),studente2.getCognome(),studente2.getEmail(),studente2.getPassword(),studente2.getLinkImmagine(),studente2.getMatricola(),studente2.getAnnoCorso(),null,null);
+			gestioneInterazione.inserisciDomanda("OGGETTO","TESTO","URL", tutor1.getEmail(), studente1.getEmail());
+			gestioneInterazione.inserisciDomanda("OGGETTO","TESTO","URL", tutor2.getEmail(), studente2.getEmail());
 
+			
+			Studente st=(Studente)gestioneUtente.infoAccount(studente1.getEmail(), "Studente");
+			Studente st2=(Studente)gestioneUtente.infoAccount(studente2.getEmail(), "Studente");
+			Tutor st3=(Tutor)gestioneUtente.infoAccount(tutor1.getEmail(), "Tutor");
+			Tutor st4=(Tutor)gestioneUtente.infoAccount(tutor2.getEmail(), "Tutor");
+			assertEquals(studente1.getNome(),st.getNome());
+			assertEquals(studente2.getNome(),st2.getNome());
+			assertEquals(tutor1.getNome(),st3.getNome());
+			assertEquals(tutor2.getNome(),st4.getNome());
+			
 		} catch (IOException e) {
 			fail("Connessione interrotta");
 		}
 	}
 	
-	
-	public void testLoginAccount() {
+	public void test2LoginAccount() {
 			Tutor t = null;
 			Studente s = null;
 			
-			t = (Tutor) GestioneUtente.loginAccount(tutor1.getEmail(),tutor1.getPassword(), "Tutor");
+			t = (Tutor) gestioneUtente.loginAccount(tutor1.getEmail(),tutor1.getPassword(), "Tutor");
 			assertEquals("Mario",t.getNome());
 			assertEquals("Rossi",t.getCognome());
 			
-			t = (Tutor) GestioneUtente.loginAccount(tutor2.getEmail(),tutor2.getPassword(), "Tutor");
+			t = (Tutor) gestioneUtente.loginAccount(tutor2.getEmail(),tutor2.getPassword(), "Tutor");
 			assertEquals("Ezechiele",t.getNome());
 			assertEquals("Nuvola",t.getCognome());
 			
-			s = (Studente) GestioneUtente.loginAccount(studente1.getEmail(),studente1.getPassword(), "Studente");
+			s = (Studente) gestioneUtente.loginAccount(studente1.getEmail(),studente1.getPassword(), "Studente");
 			assertEquals("Rosa",s.getNome());
 			assertEquals("Marini",s.getCognome());
 			
-			s = (Studente) GestioneUtente.loginAccount(studente2.getEmail(),studente2.getPassword(), "Studente");
+			s = (Studente) gestioneUtente.loginAccount(studente2.getEmail(),studente2.getPassword(), "Studente");
 			assertEquals("Chiara",s.getNome());
 			assertEquals("Giani",s.getCognome());
 	}
 	
-	public void testModificaAccount() {
+	public void test3RecuperaPassword() {
+		String password;
+		
+		password = gestioneUtente.recuperaPassword("Tutor", tutor1.getEmail());
+		assertEquals("12345678",password);
+
+		password = gestioneUtente.recuperaPassword("Tutor", tutor2.getEmail());
+		assertEquals("1234567845",password);
+		
+		password = gestioneUtente.recuperaPassword("Studente", studente1.getEmail());
+		assertEquals("12345678",password);
+		
+		password = gestioneUtente.recuperaPassword("Studente", studente2.getEmail());
+		assertEquals("123456err",password);
+	}
+	
+	public void test4ModificaAccount() {
 		try {
 			
-			GestioneUtente.modificaAccount("Tutor",tutor1.getNome(),"Russo",tutor1.getEmail(),tutor1.getPassword(),p,tutor1.getVotoDiLaurea(),tutor1.getMateriaDiCompetenza(),tutor1.getNumeroDiCellulare(),tutor1.getTitoloDiStudio());
-			GestioneUtente.modificaAccount("Tutor","Matteo",tutor2.getCognome(),tutor2.getEmail(),tutor2.getPassword(),p,tutor2.getVotoDiLaurea(),tutor2.getMateriaDiCompetenza(),tutor2.getNumeroDiCellulare(),tutor2.getTitoloDiStudio());
-			GestioneUtente.modificaAccount("Studente",studente1.getNome(),"Mozzillo",studente1.getEmail(),studente1.getPassword(),p,studente1.getMatricola(),studente1.getAnnoCorso(),null,null);
-			GestioneUtente.modificaAccount("Studente","Giorgia",studente2.getCognome(),studente2.getEmail(),studente2.getPassword(),p,studente2.getMatricola(),studente2.getAnnoCorso(),null,null);
+			gestioneUtente.modificaAccount("Tutor",tutor1.getNome(),"Russo",tutor1.getEmail(),tutor1.getPassword(),tutor1.getLinkImmagine(),tutor1.getVotoDiLaurea(),tutor1.getMateriaDiCompetenza(),tutor1.getNumeroDiCellulare(),tutor1.getTitoloDiStudio());
+			gestioneUtente.modificaAccount("Tutor","Matteo",tutor2.getCognome(),tutor2.getEmail(),tutor2.getPassword(),tutor2.getLinkImmagine(),tutor2.getVotoDiLaurea(),tutor2.getMateriaDiCompetenza(),tutor2.getNumeroDiCellulare(),tutor2.getTitoloDiStudio());
+			gestioneUtente.modificaAccount("Studente",studente1.getNome(),"Mozzillo",studente1.getEmail(),studente1.getPassword(),studente1.getLinkImmagine(),studente1.getMatricola(),studente1.getAnnoCorso(),null,null);
+			gestioneUtente.modificaAccount("Studente","Giorgia",studente2.getCognome(),studente2.getEmail(),studente2.getPassword(),studente2.getLinkImmagine(),studente2.getMatricola(),studente2.getAnnoCorso(),null,null);
 			
-			ArrayList<Object> tutor = null;
-			try {
-				tutor = tutorDao.recuperaTutto();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			for(Object ogg:tutor) {
-				Tutor tutorOgg = (Tutor) ogg;
-				if(tutorOgg.getEmail().equals(tutor1.getEmail())){
-					assertEquals("Russo",tutorOgg.getCognome());
-				}
-				if(tutorOgg.getEmail().equals(tutor2.getCognome())){
-					assertEquals("Matteo",tutorOgg.getNome());
-				}
-			}
-			
-			ArrayList<Object> studente = null;
-			try {
-				studente = studenteDao.recuperaTutto();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			for(Object ogg:studente) {
-				Studente studenteOgg = (Studente) ogg;
-				if(studenteOgg.getEmail().equals(studente1.getEmail())){
-					assertEquals("Mozzillo",studenteOgg.getCognome());
-				}
-				if(studenteOgg.getEmail().equals(studente2.getEmail())){
-					assertEquals("Giorgia",studenteOgg.getNome());
-				}
-			}
-
+			Studente st=(Studente)gestioneUtente.infoAccount(studente1.getEmail(), "Studente");
+			Studente st2=(Studente)gestioneUtente.infoAccount(studente2.getEmail(), "Studente");
+			Tutor st3=(Tutor)gestioneUtente.infoAccount(tutor1.getEmail(), "Tutor");
+			Tutor st4=(Tutor)gestioneUtente.infoAccount(tutor2.getEmail(), "Tutor");
+			assertEquals("Mozzillo",st.getCognome());
+			assertEquals("Giorgia",st2.getNome());
+			assertEquals("Russo",st3.getCognome());
+			assertEquals("Matteo",st4.getNome());
 		} catch (IOException e) {
 			fail("Connessione interrotta");
 		}
 	}
 	
-	public void testRecuperaPassword() {
-		String password;
-		
-		password = GestioneUtente.recuperaPassword("Tutor", tutor1.getEmail());
-		assertEquals("12345678",password);
-
-		password = GestioneUtente.recuperaPassword("Tutor", tutor2.getEmail());
-		assertEquals("1234567845",password);
-		
-		password = GestioneUtente.recuperaPassword("Studente", studente1.getEmail());
-		assertEquals("12345678",password);
-		
-		password = GestioneUtente.recuperaPassword("Studente", studente2.getEmail());
-		assertEquals("123456err",password);
-	}
 	
+	
+	public void test5EliminaAccount() {
+		gestioneUtente.eliminaAccount(tutor1.getEmail(), "Tutor");
+		gestioneUtente.eliminaAccount(studente2.getEmail(), "Studente");
+		gestioneUtente.eliminaAccount(tutor2.getEmail(), "Tutor");
+		gestioneUtente.eliminaAccount(studente1.getEmail(), "Studente");
+		
+		Studente st=(Studente)gestioneUtente.infoAccount(studente1.getEmail(), "Studente");
+		Studente st2=(Studente)gestioneUtente.infoAccount(studente2.getEmail(), "Studente");
+		Tutor st3=(Tutor)gestioneUtente.infoAccount(tutor1.getEmail(), "Tutor");
+		Tutor st4=(Tutor)gestioneUtente.infoAccount(tutor2.getEmail(), "Tutor");
+		assertEquals(null,st.getNome());
+		assertEquals(null,st2.getNome());
+		assertEquals(null,st3.getNome());
+		assertEquals(null,st4.getNome());
+		
+	}
 	public static Test suite() {
 		return new TestSuite(ImpGestioneUtenteTest.class);
 	}

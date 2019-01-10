@@ -1,13 +1,7 @@
 package gestioneUtente;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import javax.mail.Message;
@@ -15,13 +9,9 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.Part;
-
 import classiComuni.Domanda;
 import classiComuni.Studente;
 import classiComuni.Tutor;
-import gestioneDomanda.GestioneDomanda;
-import gestioneDomanda.ImpGestioneDomanda;
 import storage.FactoryDAO;
 import storage.ObjectDAO;
 
@@ -33,11 +23,8 @@ import storage.ObjectDAO;
  */
 public class ImpGestioneUtente implements GestioneUtente {
 
-	private String destLocation;
 	
-	public ImpGestioneUtente() {
-		destLocation = new String("C:\\Users\\Antonio\\git\\ProgettoStudentsHelpLine\\file");
-	}
+	public ImpGestioneUtente() {}
 	
 	/**
 	 * Il metodo serve per inviare la mail per recuperare la password.
@@ -47,7 +34,7 @@ public class ImpGestioneUtente implements GestioneUtente {
 	public String recuperaPassword(String tipo,String destinatario) {
 		
 		String password;
-		if(tipo.equals("tutor")) {
+		if(tipo.equals("Tutor")) {
 			Tutor t = new Tutor(null, null,destinatario, null, null, null, null, null, null);
 			FactoryDAO fDAO = new FactoryDAO();
 		    ObjectDAO o = fDAO.getObject("Tutor");
@@ -56,6 +43,7 @@ public class ImpGestioneUtente implements GestioneUtente {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
 			password = t.getPassword();
 		} else {
 			Studente s = new Studente(null, null,destinatario,null, null, null, null);
@@ -66,6 +54,7 @@ public class ImpGestioneUtente implements GestioneUtente {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
 			password = s.getPassword();
 		}
 		
@@ -108,44 +97,18 @@ public class ImpGestioneUtente implements GestioneUtente {
 	       
 	       System.out.println("Si è verificato un errore");   // se cè un errore esce questa scrita con..
 	       e.printStackTrace();                             //.. il nome dell'errore
-	   }  
-	   return password;
+	   }
+	return password;  
 	}
 		 
 
  
-	/**
-	 * Il metodo serve per registrare un utente.
-	 * @param tipo: tipo di utente da registrare.
-	 * @param nome: nome dell'utente.
-	 * @param cognome: cognome dell'utente.
-	 * @param email: email dell'utente(chiave primaria).
-	 * @param password: la password dell'utente.
-	 * @param linkImmagine: url all'immagine dell'account dello studente.
-	 * @param voto: voto del tutor, per lo studente invece rappresenta la matricola.
-	 * @param titolo: titolo di studi del tutor, per lo studente rappresenta anno corso.
-	 * @param numero: numero di telefono del tutor.
-	 * @param materia: materia di competenza del tutor.
-	 */
+	@Override
 	public void registraAccount(String tipo, String nome, String cognome, String email, String password, 
-			Part linkImmagine,String voto, String titolo, String numero, String materia) throws IOException {
+			String path,String voto, String titolo, String numero, String materia) throws IOException {
 		
-		String fileName = extractFileName(linkImmagine);
-		File sourceLocation = new File(fileName);
-    	File targetFolder = new File(destLocation);
-        InputStream in = new FileInputStream(sourceLocation);
-        OutputStream out = new FileOutputStream(targetFolder + "\\"+ sourceLocation.getName(), true);            
-        byte[] buf = new byte[1024];
-        int len;
-        while ((len = in.read(buf)) > 0) {
-            out.write(buf, 0, len);
-        }
-        in.close();
-        out.close();
-        
-        String path =(targetFolder + "\\"+ sourceLocation.getName());
-  
-        if(tipo.equals("Studente")) {
+		
+        if(tipo.equals("Tutor")) {
         	Tutor t = new Tutor (nome, cognome,email,password,path,numero, materia, voto, titolo);
         	FactoryDAO fDAO = new FactoryDAO();
         	ObjectDAO o = fDAO.getObject("Tutor");
@@ -166,25 +129,11 @@ public class ImpGestioneUtente implements GestioneUtente {
         }
 	}
 	
-	private String extractFileName(Part part) {
-		String contentDisp = part.getHeader("content-disposition");
-		String [] items = contentDisp.split(";");
-		for(String s : items) {
-			if(s.trim().startsWith("filename")) {
-				return s.substring(s.lastIndexOf("=")+2,s.length()-1);
-			}
-		}
-		return "";
-	}
 
-	/**
-	 * Il metodo serve per eliminare un account.
-	 * @param email: chiave primanria di un utente.
-	 * @param tipo: tipo dell'utente.
-	 */
+	@Override
 	public void eliminaAccount(String email,String tipo) {
 		int i;
-		if(tipo.equals("tutor")) {
+		if(tipo.equals("Tutor")) {
 			Tutor t = new Tutor(null, null,email, null, null, null, null, null, null);
 			FactoryDAO fDAO = new FactoryDAO();
 			ObjectDAO o = fDAO.getObject("Domanda");
@@ -243,37 +192,10 @@ public class ImpGestioneUtente implements GestioneUtente {
 		}
 	}
 
-	/**
-	 * Il metodo serve per apportare modifiche ad un account.
-	 * @param tipo: tipo di utente da registrare.
-	 * @param nome: nome dell'utente.
-	 * @param cognome: cognome dell'utente.
-	 * @param email: email dell'utente(chiave primaria).
-	 * @param password: la password dell'utente.
-	 * @param linkImmagine: url all'immagine dell'account dello studente.
-	 * @param voto: voto del tutor, per lo studente invece rappresenta la matricola.
-	 * @param titolo: titolo di studi del tutor, per lo studente rappresenta anno corso.
-	 * @param numero: numero di telefono del tutor.
-	 * @param materia: materia di competenza del tutor.
-	 */
+	@Override
 	public void modificaAccount(String tipo, String nome, String cognome, String email, String password,
-			Part linkImmagine, String voto, String titolo, String numero, String materia) throws IOException {
+			String path, String voto, String titolo, String numero, String materia) throws IOException {
 	
-		String fileName = extractFileName(linkImmagine);
-		File sourceLocation = new File(fileName);
-    	File targetFolder = new File(destLocation);
-        InputStream in = new FileInputStream(sourceLocation);
-        OutputStream out = new FileOutputStream(targetFolder + "\\"+ sourceLocation.getName(), true);            
-        byte[] buf = new byte[1024];
-        int len;
-        while ((len = in.read(buf)) > 0) {
-            out.write(buf, 0, len);
-        }
-        in.close();
-        out.close();
-        
-        String path =(targetFolder + "\\"+ sourceLocation.getName());
-  
         if(tipo.equals("Tutor")) {
         	Tutor t = new Tutor (nome, cognome,email,password,path,numero, materia, voto, titolo);
         	FactoryDAO fDAO = new FactoryDAO();
@@ -297,12 +219,7 @@ public class ImpGestioneUtente implements GestioneUtente {
 		
 	}
 
-	/**
-	 * Il metodo serve per effettuare il login con un account.
-	 * @param email: chiave primanria di un utente.
-	 * @param tipo: tipo dell'utente.
-	 * @param password: la password di un account.
-	 */
+	@Override
 	public Object loginAccount(String email, String password, String tipo) {
 		boolean accesso = false;
 		if(tipo.equals("Tutor")) {
@@ -328,11 +245,6 @@ public class ImpGestioneUtente implements GestioneUtente {
 		}	
 	}
 	
-	/**
-	 * Il metodo serve per recuperare le informazioni di un account.
-	 * @param email: chiave primanria di un utente.
-	 * @param tipo: tipo dell'utente.
-	 */
 	public Object infoAccount(String email, String tipo) {
 		if(tipo.equals("Tutor")) {
 			Tutor t = new Tutor(null, null,email, null, null, null, null, null, null);

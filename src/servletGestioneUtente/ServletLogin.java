@@ -12,6 +12,8 @@ import classiComuni.Studente;
 import classiComuni.Tutor;
 import gestioneDomanda.GestioneDomanda;
 import gestioneDomanda.ImpGestioneDomanda;
+import gestioneInterazioneTutorStudente.GestioneInterazioneTutorStudente;
+import gestioneInterazioneTutorStudente.ImpGestioneInterazioneTutorStudente;
 import gestioneUtente.GestioneUtente;
 import gestioneUtente.ImpGestioneUtente;
 
@@ -56,13 +58,16 @@ public class ServletLogin extends HttpServlet {
 				request.setAttribute("Titolo",t.getTitoloDiStudio());
 				request.setAttribute("Voto",t.getVotoDiLaurea());
 				if(t.getEmail() != null) {	
-					
-					GestioneDomanda d = new ImpGestioneDomanda();
+					GestioneInterazioneTutorStudente d = new ImpGestioneInterazioneTutorStudente();
 					boolean vis = d.domandeDaVisualizzare(email,tipo);
 					if (vis == true) {sessione.setAttribute("vis", "si");}
 					else {sessione.setAttribute("vis", "no");}
-					
+					request.setAttribute("Verifica","no");
 					RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
+					view.forward(request, response);
+				} else {
+					
+					RequestDispatcher view = request.getRequestDispatcher("jsp/PaginaLogin.jsp");
 					view.forward(request, response);
 				}
 			} else {
@@ -74,13 +79,17 @@ public class ServletLogin extends HttpServlet {
 				request.setAttribute("Anno",s.getAnnoCorso());
 				if(s.getEmail() != null) {	
 					
-					GestioneDomanda d = new ImpGestioneDomanda();
+					GestioneInterazioneTutorStudente d = new ImpGestioneInterazioneTutorStudente();
 					boolean vis = d.domandeDaVisualizzare(email,tipo);
 					System.out.print(vis);
 					if (vis == true) {sessione.setAttribute("vis", "si");}
 					else {sessione.setAttribute("vis", "no");}
 					
 					RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
+					view.forward(request, response);
+				}else {
+					
+					RequestDispatcher view = request.getRequestDispatcher("jsp/PaginaLogin.jsp");
 					view.forward(request, response);
 				}
 			}

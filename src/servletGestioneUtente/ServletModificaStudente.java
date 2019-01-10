@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import gestioneInterazioneTutorStudente.GestioneInterazioneTutorStudente;
+import gestioneInterazioneTutorStudente.ImpGestioneInterazioneTutorStudente;
 import gestioneUtente.GestioneUtente;
 import gestioneUtente.ImpGestioneUtente;
 
@@ -46,8 +49,12 @@ public class ServletModificaStudente extends HttpServlet {
 		String matricola = request.getParameter("matricola");
 		String annoCorso = request.getParameter("annocorso");
 		
+		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
+	    String url = i.extractFileName(linkImmagine);
+	    i.upload(url);
+		
 		GestioneUtente u = new ImpGestioneUtente();
-		u.modificaAccount(tipo, nome, cognome, email, password, linkImmagine, matricola, annoCorso,null, null);
+		u.modificaAccount(tipo, nome, cognome, email, password, url, matricola, annoCorso,null, null);
 		
 		RequestDispatcher forward = request.getServletContext().getRequestDispatcher("/Login?email="+email+"&password="+password+"&tipoUtente="+tipo);
 		forward.forward(request, response);

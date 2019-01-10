@@ -13,14 +13,14 @@ public class ProvaTestSuite {
 	
 	private static Test suite() {
 		TestSuite suite=new TestSuite();
+		suite.addTest(ImpGestioneUtenteTest.suite());
+		suite.addTest(ImpGestioneInterazioneTutorStudenteTest.suite());
+		suite.addTest(ImpGestioneDomandaTest.suite());
 		suite.addTest(RispostaDaoImpTest.suite());
 		suite.addTest(DomandaDAOImpTest.suite());
 		suite.addTest(StudenteDAOImpTest.suite());
 		suite.addTest(TutorDAOImpTest.suite());
 		suite.addTest(FactoryDAOTest.suite());
-		suite.addTest(ImpGestioneDomandaTest.suite());
-		suite.addTest(ImpGestioneUtenteTest.suite());
-		suite.addTest(ImpGestioneInterazioneTutorStudenteTest.suite());
 		return suite;
 	}
 }

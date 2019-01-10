@@ -1,7 +1,6 @@
 package servletGestioneDomanda;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -11,9 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-
-import gestioneDomanda.GestioneDomanda;
-import gestioneDomanda.ImpGestioneDomanda;
 import gestioneInterazioneTutorStudente.GestioneInterazioneTutorStudente;
 import gestioneInterazioneTutorStudente.ImpGestioneInterazioneTutorStudente;
 
@@ -42,12 +38,13 @@ public class ServletInserisciRisposta extends HttpServlet {
 		Part part = request.getPart("file");
 		
 		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
-	    String url = i.upload(part);
+	    String url = i.extractFileName(part);
+	    i.upload(url);
 		
 		int idDomanda = Integer.parseInt(request.getParameter("id"));
 		String testo = request.getParameter("testo");
 		
-		GestioneDomanda d = new ImpGestioneDomanda();
+		GestioneInterazioneTutorStudente d = new ImpGestioneInterazioneTutorStudente();
 		d.inserisciRisposta(testo, idDomanda, url);
 		
 		HttpSession session = request.getSession();

@@ -34,11 +34,10 @@ public class RispostaDAOImp implements ObjectDAO {
       Risposta r = (Risposta) o;
  
       PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into risposta (Contenuto,"
-          + "Allegato,Visualizzata,Valutazione) values (?,?,?,?);");
+          + "Allegato,Visualizzata,Valutazione) values (?,?,?,'');");
       prepared.setString(1, r.getTesto());
       prepared.setString(2, r.getAllegato());
       prepared.setString(3, r.getVis());
-      prepared.setString(4, r.getValutazione());
       prepared.executeUpdate();
   }
 
