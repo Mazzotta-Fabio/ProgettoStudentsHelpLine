@@ -3,7 +3,7 @@ package testingUnità;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-
+import testingIntegrazione.*;
 public class ProvaTestSuite {
 
 	public static void main(String[] args) {
@@ -18,6 +18,9 @@ public class ProvaTestSuite {
 		suite.addTest(StudenteDAOImpTest.suite());
 		suite.addTest(TutorDAOImpTest.suite());
 		suite.addTest(FactoryDAOTest.suite());
+		suite.addTest(ImpGestioneDomandaTest.suite());
+		suite.addTest(ImpGestioneUtenteTest.suite());
+		suite.addTest(ImpGestioneInterazioneTutorStudenteTest.suite());
 		return suite;
 	}
 }
