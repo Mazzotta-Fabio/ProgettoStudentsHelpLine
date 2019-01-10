@@ -3,9 +3,9 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ProgettoIS">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ProgettoWEBIS">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../eclipse/jee-oxygen/eclipse/"/>
+    <property name="ECLIPSE_HOME" value="../../Desktop/Downloads/eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
@@ -16,250 +16,73 @@
     </path>
     <path id="EAR Libraries.libraryclasspath"/>
     <path id="Apache Tomcat v9.0 [Apache Tomcat v9.0].libraryclasspath">
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/annotations-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ant.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ha.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-storeconfig.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-tribes.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/ecj-4.6.3.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/el-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper-el.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jaspic-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jsp-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/servlet-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-coyote.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-dbcp.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-es.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-fr.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-ja.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jdbc.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jni.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util-scan.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-websocket.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/websocket-api.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/annotations-api.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/catalina-ant.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/catalina-ha.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/catalina-storeconfig.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/catalina-tribes.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/catalina.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/ecj-4.6.3.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/el-api.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/jasper-el.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/jasper.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/jaspic-api.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/jsp-api.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/servlet-api.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/tomcat-api.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/tomcat-coyote.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/tomcat-dbcp.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/tomcat-jdbc.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/tomcat-jni.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/tomcat-util-scan.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/tomcat-util.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/tomcat-websocket.jar"/>
+        <pathelement location="../../Desktop/Downloads/apache-tomcat-9.0.5/lib/websocket-api.jar"/>
     </path>
-    <path id="ProgettoIS.classpath">
+    <path id="JUnit 5.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.api_5.3.1.v20181005-1442.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.engine_5.3.1.v20181005-1442.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.migrationsupport_5.3.1.v20181005-1442.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.params_5.3.1.v20181005-1442.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.commons_1.3.1.v20181005-1442.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.engine_1.3.1.v20181005-1442.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.launcher_1.3.1.v20181005-1442.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.runner_1.3.1.v20181005-1442.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.suite.api_1.3.1.v20181005-1442.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.vintage.engine_5.3.1.v20181005-1442.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.opentest4j_1.1.1.v20181005-1442.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.apiguardian_1.0.0.v20181005-1442.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+    </path>
+    <path id="ProgettoWEBIS.classpath">
         <pathelement location="build/classes"/>
         <path refid="Web App Libraries.libraryclasspath"/>
         <path refid="EAR Libraries.libraryclasspath"/>
         <pathelement location=".settings/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/servlet-api.jar"/>
         <path refid="Apache Tomcat v9.0 [Apache Tomcat v9.0].libraryclasspath"/>
         <pathelement location=".settings/LibrerieEmail/activation.jar"/>
         <pathelement location=".settings/LibrerieEmail/mail.jar"/>
+        <path refid="JUnit 5.libraryclasspath"/>
     </path>
-    <path id="run.Prova (1).classpath">
-        <path refid="ProgettoIS.classpath"/>
-        <pathelement location="WebContent/WEB-INF/lib/activation.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mail.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location=".settings/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/servlet-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/annotations-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ant.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ha.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-storeconfig.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-tribes.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/ecj-4.6.3.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/el-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper-el.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jaspic-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jsp-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-coyote.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-dbcp.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-es.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-fr.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-ja.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jdbc.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jni.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util-scan.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-websocket.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/websocket-api.jar"/>
-        <pathelement location=".settings/LibrerieEmail/activation.jar"/>
-        <pathelement location=".settings/LibrerieEmail/mail.jar"/>
-    </path>
-    <path id="run.ProvaDomanda (1).classpath">
-        <path refid="ProgettoIS.classpath"/>
-        <pathelement location="WebContent/WEB-INF/lib/activation.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mail.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location=".settings/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/servlet-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/annotations-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ant.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ha.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-storeconfig.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-tribes.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/ecj-4.6.3.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/el-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper-el.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jaspic-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jsp-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-coyote.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-dbcp.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-es.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-fr.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-ja.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jdbc.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jni.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util-scan.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-websocket.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/websocket-api.jar"/>
-        <pathelement location=".settings/LibrerieEmail/activation.jar"/>
-        <pathelement location=".settings/LibrerieEmail/mail.jar"/>
-    </path>
-    <path id="run.ProvaDomanda (2).classpath">
-        <path refid="ProgettoIS.classpath"/>
-        <pathelement location="WebContent/WEB-INF/lib/activation.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mail.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location=".settings/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/servlet-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/annotations-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ant.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ha.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-storeconfig.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-tribes.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/ecj-4.6.3.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/el-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper-el.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jaspic-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jsp-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-coyote.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-dbcp.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-es.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-fr.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-ja.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jdbc.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jni.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util-scan.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-websocket.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/websocket-api.jar"/>
-        <pathelement location=".settings/LibrerieEmail/activation.jar"/>
-        <pathelement location=".settings/LibrerieEmail/mail.jar"/>
-    </path>
-    <path id="run.ProvaRisposta (1).classpath">
-        <path refid="ProgettoIS.classpath"/>
-        <pathelement location="WebContent/WEB-INF/lib/activation.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mail.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location=".settings/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/servlet-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/annotations-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ant.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ha.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-storeconfig.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-tribes.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/ecj-4.6.3.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/el-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper-el.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jaspic-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jsp-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-coyote.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-dbcp.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-es.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-fr.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-ja.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jdbc.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jni.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util-scan.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-websocket.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/websocket-api.jar"/>
-        <pathelement location=".settings/LibrerieEmail/activation.jar"/>
-        <pathelement location=".settings/LibrerieEmail/mail.jar"/>
-    </path>
-    <path id="run.ProvaStudente (1).classpath">
-        <path refid="ProgettoIS.classpath"/>
-        <pathelement location="WebContent/WEB-INF/lib/activation.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mail.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location=".settings/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/servlet-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/annotations-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ant.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ha.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-storeconfig.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-tribes.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/ecj-4.6.3.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/el-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper-el.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jaspic-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jsp-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-coyote.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-dbcp.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-es.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-fr.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-ja.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jdbc.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jni.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util-scan.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-websocket.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/websocket-api.jar"/>
-        <pathelement location=".settings/LibrerieEmail/activation.jar"/>
-        <pathelement location=".settings/LibrerieEmail/mail.jar"/>
-    </path>
-    <path id="run.ProvaTutor.classpath">
-        <path refid="ProgettoIS.classpath"/>
-        <pathelement location="WebContent/WEB-INF/lib/activation.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mail.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location=".settings/mysql-connector-java-5.0.4.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/servlet-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/annotations-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ant.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-ha.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-storeconfig.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina-tribes.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/catalina.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/ecj-4.6.3.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/el-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper-el.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jasper.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jaspic-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/jsp-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-api.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-coyote.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-dbcp.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-es.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-fr.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-i18n-ja.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jdbc.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-jni.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util-scan.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-util.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/tomcat-websocket.jar"/>
-        <pathelement location="../../Desktop/apache-tomcat-9.0.5/lib/websocket-api.jar"/>
-        <pathelement location=".settings/LibrerieEmail/activation.jar"/>
-        <pathelement location=".settings/LibrerieEmail/mail.jar"/>
+    <path id="run.ProvaTestSuite (1).bootclasspath">
+        <fileset dir="${java.home}/lib" includes="*.jar"/>
+        <fileset dir="${java.home}/lib/ext" includes="*.jar"/>
     </path>
     <target name="init">
         <mkdir dir="build/classes"/>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="test">
+                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -272,9 +95,10 @@
     <target name="build-subprojects"/>
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}" encoding="iso-8859-1">
-        	<src path="src"/>
-            <classpath refid="ProgettoIS.classpath"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <src path="test"/>
+            <classpath refid="ProgettoWEBIS.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
@@ -291,34 +115,12 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="Prova (1)">
-        <java classname="Prova" failonerror="true" fork="yes">
-            <classpath refid="run.Prova (1).classpath"/>
-        </java>
-    </target>
-    <target name="ProvaDomanda (1)">
-        <java classname="provaClassi.ProvaDomanda" failonerror="true" fork="yes">
-            <classpath refid="run.ProvaDomanda (1).classpath"/>
-        </java>
-    </target>
-    <target name="ProvaDomanda (2)">
-        <java classname="ProvaDomanda" failonerror="true" fork="yes">
-            <classpath refid="run.ProvaDomanda (2).classpath"/>
-        </java>
-    </target>
-    <target name="ProvaRisposta (1)">
-        <java classname="provaClassi.ProvaRisposta" failonerror="true" fork="yes">
-            <classpath refid="run.ProvaRisposta (1).classpath"/>
-        </java>
-    </target>
-    <target name="ProvaStudente (1)">
-        <java classname="provaClassi.ProvaStudente" failonerror="true" fork="yes">
-            <classpath refid="run.ProvaStudente (1).classpath"/>
-        </java>
-    </target>
-    <target name="ProvaTutor">
-        <java classname="provaClassi.ProvaTutor" failonerror="true" fork="yes">
-            <classpath refid="run.ProvaTutor.classpath"/>
+    <target name="ProvaTestSuite (1)">
+        <java classname="testingUnità.ProvaTestSuite" failonerror="true" fork="yes">
+            <classpath refid="ProgettoWEBIS.classpath"/>
+            <bootclasspath>
+                <path refid="run.ProvaTestSuite (1).bootclasspath"/>
+            </bootclasspath>
         </java>
     </target>
 </project>
