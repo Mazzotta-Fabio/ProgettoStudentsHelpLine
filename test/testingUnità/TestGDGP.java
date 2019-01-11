@@ -3,17 +3,19 @@ package testingUnità;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+import testingIntegrazione.ImpGestioneDomandaTest;
 
-public class ProvaTestSuite {
+
+public class TestGDGP {
+	
 	public static void main(String[] args) {
-		TestRunner.run(ProvaTestSuite.suite());
+		TestRunner.run(TestGDGP.suite());
 	}
-
+	
 	public static Test suite() {
 		TestSuite test=new TestSuite();
-		test.addTest(TestGDGP.suite());
-		test.addTest(TestGUGp.suite());
-		test.addTest(TestGIGP.suite());
+		test.addTest(ImpGestioneDomandaTest.suite());
+		test.addTest(TestGP.suite());
 		return test;
 	}
 }
