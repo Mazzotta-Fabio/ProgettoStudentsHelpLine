@@ -1,13 +1,13 @@
 package servletGestioneInterazioneTutorStudente;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import classiComuni.Studente;
 import classiComuni.Tutor;
 import gestioneInterazioneTutorStudente.GestioneInterazioneTutorStudente;
@@ -27,13 +27,20 @@ public class ServletVisualizzaProfilo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession sessione = request.getSession();
+		String tipo = (String) sessione.getAttribute("tipo");
+		String emailP = (String) sessione.getAttribute("email");
 		String email = request.getParameter("email");
 		
+		System.out.print(tipo);
+		if(!email.equals(emailP)) {
+			if(tipo.equals("Studente")) tipo = "Tutor";
+			else tipo = "Studente";
+		}
+		
 		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
-		Object o = i.visualizzaAccount(email);
-		if (o == null) {request.setAttribute("tipo", "nessuno");}
-		else if (o instanceof Studente) {
-			Studente s = (Studente) o;
+		if (tipo.equals("Studente")) {
+			Studente s = (Studente) i.visualizzaAccount(email);
 			request.setAttribute("tipo", "Studente");
 			request.setAttribute("Nome", s.getNome());
 			request.setAttribute("Cognome", s.getCognome());
@@ -41,10 +48,8 @@ public class ServletVisualizzaProfilo extends HttpServlet {
 			request.setAttribute("Immagine", s.getLinkImmagine());
 			request.setAttribute("Matricola", s.getMatricola());
 			request.setAttribute("Anno", s.getAnnoCorso());
-			RequestDispatcher view = request.getRequestDispatcher("jsp/VisualizzaAccount.jsp");
-			view.forward(request, response);
 		} else {
-			Tutor t = (Tutor) o;
+			Tutor t = (Tutor) i.visualizzaAccount(email);;
 			request.setAttribute("tipo", "Tutor");
 			request.setAttribute("Nome", t.getNome());
 			request.setAttribute("Cognome", t.getCognome());
@@ -54,9 +59,9 @@ public class ServletVisualizzaProfilo extends HttpServlet {
 			request.setAttribute("Cellulare", t.getNumeroDiCellulare());
 			request.setAttribute("Titolo", t.getTitoloDiStudio());
 			request.setAttribute("Voto", t.getVotoDiLaurea());
-			RequestDispatcher view = request.getRequestDispatcher("jsp/VisualizzaAccount.jsp");
-			view.forward(request, response);
 		}
+		RequestDispatcher view = request.getRequestDispatcher("jsp/VisualizzaAccount.jsp");
+		view.forward(request, response);
 	}
 
 	/**
