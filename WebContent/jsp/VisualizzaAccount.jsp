@@ -17,38 +17,35 @@
 <header id=header">
 <div class="header-content">
 <div class="image-logo">
-	<img class="position" src="img/logo.jpg" alt="StudentHelpline">
+	<img class="position" src="img/logo.png" alt="StudentHelpline">
 </div>
 <div class="Name-Sito">
 Student's Help Line
 </div>
 </div>
-<nav class="navbar navbar-custom">
-<a  href="ServletFormModifica" title="Indietro">
-<img class="log" src="img/back.svg" style="width:50%; margin-left:10%;"></img>
-</a>
-<div class="Name-barra">
-<%if(request.getAttribute("tipo").equals("Studente")){%>
+<div style="background:#2b78e4">
+<p><font color="white">
+<a  href="MioAccount" title="Indietro">
+<img class="log" src="img/back.svg" style="width:3%; margin-left:3%;"></img>
+</a><strong style="margin-left:45%;">
+<%if(session.getAttribute("tipo").equals("Studente")){%>
 Account Studente
 <%}else{%>
 Account Tutor
 <%} %>
+</strong><span style="margin-left:35%"><a  href="Logout"><img src="img/logout.png" style="width:50px;height:50px;align:right;"></img></a></span></font></p>
 </div>
-<a  href="Logout" title="Logout">
-<img class="log" src="img/logout.svg"></img>
-</a>
-</nav>
 </header>
 <section id="main">
 <div class="container">
   <div class="row">
 <div class="col-3">
-<div class="image-profilo" style="margin-top:58%;">
+<div class="image-profilo" style="margin-top:60%;">
 <%String img = (String) request.getAttribute("Immagine");
-if(img != null){ %>
+if(img.equals("")){ %>
 <img src="img/AccountsenzaFoto.png" alt="Immagine" class="img-thumbnail image-profilo">
 <%}else{ %>
-<img src=<%=img%> alt="Immagine" class="img-thumbnail image-profilo">
+<img src=<%=img%> alt="Immagine" class="img-thumbnail image-profilo" style="width::100%;">
 <%} %>
 </div>
 </div>

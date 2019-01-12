@@ -18,20 +18,17 @@
 <header id=header">
 <div class="header-content">
 <div class="image-logo">
-	<img class="position" src="img/logo.jpg" alt="StudentHelpline">
+	<img class="position" src="img/logo.png" alt="StudentHelpline">
 </div>
 <div class="Name-Sito">
 Student's Help Line
 </div>
 </div>
-<nav class="navbar navbar-custom">
-<div class="Name-barra" style="margin-left:44%;">
+<div style="background:#2b78e4">
+<p><font color="white" style="margin-left:45%"><strong>
 Visualizza Valutazioni
+</strong><span style="margin-left:41%"><a  href="Logout"><img src="img/logout.png" style="width:50px;height:50px;align:right;"></img></a></span></font></p>
 </div>
-<a  href="Logout" title="Logout">
-<img class="log" src="img/logout.svg"></img>
-</a>
-</nav>
 </header>
 <section id="main">
 <div class="container">
@@ -39,28 +36,36 @@ Visualizza Valutazioni
     <div class="col-3">
 <div class="btn-group-vertical lista-bottone">
  <%if(session.getAttribute("vis").equals("si")){ %>
-  <a  href="ServletFormModifica" title="Mio Account">
-  <button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style="width:199%;">Mio Account</button>
+<a  href="MioAccount" title="Mio Account">
+ <button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style=" width:195%;text-align: left;font-size: 80%;">Mio Account</button>
   </a>
-  	<a  href="ServletTabDomandaRisposte" title="Domande Risposte">
-  <button type="button" class="btn btn-light border border-dark" style="width:145%;">Domande Risposte</button>
+  <a  href="ServletTabDomandaRisposte" title="Domande Risposte">
+  <button type="button" class="btn btn-light border border-dark" style="width:144%;text-align: left;font-size: 80%;">Domande Risposte</button>
   </a>
-  <a  href="ServletTabDomandaSenzaRisposta" title="Domande Risposte">
-  <button type="button" class="btn btn-light border border-dark" style="width:130%;">Domande non Risposte    <img src="img/CerchioBlu.png" style="width:10%;"></img></button>
+   <a  href="ServletTabDomandaSenzaRisposta" title="Domande nom Risposte">
+  <button type="button" class="btn btn-light border border-dark" style="width:107%;text-align: left;font-size: 80%;">Domande non Risposte <img src="img/CerchioBlu.png" style="width:8%; margin-left:9%;"></img></button>
   </a>
-  <button type="button" class="btn btn-light border border-dark" style="background-color:#cccccc; width:130%;">Visualizza Valutazioni</button>
+  <button type="button" class="btn btn-light border border-dark" style="width:107%;text-align: left;font-size: 80%; background-color:#cccccc;">Visualizza Valutazioni</button>
    <%}else{ %>
- <a  href="ServletFormModifica" title="Mio Account">
-  <button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style="width:166%;">Mio Account</button>
+  
+  
+ <a  href="MioAccount" title="Mio Account">
+<button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style="width: 194%; text-align: left;font-size: 80%;">Mio Account</button>
   	</a>
   	
   	<a  href="ServletTabDomandaRisposte" title="Domande Risposte">
-  <button type="button" class="btn btn-light border border-dark" style="width:121%;">Domande Risposte</button>
+  <button type="button" class="btn btn-light border border-dark" style="width:144%;text-align: left;font-size: 80%;">Domande Risposte</button>
   </a>
-  <a  href="ServletTabDomandaSenzaRisposta" title="Domande Risposte">
-  <button type="button" class="btn btn-light border border-dark" style="width:108%;">Domande non Risposte</button>
+  
+  <a  href="ServletTabDomandaSenzaRisposta" title="Domande non Risposte">
+  <button type="button" class="btn btn-light border border-dark"style="text-align: left;font-size: 80%; width:121%;">Domande non Risposte</button>
   </a>
-  <button type="button" class="btn btn-light border border-dark" style="background-color:#cccccc; width:108%;">Visualizza Valutazioni</button>
+  
+   <button type="button" class="btn btn-light border border-dark" style="width:120%;text-align: left;font-size: 80%; background-color:#cccccc;">Visualizza Valutazioni</button>
+ 
+  
+
+
  <%} %>
 </div>
 </div>  

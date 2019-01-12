@@ -11,6 +11,75 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
+<section id="main">
+<div class="container">
+  <div class="row">
+  <div class="col">
+<div class="btn-group-vertical lista-bottone" style="margin-top:100%; margin-right:10%;">
+ 
+  <%if(session.getAttribute("tipo").equals("Studente")){%>
+  
+  <%if(session.getAttribute("vis").equals("si")){ %>
+  <a  href="MioAccount" title="Mio Account">
+  <button type="button" class="MioAccount btn btn-light border border-dark" style="width: 175%;text-align: left;">Mio Account</button>
+  </a>
+  <a  href="html/PaginaSelezionaMateria.html" title="Fai Domanda al Tutor">
+  <button type="button" class="testoSinistra Fai_Domanda_al_Tutor btn btn-light border border-dark" style="width:114%; text-align: left;">Fai Domanda al Tutor</button>
+  </a>
+  
+  <a  href="ServletTabDomandaRisposte" title="Domande Risposte">
+  <button type="button" class="testoSinistra Domande_Risposte btn btn-light border border-dark" style = "width:100%;text-align: left;">Domande Risposte <img src="img/CerchioBlu.png" style="width:8%; margin-left:9%;"></img></button>
+  </a>
+  <%}else{ %>
+  <a  href="MioAccount" title="Mio Account">
+  <button type="button" class="MioAccount btn btn-light border border-dark" style="width: 175%;text-align: left;">Mio Account</button>
+  </a>
+  <a  href="html/PaginaSelezionaMateria.html" title="Fai Domanda al Tutor">
+  <button type="button" class="testoSinistra Fai_Domanda_al_Tutor btn btn-light border border-dark" style="width:114%; text-align: left;">Fai Domanda al Tutor</button>
+  </a>
+  
+  <a  href="ServletTabDomandaRisposte" title="Domande Risposte">
+  <button type="button" class="testoSinistra Domande_Risposte btn btn-light border border-dark" style = "width:128%;text-align: left;">Domande Risposte</button>
+  </a>
+  <%} %>
+  
+  <a  href="ServletTabDomandaSenzaRisposta" title="Domande senza Risposta">
+  <button type="button" class="testoSinistra btn btn-light border border-dark" style="text-align: left;">Domande senza Risposta</button>
+  </a>
+  
+  <%}else{%>
+  
+  <%if(session.getAttribute("vis").equals("si")){ %>
+ <button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style=" width:75%; background-color:#cccccc;text-align: left;font-size: 80%;">Mio Account</button>
+  
+  <a  href="ServletTabDomandaRisposte" title="Domande Risposte">
+  <button type="button" class="btn btn-light border border-dark" style="width:144%;text-align: left;font-size: 80%;">Domande Risposte</button>
+  </a>
+  
+   
+  <a  href="ServletTabDomandaSenzaRisposta" title="Domande Risposte">
+  <button type="button" class="btn btn-light border border-dark" style="width:75%;text-align: left;font-size: 80%;">Domande non Risposte <img src="img/CerchioBlu.png" style="width:8%; margin-left:9%;"></img></button>
+  </a>
+  <%} else{ %>
+<button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style="width: 121%; background-color:#cccccc;text-align: left;font-size: 80%;">Mio Account</button>
+  	
+  	<a  href="ServletTabDomandaRisposte" title="Domande Risposte">
+  <button type="button" class="btn btn-light border border-dark" style="width:144%;text-align: left;font-size: 80%;">Domande Risposte</button>
+  </a>
+  
+  <a  href="ServletTabDomandaSenzaRisposta" title="Domande non Risposte">
+  <button type="button" class="btn btn-light border border-dark"style="text-align: left;font-size: 80%; width:121%;">Domande non Risposte</button>
+  </a>
+   <%} %>
+  
+  <a  href="ServletVisualizzaValutazioniTot" title="Visualizza Valutazioni">
+  <button type="button" class="btn btn-light border border-dark" style="width:131%;text-align: left;font-size: 80%;">Visualizza Valutazioni</button>
+  </a>
+  
+  <%}%>
+</div>
+</div>
+<div class="col" style="margin-right:15%; margin-top:10%;">
 <%
 	List ris = (List) request.getAttribute("listaInfo");
 %>
@@ -30,15 +99,10 @@
     	out.print("<a href='ServletEliminaDomanda?id="+ris.get(4)+"'><img src='img/elimina.png' style='width:50px;height:50px;margin-left:400px;'/></a>");
     	
 	%>
-     </div>
+</div>
 </div>  
-
-
-</body>
-</html>
-  </div>
-</div>  
-
-
-</body>
+</div>
+</div>
+</div>
+</section>
 </html>
