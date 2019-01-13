@@ -22,7 +22,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 	private String destLocation;
 	
 	public ImpGestioneInterazioneTutorStudente() {
-		destLocation = new String("C:\\Users\\Antonio\\Desktop\\Documenti\\web\\File\\WebContent\\Immagine");
+		destLocation = new String("C:\\Users\\Antonio\\Desktop");
 	}
 	
     public String upload(String fileName)throws IOException {
@@ -47,17 +47,6 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
     	}
     	return d;
     }    
-
-    public String extractFileName(Part part) {
- 			String contentDisp = part.getHeader("content-disposition");
- 			String [] items = contentDisp.split(";");
- 			for(String s : items) {
- 				if(s.trim().startsWith("filename")) {
- 					return s.substring(s.lastIndexOf("=")+2,s.length()-1);
- 				}
- 			}
- 			return "";
- 	}
 
 	@Override
 	public List<String> listaTutor(String materia) {
@@ -170,6 +159,8 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 		o = fd.getObject("Risposta");
 		for(int i = 0;i<listD.size();i++) {
 		      Domanda d = (Domanda) listD.get(i);
+		      System.out.println(d.getTutor().getEmail());
+		      System.out.println(email);
 		      if(email.equals(d.getTutor().getEmail())) {
 		    	  Risposta r = new Risposta(d.getRisposta().getId(), null, null, null, null);
 		    	  try {
@@ -245,6 +236,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 				Domanda d = (Domanda) listaD.get(i);
 				if (d.getTutor().getEmail().equals(email)) {
 					if (d.getVis().equals("no")) return true;
+					else return false;
 				}
 			}
 		} else {
@@ -269,9 +261,14 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 					}
 					System.out.println(r.getId());
 					if (r.getVis().equals("no")) return true;
+					else return false;
 				}
 			}
 		}
 		return false;
 	}
+
+	
+	
+	
 }

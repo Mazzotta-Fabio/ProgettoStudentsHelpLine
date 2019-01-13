@@ -23,7 +23,7 @@ import gestioneUtente.ImpGestioneUtente;
  * @author Antonio Cimino
  * @version 1.0
  */
-@WebServlet("/ModificaStudente")
+@WebServlet("/ModificaStudente.html")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
 maxFileSize = 1024 * 1024 * 10,
 maxRequestSize = 1024 * 1024 * 50)
@@ -45,12 +45,12 @@ public class ServletModificaStudente extends HttpServlet {
 		String cognome = request.getParameter("cognome");
 		String email = (String) session.getAttribute("email");
 		String password = request.getParameter("password");
-		Part linkImmagine = request.getPart("immagine");
 		String matricola = request.getParameter("matricola");
 		String annoCorso = request.getParameter("annocorso");
+		System.out.print(annoCorso);
 		
 		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
-	    String url = i.extractFileName(linkImmagine);
+	    String url = request.getParameter("url");
 	    i.upload(url);
 		
 		GestioneUtente u = new ImpGestioneUtente();

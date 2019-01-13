@@ -13,5 +13,4 @@ public interface GestioneInterazioneTutorStudente {
 	public int[] valutazioniTot (String email);
 	public boolean domandeDaVisualizzare(String email,String tipo);
 	public void inserisciRisposta(String testo, int idDomanda, String url);
-	public String extractFileName(Part part);
 }

@@ -4,65 +4,41 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="../css/SelezionaMateria.css">
-<link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
-
-<style>
-.header {
-  padding: 0.05px;
-  text-align: center;
-  background: #2b78e4;
-  color: white;
-  font-size: 30px;
-}
-
-.rectangle {
-padding-top: 22px;
-background: #CCCCCC;
-border-style: solid;
- text-align: center;
-}
-.footer {
-  position: fixed;
-  width: 100%;
-  bottom: 0px;
-  text-align: center;
-  background: #2b78e4;
-  color: white;
-  font-size: 20px;
-}
-
-
-.imgs {
-  max-width: 25%;
-  height: auto;
-
-}
-</style>
-<div class="header">
-  <img class="left" src="img/2.PNG"><br><br>
- </div>
-<title>STUDENT'S HELP LINE</title>
-
-
+<link rel="stylesheet" href="css/SelezionaMateria.css">
+<link rel="icon" type="image" href="img/ICONA.ico">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<title>Student's Help Line</title>
 </head>
 <body>
-
-
+<div id="page">
+<header id=header">
+<div class="header-content">
+<div class="image-logo">
+	<img class="position" src="img/logo.png" alt="StudentHelpline">
+</div>
+<div class="Name-Sito">
+Student's Help Line
 </div>
 </div>
-
-<div class="rectangle">
-<center><strong><h2>SELEZIONA TUTOR</h2></strong></center><br><br>
+<div style="background:#2b78e4">
+<p><a href="javascript:history.back()" titlo="Indietro"><img class="log" src="img/back.svg" style="width:3%; margin-left:3%;"></img></a>
+<font color="white" style="margin-left:45%"><strong>SELEZIONA TUTOR</strong><span style="margin-left:38%"><a  href="Logout"><img src="img/logout.png" style="width:50px;height:50px;align:right;"></img></a></span></font></p>
 </div>
-</a>
-</nav>
-</div><br><br>
-<div id ="card" class="card-deck" style="width: 30%;padding-left:5%;">
+<style>
+span{
+	color: red;
+	padding-left:50px;
+}
+#log {
+ background: #0095cd;
+ color:white;
+}
+</style>
+</header>
+<body>
+
+<div id ="card" class="card-deck" style="width: 100%;padding-left:5%;">
 
 <%  
 			List <String> listaTutor= (List <String>) request.getAttribute("listaTutor");
@@ -75,15 +51,11 @@ border-style: solid;
 				String valutazioneN =(String) it.next();
 				String email=(String) it.next();
 				
-				out.println("<div class='card'><img  src='img/AccountsenzaFoto.png'><div class='card-body'><h5 class='card-title'>Tutor</h5><p class='card-text'>"+nome +" "+cognome+"<br><img  src='img/+.png' width='30' height='30'>&nbsp;&nbsp;&nbsp;"+valutazioneP+"&nbsp;&nbsp;&nbsp;<img  src='img/-.png' width='30' height='30'>&nbsp;&nbsp;&nbsp;"+valutazioneN+"<center><a href='ServletFormDomanda?tutor="+email+"'> FAI DOMANDA ></center></p></div></div>");
-				
+				out.println("<div class='card'><center><img  src='img/AccountsenzaFoto.png' style='padding-top:5%;' height='230px' width='300px' ></center><div class='card-body'><center><h5 class='card-title'>Tutor</h5><center><p class='card-text'>"+nome +" "+cognome+"<br><img  src='img/+.png' width='30' height='30'>&nbsp;&nbsp;&nbsp;"+valutazioneP+"&nbsp;&nbsp;&nbsp;<img  src='img/-.png' width='30' height='30'>&nbsp;&nbsp;&nbsp;"+valutazioneN+"<center><a href='ServletFormDomanda?tutor="+email+"'> FAI DOMANDA ></a></center></p></div></div>");
 			}			
 %>
 
 </div>
-<div>
-<div class="footer">
-<h1>STUDENT'S HELP LINE. SEE MORE. DO MORE.</h1>
-</div>
+
 </body>
 </html>

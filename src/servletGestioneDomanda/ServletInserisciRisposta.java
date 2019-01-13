@@ -35,10 +35,9 @@ public class ServletInserisciRisposta extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Part part = request.getPart("file");
 		
 		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
-	    String url = i.extractFileName(part);
+	    String url = request.getParameter("url");
 	    i.upload(url);
 		
 		int idDomanda = Integer.parseInt(request.getParameter("id"));

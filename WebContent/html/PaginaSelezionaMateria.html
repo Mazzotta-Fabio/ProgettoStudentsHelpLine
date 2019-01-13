@@ -2,21 +2,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="../css/SelezionaMateria.css">
 <link rel="icon" type="image" href="../img/ICONA.ico">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/bootstrap.css">
-<link rel="stylesheet" href="../css/SelezionaMateria.css">
-<style>
-.footer {
-  position: fixed;
-  width: 100%;
-  bottom: 0px;
-  text-align: center;
-  background: #2b78e4;
-  color: white;
-  font-size: 20px;
-}
-</style>
 <title>Student's Help Line</title>
 </head>
 <body>
@@ -24,62 +13,62 @@
 <header id=header">
 <div class="header-content">
 <div class="image-logo">
-	<imgclass="position" src="../img/logo.jpg" alt="StudentHelpline">
+	<img class="position" src="../img/logo.png" alt="StudentHelpline">
 </div>
 <div class="Name-Sito">
 Student's Help Line
 </div>
 </div>
-<nav class="navbar navbar-custom">
-<div class="Name-barra">
-<center>Account</center>
-</div>
-<a  href="/" title="Logout">
-<img class="log" src="../img/logout.svg"></img>
-</a>
-</nav>
-</div>
+<div style="background:#2b78e4">
+<a href="javascript:history.back()" titlo="Indietro"><img class="log" src="img/back.svg" style="width:3%; margin-left:3%;"></img></a>
+<p><font color="white" style="margin-left:45%"><strong>SELEZIONA MATERIA</strong><span style="margin-left:36%"><a  href="Logout"><img src="../img/logout.png" style="width:50px;height:50px;align:right;"></img></a></span></font></p>
+</div></div>
+<style>
+span{
+	color: red;
+	padding-left:50px;
+}
+#log {
+ background: #0095cd;
+ color:white;
+}
+</style>
 </header>
-<p>
-<font color="#2b78e4"><center><h1><strong> SELEZIONA LA MATERIA CHE TI INTERESSA</strong></h1></center>
-</p>
-<p>
+<body>
 <form action="../ServletFormDomandaTutor" method="post">
 <table width="600" align="center" bgcolor="black" border="2">
 <tbody> 
 <tr>
-<td width="600" bgcolor="#E2E2E2"><center>Programmazione 1&nbsp;<input type="radio" name="linguaggio" value="html"/><br>
-		Matemamatica discreta&nbsp;<input type="radio" name="" value="css"/><br>
-		Architettura degli elaboratori&nbsp;<input type="radio" name="materia" value="javascript"/><br>
-		Programmazione e stutture dati&nbsp;<input type="radio" name="materia" value="html"/><br>
-		Analisi 1&nbsp;<input type="radio" name="materia" value="Analisi1"/><br>
-		MMI&nbsp;<input type="radio" name="materia" value="javascript"/><br>
-		Sistemi operativi&nbsp;<input type="radio" name="materia" value="html"/><br>
-		POO&nbsp;<input type="radio" name="materia" value="css"/><br>
-		Base dati&nbsp;<input type="radio" name="materia" value="javascript"/><br>
-		TSW&nbsp;<input type="radio" name="materia" value="html"/><br>
-		CSPM&nbsp;<input type="radio" name="materia" value="css"/><br>
-		Algoritmi&nbsp;<input type="radio" name="materia" value="javascript"/><br>
-		Reti di calcolatori&nbsp;<input type="radio" name="materia" value="html"/><br>
-		IS&nbsp;<input type="radio" name="materia" value="css"/><br>
-		Programmazione distribuita&nbsp;<input type="radio" name="materia" value="javascript"/><br>
-		ETC&nbsp;<input type="radio" name="materia" value="html"/><br>
-		Ricerca Operativa&nbsp;<input type="radio" name="materia" value="css"/><br>
-		<input type="submit" value="next"/></center><br></td>
-</tr> 
-</tbody>
-</table>
-<p>
-<font color="#2b78e4"><center><h2>HAI SCELTO LA MATERIA?</h2></center>
-<font color="#2b78e4"><center><h3> ADESSO SCEGLI IL TUTOR!</h3></center><br>
-<center><input type="submit" value="Avanti"></center>
-</p>
+<td width="600" bgcolor="#E2E2E2"><center>Programmazione 1&nbsp;<input type="radio" name="linguaggio" value="Programmazione1"/><br>
+		Matemamatica discreta&nbsp;<input type="radio" name="" value="MatematicaD"/><br>
+		Architettura degli elaboratori&nbsp;<input type="radio" name="Architettura" value="javascript"/><br>
+		Programmazione e stutture dati&nbsp;<input type="radio" name="StruttureD" value="html"/><br>
+		Analisi matematica&nbsp;<input type="radio" name="materia" value="Analisi1"/><br>
+		Metodi matematici per l'informatica&nbsp;<input type="radio" name="materia" value="MMI"/><br>
+		Sistemi operativi&nbsp;<input type="radio" name="materia" value="Sistemi"/><br>
+		Programmazione ad oggetti&nbsp;<input type="radio" name="materia" value="Java"/><br>
+		Base Dati&nbsp;<input type="radio" name="materia" value="BaseDati"/><br>
+		Programmazione web&nbsp;<input type="radio" name="materia" value="Web"/><br>
+		Calcolo della probabiltà e statistica&nbsp;<input type="radio" name="materia" value="CPSM"/><br>
+		Algoritmi&nbsp;<input type="radio" name="materia" value="Algoritmi"/><br>
+		Reti di calcolatori&nbsp;<input type="radio" name="materia" value="Reti"/><br>
+		Ingegneria del Software&nbsp;<input type="radio" name="materia" value="IS"/><br>
+		Programmazione distribuita&nbsp;<input type="radio" name="materia" value="PD"/><br>
+		Elementi di teoria della computazione&nbsp;<input type="radio" name="materia" value="ETC"/><br>
+		Ricerca Operativa&nbsp;<input type="radio" name="materia" value="RO"/><br>
+		</tr> 
+		</tbody>
+		</table>
+		<p>
+		<font color="#2b78e4"><center><h2>HAI SCELTO LA MATERIA?</h2></center>
+		<font color="#2b78e4"><center><h3> ADESSO SCEGLI IL TUTOR!</h3></center><br>
+		<center><input type="submit" value="Avanti"/></center><br></td></center>
+		</p>
 
 </form>		
 </p>
 
-<div class="footer">
-<h1>STUDENT'S HELP LINE. SEE MORE. DO MORE.</h1>
+
 </div>
 </body>
 </html>

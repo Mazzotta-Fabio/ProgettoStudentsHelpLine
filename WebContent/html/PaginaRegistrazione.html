@@ -29,16 +29,17 @@ span{
 <div id="header"><h4><font color="white">REGISTRAZIONE</font></h4></div>
 <div style="margin-top:70px;"><a href = "HomePage.html"><img src="../img/logo.png" style="widht:300px;height:280px;"></a></div><br><br>
 
-<form enctype="multipart/form-data" action="../Registrazione.html" method="post">
 <table width="800" height="500" align="right" bgcolor="black" border="2" style="margin-top:-400px;"><tbody> 
 <tr>
 <td bgcolor="#E2E2E2">
-<p><center>Seleziona tipo utente <input type="radio" name="tipoUtente"id="myCheck" value="Tutor" onclick="myFunction1()"> TUTOR  <input type="radio" name="tipoUtente"id="myCheck2" value="Studente" onclick="myFunction2()"> STUDENTE </center></p>
+<p><center>Seleziona tipo utente <input type="radio" name="tipoUtent"id="myCheck" value="Tutor" onclick="myFunction1()"> TUTOR  <input type="radio" name="tipoUtent"id="myCheck2" value="Studente" onclick="myFunction2()"> STUDENTE </center></p>
 </td>
 </tr>
+<form action="../Registrazione" method="post">
 <tr>
 <td width="800" height="450" bgcolor="#E2E2E2">
 <p id="text" style="display:none;"><font face="sans-serif">
+<input type="hidden" value="Tutor" name="tipo">
 <font color="black"><strong>Nome:   </strong></font><input type="text" name="nome"id="nomeT" onKeyUp="myFunction3()" onKeyDown="myFunctionT()" required><span id="par3"></span><br><br>
 <font color="black"><strong>Cognome:   </strong></font><input type="text" name="cognome"id="cognomeT"  onKeyUp="myFunction4()" onKeyDown="myFunctionT()" required><span id="par4"></span><br><br>
 <font color="black"><strong>Email:   </strong></font><input type="text" name="email"id="emailT"  onKeyUp="myFunction5()" onKeyDown="myFunctionT()" required><span id="par5" ></span><br><br>
@@ -70,14 +71,16 @@ span{
   <option value="ETC">Elementi di teoria della computazione</option>
   <option value="RO">Ricerca operativa</option>
 </select><br><br>
-<font color="black"><strong>Aggiungi immagine:   </strong></font><input type="file"  name="file" id="immagineT" onchange="myFunction10()"><span id="par10"></span><br><br>
+<font color="black"><strong>Aggiungi immagine:   </strong></font><input type="file"  name="file" id="immagineT" onchange="myFunction10()"><span id="par10"></span> <br><br><input type="hidden" name ="url" id="path"><br><br>
 <input type="submit" value="REGISTRATI" id="regT"name="button" >
 <a href="HomePage.html">TORNA A HOME ></a>
 </font>
 </p>
-
+</form>
+<form action="../Registrazione" method="post">
 <p id="text2" style="display:none">
 <font face="sans-serif">
+<input type="hidden" value="Studente" name="tipo">
 <font color="black"><strong>Nome:   </strong></font><input type="text" name="nome"id="nomeS"  onKeyUp="myFunction11()" onKeyDown="myFunctionS()" required><span id="par11"></span><br><br>
  <font color="black"><strong>Cognome:   </strong></font><input type="text" name="cognome"id="cognomeS"  onKeyUp="myFunction12()" onKeyDown="myFunctionS()" required><span id="par12"></span><br><br>
 <font color="black"><strong>Email:   </strong></font><input type="text" name="email"id="emailS"  onKeyUp="myFunction13()" onKeyDown="myFunctionS()" required><span id="par13"></span><br><br>
@@ -85,11 +88,11 @@ span{
 <font color="black"><strong>Conferma Password:   </strong></font><input type="text" name="password2"id="password2S"  onKeyUp="myFunction15()" onKeyDown="myFunctionS()" required><span id="par15"></span><br><br>
 <font color="black"><strong>Matricola:   </strong></font><input type="text" name="matricola"id="matricolaS"  onKeyUp="myFunction16()" onKeyDown="myFunctionS()" required><span id="par16"></span><br><br>
 <font color="black"><strong>Anno di corso:   </strong></font><select name="annoCorso"><br><br>
-  <option value="primo">Primo</option>
-  <option value="secondo">Secondo</option>
-  <option value="terzo">Terzo</option>
+  <option value="1°">Primo</option>
+  <option value="2°">Secondo</option>
+  <option value="3°">Terzo</option>
 </select><br><br>
-<font color="black"><strong>Aggiungi immagine:   </strong></font><input type="file"  name="file" id="immagineS" onchange="myFunction17()"><span id="par17"></span><br><br>
+<font color="black"><strong>Aggiungi immagine:   </strong></font><input type="file"  name="file" id="immagineS" onchange="myFunction17()"><span id="par17"></span><br><br><input type="hidden" name ="url" id="pathS"><br><br>
 <input type="submit" value="REGISTRATI" id="regS" name="button">
 <a href="HomePage.html">TORNA A HOME ></a>
 </tr> 
@@ -127,7 +130,7 @@ function myFunction3() {
 		document.getElementById("par3").innerHTML = "Il nome deve contenere solo caratteri";
 	}
 	var n = document.getElementById("nomeT").value.length;
-	if(n<31){
+	if(n>30){
 		document.getElementById("par3").innerHTML = "Il nome deve contenere al massimo 30 caratteri";
 	}
 }
@@ -139,7 +142,7 @@ function myFunction4() {
 		document.getElementById("par4").innerHTML = "Il cognome deve contenere solo caratteri";
 	}
 	var n = document.getElementById("cognomeT").value.length;
-	if(n<31){
+	if(n>30){
 		document.getElementById("par4").innerHTML = "Il cognome deve contenere al massimo 30 caratteri";
 	}
 }
@@ -172,9 +175,9 @@ function myFunction8() {
 	if(!document.getElementById("numeroT").value.match(test)){
 		document.getElementById("par8").innerHTML = "Il numero deve contenere solo numeri";
 	}
-	var n = document.getElementById("cognomeT").value.length;
+	var n = document.getElementById("numeroT").value.length;
 	if(n!=10){
-		document.getElementById("par4").innerHTML = "Il numero deve essere di 10 caratteri";
+		document.getElementById("par8").innerHTML = "Il numero deve essere di 10 caratteri";
 	}
 }
 
@@ -195,9 +198,12 @@ function myFunction9() {
 function myFunction10(){
 	document.getElementById("par10").innerHTML = "";
 	var frm = document.getElementsByTagName('form')[0];
-	if(!frm.elements[11].value.match("png") && !frm.elements[11].value.match("jpg") && !frm.elements[11].value.match("jpeg")){
+	if(!frm.elements[10].value.match("png") && !frm.elements[10].value.match("jpg") && !frm.elements[10].value.match("jpeg")){
 		document.getElementById("par10").innerHTML = " I file accettati sono jpg/png/jpeg";
 	}
+	var fullPath = frm.elements[10].value; 
+	var elem = document.getElementById("path");
+	elem.value = fullPath;
 }
 
 function myFunction11() {
@@ -207,7 +213,7 @@ function myFunction11() {
 		document.getElementById("par11").innerHTML = "Il nome deve contenere solo caratteri";
 	}
 	var n = document.getElementById("nomeS").value.length;
-	if(n<31){
+	if(n>30){
 		document.getElementById("par11").innerHTML = "Il nome deve contenere al massimo 30 caratteri";
 	}
 }
@@ -219,7 +225,7 @@ function myFunction12() {
 		document.getElementById("par12").innerHTML = "Il cognome deve contenere solo caratteri";
 	}
 	var n = document.getElementById("cognomeS").value.length;
-	if(n<31){
+	if(n>30){
 		document.getElementById("par12").innerHTML = "Il cognome deve contenere al massimo 30 caratteri";
 	}
 }
@@ -237,10 +243,9 @@ function myFunction13() {
 }
 
 function myFunction14() {
-	var i;
 	document.getElementById("par14").innerHTML = "";
-	var n = document.getElementById("passwordS").value.lenght;
-	if(n < 8||n>20){
+	var n = document.getElementById("passwordS").value.length;
+	if(n < 8 || n >20){
 		document.getElementById("par14").innerHTML = "La password deve avere tra gli 8 e 20 caratteri";
 	}
 }
@@ -260,10 +265,13 @@ function myFunction16() {
 
 function myFunction17(){
 	document.getElementById("par17").innerHTML = "";
-	var frm = document.getElementsByTagName('form')[0];
-	if(!frm.elements[11].value.match("png") && !frm.elements[11].value.match("jpg") && !frm.elements[11].value.match("jpeg")){
+	var frm = document.getElementsByTagName('form')[1];
+	if(!frm.elements[8].value.match("png") && !frm.elements[8].value.match("jpg") && !frm.elements[8].value.match("jpeg")){
 		document.getElementById("par17").innerHTML = " I file accettati sono jpg/png/jpeg";
 	}
+	var fullPath = frm.elements[8].value; 
+	var elem = document.getElementById("pathS");
+	elem.value = fullPath; 
 }
 
 function myFunctionT() {
@@ -276,8 +284,8 @@ function myFunctionT() {
 	var f9 = document.getElementById("par9").innerHTML;
 	var f10 = document.getElementById("par10").innerHTML;
 	document.getElementById("par7").innerHTML = "";
-	if(document.getElementById("passwordT").value == document.getElementById("password2T").value){document.getElementById("par7").innerHTML = "Conferma password diversa da password";}
-	if(f3 == "" || f4=="" || f5 =="" || f6 =="" || f7 =="" || f8=="" || f9=="" || f10==""){
+	if(document.getElementById("passwordT").value != document.getElementById("password2T").value){document.getElementById("par7").innerHTML = "Conferma password diversa da password";}
+	if(f3 == "" && f4=="" && f5 =="" && f6 =="" && f7 =="" && f8=="" && f9=="" && f10==""){
 		document.getElementById("regT").disabled = false;
 	} else {
 		document.getElementById("regT").disabled = true;
@@ -293,11 +301,12 @@ function myFunctionS() {
 	var f7 = document.getElementById("par15").innerHTML;
 	var f8 = document.getElementById("par16").innerHTML;
 	var f9 = document.getElementById("par17").innerHTML;
+	document.getElementById("par15").innerHTML = "";
 	if(document.getElementById("passwordS").value != document.getElementById("password2S").value){document.getElementById("par15").innerHTML = "Conferma password diversa da password";}
-	if(f3 == "" || f4=="" || f5 =="" || f6 =="" || f7 =="" || f8=="" || f9==""){
+	if(f3 == "" && f4=="" && f5 =="" && f6 =="" && f7 =="" && f8=="" && f9==""){
 		document.getElementById("regS").disabled = true;
 	} else {
-		document.getElementById("regS").disabled = false;
+		document.getElementById("regS").disabled = false
 	}
 }
 

@@ -166,7 +166,7 @@ if(img.equals("")){ %>
    <%} %>
   </tbody>
 </table>
-<a  href="ServletFormModifica" title="Modifica Account">
+<a  href="ServletFormModifica.html" title="Modifica Account">
 <button type="button" class="btn btn-light border border-dark">Modifica Account</button>
 </a>
 <span class="position-bottom">
@@ -180,15 +180,15 @@ if(img.equals("")){ %>
 </div>
 </section>
 </div>
+<form action="EliminaAccount" method="get" name="elimina"></form>
 <script type="text/javascript" src="jquery/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $("#delete").click(function(){
 	  var x = confirm("Vuoi davvero eliminare l'account?");  
 		if(x == true){
-			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.open("GET","EliminaAccount" , true);
-			xmlhttp.send();
+			document.elimina.submit();
+			alert("Account eliminato");
 		}
 	});
 });

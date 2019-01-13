@@ -78,8 +78,8 @@ Student's Help Line
 <table class="table">
   <thead>
   <tr>
-      <th style="text-align: center;">Nome Destinatario</th>
-      <th style="width:60%; text-align: center;">Oggetto</th>
+      <th>Nome Studente</th>
+      <th style="width:60%;">Oggetto-Testo Domanda</th>
     </tr>
    </thead>
    <tbody>
@@ -87,27 +87,20 @@ Student's Help Line
   List<String> listaDomande = (List<String>) request.getAttribute("listaDomande");
   int i = 0;
   while(listaDomande.size()> i){
-	  String id=listaDomande.get(i);
-		 i++;
-		 String oggetto = listaDomande.get(i);
-		 i++;
-		 String testo = listaDomande.get(i);
-		 i++;
-		 String email = listaDomande.get(i);
-		 i++;%>
-	     <%if(session.getAttribute("tipo").equals("Studente") && testo.equals("no")){%> 
-	      <tr class="NonView">
-	      <td><%=email%></td>
-	      <td><%=oggetto%></td>
-	      <td><a href="ServletVisualizzaDomanda?id=<%=id%>" title="Viaulizza Domanda"><button type="button" class="btn">></button></a></td>
-	     </tr>
-	      <%}else{%>
-	      <tr>
-	      <td><%=email%></td>
-	      <td><%=oggetto%></td>
-	      <td><a href="ServletVisualizzaDomanda?id=<%=id%>" title="Viaulizza Domanda"><button type="button" class="btn">></button></a></td>
-	     </tr>
-	     <%} %>
+	 String id=listaDomande.get(i);
+	 i++;
+	 String oggetto = listaDomande.get(i);
+	 i++;
+	 String testo = listaDomande.get(i);
+	 i++;
+	 String email = listaDomande.get(i);
+	 i++;%>
+      <tr>
+      <td><%=email%></td>
+      <td><%=oggetto%>
+      <%if(session.getAttribute("tipo").equals("Tutor") && testo.equals("no")){%> - Domanda da visualizzare<%}%></td>
+      <td><a href="ServletVisualizzaDomanda?id=<%=id%>" title="Viaulizza Domanda"><button type="button" class="btn">></button></a></td>
+     </tr>
    <%}%>
     </tbody>
 </table>

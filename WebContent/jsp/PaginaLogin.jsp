@@ -81,8 +81,8 @@ function myFunction3() {
 function myFunction2() {
 	var f1 = document.getElementById("par1").innerHTML;
 	var f2 = document.getElementById("par2").innerHTML;
-	if(f1=="" && f2==""){document.getElementById("login").disabled = false;}
-	else {document.getElementById("login").disabled = true;}
+	if(f1=="" && f2==""){document.getElementById("login").disabled = true;}
+	else {document.getElementById("login").disabled = false;}
 }
 </script>
 </body>

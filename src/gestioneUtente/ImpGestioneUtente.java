@@ -33,7 +33,7 @@ public class ImpGestioneUtente implements GestioneUtente {
 	 */
 	public String recuperaPassword(String tipo,String destinatario) {
 		
-		String password;
+		String password = null;
 		if(tipo.equals("Tutor")) {
 			Tutor t = new Tutor(null, null,destinatario, null, null, null, null, null, null);
 			FactoryDAO fDAO = new FactoryDAO();
@@ -98,7 +98,7 @@ public class ImpGestioneUtente implements GestioneUtente {
 	       System.out.println("Si è verificato un errore");   // se cè un errore esce questa scrita con..
 	       e.printStackTrace();                             //.. il nome dell'errore
 	   }
-	return password;  
+	   return password;  
 	}
 		 
 

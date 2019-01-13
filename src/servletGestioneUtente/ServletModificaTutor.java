@@ -49,7 +49,7 @@ public class ServletModificaTutor extends HttpServlet {
 		String titolo = request.getParameter("titolo");
 		
 		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
-	    String url = i.extractFileName(linkImmagine);
+	    String url = request.getParameter("url");
 	    i.upload(url);
 		
 		GestioneUtente u = new ImpGestioneUtente();

@@ -22,7 +22,8 @@ Student's Help Line
 </div>
 </div>
 <div style="background:#2b78e4">
-<p><font color="white" style="margin-left:45%"><strong>Form domanda</strong><span style="margin-left:480px"><a  href="Logout"><img src="img/logout.png" style="width:50px;height:50px;align:right;"></img></a></span></font></p>
+<p><a href="javascript:history.back()" titlo="Indietro"><img class="log" src="img/back.svg" style="width:3%; margin-left:3%;"></img></a>
+<font color="white" style="margin-left:45%"><strong>FORM DOMANDA</strong><span style="margin-left:38%"><a  href="Logout"><img src="img/logout.png" style="width:50px;height:50px;align:right;"></img></a></span></font></p>
 </div>
 <style>
 span{
@@ -41,7 +42,7 @@ span{
 <p><center><font color="black" ><strong>Oggetto della domanda:</strong></font></p><input type="text" name="oggetto" id="oggetto" onKeyUp="myFunction1()" onKeyDown="myFunction()" style="width:300px;margin-left:2%" required><span id="par1"></span></center>
 <p><center><font color="black" "><strong>Che vuoi chiedere?</strong></font></p><textarea name="testo" id="testo" onKeyUp="myFunction2()" onKeyDown="myFunction()" rows="5" cols="30" style="margin-left:2%" required></textarea><span id="par2"></span></center>
 <p><center><font color="black" ><strong>Allega file: </strong></font>
-<input type="file" name="file" id="file-upload"onchange="myFunction3()"><br><span id="par3"></span></center><br>
+<input type="file" name="file" id="file-upload"onchange="myFunction3()"><br><span id="par3"></span></center><br> <input type="hidden" name ="url" id="path">
 <center><input type="submit" value="INVIA" id="log"name="button"></center>
 </form>
 
@@ -69,13 +70,16 @@ function myFunction3(){
 	if(!frm.elements[3].value.match("pdf") && !frm.elements[3].value.match("docx") && !frm.elements[3].value.match("zip") && !frm.elements[3].value.match("ppt")){
 		document.getElementById("par3").innerHTML = " I file accettati sono pdf/docx/zip/ppt";
 	}
+	var fullPath = frm.elements[3].value; 
+	var elem = document.getElementById("path");
+	elem.value = fullPath;
 }
 
 function myFunction() {
 	var f1 = document.getElementById("par1").innerHTML;
 	var f2 = document.getElementById("par2").innerHTML;
 	var f3 = document.getElementById("par3").innerHTML;
-	if(f1 == "" || f2=="" || f3 =="" ){
+	if(f1 == "" && f2=="" && f3 =="" ){
 		document.getElementById("log").disabled = false;
 	} else {
 		document.getElementById("log").disabled = true;

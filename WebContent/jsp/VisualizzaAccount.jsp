@@ -25,9 +25,8 @@ Student's Help Line
 </div>
 <div style="background:#2b78e4">
 <p><font color="white">
-<a  href="MioAccount" title="Indietro">
-<img class="log" src="img/back.svg" style="width:3%; margin-left:3%;"></img>
-</a><strong style="margin-left:45%;">
+<a href="javascript:history.back()" titlo="Indietro"><img class="log" src="img/back.svg" style="width:3%; margin-left:3%;"></img></a>
+<strong style="margin-left:45%;">
 <%if(session.getAttribute("tipo").equals("Studente")){%>
 Account Studente
 <%}else{%>

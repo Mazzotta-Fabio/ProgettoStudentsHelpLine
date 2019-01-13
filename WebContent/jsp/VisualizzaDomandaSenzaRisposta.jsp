@@ -50,19 +50,25 @@
   <%}else{%>
   
   <%if(session.getAttribute("vis").equals("si")){ %>
- <button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style=" width:75%; background-color:#cccccc;text-align: left;font-size: 80%;">Mio Account</button>
+  
+  
+  <a  href="MioAccount" title="Mio Account">
+ <button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style=" width:195%; text-align: left;font-size: 80%;">Mio Account</button>
+  </a>
   
   <a  href="ServletTabDomandaRisposte" title="Domande Risposte">
   <button type="button" class="btn btn-light border border-dark" style="width:144%;text-align: left;font-size: 80%;">Domande Risposte</button>
   </a>
   
    
-  <a  href="ServletTabDomandaSenzaRisposta" title="Domande Risposte">
-  <button type="button" class="btn btn-light border border-dark" style="width:75%;text-align: left;font-size: 80%;">Domande non Risposte <img src="img/CerchioBlu.png" style="width:8%; margin-left:9%;"></img></button>
+  <a  href="ServletTabDomandaSenzaRisposta" title="Domande non Risposte">
+  <button type="button" class="btn btn-light border border-dark" style="width:101%;text-align: left;font-size: 80%;">Domande non Risposte <img src="img/CerchioBlu.png" style="width:8%; margin-left:9%;"></img></button>
   </a>
   <%} else{ %>
-<button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style="width: 121%; background-color:#cccccc;text-align: left;font-size: 80%;">Mio Account</button>
-  	
+  
+  <a  href="MioAccount" title="Mio Account">
+<button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style="width: 194%; text-align: left;font-size: 80%;">Mio Account</button>
+  	</a>
   	<a  href="ServletTabDomandaRisposte" title="Domande Risposte">
   <button type="button" class="btn btn-light border border-dark" style="width:144%;text-align: left;font-size: 80%;">Domande Risposte</button>
   </a>
@@ -70,6 +76,8 @@
   <a  href="ServletTabDomandaSenzaRisposta" title="Domande non Risposte">
   <button type="button" class="btn btn-light border border-dark"style="text-align: left;font-size: 80%; width:121%;">Domande non Risposte</button>
   </a>
+  
+  
    <%} %>
   
   <a  href="ServletVisualizzaValutazioniTot" title="Visualizza Valutazioni">
@@ -77,6 +85,7 @@
   </a>
   
   <%}%>
+
 </div>
 </div>
 <div class="col" style="margin-right:15%; margin-top:10%;">

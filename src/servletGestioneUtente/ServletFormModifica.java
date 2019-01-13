@@ -20,7 +20,7 @@ import gestioneUtente.ImpGestioneUtente;
 /**
  * Servlet implementation class ServletFormModifica
  */
-@WebServlet("/ServletFormModifica")
+@WebServlet("/ServletFormModifica.html")
 public class ServletFormModifica extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

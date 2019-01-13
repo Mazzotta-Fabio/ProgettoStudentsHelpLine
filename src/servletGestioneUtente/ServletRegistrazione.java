@@ -24,10 +24,7 @@ import gestioneUtente.ImpGestioneUtente;
  * @author Antonio Cimino
  * @version 1.0
  */
-@WebServlet("/Registrazione.html")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
-maxFileSize = 1024 * 1024 * 10,
-maxRequestSize = 1024 * 1024 * 50) 
+@WebServlet("/Registrazione")
 public class ServletRegistrazione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -45,10 +42,9 @@ public class ServletRegistrazione extends HttpServlet {
 		String cognome = request.getParameter("cognome");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		Part linkImmagine = request.getPart("file");
 		
 		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
-	    String url = i.extractFileName(linkImmagine);
+	    String url = request.getParameter("url");
 	    i.upload(url);
 		
 		GestioneUtente u = new ImpGestioneUtente();
@@ -61,6 +57,7 @@ public class ServletRegistrazione extends HttpServlet {
 		} else {
 			String matricola = request.getParameter("matricola");
 			String annoCorso = request.getParameter("annoCorso");
+			System.out.print(annoCorso);
 			u.registraAccount(tipo,nome, cognome, email, password, url, matricola, annoCorso,null,null);
 		}
 		
