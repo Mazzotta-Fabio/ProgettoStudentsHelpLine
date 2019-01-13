@@ -125,7 +125,8 @@ public class DomandaDAOImp implements ObjectDAO {
 		prepared.setInt(3, d.getId());
 		prepared.setString(1, d.getVis());
 		prepared.setInt(2, d.getRisposta().getId());
-		System.out.print("L'id della domanda a cui sto rispondendo è:" + d.getId());
+		System.out.println("L'id della domanda a cui sto rispondendo è:" + d.getId());
+		System.out.println("L'id della risposta è:" + d.getRisposta().getId());
 		prepared.executeUpdate();
 	}
 

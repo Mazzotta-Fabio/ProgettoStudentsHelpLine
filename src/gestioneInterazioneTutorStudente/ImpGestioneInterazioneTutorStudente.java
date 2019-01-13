@@ -196,16 +196,18 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
 			e1.printStackTrace();
 		}
 		
-		int idR = risposte.size();
+		int n = risposte.size();
+		r = (Risposta) risposte.get(n-1);
+		System.out.print("La risposta inviata ha id: " + r.getId());	
 		
 		o = fd.getObject("Domanda");
 		Domanda d = new Domanda(idDomanda, null, null, null, null, null, null, null);
+		
 		try {
 			o.recuperaDati(d);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		r.setId(idR);
 		d.setRisposta(r);
 		try {
 			o.modificaDati(d);
