@@ -13,20 +13,20 @@ public class FactoryDao {
    * Il metodo serve per costruire un oggetto DAO di una particolare tipologia.
    * @return restituisce un oggetto DAO.
    */
-  public ObjectDAO getObject(String tipo){
-    ObjectDAO o = null;
+  public ObjectDao getObject(String tipo){
+    ObjectDao o = null;
     switch (tipo) {
       case "Studente" :
-        o = new StudenteDAOImp();
+        o = new StudenteDaoImp();
         break;
       case "Tutor" : 
-        o = new TutorDAOImp();
+        o = new TutorDaoImp();
         break;
       case "Domanda" : 
-        o =  new DomandaDAOImp();
+        o =  new DomandaDaoImp();
         break;
       case "Risposta" : 
-        o = new RispostaDAOImp();
+        o = new RispostaDaoImp();
         break;
       default:
         break;

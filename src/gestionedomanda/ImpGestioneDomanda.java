@@ -1,6 +1,7 @@
 package gestionedomanda;
 
 import classicomuni.Domanda;
+
 import classicomuni.Risposta;
 import classicomuni.Studente;
 import classicomuni.Tutor;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import storage.FactoryDao;
-import storage.ObjectDAO;
+import storage.ObjectDao;
 
 /**
 * Questa classe implementa l'interfaccia GestioneDomanda.
@@ -53,7 +54,7 @@ public class ImpGestioneDomanda implements GestioneDomanda {
   public void eliminaDomanda(int id) {
     Domanda d = new Domanda(id, null, null, null, null, null, null, null);
     FactoryDao fd = new FactoryDao();
-    ObjectDAO o = fd.getObject("Domanda");
+    ObjectDao o = fd.getObject("Domanda");
     try {
       o.cancellaDati(d);
     } catch (SQLException e) {
@@ -69,7 +70,7 @@ public class ImpGestioneDomanda implements GestioneDomanda {
   
   public List<String> recuperaDomandeSenzaRisposta(String email) {
     FactoryDao fd = new FactoryDao();
-    ObjectDAO o = fd.getObject("Domanda");
+    ObjectDao o = fd.getObject("Domanda");
     ArrayList<Object> listaD = null;
     try {
       listaD = o.recuperaTutto();
@@ -100,7 +101,7 @@ public class ImpGestioneDomanda implements GestioneDomanda {
 
   public List<String> recuperaDomandeConRisposta(String email) {
     FactoryDao fd = new FactoryDao();
-    ObjectDAO o = fd.getObject("Domanda");
+    ObjectDao o = fd.getObject("Domanda");
     ArrayList<Object> listaD = null;
     try {
       listaD = o.recuperaTutto();
@@ -140,7 +141,7 @@ public class ImpGestioneDomanda implements GestioneDomanda {
   public ArrayList<String> visualizzaDomanda(int id,String tipo) {
     FactoryDao fd = new FactoryDao();
     Domanda d = new Domanda(id, null, null, null, null, null, null, null);
-    ObjectDAO o = fd.getObject("Domanda");
+    ObjectDao o = fd.getObject("Domanda");
     try {
       o.recuperaDati(d);
     } catch (SQLException e) {

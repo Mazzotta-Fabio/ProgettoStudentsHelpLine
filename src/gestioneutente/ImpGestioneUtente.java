@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.mail.MessagingException;
 import storage.FactoryDao;
-import storage.ObjectDAO;
+import storage.ObjectDao;
 
 
 /**
@@ -30,7 +30,7 @@ public class ImpGestioneUtente implements GestioneUtente {
     if (tipo.equals("Tutor")) {
       Tutor t = new Tutor(null, null,destinatario, null, null, null, null, null, null);
       FactoryDao fdao = new FactoryDao();
-      ObjectDAO o = fdao.getObject("Tutor");
+      ObjectDao o = fdao.getObject("Tutor");
       try {
         o.recuperaDati(t);
       } catch (SQLException e) {
@@ -40,7 +40,7 @@ public class ImpGestioneUtente implements GestioneUtente {
     } else {
       Studente s = new Studente(null, null,destinatario,null, null, null, null);
       FactoryDao fdao = new FactoryDao();
-      ObjectDAO o = fdao.getObject("Studente");
+      ObjectDao o = fdao.getObject("Studente");
       try {
         o.recuperaDati(s);
       } catch (SQLException e) {
@@ -88,7 +88,7 @@ public class ImpGestioneUtente implements GestioneUtente {
     if (tipo.equals("Tutor")) {
       Tutor t = new Tutor(nome, cognome,email,password,path,numero, materia, voto, titolo);
       FactoryDao fdao = new FactoryDao();
-      ObjectDAO o = fdao.getObject("Tutor");
+      ObjectDao o = fdao.getObject("Tutor");
       try {
         o.inserisciDati(t);
       } catch (SQLException e) {
@@ -97,7 +97,7 @@ public class ImpGestioneUtente implements GestioneUtente {
     } else {
       Studente s = new Studente(nome, cognome,email,password,path,voto,titolo);
       FactoryDao fdao = new FactoryDao();
-      ObjectDAO o = fdao.getObject("Studente");
+      ObjectDao o = fdao.getObject("Studente");
       try {
         o.inserisciDati(s);
       } catch (SQLException e) {
@@ -116,7 +116,7 @@ public class ImpGestioneUtente implements GestioneUtente {
     if (tipo.equals("Tutor")) {
       Tutor t = new Tutor(null, null,email, null, null, null, null, null, null);
       FactoryDao fdao = new FactoryDao();
-      ObjectDAO o = fdao.getObject("Domanda");
+      ObjectDao o = fdao.getObject("Domanda");
       List<Object> listaD = null;
       try {
         listaD = o.recuperaTutto();
@@ -144,7 +144,7 @@ public class ImpGestioneUtente implements GestioneUtente {
     } else {
       Studente s = new Studente(null, null,email,null, null, null, null);
       FactoryDao fdao = new FactoryDao();
-      ObjectDAO o = fdao.getObject("Domanda");
+      ObjectDao o = fdao.getObject("Domanda");
       List<Object> listaD = null;
       try {
         listaD = o.recuperaTutto();
@@ -191,7 +191,7 @@ public class ImpGestioneUtente implements GestioneUtente {
     if (tipo.equals("Tutor")) {
       Tutor t = new Tutor(nome, cognome,email,password,path,numero, materia, voto, titolo);
       FactoryDao fdao = new FactoryDao();
-      ObjectDAO o = fdao.getObject("Tutor");
+      ObjectDao o = fdao.getObject("Tutor");
       try {
         o.modificaDati(t);
       } catch (SQLException e) {
@@ -200,7 +200,7 @@ public class ImpGestioneUtente implements GestioneUtente {
     } else {
       Studente s = new Studente(nome, cognome,email,password,path,voto,titolo);
       FactoryDao fdao = new FactoryDao();
-      ObjectDAO o = fdao.getObject("Studente");
+      ObjectDao o = fdao.getObject("Studente");
       try {
         o.modificaDati(s);
       } catch (SQLException e) {
@@ -215,12 +215,12 @@ public class ImpGestioneUtente implements GestioneUtente {
    * @param: tipo dell'utente
    */
   
-  public Object loginAccount(String email, String password, String tipo){
+  public Object loginAccount(String email, String password, String tipo) {
     boolean accesso = false;
     if (tipo.equals("Tutor")) {
       Tutor t = new Tutor(null, null,email, password, null, null, null, null, null);
       FactoryDao fdao = new FactoryDao();
-      ObjectDAO o = fdao.getObject("Tutor");
+      ObjectDao o = fdao.getObject("Tutor");
       try {
         accesso = o.recuperaDati(t);
       } catch (SQLException e) {
@@ -235,7 +235,7 @@ public class ImpGestioneUtente implements GestioneUtente {
     } else {
       Studente s = new Studente(null, null,email,password, null, null, null);
       FactoryDao fdao = new FactoryDao();
-      ObjectDAO o = fdao.getObject("Studente");
+      ObjectDao o = fdao.getObject("Studente");
       try {
         accesso = o.recuperaDati(s);
       } catch (SQLException e) {
@@ -259,7 +259,7 @@ public class ImpGestioneUtente implements GestioneUtente {
     if (tipo.equals("Tutor")) {
       Tutor t = new Tutor(null, null,email, null, null, null, null, null, null);
       FactoryDao fdao = new FactoryDao();
-      ObjectDAO o = fdao.getObject("Tutor");
+      ObjectDao o = fdao.getObject("Tutor");
       try { 
         o.recuperaDati(t);
       } catch (SQLException e) {
@@ -269,7 +269,7 @@ public class ImpGestioneUtente implements GestioneUtente {
     } else {
       Studente s = new Studente(null, null,email,null, null, null, null);
       FactoryDao fdao = new FactoryDao();
-      ObjectDAO o = fdao.getObject("Studente");
+      ObjectDao o = fdao.getObject("Studente");
       try {
         o.recuperaDati(s);
       } catch (SQLException e) {

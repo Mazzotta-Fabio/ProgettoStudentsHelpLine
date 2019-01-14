@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import storage.FactoryDao;
-import storage.ObjectDAO;
+import storage.ObjectDao;
 
 public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneTutorStudente {
   private String destLocation;
@@ -57,7 +57,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
   
   public List<String> listaTutor(String materia) {
     FactoryDao fd = new FactoryDao();
-    ObjectDAO o = fd.getObject("Tutor");
+    ObjectDao o = fd.getObject("Tutor");
     List<Object> listaT = null;
     try {
       listaT = o.recuperaTutto();
@@ -97,7 +97,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
     Risposta r = new Risposta(1, null, null,null, null);
     Domanda d = new Domanda(0, test, oggetto, url, s, t, r, "no");
     FactoryDao fd = new FactoryDao();
-    ObjectDAO o = fd.getObject("Domanda");
+    ObjectDao o = fd.getObject("Domanda");
     try {
       o.inserisciDati(d);
     } catch (SQLException e) {
@@ -114,7 +114,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
   public void valutaRisposta(int id, String valutazione) {
     Risposta r = new Risposta(id,null,null, null, null);
     FactoryDao fd = new FactoryDao();
-    ObjectDAO o = fd.getObject("Risposta");
+    ObjectDao o = fd.getObject("Risposta");
     try {
       o.recuperaDati(r);
     } catch (SQLException e1) {
@@ -136,7 +136,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
   public Object visualizzaAccount(String email) {
     Studente s = new Studente(null, null, email, null, null, null, null);
     FactoryDao fd = new FactoryDao();
-    ObjectDAO o = fd.getObject("Studente");
+    ObjectDao o = fd.getObject("Studente");
     try {
       o.recuperaDati(s);
     } catch (SQLException e) {
@@ -170,7 +170,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
     voti[0] = 0;
     voti[1] = 0;
     FactoryDao fd = new FactoryDao();
-    ObjectDAO o = fd.getObject("Domanda");
+    ObjectDao o = fd.getObject("Domanda");
     List<Object> listD = null;
     try {
       listD = o.recuperaTutto();
@@ -207,7 +207,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
   
   public void inserisciRisposta(String testo, int idDomanda, String url) {
     FactoryDao fd = new FactoryDao();
-    ObjectDAO o = fd.getObject("Risposta");
+    ObjectDao o = fd.getObject("Risposta");
     Risposta r = new Risposta(0, testo, url,null, "no");
     try {
       o.inserisciDati(r);
@@ -249,7 +249,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
   public boolean domandeDaVisualizzare(String email,String tipo) {
     FactoryDao fd = new FactoryDao();
     if (tipo.equals("Tutor")) {
-      ObjectDAO o = fd.getObject("Domanda");
+      ObjectDao o = fd.getObject("Domanda");
       ArrayList<Object> listaD = null;
       try {
         listaD = o.recuperaTutto();
@@ -269,7 +269,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
         }
       }
     } else {
-      ObjectDAO o = fd.getObject("Domanda");
+      ObjectDao o = fd.getObject("Domanda");
       ArrayList<Object> listaD = null;
       try {
         listaD = o.recuperaTutto();
