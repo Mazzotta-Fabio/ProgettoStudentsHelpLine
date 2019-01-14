@@ -27,12 +27,18 @@ public class ServletVisualizzaValutazioniTot extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		String email = (String) session.getAttribute("email");
+		String tipo = (String) session.getAttribute("tipo");
+		
 		
 		GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
 		int [] voti = i.valutazioniTot(email);
 		
 		request.setAttribute("like", voti[0]);
 		request.setAttribute("dislike", voti[1]);
+		GestioneInterazioneTutorStudente d = new ImpGestioneInterazioneTutorStudente();
+		boolean vis = d.domandeDaVisualizzare(email,tipo);
+		if (vis == true) {session.setAttribute("vis", "si");}
+		else {session.setAttribute("vis", "no");}
 		RequestDispatcher view = request.getRequestDispatcher("jsp/ValutazioniTot.jsp");
 		view.forward(request, response);
 	}

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import gestioneDomanda.GestioneDomanda;
 import gestioneDomanda.ImpGestioneDomanda;
+import gestioneInterazioneTutorStudente.GestioneInterazioneTutorStudente;
+import gestioneInterazioneTutorStudente.ImpGestioneInterazioneTutorStudente;
 
 /**
  * La classe ServletTabDomandaRisposta è una Servlet.
@@ -34,9 +36,14 @@ public class ServletTabDomandaRisposte extends HttpServlet {
 			
 		HttpSession session = request.getSession();
 		String email = (String) session.getAttribute("email");
+		String tipo = (String) session.getAttribute("tipo");
 		GestioneDomanda d = new ImpGestioneDomanda();
 		List<String> listaDomande = d.recuperaDomandeConRisposta(email);
 
+		GestioneInterazioneTutorStudente d1 = new ImpGestioneInterazioneTutorStudente();
+		boolean vis = d1.domandeDaVisualizzare(email,tipo);
+		if (vis == true) {session.setAttribute("vis", "si");}
+		else {session.setAttribute("vis", "no");}
 		request.setAttribute("listaDomande", listaDomande);
 		RequestDispatcher view = request.getRequestDispatcher("jsp/DomandaRisposte.jsp");
 		view.forward(request, response);

@@ -47,6 +47,7 @@ span{
 <p align="center" id="text">
 <font face="sans-serif">
 <form enctype="multipart/form-data" action="ModificaTutor.html" method="post">
+<center>
 <font color="black"><strong>Nome:</strong></font><br><br>
 <input type="text" name="nome" value="<%=request.getAttribute("Nome") %>" id="nomeT" onKeyUp="myFunction3()" onKeyDown="myFunctionT()" required><br><br><span id="par3"></span><br><br>
 <font color="black"><strong>Cognome:</strong></font><br><br>
@@ -54,7 +55,7 @@ span{
 <font color="black"><strong>Password:</strong></font><br><br>
 <input type="text" name="password" value="<%=request.getAttribute("Password") %>" id="passwordT"  onKeyUp="myFunction6()" onKeyDown="myFunctionT()" required><br><br><span id="par6"></span><br><br>
 <font color="black"><strong>Conferma Password:</strong></font><br><br>
-<input type="text" name="pass2" id="password2T"  onKeyUp="myFunction7()" onKeyDown="myFunctionT()" required><br><br><span id="par7"></span><br><br>
+<input type="text" name="pass2" id="password2T"  value="<%=request.getAttribute("Password") %>" onKeyUp="myFunction7()" onKeyDown="myFunctionT()" required><br><br><span id="par7"></span><br><br>
 <font color="black"><strong>Numero di cellulare:</strong></font><br><br>
 <input type="text" name="numero" value="<%=request.getAttribute("Cellulare") %>" id="numeroT"  onKeyUp="myFunction8()" onKeyDown="myFunctionT()" required><br><br><span id="par8"></span><br><br>
 <font color="black"><strong>Voto laurea:</strong></font><br><br>
@@ -89,6 +90,7 @@ span{
 <input type="file" name="immagine" value="<%=request.getAttribute("Immagine") %>" id="immagineT" onchange="myFunction10()"><br><br><span id="par10"></span> <input type="hidden" name ="url" id="path"><br><br>
 <input type="submit" value="MODIFICA" id="regT"name="button"><br><br>
 </font>
+</center>
 </p>
 </form>
 <%}else{%>

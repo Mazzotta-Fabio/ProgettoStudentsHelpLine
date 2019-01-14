@@ -9,7 +9,19 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<title>Student's Help Line</title>
 </head>
+<header id=header">
+<div class="header-content">
+<p>
+<img class="position" src="img/logo.png" alt="StudentHelpline" style="whidth:100px;height:100px;">
+<font size="10px" style="margin-left:32%"> Student's Help Line</font>
+</p>
+</div>
+<div style="background:#2b78e4">
+<p><a href="javascript:history.back()" titlo="Indietro"><img class="log" src="img/back.svg" style="width:3%; margin-left:3%;"></img></a>
+<font color="white" style="margin-left:32%"><strong>VISUALIZZA DOMANDA SENZA RISPOSTA</strong><span style="margin-left:34%"><a  href="Logout"><img src="img/logout.png" style="width:50px;height:50px;align:right;"></img></a></span></font></p>
+</header>
 <body>
 <section id="main">
 <div class="container">
@@ -104,7 +116,9 @@
     	else{
     		out.print("<form enctype='multipart/form-data' action='ScaricaAllegato' method='post'><input  type = 'hidden' name = 'url' value='"+ris.get(3)+"'><input  type = 'hidden' name = 'idD' value='"+ris.get(4)+"'><img src='img/download.png' style='width:30px;height:30px;'/><input type='submit' value='Scarica Allegato'></form>");
 		}
-    	out.print("<a href='ServletFormRisposta?IdDomanda="+ris.get(4)+"'>Invia Risposta ></a>");
+    	if(session.getAttribute("tipo").equals("Tutor")){
+    		out.print("<a href='ServletFormRisposta?IdDomanda="+ris.get(4)+"'>Invia Risposta ></a>");
+    	}
     	out.print("<a href='ServletEliminaDomanda?id="+ris.get(4)+"'><img src='img/elimina.png' style='width:50px;height:50px;margin-left:400px;'/></a>");
     	
 	%>

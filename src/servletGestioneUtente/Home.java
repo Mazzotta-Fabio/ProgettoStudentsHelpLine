@@ -1,4 +1,4 @@
-
+package servletGestioneUtente;
 
 import java.io.IOException;
 
@@ -28,8 +28,7 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("html/HomePage.html");
-		view.forward(request, response);
+	    response.sendRedirect("html/HomePage.html");
 	}
 
 	/**

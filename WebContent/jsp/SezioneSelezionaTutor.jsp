@@ -23,7 +23,7 @@ Student's Help Line
 </div>
 <div style="background:#2b78e4">
 <p><a href="javascript:history.back()" titlo="Indietro"><img class="log" src="img/back.svg" style="width:3%; margin-left:3%;"></img></a>
-<font color="white" style="margin-left:45%"><strong>SELEZIONA TUTOR</strong><span style="margin-left:38%"><a  href="Logout"><img src="img/logout.png" style="width:50px;height:50px;align:right;"></img></a></span></font></p>
+<font color="white" style="margin-left:42%"><strong>SELEZIONA TUTOR</strong><span style="margin-left:36%"><a  href="Logout"><img src="img/logout.png" style="width:50px;height:50px;align:right;"></img></a></span></font></p>
 </div>
 <style>
 span{
