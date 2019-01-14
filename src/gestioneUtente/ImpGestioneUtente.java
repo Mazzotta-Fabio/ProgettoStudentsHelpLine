@@ -1,14 +1,13 @@
 package gestioneUtente;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Properties;
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+
+import javax.mail.MessagingException;
+
+import com.email.durgesh.Email;
 import classiComuni.Domanda;
 import classiComuni.Studente;
 import classiComuni.Tutor;
@@ -32,6 +31,7 @@ public class ImpGestioneUtente implements GestioneUtente {
 	 * @return 
 	 */
 	public String recuperaPassword(String tipo,String destinatario) {
+		
 		
 		String password = null;
 		if(tipo.equals("Tutor")) {
@@ -58,46 +58,26 @@ public class ImpGestioneUtente implements GestioneUtente {
 			password = s.getPassword();
 		}
 		
-		String mittente = "StudentsHelpLine@gmail.com";   // questa variabile contiene l'indirizzo del mittente
-	    String host="mail.tin.it";                  // questa variabile contiene l'indirizzo dell'host per l'invio email del nostro.. 
-	                                                       //..gestore dell'alds , è da cambiare a seconda del gestore che si ha
-	        
-	    String oggetto = "RECUPERO PASSWORD";          // questa variabile contiene l'oggetto dell'email 
-	    String testo = null;
-	    if(password!=null) {
-		 	testo = "La password del tuo account di student's help line è: " + password;
-		} else {
-		   	testo = "Account non presente sul sito";
-		}     // questa variabile contiene il testo dell'email
-	        
-	        Properties p = new Properties();                   // creiamo l'oggetto proprietà
-	        
-	        p.put("mail.smtp.host",host);                  // definiamo i suoi parametri, host e porta 
-	        p.put("port",25);
-	        
-	        Session sessione = Session.getDefaultInstance(p);   // creiamo oggetto sessione con i parametri delle proprietà
-	         
-	        MimeMessage mail= new MimeMessage(sessione);     // creiamo oggetto messaggio e diamogli come parametri quelli della sessione e a sua volta..
-	                                                            // ..quelli delle proprietà
-	        
-	        
-	   try{
-	       mail.setFrom(new InternetAddress(mittente));    // settiamo il mittente
-	       mail.addRecipients(Message.RecipientType.TO, destinatario); // settiamo il destinatario
-	       
-	       mail.setSubject(oggetto);    // settiamo l'oggetto dell'email    
-	       mail.setText(testo);             // settiamo il testo dell'email
-	       
-	       Transport.send(mail);         // inviamo!
-	       
-	       System.out.println("Il messaggio si è inviato correttamente");   // se è tutto corretto esce questa scritta
-	       
-	       
-	   }   catch (Exception e){
-	       
-	       System.out.println("Si è verificato un errore");   // se cè un errore esce questa scrita con..
-	       e.printStackTrace();                             //.. il nome dell'errore
-	   }
+		try {
+			Email email = new Email("helplinestudent53@gmail.com","st5d3nth3lpl1n3");
+			email.setFrom("helplinestudent53@gmail.com", "Student's Help Line");
+			email.setSubject("RECUPERO PASSWORD");
+			String testo = null;
+			if(password!=null) {
+				testo = "La password del tuo account di student's help line è: " + password;
+			} else {
+			   	testo = "Account non presente sul sito";
+			}            
+			email.setContent("<h1>La tua password è " + testo + "</h1>","text/html");
+			email.addRecipient(destinatario);
+			email.send();
+			System.out.print("INVIATOOOOO!!!!!!");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+	
 	   return password;  
 	}
 		 
