@@ -4,22 +4,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
-import classiComuni.Tutor;
+import classicomuni.Tutor;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import storage.TutorDAOImp;
+import storage.TutorDaoImp;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TutorDAOImpTest extends TestCase {
 	private Tutor tutor;
 	private Tutor tutor2;
-	private TutorDAOImp tutorDAO;
+	private TutorDaoImp tutorDAO;
 	
 	public void setUp() {
 		tutor=new Tutor("Mario","Rossi","mario@gmail.com","12345678","/home/xyz","1234567891","matematica","86","Laurea Triennale");
 		tutor2=new Tutor("Ezechiele","Nuvola","nuvolina@gmail.com","1234567845","/home/xyz/o","1234567891","progrmmazione 2","108","Dottorato di ricerca");
-		tutorDAO=new TutorDAOImp();
+		tutorDAO=new TutorDaoImp();
 	}
 	public void tearDown() {	
 		tutor=null;

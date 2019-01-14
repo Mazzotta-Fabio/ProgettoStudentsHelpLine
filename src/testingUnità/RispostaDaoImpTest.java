@@ -4,21 +4,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
-import classiComuni.Risposta;
+import classicomuni.Risposta;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import storage.RispostaDAOImp;
+import storage.RispostaDaoImp;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RispostaDaoImpTest extends TestCase{
 	private Risposta risposta;
 	private Risposta risposta1;
-	private RispostaDAOImp rispostaDao;
+	private RispostaDaoImp rispostaDao;
 	public void setUp() throws Exception {
 		risposta=new Risposta(0,"RISPOSTA","allegato","ON","SI");
 		risposta1=new Risposta(0,"RISPOSTA1","allegato","ON","SI");
-		rispostaDao=new RispostaDAOImp();
+		rispostaDao=new RispostaDaoImp();
 	}
 
 	public void tearDown() throws Exception {

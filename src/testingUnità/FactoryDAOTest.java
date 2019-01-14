@@ -6,9 +6,9 @@ import junit.framework.TestSuite;
 import storage.*;
 
 public class FactoryDAOTest extends TestCase {
-	private FactoryDAO factory;
+	private FactoryDao factory;
 	protected void setUp() throws Exception {
-		factory=new FactoryDAO();
+		factory = new FactoryDao();
 	}
 
 	protected void tearDown() throws Exception {
@@ -16,10 +16,10 @@ public class FactoryDAOTest extends TestCase {
 	}
 	
 	public void testGetObject() {
-		ObjectDAO rispostaDAO=new RispostaDAOImp();
-		ObjectDAO domandaDAO=new DomandaDAOImp();
-		ObjectDAO tutorDAO=new TutorDAOImp();
-		ObjectDAO studenteDAO=new StudenteDAOImp();
+		ObjectDao rispostaDAO=new RispostaDaoImp();
+		ObjectDao domandaDAO=new DomandaDaoImp();
+		ObjectDao tutorDAO=new TutorDaoImp();
+		ObjectDao studenteDAO=new StudenteDaoImp();
 		assertEquals(tutorDAO.getClass(),factory.getObject("Tutor").getClass());
 		assertEquals(studenteDAO.getClass(),factory.getObject("Studente").getClass());
 		assertEquals(domandaDAO.getClass(),factory.getObject("Domanda").getClass());

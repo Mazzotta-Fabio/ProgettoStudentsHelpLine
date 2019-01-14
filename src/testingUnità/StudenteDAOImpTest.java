@@ -6,22 +6,22 @@ import java.util.ArrayList;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 
-import classiComuni.Studente;
+import classicomuni.Studente;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import storage.StudenteDAOImp;
+import storage.StudenteDaoImp;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StudenteDAOImpTest extends TestCase {
 	private Studente studente;
 	private Studente studente2;
-	private StudenteDAOImp studenteDAO;
+	private StudenteDaoImp studenteDAO;
 	
 	public void setUp() {
 		studente=new Studente("Rosa","Marini","rm@gmail.com","12345678","/home/xyz","0522500518","2");
 		studente2=new Studente("Chiara","Giani","giani@gmail.com","123456err","/home/xyz/o","0512102515","1");
-		studenteDAO=new StudenteDAOImp();
+		studenteDAO=new StudenteDaoImp();
 	}
 	public void tearDown() {
 		studente=null;

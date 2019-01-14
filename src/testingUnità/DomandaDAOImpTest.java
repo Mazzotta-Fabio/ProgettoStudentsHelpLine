@@ -2,24 +2,22 @@ package testingUnità;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
-
-import classiComuni.Domanda;
-import classiComuni.Risposta;
-import classiComuni.Studente;
-import classiComuni.Tutor;
+import classicomuni.Domanda;
+import classicomuni.Risposta;
+import classicomuni.Studente;
+import classicomuni.Tutor;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import storage.DomandaDAOImp;
+import storage.DomandaDaoImp;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DomandaDAOImpTest extends TestCase {
 	private Domanda domanda;
 	private Domanda domanda2;
-	private DomandaDAOImp domandaDao;
+	private DomandaDaoImp domandaDao;
 	protected void setUp() throws Exception {
 		Risposta risposta=new Risposta(1,"CIAOIOIO","allegato","ON","SI");
 		Risposta risposta1=new Risposta(2,"CIAOIOIO","allegato","ON","SI");
@@ -29,7 +27,7 @@ public class DomandaDAOImpTest extends TestCase {
 		Studente studente2=new Studente("Chiara","Giani","ines.votta@studenti.unisa.it","123456err","/home/xyz/o","0512102515","1");
 		domanda=new Domanda(0,"CIAO","OGGETTO","ALLEGATO",studente,tutor,risposta,"NO");
 		domanda2=new Domanda(0,"Giani","giani@gmail.com","ALLEGATO",studente2,tutor2,risposta1,"NO");
-		domandaDao=new DomandaDAOImp();
+		domandaDao=new DomandaDaoImp();
 	}
 
 	protected void tearDown() throws Exception {

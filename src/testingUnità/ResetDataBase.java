@@ -63,7 +63,6 @@ public class ResetDataBase  {
                 if(!inst[i].trim().equals(""))
                 {
                     st.executeUpdate(inst[i]);
-                    System.out.println(">>"+inst[i]);
                 }
             }
    
@@ -100,7 +99,6 @@ public class ResetDataBase  {
                 if(!inst[i].trim().equals(""))
                 {
                     st.executeUpdate(inst[i]);
-                    System.out.println(">>"+inst[i]);
                 }
             }
    
