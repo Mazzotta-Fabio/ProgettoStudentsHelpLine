@@ -1,20 +1,21 @@
-package testingUnità;
+package testingunità;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-import testingIntegrazione.ImpGestioneInterazioneTutorStudenteTest;
+import testingIntegrazione.ImpGestioneDomandaTest;
 
-public class TestGIGP {
+
+public class TestGDGP {
 	
 	public static void main(String[] args) {
-		TestRunner.run(TestGIGP.suite());
+		TestRunner.run(TestGDGP.suite());
 	}
 	
 	public static Test suite() {
 		TestSuite test=new TestSuite();
-		test.addTest(ImpGestioneInterazioneTutorStudenteTest.suite());
 		test.addTest(TestGP.suite());
+		test.addTest(ImpGestioneDomandaTest.suite());
 		return test;
 	}
 }
