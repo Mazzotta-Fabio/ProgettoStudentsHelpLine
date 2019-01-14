@@ -23,7 +23,7 @@ public class Studente extends Utente {
     this.annoCorso = annoCorso;
   }
   /**
-   * Il metodo restituisce la matricola dello studente
+   * Il metodo restituisce la matricola dello studente.
    * @return matricola dello studente
    */
   
@@ -32,27 +32,26 @@ public class Studente extends Utente {
   }
   /**
    * Il metodo serve per modificare la matricola dello studente.
-   * @param matricola: nuova matricola da inserire
+   * @param matricola nuova matricola da inserire
    */
   
   public void setMatricola(String matricola) {
     this.matricola = matricola;
   }
   /**
-   * Il metodo restituisce l'anno di corso dello studente
+   * Il metodo restituisce l'anno di corso dello studente.
    * @return anno di corso
    */
   
   public String getAnnoCorso() {
     return annoCorso;
   }
-	
   /**
-   * Il metodo serve modificare l'anno di corso dello studente
-   * @param annoCorso: nuovo anno di corso da inserire
+   * Il metodo serve modificare l'anno di corso dello studente.
+   * @param annoCorso nuovo anno di corso da inserire
    */
   
   public void setAnnoCorso(String annoCorso) {
-	  this.annoCorso = annoCorso;
-	}
+    this.annoCorso = annoCorso;
+  }
 }
