@@ -37,7 +37,7 @@ span{
 </style>
 </header>
 <body>
-<form enctype="multipart/form-data" action="ServletInserisciDomanda.html" method="post">
+<form action="ServletInserisciDomanda.html" method="post">
 <input type="hidden" name="tutor" value="<%=request.getAttribute("Tutor")%>" >
 <p><center><font color="black" ><strong>Oggetto della domanda:</strong></font></p><input type="text" name="oggetto" id="oggetto" onKeyUp="myFunction1()" onKeyDown="myFunction()" style="width:300px;margin-left:2%" required><span id="par1"></span></center>
 <p><center><font color="black" "><strong>Che vuoi chiedere?</strong></font></p><textarea name="testo" id="testo" onKeyUp="myFunction2()" onKeyDown="myFunction()" rows="5" cols="30" style="margin-left:2%" required></textarea><span id="par2"></span></center>

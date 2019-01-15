@@ -46,7 +46,7 @@ span{
 <%if(session.getAttribute("tipo").equals("Tutor")){%>
 <p align="center" id="text">
 <font face="sans-serif">
-<form enctype="multipart/form-data" action="ModificaTutor.html" method="post">
+<form action="ModificaTutor.html" method="post">
 <center>
 <font color="black"><strong>Nome:</strong></font><br><br>
 <input type="text" name="nome" value="<%=request.getAttribute("Nome") %>" id="nomeT" onKeyUp="myFunction3()" onKeyDown="myFunctionT()" required><br><br><span id="par3"></span><br><br>
@@ -94,7 +94,7 @@ span{
 </p>
 </form>
 <%}else{%>
-<form enctype="multipart/form-data" action="ModificaStudente.html" method="post">
+<form action="ModificaStudente.html" method="post">
 <p align="center" id="text2" >
 <font face="sans-serif">
 <font color="black"><strong>Nome:</strong></font><br><br>
