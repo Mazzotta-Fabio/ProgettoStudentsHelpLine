@@ -112,9 +112,6 @@ if(img.equals("")){ %>
 <div class="col-5" style="margin-top:6%;">
 <table class="table table-bordered">
   <thead>
-  <tr>
-      <th scope="col">info</th>
-    </tr>
    </thead>
    <tbody>
    <tr>

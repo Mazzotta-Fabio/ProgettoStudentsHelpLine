@@ -28,6 +28,6 @@ public class FactoryDaoTest extends TestCase {
   }
 
   public static Test suite() {
-    return new TestSuite(FactoryDAOTest.class);
+    return new TestSuite(FactoryDaoTest.class);
   }
 }

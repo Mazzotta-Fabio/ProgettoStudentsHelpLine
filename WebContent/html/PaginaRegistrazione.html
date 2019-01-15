@@ -24,7 +24,9 @@ span{
  color:white;
 }
 </style>
-<title>StudentsHelpLine</title>
+<title>Student's Help Line</title>
+<link rel="icon" type="image" href="../img/ICONA.ico">
+
 </head>
 <div id="header"><h4><font color="white">REGISTRAZIONE</font></h4></div>
 <div style="margin-top:70px;"><a href = "HomePage.html"><img src="../img/logo.png" style="widht:300px;height:280px;"></a></div><br><br>
@@ -50,7 +52,7 @@ span{
 <font color="black"><strong>Titolo di studio:   </strong></font><select name="titolo" id="titolo">
   <option value="Triennale">Triennale</option>
   <option value="Magistrale">Magistrale</option>
-  <option value="Specialistica">Specialistica</option>
+  <option value="Specialistica">Dottorato di ricerca</option>
 </select><br><br>
 <font color="black"><strong>Materia di competenza:   </strong></font><select name="materia" id="materia">
   <option value="Programmazione1">Programmazione 1</option>
@@ -84,8 +86,8 @@ span{
 <font color="black"><strong>Nome:   </strong></font><input type="text" name="nome"id="nomeS"  onKeyUp="myFunction11()" onKeyDown="myFunctionS()" required><span id="par11"></span><br><br>
  <font color="black"><strong>Cognome:   </strong></font><input type="text" name="cognome"id="cognomeS"  onKeyUp="myFunction12()" onKeyDown="myFunctionS()" required><span id="par12"></span><br><br>
 <font color="black"><strong>Email:   </strong></font><input type="text" name="email"id="emailS"  onKeyUp="myFunction13()" onKeyDown="myFunctionS()" required><span id="par13"></span><br><br>
-<font color="black"><strong>Password:   </strong></font><input type="text" name="password"id="passwordS"  onKeyUp="myFunction14()" onKeyDown="myFunctionS()" required><span id="par14"></span><br><br>
-<font color="black"><strong>Conferma Password:   </strong></font><input type="text" name="password2"id="password2S"  onKeyUp="myFunction15()" onKeyDown="myFunctionS()" required><span id="par15"></span><br><br>
+<font color="black"><strong>Password:   </strong></font><input type="password" name="password"id="passwordS"  onKeyUp="myFunction14()" onKeyDown="myFunctionS()" required><span id="par14"></span><br><br>
+<font color="black"><strong>Conferma Password:   </strong></font><input type="password" name="password2"id="password2S"  onKeyUp="myFunction15()" onKeyDown="myFunctionS()" required><span id="par15"></span><br><br>
 <font color="black"><strong>Matricola:   </strong></font><input type="text" name="matricola"id="matricolaS"  onKeyUp="myFunction16()" onKeyDown="myFunctionS()" required><span id="par16"></span><br><br>
 <font color="black"><strong>Anno di corso:   </strong></font><select name="annoCorso"><br><br>
   <option value="1°">Primo</option>
@@ -286,9 +288,9 @@ function myFunctionT() {
 	document.getElementById("par7").innerHTML = "";
 	if(document.getElementById("passwordT").value != document.getElementById("password2T").value){document.getElementById("par7").innerHTML = "Conferma password diversa da password";}
 	if(f3 == "" && f4=="" && f5 =="" && f6 =="" && f7 =="" && f8=="" && f9=="" && f10==""){
-		document.getElementById("regT").disabled = false;
-	} else {
 		document.getElementById("regT").disabled = true;
+	} else {
+		document.getElementById("regT").disabled =false;
 	}
 }
 

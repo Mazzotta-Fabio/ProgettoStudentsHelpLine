@@ -4,16 +4,12 @@ import gestioneinterazionetutorstudente.GestioneInterazioneTutorStudente;
 import gestioneinterazionetutorstudente.ImpGestioneInterazioneTutorStudente;
 import gestioneutente.GestioneUtente;
 import gestioneutente.ImpGestioneUtente;
-
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 /**
  * La classe RegistrazioneTutor è una Servlet.
@@ -57,8 +53,7 @@ public class ServletRegistrazione extends HttpServlet {
       String annoCorso = request.getParameter("annoCorso");
       u.registraAccount(tipo,nome, cognome, email, password, url, matricola, annoCorso,null,null);
     }
-    RequestDispatcher view = request.getRequestDispatcher("html/HomePage.html");
-    view.forward(request, response);
+    response.sendRedirect("html/HomePage.html");
   }
   
   /**

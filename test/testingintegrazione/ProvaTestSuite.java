@@ -1,8 +1,9 @@
-package testingunita;
+package testingintegrazione;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+import testingunita.ResetDataBase;
 
 public class ProvaTestSuite {
   
@@ -14,9 +15,9 @@ public class ProvaTestSuite {
 
   public static Test suite() {
     TestSuite test = new TestSuite();
-    test.addTest(TestGIGP.suite());
-    test.addTest(TestGUGp.suite());
-    test.addTest(TestGDGP.suite());
+    test.addTest(TestGigp.suite());
+    test.addTest(TestGugp.suite());
+    test.addTest(TestGdgp.suite());
     return test;
   }
 }

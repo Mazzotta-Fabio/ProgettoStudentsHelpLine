@@ -1,9 +1,9 @@
-package testingunita;
+package testingintegrazione;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-import testingintegrazione.ImpGestioneUtenteTest;
+import testingunita.ImpGestioneUtenteTest;
 
 public class TestGugp {
 

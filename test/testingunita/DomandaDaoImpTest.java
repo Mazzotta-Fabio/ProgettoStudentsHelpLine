@@ -117,6 +117,6 @@ public class DomandaDaoImpTest extends TestCase {
   }
 
   public static Test suite() {
-    return new TestSuite(DomandaDAOImpTest.class);
+    return new TestSuite(DomandaDaoImpTest.class);
   }
 }

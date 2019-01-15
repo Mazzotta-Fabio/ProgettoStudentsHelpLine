@@ -1,4 +1,4 @@
-package testingintegrazione;
+package testingunita;
 
 import gestionedomanda.GestioneDomanda;
 import gestionedomanda.ImpGestioneDomanda;

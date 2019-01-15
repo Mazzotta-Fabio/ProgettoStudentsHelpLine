@@ -2,7 +2,6 @@ package gestioneinterazionetutorstudente;
 
 import java.io.IOException;
 import java.util.List;
-import javax.servlet.http.Part;
 
 public interface GestioneInterazioneTutorStudente {
   public String upload(String fileName)throws IOException;
