@@ -104,7 +104,7 @@ Student's Help Line
 	 i++;
 	 String email = listaDomande.get(i);
 	 i++;%>
-	 <%if(session.getAttribute("tipo").equals("Studente") && testo.equals("no")){%>
+	 <%if(session.getAttribute("tipo").equals("Studente") && session.getAttribute("vis").equals("si")){%>
       <tr style="background-color: #00ced1;">
       <td><%=email%></td>
       <td><%=oggetto%> - Risposta da visualizzare</td>

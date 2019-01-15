@@ -24,9 +24,6 @@ td{
   padding: 8px;
 }
 
-tr:nth-child(even) {
-  background-color: lightblue;
-}
 .tabella{
 	margin-top:8%;
 }

@@ -95,13 +95,19 @@ Student's Help Line
 	 i++;
 	 String email = listaDomande.get(i);
 	 i++;%>
-      <tr>
+      <%if(session.getAttribute("tipo").equals("Tutor") && session.getAttribute("vis").equals("si")){%>
+      <tr style="background-color: #00ced1;">
       <td><%=email%></td>
-      <td><%=oggetto%>
-      <%if(session.getAttribute("tipo").equals("Tutor") && testo.equals("no")){%> - Domanda da visualizzare<%}%></td>
+      <td><%=oggetto%> - Risposta da visualizzare</td>
       <td><a href="ServletVisualizzaDomanda?id=<%=id%>" title="Viaulizza Domanda"><button type="button" class="btn">></button></a></td>
      </tr>
-   <%}%>
+   <%} else {%>
+   	<tr>
+      <td><%=email%></td>
+      <td><%=oggetto%></td>
+      <td><a href="ServletVisualizzaDomanda?id=<%=id%>" title="Viaulizza Domanda"><button type="button" class="btn">></button></a></td>
+     </tr>
+   <%}}%>
     </tbody>
 </table>
 </div>
