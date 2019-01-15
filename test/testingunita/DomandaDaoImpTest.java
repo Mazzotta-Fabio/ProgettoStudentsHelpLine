@@ -14,7 +14,7 @@ import junit.framework.TestSuite;
 import storage.DomandaDaoImp;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class DomandaDAOImpTest extends TestCase {
+public class DomandaDaoImpTest extends TestCase {
   private Domanda domanda;
   private Domanda domanda2;
   private DomandaDaoImp domandaDao;

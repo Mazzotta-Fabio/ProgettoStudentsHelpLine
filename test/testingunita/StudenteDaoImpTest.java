@@ -13,7 +13,7 @@ import junit.framework.TestSuite;
 import storage.StudenteDaoImp;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class StudenteDAOImpTest extends TestCase {
+public class StudenteDaoImpTest extends TestCase {
   private Studente studente;
   private Studente studente2;
   private StudenteDaoImp studenteDao;
@@ -93,6 +93,6 @@ public class StudenteDAOImpTest extends TestCase {
   }
 
   public static Test suite() {
-    return new TestSuite(StudenteDAOImpTest.class);
+    return new TestSuite(StudenteDaoImpTest.class);
   }
 }

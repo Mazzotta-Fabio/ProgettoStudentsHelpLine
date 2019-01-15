@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import storage.*;
 
-public class FactoryDAOTest extends TestCase {
+public class FactoryDaoTest extends TestCase {
   private FactoryDao factory;
   
   protected void setUp() throws Exception {
