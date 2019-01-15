@@ -75,13 +75,13 @@ function myFunction3() {
 	var n = document.getElementById("p").value.length;
 	if (n>20 || n<8) {
 		document.getElementById("par2").innerHTML = "La password deve essere tra 8 o 20 carratteri";
-	}	
+	}
 }
 
 function myFunction2() {
-	var f1 = document.getElementById("par1").innerHTML;
-	var f2 = document.getElementById("par2").innerHTML;
-	if(f1=="" && f2==""){document.getElementById("login").disabled = true;}
+	var f1 = document.getElementById("par1").innerHTML.length;
+	var f2 = document.getElementById("par2").innerHTML.length;
+	if(f1>0 || f2>0){document.getElementById("login").disabled = true;}
 	else {document.getElementById("login").disabled = false;}
 }
 </script>
