@@ -28,12 +28,12 @@ public class ImpGestioneDomandaTest extends TestCase {
         + "antonio.cimino@studenti.unisa.it");
     List<String> domandeR = gestioneDomanda.recuperaDomandeConRisposta(""
         + "antonio.cimino@studenti.unisa.it");
+    int somma = (domandeSr.size() / 4) + (domandeSr.size() /4);
     gestioneDomanda.eliminaDomanda(Integer.parseInt(domandeSr.get(0)));
     gestioneDomanda.eliminaDomanda(Integer.parseInt(domandeR.get(0)));
     domandeSr = gestioneDomanda.recuperaDomandeSenzaRisposta("antonio.cimino@studenti.unisa.it");
     domandeR = gestioneDomanda.recuperaDomandeConRisposta("antonio.cimino@studenti.unisa.it");
     int sommaResidua = (domandeSr.size() / 4) + (domandeSr.size() / 4);
-    int somma = (domandeSr.size() / 4) + (domandeSr.size() / 4);
     assertEquals(somma - 2, sommaResidua);
   }
 
