@@ -114,7 +114,7 @@ span{
   <option value="3°">Terzo</option>
 </select><br><br>
 <font color="black"><strong>Aggiungi immagine:</strong></font><br><br>
-<input type="file" name="immagine" value="<%=request.getAttribute("Immagine") %>" id="immagineS" onchange="myFunction17()"><br><br><span id="par17"></span><br><br><input type="text" name ="url" id="path" value="<%=request.getAttribute("Immagine") %>"><br><br>
+<input type="file" name="immagine" value="<%=request.getAttribute("Immagine") %>" id="immagineS" onchange="myFunction17()"><br><br><span id="par17"></span><br><br><input type="hidden" name ="url" id="path" value="<%=request.getAttribute("Immagine") %>"><br><br>
 <input type="submit" value="MODIFICA" id="regS"name="button"><br><br>
 </tr> 
 </tbody></table>

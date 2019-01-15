@@ -37,8 +37,7 @@ public class ServletEliminaAccount extends HttpServlet {
     String tipo = (String) session.getAttribute("tipo");
     GestioneUtente u = new ImpGestioneUtente();
     u.eliminaAccount(email, tipo);
-    RequestDispatcher view = request.getRequestDispatcher("html/HomePage.html");
-    view.forward(request, response);
+    response.sendRedirect("html/HomePage.html");
   }
 
   /**
