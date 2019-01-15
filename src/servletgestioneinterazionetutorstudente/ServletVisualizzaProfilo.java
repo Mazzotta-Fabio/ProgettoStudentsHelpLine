@@ -41,7 +41,7 @@ public class ServletVisualizzaProfilo extends HttpServlet {
               tipo = "Tutor";
           }
       }
-      else if (tipo.equals("Studente")) {
+      if (tipo.equals("Studente")) {
           Studente s = (Studente) i.visualizzaAccount(email);
           request.setAttribute("tipo", "Studente");
           request.setAttribute("Nome", s.getNome());

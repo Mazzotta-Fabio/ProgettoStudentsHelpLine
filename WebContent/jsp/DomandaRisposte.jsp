@@ -35,7 +35,7 @@ Student's Help Line
 <div class="btn-group-vertical lista-bottone">
  
 <%if(session.getAttribute("tipo").equals("Studente")){%>
-<a  href="MioAccount" title="Mio Account">
+<a  href="Login?email=<%=session.getAttribute("email")%>&password=<%=session.getAttribute("pass")%>&tipoUtente=<%=session.getAttribute("tipo")%>" title="Mio Account">
   <button type="button" class="MioAccount btn btn-light border border-dark" style="text-align: left;">Mio Account</button>
   </a> 
   
@@ -52,7 +52,7 @@ Student's Help Line
   <%}else{%>
   
   <%if(session.getAttribute("vis").equals("si")){ %>
-    <a  href="MioAccount" title="Mio Account">
+    <a  href="Login?email=<%=session.getAttribute("email")%>&password=<%=session.getAttribute("pass")%>&tipoUtente=<%=session.getAttribute("tipo")%>" title="Mio Account">
  <button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style=" width:195%;text-align: left;font-size: 80%;">Mio Account</button>
   </a>
   
@@ -65,7 +65,7 @@ Student's Help Line
   <button type="button" class="btn btn-light border border-dark" style="width:107%;text-align: left;font-size: 80%;">Domande non Risposte <img src="img/CerchioBlu.png" style="width:8%; margin-left:9%;"></img></button>
   </a>
  	  <%} else{ %>
- <a  href="MioAccount" title="Mio Account">
+ <a  href="Login?email=<%=session.getAttribute("email")%>&password=<%=session.getAttribute("pass")%>&tipoUtente=<%=session.getAttribute("tipo")%>" title="Mio Account">
 <button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style="width: 194%; text-align: left;font-size: 80%;">Mio Account</button>
   	</a>
   	

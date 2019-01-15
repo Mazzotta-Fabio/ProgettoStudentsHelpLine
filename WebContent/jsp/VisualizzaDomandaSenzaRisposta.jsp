@@ -32,7 +32,7 @@
   <%if(session.getAttribute("tipo").equals("Studente")){%>
   
   <%if(session.getAttribute("vis").equals("si")){ %>
-  <a  href="MioAccount" title="Mio Account">
+  <a  href="Login?email=<%=session.getAttribute("email")%>&password=<%=session.getAttribute("pass")%>&tipoUtente=<%=session.getAttribute("tipo")%>" title="Mio Account">
   <button type="button" class="MioAccount btn btn-light border border-dark" style="width: 175%;text-align: left;">Mio Account</button>
   </a>
   <a  href="html/PaginaSelezionaMateria.html" title="Fai Domanda al Tutor">
@@ -43,7 +43,7 @@
   <button type="button" class="testoSinistra Domande_Risposte btn btn-light border border-dark" style = "width:100%;text-align: left;">Domande Risposte <img src="img/CerchioBlu.png" style="width:8%; margin-left:9%;"></img></button>
   </a>
   <%}else{ %>
-  <a  href="MioAccount" title="Mio Account">
+  <a  href="Login?email=<%=session.getAttribute("email")%>&password=<%=session.getAttribute("pass")%>&tipoUtente=<%=session.getAttribute("tipo")%>" title="Mio Account">
   <button type="button" class="MioAccount btn btn-light border border-dark" style="width: 175%;text-align: left;">Mio Account</button>
   </a>
   <a  href="html/PaginaSelezionaMateria.html" title="Fai Domanda al Tutor">
@@ -64,7 +64,7 @@
   <%if(session.getAttribute("vis").equals("si")){ %>
   
   
-  <a  href="MioAccount" title="Mio Account">
+  <a  href="Login?email=<%=session.getAttribute("email")%>&password=<%=session.getAttribute("pass")%>&tipoUtente=<%=session.getAttribute("tipo")%>" title="Mio Account">
  <button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style=" width:195%; text-align: left;font-size: 80%;">Mio Account</button>
   </a>
   
@@ -78,7 +78,7 @@
   </a>
   <%} else{ %>
   
-  <a  href="MioAccount" title="Mio Account">
+  <a  href="Login?email=<%=session.getAttribute("email")%>&password=<%=session.getAttribute("pass")%>&tipoUtente=<%=session.getAttribute("tipo")%>" title="Mio Account">
 <button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style="width: 194%; text-align: left;font-size: 80%;">Mio Account</button>
   	</a>
   	<a  href="ServletTabDomandaRisposte" title="Domande Risposte">
