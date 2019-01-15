@@ -87,7 +87,7 @@ span{
   <option value="RO">Ricerca operativa</option>
 </select><br><br>
 <font color="black"><strong>Aggiungi immagine:</strong></font><br><br>
-<input type="file" name="immagine" value="<%=request.getAttribute("Immagine") %>" id="immagineT" onchange="myFunction10()"><br><br><span id="par10"></span> <input type="hidden" name ="url" id="path"><br><br>
+<input type="file" name="immagine" value="<%=request.getAttribute("Immagine") %>" id="immagineT" onchange="myFunction10()"><br><br><span id="par10"></span> <input type="hidden" name ="url" id="path" value="<%=request.getAttribute("Immagine") %>"><br><br>
 <input type="submit" value="MODIFICA" id="regT"name="button"><br><br>
 </font>
 </center>

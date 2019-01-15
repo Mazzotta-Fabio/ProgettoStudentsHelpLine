@@ -42,7 +42,7 @@ span{
 <p><center><font color="black" ><strong>Oggetto della domanda:</strong></font></p><input type="text" name="oggetto" id="oggetto" onKeyUp="myFunction1()" onKeyDown="myFunction()" style="width:300px;margin-left:2%" required><span id="par1"></span></center>
 <p><center><font color="black" "><strong>Che vuoi chiedere?</strong></font></p><textarea name="testo" id="testo" onKeyUp="myFunction2()" onKeyDown="myFunction()" rows="5" cols="30" style="margin-left:2%" required></textarea><span id="par2"></span></center>
 <p><center><font color="black" ><strong>Allega file: </strong></font>
-<input type="file" name="file" id="file-upload"onchange="myFunction3()"><br><span id="par3"></span></center><br> <input type="hidden" name ="url" id="path">
+<input type="file" name="file" id="file-upload"onchange="myFunction3()"><br><span id="par3"></span></center><br> <input type="hidden" name ="url" id="path" value="">
 <center><input type="submit" value="INVIA" id="log"name="button"></center>
 </form>
 
