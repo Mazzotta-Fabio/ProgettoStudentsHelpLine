@@ -56,7 +56,6 @@ function myFunction1() {
 }
 
 function myFunction2() {
-	alert("ciao");
 	document.getElementById("par2").innerHTML = "";
 	var n = document.getElementById("testo").value.lenght;
 	if(n >= 700){

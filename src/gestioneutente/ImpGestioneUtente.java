@@ -188,8 +188,9 @@ public class ImpGestioneUtente implements GestioneUtente {
   public void modificaAccount(String tipo, String nome, String cognome, String email,
             String password,String path, String voto, String titolo, String numero, 
             String materia) throws IOException {
+	
     if (tipo.equals("Tutor")) {
-      Tutor t = new Tutor(nome, cognome,email,password,path,numero, materia, voto, titolo);
+      Tutor t = new Tutor(nome, cognome,email,password,path,numero, materia, "1", titolo);
       FactoryDao fdao = new FactoryDao();
       ObjectDao o = fdao.getObject("Tutor");
       try {
