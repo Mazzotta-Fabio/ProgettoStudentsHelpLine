@@ -35,7 +35,7 @@ Student's Help Line
  <p align="center"> <font color="black"><strong>Password:</strong></font><br>
   <input type="password" name="password"id="p" onKeyUp="myFunction3()" onKeyDown="myFunction2()" required><br><br>
    <p id="par2" style="color:red" align="center"></p></font>
- <center><input type="submit" value="Login" id="login" disabled></center><br>
+ <center><input type="submit" value="Login" id="login" enabled></center><br>
  <center><input type="submit" value="Registrati"  onclick="location.href='PaginaRegistrazione.html';" id="pulsante"></center><br>
  <a href="PaginaRecuperaPassword.html"><font color="black"><center>Password o username dimenticata?</center></font><br></a><br>
  </form>
@@ -81,8 +81,8 @@ function myFunction3() {
 function myFunction2() {
 	var f1 = document.getElementById("par1").innerHTML;
 	var f2 = document.getElementById("par2").innerHTML;
-	if(f1=="" && f2==""){document.getElementById("login").disabled = false;}
-	else {document.getElementById("login").disabled = true;}
+	if(f1=="" && f2==""){document.getElementById("login").disabled = true;}
+	else {document.getElementById("login").disabled = false;}
 }
 </script>
 </body>
