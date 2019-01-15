@@ -59,7 +59,6 @@ public class ServletFormModifica extends HttpServlet {
       request.setAttribute("Immagine",s.getLinkImmagine());
       request.setAttribute("Matricola",s.getMatricola());
       request.setAttribute("Anno",s.getAnnoCorso());
-      GestioneDomanda d = new ImpGestioneDomanda();
       RequestDispatcher view = request.getRequestDispatcher("jsp/ModificaAccount.jsp");
       view.forward(request, response);
     }
