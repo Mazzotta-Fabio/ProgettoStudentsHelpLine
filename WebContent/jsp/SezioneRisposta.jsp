@@ -66,13 +66,10 @@ function myFunction3(){
 }
 
 function myFunction() {
-	var f2 = document.getElementById("par2").innerHTML;
-	var f3 = document.getElementById("par3").innerHTML;
-	if(f2=="" && f3 =="" ){
-		document.getElementById("log").disabled = false;
-	} else {
-		document.getElementById("log").disabled = true;
-	}
+	var f1 = document.getElementById("par2").innerHTML.length;
+	var f2 = document.getElementById("par3").innerHTML.length;
+	if(f1>0 || f2>0 ){document.getElementById("log").disabled = true;}
+	else {document.getElementById("log").disabled = false;}
 }
 </script>
 </body>

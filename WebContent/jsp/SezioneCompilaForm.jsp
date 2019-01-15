@@ -75,14 +75,11 @@ function myFunction3(){
 }
 
 function myFunction() {
-	var f1 = document.getElementById("par1").innerHTML;
-	var f2 = document.getElementById("par2").innerHTML;
-	var f3 = document.getElementById("par3").innerHTML;
-	if(f1 == "" && f2=="" && f3 =="" ){
-		document.getElementById("log").disabled = false;
-	} else {
-		document.getElementById("log").disabled = true;
-	}
+	var f1 = document.getElementById("par1").innerHTML.length;
+	var f2 = document.getElementById("par2").innerHTML.length;
+	var f3 = document.getElementById("par3").innerHTML.length;
+	if(f1>0 || f2>0 || f3>0){document.getElementById("log").disabled = true;}
+	else {document.getElementById("log").disabled = false;}
 }
 </script>
 </body>
