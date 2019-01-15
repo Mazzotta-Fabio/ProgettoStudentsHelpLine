@@ -2,6 +2,9 @@ package servletgestionedomanda;
 
 import gestionedomanda.GestioneDomanda;
 import gestionedomanda.ImpGestioneDomanda;
+import gestioneinterazionetutorstudente.GestioneInterazioneTutorStudente;
+import gestioneinterazionetutorstudente.ImpGestioneInterazioneTutorStudente;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -33,11 +36,19 @@ public class ServletVisualizzaDomanda extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws ServletException, IOException {
     HttpSession sessione = request.getSession();
+    String email = (String) sessione.getAttribute("email");
     String tipo = (String) sessione.getAttribute("tipo");
     int id = Integer.parseInt(request.getParameter("id"));
     GestioneDomanda d = new ImpGestioneDomanda();
     ArrayList<String> listaInfo = d.visualizzaDomanda(id,tipo);
     request.setAttribute("listaInfo", listaInfo);
+    GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
+    boolean vis = i.domandeDaVisualizzare(email,tipo);
+    if (vis == true) {
+      sessione.setAttribute("vis", "si");
+    } else {
+      sessione.setAttribute("vis", "no");
+    }
     if (listaInfo.get(9).equals("1")) {
       RequestDispatcher vi = request.getRequestDispatcher("jsp/VisualizzaDomandaSenzaRisposta.jsp");
       vi.forward(request, response);
