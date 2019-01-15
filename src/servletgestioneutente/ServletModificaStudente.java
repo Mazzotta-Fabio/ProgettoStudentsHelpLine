@@ -7,12 +7,12 @@ import gestioneutente.ImpGestioneUtente;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 
 /**
@@ -22,9 +22,6 @@ import javax.servlet.http.HttpSession;
  * @version 1.0
  */
 @WebServlet("/ModificaStudente.html")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
-    maxFileSize = 1024 * 1024 * 10,
-    maxRequestSize = 1024 * 1024 * 50)
 public class ServletModificaStudente extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
@@ -44,16 +41,24 @@ public class ServletModificaStudente extends HttpServlet {
     String cognome = request.getParameter("cognome");
     String email = (String) session.getAttribute("email");
     String password = request.getParameter("password");
-    String matricola = request.getParameter("matricola");
-    String annoCorso = request.getParameter("annocorso");
     GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
     String url = request.getParameter("url");
     i.upload(url);
     GestioneUtente u = new ImpGestioneUtente();
-    u.modificaAccount(tipo, nome, cognome, email, password, url, matricola, annoCorso,null, null);
+    if(tipo.equals("Studente")) {
+    	String matricola = request.getParameter("matricola");
+    	String annoCorso = request.getParameter("annocorso");
+    	u.modificaAccount(tipo, nome, cognome, email, password, url, matricola, annoCorso,null, null);
+    } else {
+      String numero = request.getParameter("numero");
+      String materia = request.getParameter("materia");
+      String voto = request.getParameter("voto");
+      String titolo = request.getParameter("titolo");
+      u.modificaAccount(tipo, nome, cognome, email, password, url, voto, titolo, numero, materia);
+    }
     RequestDispatcher fo = request.getServletContext().getRequestDispatcher("/Login?email=" + email 
         + "&password=" + password + "&tipoUtente=" + tipo);
-    fo.forward(request, response);
+    fo.forward(request, response);  
   }
   
   /**

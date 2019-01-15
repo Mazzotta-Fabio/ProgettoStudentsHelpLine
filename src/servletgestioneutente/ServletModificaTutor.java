@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,9 +23,8 @@ import javax.servlet.http.Part;
  * @author Antonio Cimino
  * @version 1.0
  */
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
-    maxFileSize = 1024 * 1024 * 10,
-    maxRequestSize = 1024 * 1024 * 50)
+
+@WebServlet("/ModificaTutor.html")
 public class ServletModificaTutor extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
@@ -53,6 +53,7 @@ public class ServletModificaTutor extends HttpServlet {
     String url = request.getParameter("url");
     i.upload(url);
     GestioneUtente u = new ImpGestioneUtente();
+    System.out.print(numero);
     u.modificaAccount(tipo, nome, cognome, email, password, url, voto, titolo, numero, materia);
     RequestDispatcher fo = request.getServletContext().getRequestDispatcher("/Login?email=" + email 
             + "&password=" + password + "&tipoUtente=" + tipo);

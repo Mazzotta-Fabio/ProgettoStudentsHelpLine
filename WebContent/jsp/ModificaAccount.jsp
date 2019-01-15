@@ -46,7 +46,7 @@ span{
 <%if(session.getAttribute("tipo").equals("Tutor")){%>
 <p align="center" id="text">
 <font face="sans-serif">
-<form action="ModificaTutor.html" method="post">
+<form action="ModificaStudente.html" method="post">
 <center>
 <font color="black"><strong>Nome:</strong></font><br><br>
 <input type="text" name="nome" value="<%=request.getAttribute("Nome") %>" id="nomeT" onKeyUp="myFunction3()" onKeyDown="myFunctionT()" required><br><br><span id="par3"></span><br><br>
@@ -254,7 +254,6 @@ span{
 	}
 
 	function myFunctionT() {
-		alert("ciao");
 		var f3 = document.getElementById("par3").innerHTML;
 		var f4 = document.getElementById("par4").innerHTML;
 		var f6 = document.getElementById("par6").innerHTML;
@@ -265,9 +264,9 @@ span{
 		document.getElementById("par7").innerHTML = "";
 		if(document.getElementById("passwordT").value != document.getElementById("password2T").value){document.getElementById("par7").innerHTML = "Conferma password diversa da password";}
 		if(f3 == "" && f4=="" && f6 =="" && f7 =="" && f8=="" && f9=="" && f10==""){
-			document.getElementById("regT").disabled = true;
-		} else {
 			document.getElementById("regT").disabled = false;
+		} else {
+			document.getElementById("regT").disabled = true;
 		}
 	}
 
@@ -282,9 +281,9 @@ span{
 		document.getElementById("par15").innerHTML = "";
 		if(document.getElementById("passwordS").value != document.getElementById("password2S").value){document.getElementById("par15").innerHTML = "Conferma password diversa da password";}
 		if(f3 == "" && f4=="" && f6 =="" && f7 =="" && f8=="" && f9==""){
-			document.getElementById("regS").disabled = true;
-		} else {
 			document.getElementById("regS").disabled = false;
+		} else {
+			document.getElementById("regS").disabled = true;
 		}
 	}
 </script>

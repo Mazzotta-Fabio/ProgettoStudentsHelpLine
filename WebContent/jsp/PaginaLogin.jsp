@@ -5,8 +5,9 @@
 <div align="center"><a href = "HomePage.html"><img src="img/logo.png" style="widht:50px;height:50px;"></a></div><br><br>
 </div>
 <title>
-StudentsHelpLine
+Student's Help Line
 </title>
+<link rel="icon" type="image" href="../img/ICONA.ico">
 <style>
 #pulsante {
  background: #0095cd;

@@ -27,10 +27,10 @@ Student's Help Line
 <p><font color="white">
 <a href="javascript:history.back()" titlo="Indietro"><img class="log" src="img/back.svg" style="width:3%; margin-left:3%;"></img></a>
 <strong style="margin-left:45%;">
-<%if(session.getAttribute("tipo").equals("Studente")){%>
-Account Studente
+<%if(request.getAttribute("tipo").equals("Studente")){%>
+Profilo Studente
 <%}else{%>
-Account Tutor
+Profilo Tutor
 <%} %>
 </strong><span style="margin-left:35%"><a  href="Logout"><img src="img/logout.png" style="width:50px;height:50px;align:right;"></img></a></span></font></p>
 </div>
@@ -50,17 +50,13 @@ if(img.equals("")){ %>
 </div>
 <div class="col-8" style="margin-top:6%;">
 <table class="table table-bordered">
-  <thead>
-  <tr>
-      <th scope="col">info</th>
-    </tr>
-   </thead>
+
    <tbody>
    <tr>
-      <th scope="row"class="border border-dark">email</th>
+      <th scope="row"class="border border-dark">Email</th>
       <td><%=request.getAttribute("email")%></td>
      </tr>
-  <%if(session.getAttribute("tipo").equals("Studente")){%>
+  <%if(request.getAttribute("tipo").equals("Studente")){%>
     <tr>
       <th scope="row"class="border border-dark">Nome</th>
       <td><%=request.getAttribute("Nome")%></td>
