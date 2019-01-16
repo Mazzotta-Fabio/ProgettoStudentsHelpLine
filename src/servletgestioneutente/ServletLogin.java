@@ -56,13 +56,14 @@ public class ServletLogin extends HttpServlet {
       request.setAttribute("Titolo",t.getTitoloDiStudio());
       request.setAttribute("Voto",t.getVotoDiLaurea());
       if (t.getEmail() != null) {
-    	  GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
-    	    boolean vis = i.domandeDaVisualizzare(email,tipo);
-    	    if (vis == true) {
-    	      sessione.setAttribute("vis", "si");
-    	    } else {
-    	      sessione.setAttribute("vis", "no");
-    	    }
+        GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
+        boolean vis = i.domandeDaVisualizzare(email,tipo);
+        if (vis == true) {
+          sessione.setAttribute("vis", "si");
+        }
+        else {
+          sessione.setAttribute("vis", "no");
+        }
         request.setAttribute("Verifica","no");
         RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
         view.forward(request, response);

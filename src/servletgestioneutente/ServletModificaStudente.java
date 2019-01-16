@@ -45,10 +45,11 @@ public class ServletModificaStudente extends HttpServlet {
     String url = request.getParameter("url");
     i.upload(url);
     GestioneUtente u = new ImpGestioneUtente();
-    if(tipo.equals("Studente")) {
-    	String matricola = request.getParameter("matricola");
-    	String annoCorso = request.getParameter("annocorso");
-    	u.modificaAccount(tipo, nome, cognome, email, password, url, matricola, annoCorso,null, null);
+    if (tipo.equals("Studente")) {
+      String matricola = request.getParameter("matricola");
+      String annoCorso = request.getParameter("annocorso");
+      u.modificaAccount(tipo, nome, cognome, email, password, url, matricola,
+          annoCorso,null, null);
     } else {
       String numero = request.getParameter("numero");
       String materia = request.getParameter("materia");
