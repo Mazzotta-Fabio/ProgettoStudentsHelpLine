@@ -1,15 +1,13 @@
 package testingunita;
 
+import classicomuni.Studente;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import org.junit.FixMethodOrder;
-import org.junit.runners.MethodSorters;
-
-import classicomuni.Studente;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 import storage.StudenteDaoImp;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

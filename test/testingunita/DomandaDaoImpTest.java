@@ -1,16 +1,16 @@
 package testingunita;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import org.junit.FixMethodOrder;
-import org.junit.runners.MethodSorters;
 import classicomuni.Domanda;
 import classicomuni.Risposta;
 import classicomuni.Studente;
 import classicomuni.Tutor;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 import storage.DomandaDaoImp;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -18,6 +18,7 @@ public class DomandaDaoImpTest extends TestCase {
   private Domanda domanda;
   private Domanda domanda2;
   private DomandaDaoImp domandaDao;
+  
   protected void setUp() throws Exception {
     Risposta risposta = new Risposta(1,"CIAOIOIO","allegato","ON","SI");
     Risposta risposta1 = new Risposta(2,"CIAOIOIO","allegato","ON","SI");

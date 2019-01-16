@@ -7,6 +7,7 @@ import testingunita.ImpGestioneDomandaTest;
 import testingintegrazione.TestGp;
 
 
+
 public class TestGdgp {
   public static void main(String[] args) {
     TestRunner.run(TestGdgp.suite());
