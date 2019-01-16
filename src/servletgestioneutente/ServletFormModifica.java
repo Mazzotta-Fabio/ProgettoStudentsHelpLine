@@ -2,8 +2,6 @@ package servletgestioneutente;
 
 import classicomuni.Studente;
 import classicomuni.Tutor;
-import gestionedomanda.GestioneDomanda;
-import gestionedomanda.ImpGestioneDomanda;
 import gestioneutente.GestioneUtente;
 import gestioneutente.ImpGestioneUtente;
 import java.io.IOException;
