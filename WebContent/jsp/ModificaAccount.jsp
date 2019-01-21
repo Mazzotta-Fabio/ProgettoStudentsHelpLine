@@ -175,8 +175,8 @@ function myFunctionT() {
 	}
 	//foto
 	var frm = document.getElementsByTagName('form')[0];
-	alert(frm.elements[8].value);
-	if(!frm.elements[8].value == "false"){
+	//alert(frm.elements[8].value);
+	if(frm.elements[8].value!=""){
 		if(!frm.elements[8].value.match("png") && !frm.elements[8].value.match("jpg") && !frm.elements[8].value.match("jpeg")){
 			alert("I file accettati sono jpg/png/jpeg");
 			return false;
@@ -235,7 +235,7 @@ function myFunctionS() {
 	//foto
 	var frm = document.getElementsByTagName('form')[0];
 	//alert(frm.elements[6].value);
-	if(!frm.elements[6].value == ""){
+	if(frm.elements[6].value != ""){
 		if(!frm.elements[6].value.match("png") && !frm.elements[6].value.match("jpg") && !frm.elements[6].value.match("jpeg")){
 			alert("I file accettati sono jpg/png/jpeg");
 			return false;
