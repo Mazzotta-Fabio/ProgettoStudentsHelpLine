@@ -254,9 +254,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
         if (d.getTutor().getEmail().equals(email) && d.getRisposta().getId() == 1) {
           if (d.getVis().equals("no")) {
             return true;
-          } else {
-            return false;
-          }
+          } 
         }
       }
     } else {
@@ -281,8 +279,6 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
           }
           if (r.getVis().equals("no")) {
             return true;
-          } else {
-            return false;
           }
         }
       }

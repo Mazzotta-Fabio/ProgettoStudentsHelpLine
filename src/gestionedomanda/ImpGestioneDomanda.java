@@ -140,7 +140,7 @@ public class ImpGestioneDomanda implements GestioneDomanda {
   
   public ArrayList<String> visualizzaDomanda(int id,String tipo) {
     FactoryDao fd = new FactoryDao();
-    Domanda d = new Domanda(id, null, null, null, null, null, null, "no");
+    Domanda d = new Domanda(id, null, null, null, null, null, null, null);
     ObjectDao o = fd.getObject("Domanda");
     try {
       o.recuperaDati(d);
