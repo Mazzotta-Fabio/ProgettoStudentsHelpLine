@@ -23,7 +23,7 @@ public class ImpGestioneUtente implements GestioneUtente {
    * Il metodo serve per inviare la mail per recuperare la password.
    * @param tipo tipologia utente
    * @param destinatario l'email dove inviare l'email
-   * @return password non vuota se l'utentr viene trovato
+   * @return password non vuota se l'utente viene trovato
    */
   public String recuperaPassword(String tipo,String destinatario) {
     String password = null;
@@ -49,18 +49,15 @@ public class ImpGestioneUtente implements GestioneUtente {
       password = s.getPassword();
     }
     try {
-      Email email = new Email("helplinestudent53@gmail.com","st5d3nth3lpl1n3");
-      email.setFrom("helplinestudent53@gmail.com", "Student's Help Line");
-      email.setSubject("RECUPERO PASSWORD");
-      String testo = null;
       if (password != null) {
-        testo = "La password del tuo account di student's help line è: " + password;
-      } else {
-        testo = "Account non presente sul sito";
-      }            
-      email.setContent("<h1>La tua password è " + testo + "</h1>","text/html");
-      email.addRecipient(destinatario);
-      email.send();
+        Email email = new Email("helplinestudent53@gmail.com","st5d3nth3lpl1n3");
+        email.setFrom("helplinestudent53@gmail.com", "Student's Help Line");
+        email.setSubject("RECUPERO PASSWORD");
+        String testo = "La password del tuo account di student's help line è: " + password;
+        email.setContent("<h1>La tua password è " + testo + "</h1>","text/html");
+        email.addRecipient(destinatario);
+        email.send();
+      }
     } catch (UnsupportedEncodingException e) {
       e.printStackTrace();
     } catch (MessagingException e) {
@@ -189,7 +186,7 @@ public class ImpGestioneUtente implements GestioneUtente {
             String password,String path, String voto, String titolo, String numero, 
             String materia) throws IOException {
     if (tipo.equals("Tutor")) {
-      Tutor t = new Tutor(nome, cognome,email,password,path,numero, materia, "1", titolo);
+      Tutor t = new Tutor(nome, cognome,email,password,path,numero, materia,voto, titolo);
       FactoryDao fdao = new FactoryDao();
       ObjectDao o = fdao.getObject("Tutor");
       try {

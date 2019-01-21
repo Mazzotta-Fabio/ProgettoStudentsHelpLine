@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="page">
-<header id=header">
+<header id="header">
 <div class="header-content">
 <div class="image-logo">
 	<img class="position" src="img/logo.png" alt="StudentHelpline">
@@ -25,7 +25,7 @@ Student's Help Line
 </div>
 </div>
 <div style="background:#2b78e4">
-<p><font color="white" style="margin-left:42%"><strong>VISUALIZZA VALUTAZIONI</strong><span style="margin-left:38%"><a  href="Logout"><img src="img/logout.png" style="width:50px;height:50px;align:right;"></img></a></span></font></p>
+<p><font color="white" style="margin-left:42%"><strong>Visualizza le tue valutazioni</strong><span style="margin-left:38%"><a  href="Logout"><img src="img/logout.png" style="width:50px;height:50px;align:right;"></img></a></span></font></p>
 </div>
 <style>
 span{

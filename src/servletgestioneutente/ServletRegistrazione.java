@@ -37,7 +37,7 @@ public class ServletRegistrazione extends HttpServlet {
     String nome = request.getParameter("nome");
     String cognome = request.getParameter("cognome");
     String email = request.getParameter("email");
-    String password = request.getParameter("password");
+    String password = request.getParameter("passwordS");
     GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
     String url = request.getParameter("url");
     i.upload(url);
