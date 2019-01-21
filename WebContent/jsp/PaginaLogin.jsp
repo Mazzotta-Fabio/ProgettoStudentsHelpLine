@@ -7,7 +7,7 @@
 <title>
 Student's Help Line
 </title>
-<link rel="icon" type="image" href="../img/ICONA.ico">
+<link rel="icon" type="image" href="img/ICONA.ico">
 <style>
 #pulsante {
  background: #0095cd;

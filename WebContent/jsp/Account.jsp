@@ -99,13 +99,13 @@ Account Tutor
   <%}%>
 </div>
 </div>
-<div class="col-4">
+<div class="col-3" style="margin-right:5%;">
 <div class="image-profilo">
 <%String img = (String) request.getAttribute("Immagine");
 if(img.equals("")){ %>
 <img src="img/AccountsenzaFoto.png" alt="Immagine" class="img-thumbnail image-profilo">
 <%}else{ %>
-<img src=<%=img%> alt="Immagine" class="img-thumbnail image-profilo"style="width::100%;">
+<img src="img/<%=img%>" alt="Immagine" class="img-thumbnail image-profilo">
 <%} %>
 </div>
 </div>

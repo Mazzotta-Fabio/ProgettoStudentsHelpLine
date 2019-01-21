@@ -114,7 +114,7 @@
 		String url = (String) ris.get(3);
 		if(url.equals("")){}
 		else{
-			out.print("<form enctype='multipart/form-data' action='ScaricaAllegato' method='post'><input  type = 'hidden' name = 'url' value='"+ris.get(3)+"'><input  type = 'hidden' name = 'idD' value='"+ris.get(4)+"'><img src='img/download.png' style='width:30px;height:30px;'/><input type='submit' value='Scarica Allegato'></form>");
+    		out.print("<form enctype='multipart/form-data' action='ScaricaAllegato?url="+ris.get(3)+"&idD="+ris.get(4)+"' method='post'><img src='img/download.png' style='width:30px;height:30px;'/><input type='submit' value='Scarica Allegato'></form>");
 		}
 		out.print("<a href='ServletEliminaDomanda?id="+ris.get(4)+"'><img src='img/elimina.png' style='width:50px;height:50px;margin-left:400px;'/></a>");   %> 
   </div>
@@ -125,7 +125,7 @@
 		url = (String) ris.get(7);
  		if(url.equals("")){}
  		else{
- 			out.print("<form enctype='multipart/form-data' action='ScaricaAllegato' method='post'><input  type = 'hidden' name = 'url' value='"+ris.get(3)+"'><input  type = 'hidden' name = 'idD' value='"+ris.get(4)+"'><img src='img/download.png' style='width:30px;height:30px;'/><input type='submit' value='Scarica Allegato'></form>");
+    		out.print("<form enctype='multipart/form-data' action='ScaricaAllegato?url="+ris.get(7)+"&idD="+ris.get(4)+"' method='post'><img src='img/download.png' style='width:30px;height:30px;'/><input type='submit' value='Scarica Allegato'></form>");
 		}
     	
     	String v = (String) ris.get(8);

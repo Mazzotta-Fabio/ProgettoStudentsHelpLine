@@ -37,8 +37,7 @@ span{
 </style>
 </header>
 <div>
-<form action="ServletInserisciRisposta.html" method="post">
-<input type="hidden" name="id" value="<%=request.getAttribute("id")%>">
+<form enctype="multipart/form-data" action="ServletInserisciRisposta.html?id=<%=request.getAttribute("id")%>" method="post">
 <p><center><font color="black"><strong>Cosa vuoi rispondere?</strong></font></p><textarea name="testo" id="testo" onKeyUp="myFunction2()" onKeyDown="myFunction()" rows="5" cols="30" style="margin-left:2%" required></textarea><span id="par2"></span><br><br>
 <p><center><font color="black"><strong>Allega file</strong></font></center></p><input type="file" name="file" id="file"onchange="myFunction3()"><span id="par3"></span> <br> <input type="hidden" name ="url" id="path" value=""><br>
 <input type="submit" value="INVIA" id="log"><br><br></center>

@@ -36,10 +36,10 @@ public class ServletVisualizzaValutazioniTot extends HttpServlet {
     GestioneInterazioneTutorStudente d = new ImpGestioneInterazioneTutorStudente();
     boolean vis = d.domandeDaVisualizzare(email,tipo);
     if (vis == true) {
-      session.setAttribute("vis", "si");
+      session.setAttribute("vis", "no");
     }
     else {
-      session.setAttribute("vis", "no");
+      session.setAttribute("vis", "si");
     }
     RequestDispatcher view = request.getRequestDispatcher("jsp/ValutazioniTot.jsp");
     view.forward(request, response);

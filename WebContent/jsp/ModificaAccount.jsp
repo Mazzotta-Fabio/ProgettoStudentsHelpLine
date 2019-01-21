@@ -46,7 +46,7 @@ span{
 <%if(session.getAttribute("tipo").equals("Tutor")){%>
 <p align="center" id="text">
 <font face="sans-serif">
-<form action="ModificaStudente.html" method="post" name="modulo">
+<form enctype="multipart/form-data" action="ModificaStudente.html" method="post" name="modulo">
 <center>
 <font color="black"><strong>Nome:</strong></font><br><br>
 <input type="text" name="nome" value="<%=request.getAttribute("Nome") %>" id="nomeT" required><br><br><span id="par3"></span><br><br>
@@ -87,14 +87,14 @@ span{
   <option value="RO">Ricerca operativa</option>
 </select><br><br>
 <font color="black"><strong>Aggiungi immagine:</strong></font><br><br>
-<input type="file" name="immagine" value="<%=request.getAttribute("Immagine") %>" id="immagineT" enable><br><br><span id="par10"></span> <input type="hidden" name ="url" id="path" value="<%=request.getAttribute("Immagine") %>"><br><br>
+<input type="file" name="fileT" value="<%=request.getAttribute("Immagine") %>" id="immagineT" enable><br><br><span id="par10"></span> <input type="hidden" name ="url" id="path" value="<%=request.getAttribute("Immagine") %>"><br><br>
 <input type="button" value="MODIFICA" id="regT"name="button" onclick="myFunctionT()"><br><br>
 </font>
 </center>
 </p>
 </form>
 <%}else{%>
-<form action="ModificaStudente.html" method="post" name="modulo2">
+<form enctype="multipart/form-data" action="ModificaStudente.html" method="post" name="modulo2">
 <p align="center" id="text2" >
 <font face="sans-serif">
 <font color="black"><strong>Nome:</strong></font><br><br>
@@ -114,7 +114,7 @@ span{
   <option value="3°">Terzo</option>
 </select><br><br>
 <font color="black"><strong>Aggiungi immagine:</strong></font><br><br>
-<input type="file" name="immagine" value="<%=request.getAttribute("Immagine") %>" id="immagineS"><br><br><span id="par17"></span><br><br><input type="hidden" name ="url" id="path" value="<%=request.getAttribute("Immagine") %>"><br><br>
+<input type="file" name="fileS" value="<%=request.getAttribute("Immagine") %>" id="immagineS"><br><br><span id="par17"></span><br><br><input type="hidden" name ="url" id="path" value="<%=request.getAttribute("Immagine") %>"><br><br>
 <input type="button" value="MODIFICA" id="regS" name="button" onclick="myFunctionS()"><br><br>
 </tr> 
 </tbody></table>
@@ -175,12 +175,13 @@ function myFunctionT() {
 	}
 	//foto
 	var frm = document.getElementsByTagName('form')[0];
-	if(!frm.elements[10].value == "false"){
-		if(!frm.elements[10].value.match("png") && !frm.elements[10].value.match("jpg") && !frm.elements[10].value.match("jpeg")){
+	alert(frm.elements[8].value);
+	if(!frm.elements[8].value == "false"){
+		if(!frm.elements[8].value.match("png") && !frm.elements[8].value.match("jpg") && !frm.elements[8].value.match("jpeg")){
 			alert("I file accettati sono jpg/png/jpeg");
 			return false;
 		}
-		var fullPath = frm.elements[10].value; 
+		var fullPath = frm.elements[8].value; 
 		var elem = document.getElementById("path");
 		elem.value = fullPath;
 	}
@@ -233,7 +234,8 @@ function myFunctionS() {
 	}
 	//foto
 	var frm = document.getElementsByTagName('form')[0];
-	if(!frm.elements[6].value == "false"){
+	//alert(frm.elements[6].value);
+	if(!frm.elements[6].value == ""){
 		if(!frm.elements[6].value.match("png") && !frm.elements[6].value.match("jpg") && !frm.elements[6].value.match("jpeg")){
 			alert("I file accettati sono jpg/png/jpeg");
 			return false;

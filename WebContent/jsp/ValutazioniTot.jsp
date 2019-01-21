@@ -44,7 +44,7 @@ span{
   <div class="row">
     <div class="col-3">
 <div class="btn-group-vertical lista-bottone">
- <%if(session.getAttribute("vis").equals("si")){ %>
+ <%if(session.getAttribute("vis").equals("no")){ %>
   <a  href="Login?email=<%=session.getAttribute("email")%>&password=<%=session.getAttribute("pass")%>&tipoUtente=<%=session.getAttribute("tipo")%>" title="Mio Account">
   <button type="button" id = "ButtomMioAccount" class="MioAccount btn btn-light border border-dark" style="width:199%;">Mio Account</button>
   </a>

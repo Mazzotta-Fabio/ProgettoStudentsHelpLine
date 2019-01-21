@@ -44,7 +44,7 @@ Profilo Tutor
 if(img.equals("")){ %>
 <img src="img/AccountsenzaFoto.png" alt="Immagine" class="img-thumbnail image-profilo">
 <%}else{ %>
-<img src=<%=img%> alt="Immagine" class="img-thumbnail image-profilo" style="width::100%;">
+<img src="img/<%=img%>" alt="Immagine" class="img-thumbnail image-profilo" style="width::100%;">
 <%} %>
 </div>
 </div>

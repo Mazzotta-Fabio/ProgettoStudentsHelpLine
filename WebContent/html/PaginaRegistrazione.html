@@ -37,11 +37,10 @@ span{
 <p><center>Seleziona tipo utente <input type="radio" name="tipoUtent"id="myCheck" value="Tutor" onclick="myFunction1()"> TUTOR  <input type="radio" name="tipoUtent"id="myCheck2" value="Studente" onclick="myFunction2()"> STUDENTE </center></p>
 </td>
 </tr>
-<form action="../Registrazione" method="post" name="modulo">
+<form enctype="multipart/form-data" action="../Registrazione?tipo=Tutor" method="post" name="modulo">
 <tr>
 <td width="800" height="450" bgcolor="#E2E2E2">
 <p id="text" style="display:none;"><font face="sans-serif">
-<input type="hidden" value="Tutor" name="tipo">
 <font color="black"><strong>Nome:   </strong></font><input type="text" name="nome"id="nomeT" required><span id="par3"></span><br><br>
 <font color="black"><strong>Cognome:   </strong></font><input type="text" name="cognome"id="cognomeT"  required><span id="par4"></span><br><br>
 <font color="black"><strong>Email:   </strong></font><input type="text" name="email"id="emailT"  required><span id="par5" ></span><br><br>
@@ -73,16 +72,15 @@ span{
   <option value="ETC">Elementi di teoria della computazione</option>
   <option value="RO">Ricerca operativa</option>
 </select><br><br>
-<font color="black"><strong>Aggiungi immagine:   </strong></font><input type="file"  name="file" id="immagineT"><span id="par10"></span> <br><br><input type="hidden" name ="url" id="path" value=""><br><br>
+<font color="black"><strong>Aggiungi immagine:   </strong></font><input type="file"  name="fileT" id="immagineT"><span id="par10"></span> <br><br><input type="hidden" name ="url" id="path" value=""><br><br>
 <input type="button" value="REGISTRATI" id="regT"name="button" onclick="myFunctionT()" enabled>
 <a href="HomePage.html">TORNA A HOME ></a>
 </font>
 </p>
 </form>
-<form action="../Registrazione" method="post" name="modulo2">
+<form enctype="multipart/form-data" action="../Registrazione?tipo=Studente" method="post" name="modulo2">
 <p id="text2" style="display:none">
 <font face="sans-serif">
-<input type="hidden" value="Studente" name="tipo">
 <font color="black"><strong>Nome:   
 </strong></font>
 <input type="text" name="nome"id="nomeS"  required><span id="par11"></span><br><br>
@@ -96,7 +94,7 @@ span{
   <option value="2°">Secondo</option>
   <option value="3°">Terzo</option>
 </select><br><br>
-<font color="black"><strong>Aggiungi immagine:   </strong></font><input type="file"  name="file" id="immagineS" ><span id="par17"></span><br><br><input type="hidden" name ="url" id="pathS" value=""><br><br>
+<font color="black"><strong>Aggiungi immagine:   </strong></font><input type="file"  name="fileS" id="immagineS" ><span id="par17"></span><br><br><input type="hidden" name ="url" id="pathS" value=""><br><br>
 <input type="button" value="REGISTRATI" id="regS" name="button" onclick="myFunctionS()" enabled>
 <a href="HomePage.html">TORNA A HOME ></a>
 </tr> 
@@ -187,8 +185,8 @@ function myFunctionT() {
 	}
 	//foto
 	var frm = document.getElementsByTagName('form')[0];
-	if(!frm.elements[10].value == ""){
-		if(!frm.elements[10].value.match("png") && !frm.elements[10].value.match("jpg") && !frm.elements[10].value.match("jpeg")){
+	if(!frm.elements[9].value == ""){
+		if(!frm.elements[9].value.match("png") && !frm.elements[9].value.match("jpg") && !frm.elements[9].value.match("jpeg")){
 			alert("I file accettati sono jpg/png/jpeg");
 			return false;
 		}
@@ -256,12 +254,12 @@ function myFunctionS() {
 	}
 	//foto
 	var frm = document.getElementsByTagName('form')[1];
-	if(!frm.elements[8].value == ""){
-		if(!frm.elements[8].value.match("png") && !frm.elements[8].value.match("jpg") && !frm.elements[8].value.match("jpeg")){
+	if(!frm.elements[7].value == ""){
+		if(!frm.elements[7].value.match("png") && !frm.elements[7].value.match("jpg") && !frm.elements[7].value.match("jpeg")){
 			alert("I file accettati sono jpg/png/jpeg");
 			return false;
 		}
-		var fullPath = frm.elements[8].value; 
+		var fullPath = frm.elements[7].value; 
 		var elem = document.getElementById("path");
 		elem.value = fullPath;
 	}

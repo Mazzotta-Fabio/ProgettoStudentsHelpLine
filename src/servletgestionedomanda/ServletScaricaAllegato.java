@@ -28,7 +28,9 @@ public class ServletScaricaAllegato extends HttpServlet {
       throws ServletException, IOException {
     String path = request.getParameter("url");
     GestioneDomanda g = new ImpGestioneDomanda();
-    g.scaricaAllegato(path);
+    String s = "C:\\Users\\Antonio\\git\\ProgettoStudentsHelpLine\\WebContent\\img\\"
+            + path;
+    g.scaricaAllegato(s);
     int idD = Integer.parseInt(request.getParameter("idD"));
     RequestDispatcher forward = request.getServletContext().getRequestDispatcher(""
         + "/ServletVisualizzaDomanda?id=" + idD);

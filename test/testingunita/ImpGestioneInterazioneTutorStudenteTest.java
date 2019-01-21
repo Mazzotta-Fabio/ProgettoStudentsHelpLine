@@ -180,13 +180,13 @@ public class ImpGestioneInterazioneTutorStudenteTest extends TestCase {
   }
   
   public void test7Upload() {
-    String file = "C:\\Users\\Antonio\\Downloads\\agg_Account.png";
+    String file = "agg_Account.png";
     try {
       gestioneInterazione.upload(file);
     } catch (IOException e) {
       e.printStackTrace();
     }
-    File f = new File("C:\\Users\\Antonio\\Desktop\\Documenti\\web\\File\\WebContent\\Immagine"
+    File f = new File("C:\\Users\\Antonio\\git\\ProgettoStudentsHelpLine\\WebContent\\img"
         + "\\agg_Account.png");
     assertEquals(true,f.exists());
   }

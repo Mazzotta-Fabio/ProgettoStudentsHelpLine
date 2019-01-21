@@ -4,12 +4,16 @@ import gestioneinterazionetutorstudente.GestioneInterazioneTutorStudente;
 import gestioneinterazionetutorstudente.ImpGestioneInterazioneTutorStudente;
 import gestioneutente.GestioneUtente;
 import gestioneutente.ImpGestioneUtente;
+
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  * La classe RegistrazioneTutor è una Servlet.
@@ -20,11 +24,25 @@ import javax.servlet.http.HttpServletResponse;
  * @version 1.0
  */
 @WebServlet("/Registrazione")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
+maxFileSize = 1024 * 1024 * 10,
+maxRequestSize = 1024 * 1024 * 50) 
 public class ServletRegistrazione extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   public ServletRegistrazione() {}
 
+  private String extractFileName(Part part) {
+		String contentDisp = part.getHeader("content-disposition");
+		String [] items = contentDisp.split(";");
+		for(String s : items) {
+			if(s.trim().startsWith("filename")) {
+				return s.substring(s.lastIndexOf("=")+2,s.length()-1);
+			}
+		}
+    return "";
+  }
+  
   /**
 * Il metodo serve per recuperare i dati del Tutor e 
 * passarli alla classi DAO per inserirli nel DataBase.
@@ -39,18 +57,25 @@ public class ServletRegistrazione extends HttpServlet {
     String email = request.getParameter("email");
     String password = request.getParameter("passwordS");
     GestioneInterazioneTutorStudente i = new ImpGestioneInterazioneTutorStudente();
-    String url = request.getParameter("url");
-    i.upload(url);
+    
     GestioneUtente u = new ImpGestioneUtente();
     if (tipo.equals("Tutor")) {
       String numero = request.getParameter("numero");
       String materia = request.getParameter("materia");
       String voto = request.getParameter("voto");
       String titolo = request.getParameter("titolo");
+      Part part = request.getPart("fileT");
+      String url = extractFileName(part);
+      String savePath  = i.upload(url);
+	  part.write(savePath + File.separator);
       u.registraAccount(tipo,nome, cognome, email, password,url, voto, titolo,numero,materia);
     } else {
       String matricola = request.getParameter("matricola");
       String annoCorso = request.getParameter("annoCorso");
+      Part part = request.getPart("fileS");
+      String url = extractFileName(part);
+      String savePath  = i.upload(url);
+	  part.write(savePath + File.separator);
       u.registraAccount(tipo,nome, cognome, email, password, url, matricola, annoCorso,null,null);
     }
     response.sendRedirect("html/HomePage.html");

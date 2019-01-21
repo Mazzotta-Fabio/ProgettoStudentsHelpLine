@@ -34,18 +34,9 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
   public String upload(String fileName)throws IOException {
     String d = "";
     if (!fileName.equals("")) {
-      File sourceLocation = new File(fileName);
-      File targetFolder = new File(destLocation);
-      InputStream in = new FileInputStream(sourceLocation);
-      OutputStream out = new FileOutputStream(targetFolder + "\\" + sourceLocation.getName(), true);
-      byte[] buf = new byte[1024];
-      int len;
-      while ((len = in.read(buf)) > 0) {
-        out.write(buf, 0, len);
-      }
-      in.close();
-      out.close();   
-      d = (targetFolder + "\\" + sourceLocation.getName());
+      d = "C:\\Users\\Antonio\\git\\ProgettoStudentsHelpLine\\WebContent\\img" + File.separator + fileName;
+  	  File fileSaveDir= new File(d);
+  	  File fileSave= new File(d);
     }
     return d;
   }    
@@ -260,7 +251,7 @@ public class ImpGestioneInterazioneTutorStudente implements GestioneInterazioneT
       }
       for (int i = 0;i < listaD.size();i++) {
         Domanda d = (Domanda) listaD.get(i);
-        if (d.getTutor().getEmail().equals(email)) {
+        if (d.getTutor().getEmail().equals(email) && d.getRisposta().getId() == 1) {
           if (d.getVis().equals("no")) {
             return true;
           } else {
