@@ -37,38 +37,34 @@ span{
 </style>
 </header>
 <div>
-<form enctype="multipart/form-data" action="ServletInserisciRisposta.html?id=<%=request.getAttribute("id")%>" method="post">
-<p><center><font color="black"><strong>Cosa vuoi rispondere?</strong></font></p><textarea name="testo" id="testo" onKeyUp="myFunction2()" onKeyDown="myFunction()" rows="5" cols="30" style="margin-left:2%" required></textarea><span id="par2"></span><br><br>
-<p><center><font color="black"><strong>Allega file</strong></font></center></p><input type="file" name="file" id="file"onchange="myFunction3()"><span id="par3"></span> <br> <input type="hidden" name ="url" id="path" value=""><br>
-<input type="submit" value="INVIA" id="log"><br><br></center>
+<form enctype="multipart/form-data" action="ServletInserisciRisposta.html?id=<%=request.getAttribute("id")%>" method="post" name="modulo">
+<p><center><font color="black"><strong>Cosa vuoi rispondere?</strong></font></p><textarea name="testo" id="testo" rows="5" cols="30" style="margin-left:2%" required></textarea><span id="par2"></span><br><br>
+<p><center><font color="black"><strong>Allega file</strong></font></center></p><input type="file" name="file" id="file"><span id="par3"></span> <br> <input type="hidden" name ="url" id="path" value=""><br>
+<input type="button" value="INVIA" id="log" onclick="myFunction()"><br><br></center>
 </form>
 <script type="text/javascript">
 
-function myFunction2() {
-	var i;
-	document.getElementById("par2").innerHTML = "";
-	var n = document.getElementById("testo").value.lenght;
-	if(n >= 700){
-		document.getElementById("par2").innerHTML = "Il testo deve contenere meno di 700 caratteri";
-	}
-}
-
-function myFunction3(){
-	document.getElementById("par3").innerHTML = "";
-	var frm = document.getElementsByTagName('form')[0];
-	if(!frm.elements[2].value.match("pdf") && !frm.elements[3].value.match("docx") && !frm.elements[3].value.match("zip") && !frm.elements[3].value.match("ppt")){
-		document.getElementById("par3").innerHTML = " I file accettati sono pdf/docx/zip/ppt";
-	}
-	var fullPath = frm.elements[2].value; 
-	var elem = document.getElementById("path");
-	elem.value = fullPath;
-}
-
 function myFunction() {
-	var f1 = document.getElementById("par2").innerHTML.length;
-	var f2 = document.getElementById("par3").innerHTML.length;
-	if(f1>0 || f2>0 ){document.getElementById("log").disabled = true;}
-	else {document.getElementById("log").disabled = false;}
+	var n = document.getElementById("testo").value.length;
+	if(n>=700){
+		alert("Il testo deve contenere meno di 700 caratteri");
+		return false;
+	}
+	if(n==0){
+		alert("Il testo non può essere vuoto");
+		return false;
+	}	
+	var frm = document.getElementsByTagName('form')[0];
+	if(frm.elements[2].value!=""){
+		if(!frm.elements[2].value.match("pdf") && !frm.elements[2].value.match("docx") && !frm.elements[2].value.match("zip") && !frm.elements[2].value.match("pptx")){
+			alert(" I file accettati sono pdf/docx/zip/pptx");
+			return false;
+		}
+		var fullPath = frm.elements[2].value; 
+		var elem = document.getElementById("path");
+		elem.value = fullPath;
+	}
+	document.modulo.submit();
 }
 </script>
 </body>

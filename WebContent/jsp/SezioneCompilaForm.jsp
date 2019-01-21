@@ -37,49 +37,46 @@ span{
 </style>
 </header>
 <body>
-<form enctype="multipart/form-data" action="ServletInserisciDomanda.html" method="post">
+<form enctype="multipart/form-data" action="ServletInserisciDomanda.html" method="post" name="modulo">
 <input type="hidden" name="tutor" value="<%=request.getAttribute("Tutor")%>" >
-<p><center><font color="black" ><strong>Oggetto della domanda:</strong></font></p><input type="text" name="oggetto" id="oggetto" onKeyUp="myFunction1()" onKeyDown="myFunction()" style="width:300px;margin-left:2%" required><span id="par1"></span></center>
-<p><center><font color="black" "><strong>Che vuoi chiedere?</strong></font></p><textarea name="testo" id="testo" onKeyUp="myFunction2()" onKeyDown="myFunction()" rows="5" cols="30" style="margin-left:2%" required></textarea><span id="par2"></span></center>
+<p><center><font color="black" ><strong>Oggetto della domanda:</strong></font></p><input type="text" name="oggetto" id="oggetto"  style="width:300px;margin-left:2%" required><span id="par1"></span></center>
+<p><center><font color="black" "><strong>Che vuoi chiedere?</strong></font></p><textarea name="testo" id="testo"  rows="5" cols="30" style="margin-left:2%" required></textarea><span id="par2"></span></center>
 <p><center><font color="black" ><strong>Allega file: </strong></font>
-<input type="file" name="file" id="file-upload"onchange="myFunction3()"><br><span id="par3"></span></center><br> <input type="hidden" name ="url" id="path" value="">
-<center><input type="submit" value="INVIA" id="log"name="button"></center>
+<input type="file" name="file" id="file-upload"><br><span id="par3"></span></center><br> <input type="hidden" name ="url" id="path" value="">
+<center><input type="button" value="INVIA" id="log"name="button" onclick="myFunction()"></center>
 </form>
 
 <script type="text/javascript">
-function myFunction1() {
-	document.getElementById("par1").innerHTML = "";
-	var n = document.getElementById("oggetto").value.length;
-	if(n > 30){
-		document.getElementById("par1").innerHTML = "L' oggetto deve contenere meno di 30 caeratteri";
-	}
-}
-
-function myFunction2() {
-	document.getElementById("par2").innerHTML = "";
-	var n = document.getElementById("testo").value.lenght;
-	if(n >= 700){
-		document.getElementById("par2").innerHTML = "Il testo deve contenere meno di 700 caratteri";
-	}
-}
-
-function myFunction3(){
-	document.getElementById("par3").innerHTML = "";
-	var frm = document.getElementsByTagName('form')[0];
-	if(!frm.elements[3].value.match("pdf") && !frm.elements[3].value.match("docx") && !frm.elements[3].value.match("zip") && !frm.elements[3].value.match("ppt")){
-		document.getElementById("par3").innerHTML = " I file accettati sono pdf/docx/zip/ppt";
-	}
-	var fullPath = frm.elements[3].value; 
-	var elem = document.getElementById("path");
-	elem.value = fullPath;
-}
-
 function myFunction() {
-	var f1 = document.getElementById("par1").innerHTML.length;
-	var f2 = document.getElementById("par2").innerHTML.length;
-	var f3 = document.getElementById("par3").innerHTML.length;
-	if(f1>0 || f2>0 || f3>0){document.getElementById("log").disabled = true;}
-	else {document.getElementById("log").disabled = false;}
+	var n = document.getElementById("testo").value.length;
+	if(n>=700){
+		alert("Il testo deve contenere meno di 700 caratteri");
+		return false;
+	}
+	if(n==0){
+		alert("Il testo non può essere vuoto");
+		return false;
+	}
+	var n = document.getElementById("oggetto").value.length;
+	if(n>30){
+		alert("L' oggetto deve contenere meno di 30 caratteri");
+	}
+	if(n==0){
+		alert("L'oggetto non può essere vuoto");
+		return false;
+	}
+	
+	var frm = document.getElementsByTagName('form')[0];
+	if(frm.elements[3].value!=""){
+		if(!frm.elements[3].value.match("pdf") && !frm.elements[3].value.match("docx") && !frm.elements[3].value.match("zip") && !frm.elements[3].value.match("pptx")){
+			alert(" I file accettati sono pdf/docx/zip/pptx");
+			return false;
+		}
+		var fullPath = frm.elements[3].value; 
+		var elem = document.getElementById("path");
+		elem.value = fullPath;
+	}
+	document.modulo.submit();
 }
 </script>
 </body>
