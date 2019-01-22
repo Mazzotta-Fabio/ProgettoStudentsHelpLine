@@ -38,8 +38,7 @@ public class ServletRecuperaEmail extends HttpServlet {
       RequestDispatcher view = request.getRequestDispatcher("jsp/PaginaRecuperaPassword.jsp");
       view.forward(request, response);
     } else {
-      RequestDispatcher view = request.getRequestDispatcher("html/HomePage.html");
-      view.forward(request, response);
+      response.sendRedirect("html/HomePage.html");
     }
   }
 

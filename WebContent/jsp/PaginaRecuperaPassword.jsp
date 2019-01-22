@@ -73,8 +73,8 @@ function myFunction() {
 
 function myFunction2() {
 	var f1 = document.getElementById("par1").innerHTML;
-	if(f1==""){document.getElementById("login").disabled = true;}
-	else {document.getElementById("login").disabled = false;}
+	if(f1>0){document.getElementById("login").disabled = false;}
+	else {document.getElementById("login").disabled = true;}
 }
 </script>
 </html>
