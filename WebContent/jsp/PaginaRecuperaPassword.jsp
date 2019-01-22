@@ -22,7 +22,7 @@
 </style>
 <div class="header">
 <h1>RECUPERA PASSWORD</h1>
-<title>StudentsHelpLine</title>
+<title>Student's Help Line</title>
 </div>
 </head>
 
@@ -39,7 +39,7 @@
  <input type="text" name="email" id="email" onKeyUp="myFunction()" onKeyDown="myFunction2()" required>
  <p id="par1" style="color:red" align="center"></p></font>
  <p align="center"><input type="submit" value="INVIA" id="login" name="button"><br><br>
- <a href="HomePage.html">TORNA A HOME ></a>
+ <a href="HomePage.html">TORNA A HOME </a>
 </p>
 </form>
 </head>
@@ -72,8 +72,8 @@ function myFunction() {
 }
 
 function myFunction2() {
-	var f1 = document.getElementById("par1").innerHTML.lenght;
-	if(f1>0){document.getElementById("login").disabled = true;}
+	var f1 = document.getElementById("par1").innerHTML;
+	if(f1==""){document.getElementById("login").disabled = true;}
 	else {document.getElementById("login").disabled = false;}
 }
 </script>
